@@ -24,6 +24,12 @@ const nextConfig = {
         destination: "/contact-us",
         permanent: true,
       },
+      // The /contact-v2 design is now the main contact page.
+      {
+        source: "/contact-v2",
+        destination: "/contact-us",
+        permanent: true,
+      },
     ];
   },
 };

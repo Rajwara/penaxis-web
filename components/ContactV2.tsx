@@ -8,7 +8,7 @@ import OfficeLocator from "@/components/contact-v2/OfficeLocator";
 import "@fontsource-variable/manrope/index.css";
 import "@fontsource-variable/sora/index.css";
 
-// /contact-v2 content, ported from a client-supplied contact page template:
+// Main contact page content (/contact-us; first built at /contact-v2), ported from a client-supplied contact page template:
 // grey top area with a red gradient page-title banner (outlined vertical
 // word + notched breadcrumbs), a "get in touch" section with contact info
 // and a form card, and an office locator map (components/contact-v2). Colours, sizes and spacing follow
@@ -57,7 +57,7 @@ export default function ContactV2() {
     setStatus("sending");
     setError("");
     try {
-      await submitForm("Contact v2 page", {
+      await submitForm("Contact page", {
         name: form.name.trim(),
         email: form.email.trim(),
         subject: form.subject.trim(),
