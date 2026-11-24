@@ -9811,3 +9811,13 @@ body:has(.hv3-page) .qq-modal,
 body:has(.hv3-page) .sl-modal { filter: grayscale(1); }
 /* Navbar mega menus (Services / Industries / Case Studies) on this page: monochrome */
 body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
+
+/* ==================================================================
+   /home-v2 — accent colour: purple #6A449A replaces the red #b91f33
+   (services, case studies, CTA banner and the page-wide type system).
+   Scoped to .hv2-page so /home-v3 and /industries are unaffected.
+   ================================================================== */
+.hv2-page { --pf-red: #6A449A; }
+.hv2-page .hv2s-wrap,
+.hv2-page .hv2c-wrap,
+.hv2-page .hv2q-root { --primary-red: #6A449A; }
