@@ -10387,3 +10387,71 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
   .car-row-head { padding: 1rem; }
   .car-row-body { padding: 0 1rem 1.2rem; }
 }
+
+/* ==================================================================
+   /who-we-are — hero banner (components/AboutHeroBanner.tsx).
+   Ported from the client-supplied about-hero-banner; values match it.
+   ================================================================== */
+.abh {
+  --abh-heading: "Big Shoulders Variable", "Big Shoulders", Arial, sans-serif;
+  --abh-body: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  padding: 100px 20px 20px; /* top clears the fixed navbar */
+  background: #F8F8F8;
+  font-family: var(--abh-body);
+}
+.abh-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 672px;
+  padding: 128px 120px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-sizing: border-box;
+}
+.abh-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
+.abh-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); }
+.abh-content { position: relative; z-index: 1; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 32px 48px; }
+.abh-left { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.abh-subtitle {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--abh-heading);
+  font-size: 18px; font-weight: 500; line-height: 18px;
+  letter-spacing: -0.36px; text-transform: uppercase; color: #fff;
+}
+.abh-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+.abh-title {
+  margin: 0;
+  font-family: var(--abh-heading);
+  font-size: 120px; font-weight: 500 !important; line-height: 1;
+  letter-spacing: -3.6px; text-transform: uppercase; color: #fff;
+}
+.abh-line { display: flex; align-items: center; gap: 20px; }
+.abh-pill { width: 352px; height: 84px; border-radius: 1600px; overflow: hidden; flex-shrink: 0; }
+.abh-pill img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.abh-text {
+  margin: 0; max-width: 432px;
+  font-size: 24px; font-weight: 500; line-height: 36px;
+  letter-spacing: -0.18px; text-align: right; color: #fff;
+}
+@media (max-width: 991px) {
+  .abh-card { padding: 100px 40px; min-height: 560px; }
+  .abh-content { flex-direction: column; align-items: flex-start; }
+  .abh-title { font-size: 88px; letter-spacing: -2.6px; }
+  .abh-pill { width: 260px; height: 64px; }
+  .abh-text { text-align: left; }
+}
+@media (max-width: 479px) {
+  .abh { padding: 90px 12px 12px; }
+  .abh-card { padding: 80px 20px; min-height: 480px; }
+  .abh-title { font-size: 56px; letter-spacing: -1.6px; }
+  .abh-line { flex-wrap: wrap; gap: 12px; }
+  .abh-pill { width: 200px; height: 50px; }
+  .abh-text { font-size: 18px; line-height: 27px; }
+}
+/* The team-photo section is now second: drop the extra top space it had
+   for the navbar. The intro-banner heading is an h2 now; keep its weight. */
+.av2-photo-section { padding-top: 6rem; }
+.av2-heading { font-weight: 600; }

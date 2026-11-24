@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import AboutHeroBanner from "@/components/AboutHeroBanner";
 import AboutV2TeamPhoto from "@/components/AboutV2TeamPhoto";
 import AboutV2Bento from "@/components/AboutV2Bento";
 import AboutV2Banner from "@/components/AboutV2Banner";
@@ -20,6 +21,8 @@ export default function AboutV2Page() {
     <>
       <Navbar />
       <main>
+        {/* New banner first; the previous first section (team photo) is now second */}
+        <AboutHeroBanner />
         <AboutV2TeamPhoto />
         <AboutV2Banner />
         <AboutV2Bento />

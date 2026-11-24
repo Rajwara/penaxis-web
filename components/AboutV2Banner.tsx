@@ -18,10 +18,10 @@ export default function AboutV2Banner() {
           <span className="av2-pill">Who We Are</span>
         </Reveal>
         <Reveal delay={0.05}>
-          <h1 className="av2-heading">
+          <h2 className="av2-heading">
             A Trusted Partner Committed to Your{" "}
             <span className="text-violet-600">Digital Growth</span>
-          </h1>
+          </h2>
         </Reveal>
 
         <Reveal delay={0.1} className="av2-image-wrap">
