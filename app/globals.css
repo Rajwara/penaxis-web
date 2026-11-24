@@ -10907,3 +10907,42 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
   .crh-stat-label { font-size: 12px; }
   .crh-stat-chip { margin-top: 0.5rem; padding: 0.25rem 0.45rem; font-size: 11px; }
 }
+
+/* Open roles: full-width black band, more space between rows, and a row
+   that grows a little on hover and reveals the role summary. */
+.car-page .car-roles--list {
+  padding: 6rem 1.5rem;
+  background:
+    radial-gradient(50% 70% at 100% 0%, rgba(106, 68, 154, 0.25), rgba(0, 0, 0, 0) 60%),
+    #000;
+}
+.car-page .car-roles-inner { padding: 0; border-radius: 0; background: none; }
+.car-list { gap: 1rem; }
+.car-row { transition: transform .35s cubic-bezier(.2, .7, .2, 1), border-color .25s, background-color .25s, box-shadow .35s; }
+.car-row-head { padding: 1.4rem 1.5rem; }
+.car-row-desc {
+  display: block;
+  max-width: 46rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.75);
+  transition: max-height .4s ease, opacity .3s ease, margin-top .4s ease;
+}
+@media (hover: hover) {
+  .car-row:hover { transform: scale(1.015); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45); }
+  .car-row:hover .car-row-desc { max-height: 6rem; opacity: 1; margin-top: 0.6rem; }
+}
+/* Touch screens have no hover: show the summary all the time */
+@media (hover: none) {
+  .car-row-desc { max-height: none; opacity: 1; margin-top: 0.6rem; }
+}
+@media (max-width: 767px) {
+  .car-page .car-roles--list { padding: 4rem 1rem; }
+  .car-row-head { padding: 1.1rem 1.1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .car-row, .car-row-desc { transition: none; }
+}

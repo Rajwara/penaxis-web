@@ -49,6 +49,7 @@ export default function CareersHub() {
                       <span className="car-row-meta">
                         {role.location} &middot; {kind} &middot; {role.experience}
                       </span>
+                      <span className="car-row-desc">{role.summary}</span>
                     </span>
                     <span className="car-row-cta">
                       View role
