@@ -1,0 +1,115 @@
+/* =====================================================================
+   FAQ page (/faq) in the content-pages design. Scoped to .fwb.
+   1. Banner: the design's .cat-hero (grey panel, copy left, photo right),
+      combining its base rules (from the store stylesheet) with the
+      shop-brand.css overrides it applies under .shop-fw.
+   2. The FAQ list (from faq.css): numbered rows, dot, blur on hover,
+      tilted photo, click to open, topic tabs, black CTA panel.
+   ===================================================================== */
+
+/* ---- 1. Banner ---- */
+.fwb.shop-fw {
+  --ink: #000; --muted: #666; --paper: #fff; --tint: #f6f6f6; --line: #e4e4e4;
+}
+.fwb.shop-fw .eyebrow { display: block; margin-bottom: 12px; font: 500 16px/24px var(--fw-display); text-transform: uppercase; letter-spacing: .01em; color: #000; }
+.fwb.shop-fw h1, .fwb.shop-fw h2 { font-family: var(--fw-display); font-weight: 500; text-transform: uppercase; letter-spacing: -.04em; line-height: 1.05; }
+.fwb.shop-fw .crumb { padding: 20px 0; font-size: 14px; color: #888; }
+.fwb.shop-fw .crumb a { color: #000; }
+.fwb.shop-fw .crumb a:hover { text-decoration: underline; }
+
+.fwb.shop-fw .cat-hero { display: grid; grid-template-columns: 1.05fr 1fr; min-height: 460px; margin: 12px 12px 0; border-radius: 12px; overflow: hidden; background: var(--tint); }
+.fwb.shop-fw .cat-hero-copy { display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 56px 48px 56px max(24px, calc((100vw - 1152px) / 2)); }
+.fwb.shop-fw .cat-hero-copy .crumb { padding: 0 0 22px; }
+.fwb.shop-fw .cat-hero h1 { font-size: clamp(56px, 7vw, 112px); line-height: .95; }
+.fwb.shop-fw .cat-hero p { margin: 0; color: var(--muted); font-size: 18px; line-height: 26px; }
+.fwb.shop-fw .cat-hero-pic { position: relative; overflow: hidden; min-height: 300px; margin: 12px; border-radius: 12px; }
+.fwb.shop-fw .cat-hero-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+@media (max-width: 720px) {
+  .fwb.shop-fw .cat-hero { grid-template-columns: 1fr; margin: 8px 8px 0; min-height: 0; }
+  .fwb.shop-fw .cat-hero-pic { order: -1; min-height: 0; aspect-ratio: 4 / 3; margin: 8px 8px 0; }
+  .fwb.shop-fw .cat-hero-copy { padding: 28px 20px 32px; }
+}
+
+/* ---- 2. FAQ list (from faq.css) ---- */
+.fwb .faq-wrap {
+  --faq-display: var(--font-big-shoulders), "Big Shoulders", sans-serif;
+  --faq-body: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  width: 100%; max-width: 1200px; margin: 0 auto; padding: 72px 24px 96px; color: #000; font: 400 16px/24px var(--faq-body);
+}
+.fwb .faq-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 32px; }
+.fwb .faq-label { display: block; margin-bottom: 12px; font: 500 16px/24px var(--faq-display); text-transform: uppercase; letter-spacing: .01em; }
+.fwb .faq-head h2 { margin: 0; font: 500 56px/1.05 var(--faq-display); text-transform: uppercase; letter-spacing: -.04em; }
+.fwb .faq-head p { max-width: 380px; margin: 0; color: #666; }
+
+/* Topic tabs */
+.fwb .faq-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.fwb .faq-tabs button { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid #d9d9d9; border-radius: 99px; background: #fff; color: #000; font: 500 15px/20px var(--faq-body); letter-spacing: -.01em; cursor: pointer; transition: .25s; }
+.fwb .faq-tabs button small { min-width: 20px; padding: 0 6px; border-radius: 99px; background: #f6f6f6; color: #777; font-size: 12px; line-height: 20px; text-align: center; }
+.fwb .faq-tabs button:hover { border-color: #000; }
+.fwb .faq-tabs button.on { background: #000; border-color: #000; color: #fff; }
+.fwb .faq-tabs button.on small { background: #222; color: #ccc; }
+
+/* Rows, as in "Our process" */
+.fwb .faq-list { position: relative; border-top: 1px solid #e4e4e4; }
+.fwb .faq-row { position: relative; z-index: 1; border-bottom: 1px solid #e4e4e4; transition: filter .5s ease; }
+.fwb .faq-q { display: grid; grid-template-columns: 40px 8px minmax(0, 1fr) 24px; align-items: center; gap: 28px; width: 100%; min-height: 112px; padding: 20px 4px; border: 0; background: none; color: #000; text-align: left; cursor: pointer; }
+.fwb .faq-q:focus-visible { outline: 2px solid #000; outline-offset: -2px; }
+.fwb .faq-num { font: 500 20px/28px var(--faq-display); letter-spacing: .02em; color: #000; }
+.fwb .faq-dot { width: 8px; height: 8px; border-radius: 50%; background: #000; }
+.fwb .faq-text { max-width: 660px; font: 500 clamp(22px, 2.6vw, 34px)/1.2 var(--faq-body); letter-spacing: -.035em; }
+.fwb .faq-plus { position: relative; width: 24px; height: 24px; justify-self: end; }
+.fwb .faq-plus::before, .fwb .faq-plus::after { content: ""; position: absolute; left: 3px; right: 3px; top: 11px; height: 2px; border-radius: 2px; background: #000; transition: transform .35s ease; }
+.fwb .faq-plus::after { transform: rotate(90deg); }
+.fwb .faq-row.open .faq-plus::after { transform: rotate(0); }
+.fwb .faq-a { padding: 0 4px 28px calc(40px + 8px + 56px + 4px); max-width: 860px; }
+.fwb .faq-a p { margin: 0 0 10px; max-width: 560px; color: #555; font-size: 17px; line-height: 27px; }
+.fwb .faq-a a { color: #000; font-weight: 500; border-bottom: 1px solid currentColor; }
+.fwb .faq-row.open .faq-a { animation: fwb-faq-in .4s ease; }
+@keyframes fwb-faq-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+/* Hovering one row blurs the others (mouse only) */
+@media (hover: hover) and (pointer: fine) {
+  .fwb .faq-list:hover .faq-row:not(:hover):not(.open) { filter: blur(4px); }
+}
+
+/* Tilted photo beside the list */
+.fwb .faq-images { position: absolute; z-index: 0; right: 0; top: 50%; width: 320px; height: 360px; margin-top: -180px; pointer-events: none; }
+.fwb .faq-images div { position: absolute; inset: 0; opacity: 0; transition: opacity .5s ease, transform .6s cubic-bezier(.215,.61,.355,1); transform: rotate(-12deg) scale(.94); }
+.fwb .faq-images div.on { opacity: 1; transform: rotate(-15.5deg) scale(1); }
+.fwb .faq-images img { width: 100%; height: 100%; border-radius: 12px; object-fit: cover; box-shadow: 0 30px 60px rgba(0,0,0,.18); }
+
+/* Still have questions */
+.fwb .faq-cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin: 0 12px 12px; padding: 48px max(24px, calc((100% - 1152px) / 2)); border-radius: 12px; background: #000; color: #fff; font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif; }
+.fwb .faq-cta h2 { margin: 0 0 8px; font: 500 clamp(36px, 4vw, 56px)/1 var(--font-big-shoulders), "Big Shoulders", sans-serif; text-transform: uppercase; letter-spacing: -.04em; color: #fff; }
+.fwb .faq-cta p { margin: 0; color: #bbb; }
+.fwb .faq-cta-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.fwb .faq-cta-btns a { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border: 1px solid #fff; border-radius: 99px; background: #fff; color: #000; font-weight: 500; letter-spacing: -.02em; transition: background .3s, color .3s; }
+.fwb .faq-cta-btns a + a { background: transparent; color: #fff; }
+.fwb .faq-cta-btns a:hover { background: #e9e9e9; color: #000; }
+
+@media (max-width: 991px) {
+  .fwb .faq-images { display: none; }
+  .fwb .faq-q { grid-template-columns: 32px 8px minmax(0, 1fr) 24px; gap: 16px; min-height: 0; padding: 22px 0; }
+  .fwb .faq-a { padding: 0 0 24px calc(32px + 8px + 32px); }
+  .fwb .faq-cta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 767px) {
+  .fwb .faq-wrap { padding: 48px 20px 64px; }
+  .fwb .faq-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .fwb .faq-head h2 { font-size: 40px; }
+  .fwb .faq-tabs { flex-wrap: nowrap; overflow-x: auto; margin-inline: -20px; padding: 0 20px 4px; scrollbar-width: none; }
+  .fwb .faq-tabs::-webkit-scrollbar { display: none; }
+  .fwb .faq-tabs button { flex: none; }
+  .fwb .faq-a { padding-left: 0; }
+  .fwb .faq-cta { margin: 0 8px 8px; padding: 36px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fwb .faq-row, .fwb .faq-images div, .fwb .faq-plus::after { transition: none; }
+  .fwb .faq-row.open .faq-a { animation: none; }
+}
+
+/* "All questions": each topic under its own heading */
+.fwb .faq-group + .faq-group { margin-top: 56px; }
+.fwb .faq-wrap .faq-group-title { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font: 500 28px/1 var(--faq-display); text-transform: uppercase; letter-spacing: -.02em; color: #000; }
+.fwb .faq-wrap .faq-group-title small { min-width: 22px; padding: 0 7px; border-radius: 99px; background: #000; color: #fff; font: 500 12px/22px var(--faq-body); text-align: center; letter-spacing: 0; }
+@media (max-width: 767px) { .fwb .faq-group + .faq-group { margin-top: 40px; } .fwb .faq-wrap .faq-group-title { font-size: 24px; } }

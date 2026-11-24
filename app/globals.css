@@ -9146,7 +9146,7 @@ h1 {
 .cv2-grid-lines { position: absolute; inset: 0; pointer-events: none; z-index: 0; display: flex; justify-content: center; }
 .cv2-grid-lines span { flex: 1; max-width: 525px; border-left: 1px solid var(--line); }
 .cv2-grid-lines span:last-child { border-right: 1px solid var(--line); }
-.cv2-top-area, .cv2-contact, .cv2-map { position: relative; z-index: 1; }
+.cv2-top-area, .cv2-contact { position: relative; z-index: 1; }
 
 /* Top area (grey card) — top padding clears the site's floating navbar */
 .cv2-top-area { background: var(--grey-bg); border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 100px 36px 38px; }
@@ -9287,9 +9287,8 @@ h1 {
 .cv2-form-msg { font-size: 14px; margin: 12px 0 0; }
 .cv2-form-msg.is-error { color: #c0262d; }
 
-/* Map */
-.cv2-map { margin: 0 36px 36px; height: 480px; border-radius: var(--radius-lg); overflow: hidden; }
-.cv2-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1) contrast(1.05); }
+/* Office locator (components/contact-v2) */
+.cv2-locator { position: relative; z-index: 1; background: #fff; }
 
 /* Responsive — same breakpoints as the template */
 @media (max-width: 1200px) {
@@ -9308,7 +9307,6 @@ h1 {
   .cv2-left h2 { font-size: 38px; line-height: 46px; letter-spacing: -1.5px; }
   .cv2-info-grid { grid-template-columns: 1fr 1fr; }
   .cv2-form-card { padding: 40px 25px; }
-  .cv2-map { margin: 0 12px 24px; height: 360px; }
 }
 @media (max-width: 479px) {
   .cv2-info-grid { grid-template-columns: 1fr; gap: 30px; }

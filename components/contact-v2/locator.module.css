@@ -1,0 +1,144 @@
+/* Contact & store locator */
+.page {
+  /* fonts from the supplied store-locator section (Big Shoulders + Space Grotesk) */ --grey: #f6f6f6; --line: #e4e4e4; --muted: #666; --display: "Big Shoulders Variable", "Big Shoulders", "Arial Narrow", sans-serif; --text: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif; --ease: cubic-bezier(.16, 1, .3, 1); color: #000; font: 400 16px/24px var(--text); }
+.page h1, .page h2 { font-family: var(--display); font-weight: 500 !important; text-transform: uppercase; letter-spacing: -.04em; line-height: .95; }
+.label { display: block; margin-bottom: 10px; font: 500 16px/24px var(--display); text-transform: uppercase; letter-spacing: .01em; color: #ff4a17; }
+.crumb { margin-bottom: 18px; font: 500 16px/24px var(--display); text-transform: uppercase; letter-spacing: .01em; color: #888; }
+.crumb a { color: #000; }
+
+/* Locator */
+.locator { width: min(1240px, 100% - 48px); margin: 0 auto; padding: 80px 0 40px; }
+.head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 28px; }
+.head h2 { font-size: 56px; line-height: 1.02; }
+.head p { max-width: 400px; color: var(--muted); }
+.mapWrap { position: relative; scroll-margin-top: 100px; }
+.mapBox { position: relative; height: 620px; border-radius: 16px; overflow: hidden; background: #ececec; isolation: isolate; }
+.map { position: absolute; inset: 0; background: #ececec; font-family: var(--text); }
+.map :global(.leaflet-tile-pane) { filter: grayscale(1) brightness(1.06) contrast(.88); }
+.map :global(.leaflet-control-zoom) { border: 0; box-shadow: 0 6px 20px rgba(0,0,0,.12); border-radius: 12px; overflow: hidden; margin: 0 16px 16px 0; }
+.map :global(.leaflet-control-zoom a) { width: 38px; height: 38px; line-height: 38px; color: #000; font: 500 18px/38px var(--text); }
+.map :global(.leaflet-control-attribution) { font-size: 10px; background: rgba(255,255,255,.75); }
+.mapLoading { position: absolute; inset: 0; display: grid; place-items: center; color: #888; font-size: 14px; }
+
+/* Markers (Leaflet divIcons) */
+.map :global(.tv-pin) {
+  display: block; width: 52px; height: 52px; border-radius: 50%; overflow: hidden;
+  border: 3px solid #fff; background: #222; box-shadow: 0 8px 20px rgba(0,0,0,.28);
+  cursor: pointer; transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s, border-color .3s;
+}
+.map :global(.tv-pin img) { width: 100%; height: 100%; object-fit: cover; display: block; }
+.map :global(.tv-pin:hover) { transform: scale(1.12); }
+.map :global(.tv-pin.is-active) { transform: scale(1.18); border-color: #000; box-shadow: 0 0 0 4px #fff, 0 12px 26px rgba(0,0,0,.32); }
+.map :global(.tv-pin.is-service) { border-radius: 14px; }
+.map :global(.tv-cluster) {
+  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
+  background: #1a1a1a; color: #fff; border: 3px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,.3);
+  font: 600 16px/1 var(--text); cursor: pointer; transition: transform .3s;
+}
+.map :global(.tv-cluster:hover) { transform: scale(1.08); }
+
+/* Floating filter bar */
+.filterBar {
+  position: absolute; z-index: 800; left: 50%; top: 16px; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 8px; max-width: calc(100% - 32px);
+  padding: 6px; border-radius: 999px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+.select { position: relative; }
+.select select {
+  height: 40px; padding: 0 34px 0 16px; border: 1px solid var(--line); border-radius: 999px; background: #fff;
+  font: inherit; font-size: 14px; color: #000; appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; background-size: 14px;
+}
+.select select:hover { border-color: #000; }
+.toggle { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; font-size: 14px; white-space: nowrap; transition: .25s; }
+.toggle:hover { border-color: #000; }
+.toggleDot { width: 8px; height: 8px; border-radius: 50%; background: #bbb; transition: background .25s; }
+.toggleOn { background: #000; border-color: #000; color: #fff; }
+.toggleOn .toggleDot { background: #3ddc84; }
+.count { display: grid; place-items: center; height: 40px; padding: 0 16px; border-radius: 999px; background: #000; color: #fff; font-size: 14px; font-weight: 500; white-space: nowrap; }
+
+/* Store card above the selected marker */
+.card {
+  position: absolute; z-index: 500; width: 280px;
+  transform: translateX(-50%);
+  border-radius: 16px; background: #fff; padding: 8px; box-shadow: 0 20px 50px rgba(0,0,0,.22);
+  animation: cardIn .35s var(--ease);
+}
+/* arrow pointing at the pin (follows the pin when the card is nudged sideways) */
+.card::after { content: ""; position: absolute; left: calc(50% + var(--arrow, 0px)); bottom: -8px; width: 16px; height: 16px; margin-left: -8px; background: #fff; transform: rotate(45deg); border-radius: 0 0 4px 0; }
+.cardBelow::after { bottom: auto; top: -8px; border-radius: 4px 0 0 0; }
+.cardImg { position: relative; height: 140px; border-radius: 10px; overflow: hidden; background: #222; }
+.cardImg img { object-fit: cover; }
+.cardBadge { position: absolute; top: 10px; right: 10px; padding: 3px 10px; border-radius: 99px; background: #fff; font-size: 12px; font-weight: 600; }
+.cardClose { position: absolute; top: 8px; left: 8px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,.92); color: #000; }
+.cardClose svg { width: 13px; height: 13px; }
+.cardBody { padding: 12px 6px 4px; }
+.cardBody h3 { font-size: 18px; line-height: 24px; font-weight: 500; letter-spacing: -.03em; }
+.cardLine { display: flex; align-items: center; gap: 6px; margin-top: 2px; font-size: 14px; line-height: 20px; color: var(--muted); }
+.cardLine svg, .cardMeta svg { width: 15px; height: 15px; flex: none; }
+.cardMeta { list-style: none; display: grid; gap: 4px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 13px; line-height: 18px; color: #333; }
+.cardMeta li { display: flex; align-items: center; gap: 7px; }
+.cardMeta a:hover { text-decoration: underline; }
+.cardFoot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 12px; }
+.cardType { font: 500 16px/24px var(--display); text-transform: uppercase; letter-spacing: .01em; }
+.cardBtn { display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border: 1px solid #000; border-radius: 999px; font-size: 14px; font-weight: 500; transition: .25s; }
+.cardBtn:hover { background: #000; color: #fff; }
+.open { color: #13844b; }
+.closed { color: #b03a2e; }
+@keyframes cardIn { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+
+/* Store list */
+.storeGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+.none { grid-column: 1 / -1; padding: 40px 0; text-align: center; color: var(--muted); }
+.store { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #fff; transition: border-color .3s, box-shadow .3s; }
+.storeOn { border-color: #000; box-shadow: 0 0 0 1px #000; }
+.storeImg { position: relative; height: 150px; background: #222; }
+.storeImg img { object-fit: cover; }
+.storeType, .storeNew { position: absolute; top: 12px; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 600; }
+.storeType { left: 12px; background: #fff; color: #000; }
+.storeNew { right: 12px; background: #ff4a17; color: #fff; }
+.storeBody { display: flex; flex-direction: column; flex: 1; padding: 18px; }
+.storeBody h3 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -.03em; }
+.storeAddr { margin-top: 2px; font-size: 14px; line-height: 20px; color: var(--muted); }
+.status { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 14px; font-weight: 500; }
+.status span { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.hours { display: grid; gap: 2px; margin-top: 8px; font-size: 14px; line-height: 20px; }
+.hours div { display: flex; justify-content: space-between; gap: 12px; }
+.hours dt { color: var(--muted); }
+.storeServices { margin-top: 10px; font-size: 13px; line-height: 18px; color: #555; }
+.storeFoot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 14px; }
+.storePhone { font-size: 14px; font-weight: 500; border-bottom: 1px solid #ccc; }
+.storePhone:hover { border-color: #000; }
+.storeBtns { display: flex; gap: 6px; }
+.ghostBtn, .darkBtn { display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border-radius: 999px; font-size: 14px; font-weight: 500; transition: .25s; }
+.ghostBtn { border: 1px solid var(--line); }
+.ghostBtn:hover { border-color: #000; }
+.darkBtn { background: #000; color: #fff; }
+.darkBtn:hover { background: #333; }
+
+@media (max-width: 1100px) {
+  .storeGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .locator { width: calc(100% - 32px); }
+  .locator { padding-top: 56px; }
+  .head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .head h2 { font-size: 40px; }
+  .mapBox { height: 520px; border-radius: 14px; }
+  .filterBar { left: 8px; right: 8px; transform: none; max-width: none; overflow-x: auto; border-radius: 16px; scrollbar-width: none; }
+  .filterBar::-webkit-scrollbar { display: none; }
+  .filterBar > * { flex: none; }
+  .card { width: 240px; }
+  .cardImg { height: 110px; }
+  .storeGrid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .card { animation: none; } .map :global(.tv-pin) { transition: none; } }
+
+/* Penaxis additions */
+.page { padding-bottom: 36px; }
+.storeBlurb { margin-top: 10px; font-size: 14px; line-height: 20px; color: #555; }
+.storeEmail { font-size: 14px; font-weight: 500; border-bottom: 1px solid #ccc; }
+.storeEmail:hover { border-color: #000; }
+.storeContacts { display: flex; flex-direction: column; gap: 4px; }
+.page button { font: inherit; background: none; color: inherit; cursor: pointer; }

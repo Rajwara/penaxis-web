@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { contact, offices } from "@/lib/data";
 import { submitForm } from "@/lib/submitForm";
+import OfficeLocator from "@/components/contact-v2/OfficeLocator";
 // Same fonts as the supplied template (self-hosted, used only here).
 import "@fontsource-variable/manrope/index.css";
 import "@fontsource-variable/sora/index.css";
@@ -10,7 +11,7 @@ import "@fontsource-variable/sora/index.css";
 // /contact-v2 content, ported from a client-supplied contact page template:
 // grey top area with a red gradient page-title banner (outlined vertical
 // word + notched breadcrumbs), a "get in touch" section with contact info
-// and a form card, and a greyscale map. Colours, sizes and spacing follow
+// and a form card, and an office locator map (components/contact-v2). Colours, sizes and spacing follow
 // the template. The form posts to the site's /api/contact endpoint.
 
 const SOCIALS = [
@@ -40,8 +41,6 @@ const SOCIALS = [
   },
 ];
 
-const HQ = offices[0];
-const MAP_SRC = `https://maps.google.com/maps?q=${encodeURIComponent(HQ.address)}&t=m&z=15&output=embed&iwloc=near`;
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -177,9 +176,9 @@ export default function ContactV2() {
         </div>
       </section>
 
-      {/* Map */}
-      <div className="cv2-map">
-        <iframe loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={MAP_SRC} title={`Map: ${HQ.address}`} />
+      {/* Office locator map (replaces the old embedded Google map) */}
+      <div className="cv2-locator">
+        <OfficeLocator />
       </div>
     </div>
   );

@@ -1,0 +1,61 @@
+/* =====================================================================
+   Content-page button: black pill, label that rolls up on hover, round
+   icon at the end that turns. Scoped to .fwb (see ContentShell).
+   ===================================================================== */
+.fwb .am-btn.am-btn.am-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 46px; padding: 8px 8px 8px 22px; border: 1px solid #000; border-radius: 99px;
+  background: #000; color: #fff; box-shadow: none; cursor: pointer; text-decoration: none; text-transform: none; white-space: nowrap;
+  font: 500 16px/1.25 var(--font-space-grotesk), "Space Grotesk", sans-serif; letter-spacing: -.02em;
+  transition: background .3s, color .3s, border-color .3s;
+}
+.fwb .am-btn.am-btn.am-btn::before, .fwb .am-btn.am-btn.am-btn::after { display: none; }
+.fwb .am-btn.am-btn.am-btn:hover { background: #2b2b2b; border-color: #2b2b2b; color: #fff; }
+.fwb .am-btn.am-btn.am-btn[hidden] { display: none; }
+.fwb .am-btn.am-btn.am-btn:disabled { opacity: .6; cursor: default; }
+.fwb .am-btn.am-btn.am-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+.fwb .am-btn .am-roll { display: inline-block; height: 1.25em; overflow: hidden; line-height: 1.25; vertical-align: middle; }
+.fwb .am-btn .am-roll > span { position: relative; display: block; transition: transform .45s cubic-bezier(.215,.61,.355,1); }
+.fwb .am-btn .am-roll > span::after { content: attr(data-t); position: absolute; left: 0; top: 100%; white-space: nowrap; }
+.fwb .am-btn:hover .am-roll > span { transform: translateY(-100%); }
+
+.fwb .am-btn .am-ico { display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 50%; background: #fff; color: #000; transition: transform .45s cubic-bezier(.215,.61,.355,1), background .3s, color .3s; }
+.fwb .am-btn .am-ico svg { display: block; width: 15px; height: 15px; }
+.fwb .am-btn:hover .am-ico:not(.am-ico-still) { transform: rotate(-45deg); }
+.fwb .am-btn.am-back:hover .am-ico:not(.am-ico-still) { transform: rotate(45deg); }
+
+/* Icon first */
+.fwb .am-btn.am-btn.am-back { flex-direction: row-reverse; padding: 8px 22px 8px 8px; }
+
+/* White, for dark backgrounds */
+.fwb .am-btn.am-btn.am-light { background: #fff; border-color: #fff; color: #000; }
+.fwb .am-btn.am-btn.am-light:hover { background: #e9e9e9; border-color: #e9e9e9; color: #000; }
+.fwb .am-btn.am-light .am-ico { background: #000; color: #fff; }
+
+/* Outlined */
+.fwb .am-btn.am-btn.am-line { background: transparent; border-color: #000; color: #000; }
+.fwb .am-btn.am-line .am-ico { background: #000; color: #fff; }
+.fwb .am-btn.am-btn.am-line:hover { background: #000; border-color: #000; color: #fff; }
+.fwb .am-btn.am-line:hover .am-ico { background: #fff; color: #000; }
+/* Outlined on dark backgrounds */
+.fwb .am-btn.am-btn.am-line.am-dark { border-color: #fff; color: #fff; }
+.fwb .am-btn.am-line.am-dark .am-ico { background: #fff; color: #000; }
+.fwb .am-btn.am-btn.am-line.am-dark:hover { background: #fff; color: #000; }
+.fwb .am-btn.am-line.am-dark:hover .am-ico { background: #000; color: #fff; }
+
+/* Smaller, for tight spots */
+.fwb .am-btn.am-btn.am-sm { min-height: 38px; padding: 5px 5px 5px 16px; gap: 10px; font-size: 14px; }
+.fwb .am-btn.am-sm .am-ico { width: 26px; height: 26px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fwb .am-btn .am-roll > span, .fwb .am-btn .am-ico { transition: none; }
+}
+
+/* Small phones: long labels wrap instead of pushing the button off screen */
+@media (max-width: 480px) {
+  .fwb .am-btn.am-btn.am-btn { max-width: 100%; white-space: normal; text-align: left; }
+  .fwb .am-btn .am-roll { height: auto; overflow: visible; }
+  .fwb .am-btn .am-roll > span::after { display: none; }
+  .fwb .am-btn:hover .am-roll > span { transform: none; }
+}
