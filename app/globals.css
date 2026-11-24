@@ -9484,3 +9484,184 @@ h1 {
 @media (max-width: 479px) {
   .hv2-page .hv2-why-heading { font-size: 3rem; }
 }
+
+/* ==================================================================
+   /home-v3 — Awwwards-style type system (all sections of /home-v2,
+   restyled). Scoped to .hv3-page so /home-v2 is untouched.
+     body     Inter Tight 14px / 300 / 28px, #222 on #F8F8F8
+     labels   14px / 400 / 28px
+     headings 600, fluid scale:
+       h1 clamp(56px, 8.8vw, 160px)  / 1
+       h2 clamp(48px, 7.7vw, 140px)  / 1
+       h3 clamp(40px, 5.1vw, 96px)   / 1
+       h4 clamp(32px, 4.08vw, 76px)  / 1
+       h5 clamp(28px, 2.83vw, 52px)  / 1.2   (card titles: / 1.1)
+       h6 clamp(24px, 2.57vw, 48px)  / 1.3
+     small card titles 24px / 600 / 28px, slide titles ~21px / 600
+   ================================================================== */
+.hv3-page {
+  --aw-font: "Inter Tight", sans-serif;
+  --aw-ink: #222222;
+  --aw-bg: #F8F8F8;
+  --aw-h1: clamp(56px, 8.8vw, 160px);
+  --aw-h2: clamp(48px, 7.7vw, 140px);
+  --aw-h3: clamp(40px, 5.1vw, 96px);
+  --aw-h4: clamp(32px, 4.08vw, 76px);
+  --aw-h5: clamp(28px, 2.83vw, 52px);
+  --aw-h6: clamp(24px, 2.57vw, 48px);
+  --aw-card: 24px;
+  --aw-slide: clamp(18px, 1.45vw, 22px);
+
+  background: var(--aw-bg);
+  color: var(--aw-ink);
+  font-family: var(--aw-font);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 28px;
+}
+
+/* Re-point the ported sections' own font + scale variables */
+.hv3-page .hv2s-wrap,
+.hv3-page .hv2c-wrap,
+.hv3-page .hv2q-root {
+  --font-heading-pf: var(--aw-font);
+  --font-body-pf: var(--aw-font);
+  --fw-heading: 600;
+  --ls-heading: normal;
+  --ls-body: normal;
+  --lh-body: 28px;
+  --fs-body: 14px;
+  --fs-body-s: 14px;
+  --fs-body-xl: 28px;
+  --fs-button: 14px;
+  --fs-title-text: 14px;
+  --fs-h1: var(--aw-h1);
+  --fs-h2: var(--aw-h3);  /* section headings sit on the h3 step */
+  --fs-h5: var(--aw-h5);
+  --fs-h6: var(--aw-card);
+  font-family: var(--aw-font);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: normal;
+}
+
+/* No forced uppercase anywhere on this page (sentence/title case) */
+.hv3-page .hv2s-wrap *,
+.hv3-page .hv2c-wrap *,
+.hv3-page .hv2q-root *,
+.hv3-page .hv2-why * { text-transform: none; }
+
+/* ---------- Labels: 14px / 400 / 28px ---------- */
+.hv3-page .hv2-why-label,
+.hv3-page .hv2-tst-label,
+.hv3-page .hv2s-sub,
+.hv3-page .hv2c-sub,
+.hv3-page .hv2s-link,
+.hv3-page .hv2c-btn,
+.hv3-page .hv2q-button,
+.hv3-page .hv2-btn,
+.hv3-page .hv2s-tag,
+.hv3-page .hv2q-text-s,
+.hv3-page .hv2-logos-proof p,
+.hv3-page .hv2-quote-role,
+.hv3-page .hv2-stat-label,
+.hv3-page .hv2q-input {
+  font-family: var(--aw-font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: normal;
+}
+.hv3-page .hv2-why-label { color: var(--aw-ink); margin-top: 0; }
+.hv3-page .hv2-logos-proof p { line-height: 20px; }
+
+/* ---------- Body copy: 14px / 300 / 28px ---------- */
+.hv3-page .hv2-why-copy,
+.hv3-page .hv2-stat-foot,
+.hv3-page .hv2-photo-text p,
+.hv3-page .hv2-tst-quote,
+.hv3-page .hv2s-desc,
+.hv3-page .hv2c-card-desc,
+.hv3-page .hv2q-state-text {
+  font-family: var(--aw-font);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: normal;
+}
+.hv3-page .hv2-why-copy,
+.hv3-page .hv2-stat-foot,
+.hv3-page .hv2-tst-quote { color: var(--aw-ink); }
+
+/* ---------- Section headings: h3 step, 600, line-height 1 ---------- */
+.hv3-page .hv2-why-heading,
+.hv3-page .hv2s-heading,
+.hv3-page .hv2c-heading {
+  font-family: var(--aw-font);
+  font-size: var(--aw-h3);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: normal;
+}
+.hv3-page .hv2-why-heading { color: var(--aw-ink); }
+
+/* CTA heading + marquee: h1 step */
+.hv3-page .hv2q-heading,
+.hv3-page .hv2q-values-text {
+  font-family: var(--aw-font);
+  font-size: var(--aw-h1);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: normal;
+}
+.hv3-page .hv2q-values-text::first-letter { text-transform: uppercase; }
+
+/* Big stat: h3 step */
+.hv3-page .hv2-stat-value {
+  font-family: var(--aw-font);
+  font-size: var(--aw-h3);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: normal;
+  color: var(--aw-ink);
+}
+
+/* ---------- Card titles: h5 step, 600, line-height 1.1 ---------- */
+.hv3-page .hv2s-title,
+.hv3-page .hv2c-card-title,
+.hv3-page .hv2-photo-text h3,
+.hv3-page .hv2q-form-title {
+  font-family: var(--aw-font);
+  font-size: var(--aw-h5);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: normal;
+}
+.hv3-page .hv2c-card-title { max-width: none; }
+
+/* Small card titles / numbers: 24px / 600 / 28px */
+.hv3-page .hv2s-num,
+.hv3-page .hv2c-card-num,
+.hv3-page .hv2q-link,
+.hv3-page .hv2q-state-title {
+  font-family: var(--aw-font);
+  font-size: var(--aw-card);
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: normal;
+}
+
+/* Slide-style titles: ~21px / 600 */
+.hv3-page .hv2-quote-name {
+  font-family: var(--aw-font);
+  font-size: var(--aw-slide);
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: normal;
+  color: var(--aw-ink);
+}
+
+@media (max-width: 767px) {
+  .hv3-page .hv2q-values-text { padding-right: 3rem; }
+}
