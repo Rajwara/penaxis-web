@@ -8,6 +8,7 @@ import VideoBanner from "@/components/VideoBanner";
 import HomeV2Logos from "@/components/HomeV2Logos";
 import HomeV2WhyChooseUs from "@/components/HomeV2WhyChooseUs";
 import HomeV2Services from "@/components/HomeV2Services";
+import HomeV2HowWeWork from "@/components/HomeV2HowWeWork";
 import HomeV2CaseStudies from "@/components/HomeV2CaseStudies";
 import HomeV2Cta from "@/components/HomeV2Cta";
 import Footer from "@/components/Footer";
@@ -34,6 +35,7 @@ export default function HomeV2() {
         <HomeV2Logos />
         <HomeV2WhyChooseUs />
         <HomeV2Services />
+        <HomeV2HowWeWork />
         <HomeV2CaseStudies />
         <HomeV2Cta />
         {/* New homepage sections go here */}
