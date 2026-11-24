@@ -32,17 +32,6 @@ export default function HomeV2Services() {
   // Rows' "scrolled into view" state lives in React (not a manually added
   // class) so re-rendering on hover can't wipe it and replay the reveal.
   const [rowsVisible, setRowsVisible] = useState<boolean[]>(() => services.map(() => false));
-  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Small hover-intent delay: sweeping the mouse across several rows
-  // doesn't fire an open/close animation for every row it passes over.
-  const activate = (i: number) => {
-    if (hoverTimer.current) clearTimeout(hoverTimer.current);
-    hoverTimer.current = setTimeout(() => setActive(i), 90);
-  };
-  const cancelActivate = () => {
-    if (hoverTimer.current) clearTimeout(hoverTimer.current);
-  };
 
   // Scroll-in animations: add .in-view once each target enters the viewport.
   useEffect(() => {
@@ -72,10 +61,7 @@ export default function HomeV2Services() {
       { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
     );
     targets.forEach((t) => io.observe(t));
-    return () => {
-      io.disconnect();
-      if (hoverTimer.current) clearTimeout(hoverTimer.current);
-    };
+    return () => io.disconnect();
   }, []);
 
   let letterIndex = 0;
@@ -146,8 +132,9 @@ export default function HomeV2Services() {
                   href={`/services/${s.slug}`}
                   className={`hv2s-row${active === i ? " is-active" : ""}${rowsVisible[i] ? " in-view" : ""}`}
                   style={{ ["--d" as string]: `${i * 0.08}s` }}
-                  onMouseEnter={() => activate(i)}
-                  onMouseLeave={cancelActivate}
+                  // Same as the zip: the hovered/focused row becomes active
+                  // immediately and stays active until another row is hovered.
+                  onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
                   data-anim
                   data-row={i}
