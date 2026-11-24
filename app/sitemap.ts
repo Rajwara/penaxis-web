@@ -3,7 +3,7 @@ import { services, caseStudies, insights, industries, slugify } from "@/lib/data
 
 const BASE_URL = "https://www.penaxis.com";
 
-// /home-v2 (homepage work in progress) and /testing are noindex via their own
+// /home-v2, /contact-v2 (work in progress) and /testing are noindex via their own
 // metadata), so they're intentionally left out of here too.
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

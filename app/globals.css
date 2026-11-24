@@ -9115,3 +9115,201 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .ihb-section *, .ihb-section *::before, .ihb-section *::after { transition-duration: 0.01ms !important; transition-delay: 0s !important; }
 }
+
+/* ==================================================================
+   /contact-v2 (ContactV2) — ported from the client-supplied contact
+   page template. Values follow the template; scoped to this page.
+   ================================================================== */
+.cv2 {
+  --dark: #111111;
+  --dark-2: #2b2b2b;
+  --grey-bg: #f0f1f3;
+  --text: #111;
+  --line: #e7e8ea;
+  --accent-1: #4a6fd8;
+  --accent-2: #f04a4a;
+  --radius-lg: 30px;
+  --radius-md: 20px;
+  position: relative;
+  background: #fff;
+  color: var(--text);
+  font-family: "Manrope Variable", Manrope, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 30px;
+  overflow-x: clip;
+}
+.cv2 a { color: inherit; }
+.cv2-container { width: 100%; max-width: 1290px; margin: 0 auto; padding: 0 45px; }
+
+/* faint vertical grid lines */
+.cv2-grid-lines { position: absolute; inset: 0; pointer-events: none; z-index: 0; display: flex; justify-content: center; }
+.cv2-grid-lines span { flex: 1; max-width: 525px; border-left: 1px solid var(--line); }
+.cv2-grid-lines span:last-child { border-right: 1px solid var(--line); }
+.cv2-top-area, .cv2-contact, .cv2-map { position: relative; z-index: 1; }
+
+/* Top area (grey card) — top padding clears the site's floating navbar */
+.cv2-top-area { background: var(--grey-bg); border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 100px 36px 38px; }
+
+/* Page-title banner */
+.cv2-page-title {
+  position: relative;
+  height: 447px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(ellipse 30% 45% at 92% 20%, rgba(235,240,255,.95) 0%, rgba(140,150,190,.6) 30%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 35% 105%, rgba(255,255,255,.9) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 30% 40%, #e0141e 0%, #8e0a12 40%, transparent 75%),
+    radial-gradient(circle at 70% 60%, #3a0d14 0%, #12141d 70%);
+}
+.cv2-page-title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0,0,0,.35) 0 3%, transparent 4%),
+    radial-gradient(circle at 40% 20%, rgba(0,0,0,.35) 0 2.5%, transparent 3.5%),
+    radial-gradient(circle at 55% 45%, rgba(0,0,0,.3) 0 4%, transparent 5%),
+    radial-gradient(circle at 30% 55%, rgba(0,0,0,.3) 0 3%, transparent 4%);
+  mix-blend-mode: multiply;
+  opacity: .8;
+}
+.cv2-pt-content { position: absolute; left: 45px; top: 145px; z-index: 2; }
+.cv2-pt-content img { height: 22px; width: auto; margin-bottom: 12px; display: block; }
+.cv2-pt-content h1 {
+  margin: 0;
+  font-family: "Sora Variable", Sora, Arial, sans-serif;
+  font-size: 80px;
+  line-height: 90px;
+  font-weight: 400 !important; /* beats the site-wide h1 weight rule */
+  letter-spacing: -2.4px;
+  color: #fff;
+}
+.cv2-vertical {
+  position: absolute;
+  right: -4px;
+  top: 5px;
+  z-index: 2;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: "Sora Variable", Sora, sans-serif;
+  font-size: 88px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -2px;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #fff;
+}
+.cv2-breadcrumbs {
+  position: absolute;
+  right: 99px;
+  bottom: 0;
+  z-index: 2;
+  background: #fff;
+  color: var(--dark);
+  font-size: 14px;
+  padding: 12px 34px 14px;
+  border-radius: 24px 24px 0 0;
+}
+.cv2-breadcrumbs::before, .cv2-breadcrumbs::after { content: ""; position: absolute; bottom: 0; width: 24px; height: 24px; }
+.cv2-breadcrumbs::before { left: -24px; background: radial-gradient(circle at 0 0, transparent 23.5px, #fff 24px); }
+.cv2-breadcrumbs::after { right: -24px; background: radial-gradient(circle at 100% 0, transparent 23.5px, #fff 24px); }
+.cv2-breadcrumbs a { position: relative; }
+.cv2-breadcrumbs a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1.5px; background: linear-gradient(90deg, var(--accent-1), var(--accent-2)); }
+.cv2-sep { color: #aaa; margin: 0 4px; }
+
+/* Contact section */
+.cv2-contact { padding: 140px 0 135px; }
+.cv2-contact-grid { display: grid; grid-template-columns: 1fr 582px; gap: 40px; align-items: start; }
+.cv2-subtitle { font-size: 15px; margin-bottom: 22px; }
+.cv2-left h2 {
+  margin: 0;
+  font-family: "Sora Variable", Sora, Arial, sans-serif;
+  font-size: 60px;
+  line-height: 70px;
+  font-weight: 400;
+  letter-spacing: -3px;
+  color: var(--dark);
+  max-width: 520px;
+}
+.cv2-left .cv2-lead { margin: 30px 0 0; max-width: 420px; line-height: 27px; }
+.cv2-info-grid { display: grid; grid-template-columns: 224px 1fr; gap: 45px 24px; margin-top: 60px; }
+.cv2-info-grid h6 { margin: 0 0 15px; font-size: 20px; font-weight: 700; line-height: 30px; }
+.cv2-info-grid p { margin: 0; line-height: 27px; }
+.cv2-info-grid a:hover { opacity: .7; }
+.cv2-socials { display: flex; gap: 30px; align-items: center; color: var(--dark); }
+.cv2-socials svg { width: 16px; height: 16px; fill: currentColor; display: block; }
+
+.cv2-form-card { background: var(--grey-bg); border-radius: var(--radius-lg); padding: 70px 98px 80px; }
+.cv2-form-card h3 { margin: 0; font-family: "Sora Variable", Sora, Arial, sans-serif; font-size: 30px; line-height: 36px; font-weight: 400; letter-spacing: -1px; }
+.cv2-form-card .cv2-lead { margin: 20px 0 30px; line-height: 27px; }
+.cv2-field { margin-bottom: 18px; }
+.cv2-field label, .cv2-hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.cv2-field input, .cv2-field textarea {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1.5px solid #cfd1d4;
+  border-radius: 0;
+  font: inherit;
+  font-size: 14px;
+  color: var(--dark);
+  padding: 12px 0 14px;
+  outline: none;
+  transition: border-color .3s;
+}
+.cv2-field textarea { height: 110px; resize: none; }
+.cv2-field input::placeholder, .cv2-field textarea::placeholder { color: #8a8a8a; }
+.cv2-field input:focus, .cv2-field textarea:focus { border-color: var(--dark); }
+.cv2-btn-dark {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--dark-2);
+  color: #fff;
+  border: 0;
+  border-radius: 30px;
+  height: 45px;
+  padding: 0 22px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+.cv2-btn-dark:hover { background: #000; }
+.cv2-btn-dark:disabled { cursor: wait; opacity: .8; }
+.cv2-arrow { font-size: 12px; }
+.cv2-form-msg { font-size: 14px; margin: 12px 0 0; }
+.cv2-form-msg.is-error { color: #c0262d; }
+
+/* Map */
+.cv2-map { margin: 0 36px 36px; height: 480px; border-radius: var(--radius-lg); overflow: hidden; }
+.cv2-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1) contrast(1.05); }
+
+/* Responsive — same breakpoints as the template */
+@media (max-width: 1200px) {
+  .cv2-contact-grid { grid-template-columns: 1fr; }
+  .cv2-form-card { padding: 60px; }
+}
+@media (max-width: 767px) {
+  .cv2-top-area { padding: 90px 12px 20px; }
+  .cv2-container { padding: 0 20px; }
+  .cv2-page-title { height: 320px; }
+  .cv2-pt-content { left: 25px; top: 110px; }
+  .cv2-pt-content h1 { font-size: 48px; line-height: 56px; }
+  .cv2-vertical { font-size: 56px; }
+  .cv2-breadcrumbs { right: 30px; }
+  .cv2-contact { padding: 80px 0; }
+  .cv2-left h2 { font-size: 38px; line-height: 46px; letter-spacing: -1.5px; }
+  .cv2-info-grid { grid-template-columns: 1fr 1fr; }
+  .cv2-form-card { padding: 40px 25px; }
+  .cv2-map { margin: 0 12px 24px; height: 360px; }
+}
+@media (max-width: 479px) {
+  .cv2-info-grid { grid-template-columns: 1fr; gap: 30px; }
+}
