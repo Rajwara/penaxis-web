@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import VideoBanner from "@/components/VideoBanner";
 import HomeV2Logos from "@/components/HomeV2Logos";
 import HomeV2WhyChooseUs from "@/components/HomeV2WhyChooseUs";
+import HomeV2Services from "@/components/HomeV2Services";
 import Footer from "@/components/Footer";
 
 // /home-v2: new homepage built from scratch between the Navbar and Footer.
@@ -26,6 +27,7 @@ export default function HomeV2() {
         <VideoBanner />
         <HomeV2Logos />
         <HomeV2WhyChooseUs />
+        <HomeV2Services />
         {/* New homepage sections go here */}
       </main>
       <Footer />
