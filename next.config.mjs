@@ -24,6 +24,11 @@ const nextConfig = {
         destination: "/contact-us",
         permanent: true,
       },
+      // The legal/blog template pages are now the main ones.
+      { source: "/privacy-policy", destination: "/policies/privacy", permanent: true },
+      { source: "/terms-conditions", destination: "/policies/terms", permanent: true },
+      { source: "/insights", destination: "/blog", permanent: true },
+      { source: "/insights/:slug", destination: "/blog/:slug", permanent: true },
       // The /contact-v2 design is now the main contact page.
       {
         source: "/contact-v2",

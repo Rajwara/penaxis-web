@@ -8,12 +8,13 @@ import PolicyToc from "@/components/content/PolicyToc";
 import { contact } from "@/lib/data";
 import { POLICIES, getPolicy, type Inline, type PolicyBlock, type PolicyIcon } from "@/lib/policies";
 import "../policies.css";
+import "@/components/content/home-v2-theme.css";
 
 // /policies/privacy and /policies/terms: the content-pages policy design
 // (grey hero with tabs, key-point cards, sticky contents list, numbered
 // sections, black CTA panel) with the Penaxis policy text from
-// lib/policies.ts. Work in progress, kept out of search; the live pages are
-// still /privacy-policy and /terms-conditions.
+// lib/policies.ts. These are the site's main legal pages; the old
+// /privacy-policy and /terms-conditions addresses redirect here.
 
 type Props = { params: { slug: string } };
 
@@ -29,7 +30,7 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: `${p.title} - Penaxis`,
     description: p.intro,
-    robots: { index: false, follow: false },
+    alternates: { canonical: `/policies/${p.slug}` },
   };
 }
 
@@ -130,7 +131,7 @@ export default function PolicyPage({ params }: Props) {
                   </Link>
                 ))}
               </nav>
-              <span className="pol-label">*Policies</span>
+              <span className="pol-label">Policies</span>
               <h1>{policy.title}</h1>
               <p className="pol-intro">{policy.intro}</p>
               <span className="pol-updated">Last updated: {date(policy.updated)}</span>
@@ -155,7 +156,7 @@ export default function PolicyPage({ params }: Props) {
 
             <div className="pol-body pol-container">
               <aside className="pol-toc">
-                <span className="pol-label">*On this page</span>
+                <span className="pol-label">On this page</span>
                 <PolicyToc items={policy.sections.map((s) => ({ id: s.id, title: s.title }))} />
                 <div className="pol-help">
                   <b>Need help?</b>
@@ -189,7 +190,7 @@ export default function PolicyPage({ params }: Props) {
             <section className="pol-cta">
               <div className="pol-container pol-cta-row">
                 <div>
-                  <span className="pol-label">*Still have a question?</span>
+                  <span className="pol-label">Still have a question?</span>
                   <h2>We&apos;re Here To Help</h2>
                   <p>Send us a message through our contact page, email the team, or give us a call.</p>
                 </div>

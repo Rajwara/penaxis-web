@@ -8,10 +8,11 @@ import BtnContent from "@/components/content/BtnContent";
 import PostCard, { Avatar } from "@/components/content/PostCard";
 import { AUTHOR, POSTS, formatDate, getPost, type Block } from "@/lib/blog";
 import "../blog.css";
+import "@/components/content/home-v2-theme.css";
 
 // /blog/[slug]: single post in the content-pages design (hero, image,
-// article, author card, related posts). Work in progress, kept out of
-// search; the live posts are still /insights/[slug].
+// article, author card, related posts). The site's main blog post page;
+// old /insights/[slug] addresses redirect here.
 
 type Props = { params: { slug: string } };
 
@@ -24,7 +25,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Props): Metadata {
   const p = getPost(params.slug);
   if (!p) return {};
-  return { title: `${p.title} - Penaxis`, description: p.excerpt, robots: { index: false, follow: false } };
+  return { title: `${p.title} - Penaxis`, description: p.excerpt, alternates: { canonical: `/blog/${p.slug}` } };
 }
 
 function Content({ block }: { block: Block }) {

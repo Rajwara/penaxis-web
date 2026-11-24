@@ -70,9 +70,9 @@ export default function CookieConsent() {
       </div>
 
       <div className="cc-links">
-        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/policies/privacy">Privacy Policy</a>
         <span className="cc-links-divider" aria-hidden="true" />
-        <a href="/terms-conditions">Terms &amp; Conditions</a>
+        <a href="/policies/terms">Terms &amp; Conditions</a>
       </div>
     </div>
   );

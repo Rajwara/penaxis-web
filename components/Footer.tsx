@@ -17,7 +17,7 @@ const LINK_COLUMNS = [
   { eyebrow: "What we do?", title: "Services", href: "/services/ai-mvp" },
   { eyebrow: "Who we are?", title: "About Us", href: "/who-we-are" },
   { eyebrow: "How we deliver", title: "Contact Us", href: "/contact-us" },
-  { eyebrow: "What we think", title: "Insights", href: "/insights" },
+  { eyebrow: "What we think", title: "Insights", href: "/blog" },
 ];
 
 const OFFICES = [
@@ -173,11 +173,11 @@ export default function Footer() {
       <div className="relative border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
           <span className="inline-flex items-center gap-3">
-            <a href="/privacy-policy" className="hover:text-white transition-colors">
+            <a href="/policies/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </a>
             <span aria-hidden="true">|</span>
-            <a href="/terms-conditions" className="hover:text-white transition-colors">
+            <a href="/policies/terms" className="hover:text-white transition-colors">
               Terms &amp; Conditions
             </a>
           </span>

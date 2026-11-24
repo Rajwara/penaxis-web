@@ -1,10 +1,9 @@
 /**
  * Penaxis policies, as structured data for /policies/[slug].
  *
- * The text is copied word for word from the existing pages
- * app/privacy-policy/page.tsx and app/terms-conditions/page.tsx (all
- * sections, headings, lists and dates). If either policy changes, update
- * both places. Section numbers come from the order here, so titles carry
+ * The text was copied word for word from the original Privacy Policy and
+ * Terms & Conditions pages (all sections, headings, lists and dates); this
+ * file is now the only source for both policies. Section numbers come from the order here, so titles carry
  * no "1." prefix. `intro` is each page's existing meta description;
  * `lead` holds the unheaded opening paragraphs. `points` are short
  * summaries of what the policy text itself says (no new commitments).
@@ -674,7 +673,7 @@ export const POLICIES: Policy[] = [
               "Your use of this Website is also subject to our ",
               {
                 a: "Privacy Policy",
-                href: "/privacy-policy"
+                href: "/policies/privacy"
               },
               ", which explains how we collect, use, disclose and protect personal information."
             ]

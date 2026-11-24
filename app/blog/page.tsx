@@ -8,14 +8,15 @@ import BlogList from "@/components/content/BlogList";
 import { Avatar, type PostSummary } from "@/components/content/PostCard";
 import { AUTHOR, FEATURED, POSTS, formatDate, type Post } from "@/lib/blog";
 import "./blog.css";
+import "@/components/content/home-v2-theme.css";
 
 // /blog: the content-pages blog design (featured post, category filters,
-// paginated grid) with the Penaxis insights from lib/data.ts. Work in
-// progress, kept out of search; the live blog is still /insights.
+// paginated grid) with the Penaxis insights from lib/data.ts. The site's
+// main blog page; the old /insights address redirects here.
 export const metadata: Metadata = {
   title: "Blog - Penaxis",
   description: "Ideas, lessons, and practical advice from the Penaxis team on building software and AI products.",
-  robots: { index: false, follow: false },
+  alternates: { canonical: "/blog" },
 };
 
 const summary = (p: Post): PostSummary => ({

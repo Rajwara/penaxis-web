@@ -8,6 +8,7 @@ import FaqList from "@/components/content/FaqList";
 import { contact } from "@/lib/data";
 import { FAQ } from "@/lib/faq";
 import "./faq.css";
+import "@/components/content/home-v2-theme.css";
 
 // /faq: the content-pages FAQ design (photo banner, topic tabs, numbered
 // rows that blur on hover with a tilted photo, click to open, contact
@@ -34,7 +35,7 @@ export default function FaqPage() {
               <div className="crumb">
                 <Link href="/">Home</Link> / FAQ
               </div>
-              <span className="eyebrow">*Help centre</span>
+              <span className="eyebrow">Help centre</span>
               <h1>Questions &amp; Answers</h1>
               <p>Everything about getting started, our services, how we work and pricing, answered by the Penaxis team.</p>
             </div>
@@ -47,7 +48,7 @@ export default function FaqPage() {
           <div className="faq-wrap">
             <div className="faq-head">
               <div>
-                <span className="faq-label">*Frequently asked</span>
+                <span className="faq-label">Frequently asked</span>
                 <h2>How can we help?</h2>
               </div>
               <p>

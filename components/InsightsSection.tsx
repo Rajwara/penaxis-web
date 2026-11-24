@@ -23,7 +23,7 @@ export default function InsightsSection() {
             <h2 className="section-heading ins-heading">News &amp; Articles</h2>
           </Reveal>
           <Reveal delay={0.05}>
-            <a href="/insights" className="ins-all-link">
+            <a href="/blog" className="ins-all-link">
               <span>All articles</span>
               <span className="ins-all-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2">
@@ -37,7 +37,7 @@ export default function InsightsSection() {
         <div className="ins-grid">
           {FEATURED.map((post, i) => (
             <Reveal key={post.slug} y={20} delay={0.05 + i * 0.06}>
-              <a href={`/insights/${post.slug}`} className="ins-card">
+              <a href={`/blog/${post.slug}`} className="ins-card">
                 <div className="ins-card-media">
                   <img src={post.image} alt="" className="ins-card-img" />
                 </div>

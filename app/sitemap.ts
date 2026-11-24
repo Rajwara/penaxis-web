@@ -3,7 +3,7 @@ import { services, caseStudies, insights, industries, slugify } from "@/lib/data
 
 const BASE_URL = "https://www.penaxis.com";
 
-// /home-v2, /home-v3, /policies/*, /blog, /blog/*, /faq (work in progress) and /testing are noindex via their own
+// /home-v2, /home-v3, /faq (work in progress) and /testing are noindex via their own
 // metadata), so they're intentionally left out of here too.
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -15,10 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/faqs`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/game-changers`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/industries`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/insights`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/who-we-are`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE_URL}/privacy-policy`, changeFrequency: "yearly", priority: 0.2 },
-    { url: `${BASE_URL}/terms-conditions`, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${BASE_URL}/policies/privacy`, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${BASE_URL}/policies/terms`, changeFrequency: "yearly", priority: 0.2 },
   ];
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const insightRoutes: MetadataRoute.Sitemap = insights.map((post) => ({
-    url: `${BASE_URL}/insights/${post.slug}`,
+    url: `${BASE_URL}/blog/${post.slug}`,
     changeFrequency: "monthly",
     priority: 0.6,
   }));

@@ -1,0 +1,97 @@
+/* =====================================================================
+   Content pages (/policies, /blog, /faq) in the /home-v2 look:
+   Big Shoulders uppercase headings + Wix Madefor Display body, black /
+   #444 text on #F8F8F8, white cards, black panels, purple #6A449A
+   accents, "• Label •" eyebrows. Loaded after the template styles.
+   ===================================================================== */
+.fwb {
+  --font-space-grotesk: "Wix Madefor Display Variable";
+  --fw-body: "Wix Madefor Display Variable", "Wix Madefor Display", sans-serif;
+  --fw-grey: #fff;
+  --fw-line: rgba(0, 0, 0, 0.08);
+  --fw-muted: #444;
+  --fw-accent: #6A449A;
+  background: #F8F8F8;
+  letter-spacing: -0.01em;
+}
+.fwb h1, .fwb h2 { letter-spacing: -0.03em; }
+.fwb h3 { font-family: var(--fw-display); font-weight: 500; text-transform: uppercase; letter-spacing: -0.03em; }
+
+/* Eyebrows / labels: "• LABEL •" in purple */
+.fwb .pol-label,
+.fwb .bl .eyebrow,
+.fwb .faq-label,
+.fwb .cat-hero .eyebrow {
+  display: inline-flex; align-items: center; column-gap: 0.75rem;
+  font: 500 18px/1 var(--fw-display); letter-spacing: -0.02em; text-transform: uppercase; color: var(--fw-accent);
+}
+.fwb .pol-label::before, .fwb .pol-label::after,
+.fwb .bl .eyebrow::after,
+.fwb .faq-label::before, .fwb .faq-label::after {
+  content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+}
+.fwb .bl .eyebrow-dot::before { background: currentColor !important; }
+
+/* Pills, tabs, filters */
+.fwb .pol-tabs a.on,
+.fwb .bl .filter[aria-pressed="true"],
+.fwb .faq-tabs button.on { background: #000; border-color: #000; color: #fff; }
+.fwb .pol-tabs a:hover,
+.fwb .bl .filter:hover { border-color: var(--fw-accent); color: var(--fw-accent); }
+
+/* Buttons: black pill with purple arrow, purple on hover */
+.fwb .pol-btn .ico,
+.fwb .am-btn .am-ico { color: var(--fw-accent); }
+.fwb .pol-btn,
+.fwb .am-btn { font-family: var(--fw-display) !important; text-transform: uppercase !important; font-size: 18px !important; letter-spacing: -0.02em !important; }
+.fwb .pol-btn:hover,
+body .fwb .am-btn.am-btn.am-btn:hover { background: var(--fw-accent); border-color: var(--fw-accent); color: #fff; }
+.fwb .pol-btn.light:hover .ico,
+.fwb .am-btn.am-light:hover .am-ico { background: #fff; color: var(--fw-accent); }
+
+/* ---------- Policies ---------- */
+.fwb .pol-hero { background: #fff; border: 1px solid var(--fw-line); }
+.fwb .pol-hero h1 { font-size: clamp(3rem, 1.6rem + 5vw, 6.25rem); line-height: 1; }
+.fwb .pol-intro { color: #444; font-size: 18px; line-height: 27px; }
+.fwb .pol-updated { background: #F8F8F8; border: 1px solid var(--fw-line); }
+.fwb .pol-point { background: #fff; border: 1px solid var(--fw-line); }
+.fwb .pol-point-top svg { color: var(--fw-accent); }
+.fwb .pol-point h3 { font-size: 28px; line-height: 1; }
+.fwb .pol-point p, .fwb .pol-section p, .fwb .pol-lead p { color: #444; }
+.fwb .pol-section h2 { font-size: clamp(2rem, 1.2rem + 2vw, 3rem); line-height: 1; }
+.fwb .pol-section h3 { font-size: 22px; }
+.fwb .pol-section li { background: #fff; border: 1px solid var(--fw-line); }
+.fwb .pol-section li::before { background: var(--fw-accent); }
+.fwb .pol-section a { color: var(--fw-accent); text-decoration: underline; text-underline-offset: 3px; }
+.fwb .pol-num { color: var(--fw-accent); opacity: 0.6; }
+.fwb .pol-toc-list a.on, .fwb .pol-toc-list a:hover { color: var(--fw-accent); }
+.fwb .pol-help { background: #000; }
+.fwb .pol-help a { color: #c2a8e6; }
+.fwb .pol-cta { background: radial-gradient(60% 90% at 100% 0%, rgba(106, 68, 154, 0.3), rgba(0, 0, 0, 0) 60%), #000; }
+.fwb .pol-cta .pol-label { color: #c2a8e6; }
+
+/* ---------- Blog ---------- */
+.fwb .bl { --page: #F8F8F8; --panel: #fff; --line: rgba(0, 0, 0, 0.08); --body: #444; --muted: #666; background: #F8F8F8; }
+.fwb .bl .page-hero { background: #fff; border: 1px solid var(--fw-line); }
+.fwb .bl .page-hero h1 { font-size: clamp(3rem, 1.6rem + 5vw, 6.25rem); line-height: 1; }
+.fwb .bl .page-hero p { color: #444; font-size: 18px; line-height: 27px; }
+.fwb .bl .featured, .fwb .bl .post-card { background: #fff; }
+.fwb .bl .featured-body h2 { font-size: clamp(2rem, 1.2rem + 2vw, 3rem); line-height: 1; }
+.fwb .bl .post-body h3 { font-size: 26px; line-height: 1.05; }
+.fwb .bl .post-body h3 a:hover { color: var(--fw-accent); }
+.fwb .bl .post-tag, .fwb .bl .featured-badge { color: var(--fw-accent); }
+.fwb .bl .post-card:hover { border-color: var(--fw-accent); }
+.fwb .bl .article { color: #444; }
+.fwb .bl .article > h2 { font-size: clamp(2rem, 1.2rem + 2vw, 3rem); line-height: 1; color: #000; }
+.fwb .bl .article blockquote { border-left-color: var(--fw-accent); color: #000; }
+.fwb .bl .article li::before { background: var(--fw-accent); }
+.fwb .bl .author-card { background: #fff; }
+.fwb .bl .related { background: #fff; border: 1px solid var(--fw-line); }
+
+/* ---------- FAQ ---------- */
+.fwb .faq-cta { background: radial-gradient(60% 90% at 100% 0%, rgba(106, 68, 154, 0.3), rgba(0, 0, 0, 0) 60%), #000; }
+/* card / list titles use the display font (template set them in the body font) */
+.fwb .pol h3,
+.fwb .pol-point h3 { font: 500 28px/1 var(--fw-display); text-transform: uppercase; letter-spacing: -0.03em; }
+.fwb .pol-section h3 { font-size: 22px; }
+.fwb .cat-hero .eyebrow::before, .fwb .cat-hero .eyebrow::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
