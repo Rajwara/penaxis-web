@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import IndustriesHeroBanner from "@/components/IndustriesHeroBanner";
 import IndustriesHub from "@/components/IndustriesHub";
 import Footer from "@/components/Footer";
 
@@ -16,6 +17,8 @@ export default function IndustriesPage() {
     <>
       <Navbar />
       <main>
+        {/* New hero banner first; the previous banner (inside IndustriesHub) is now the second section */}
+        <IndustriesHeroBanner />
         <IndustriesHub />
       </main>
       <Footer />

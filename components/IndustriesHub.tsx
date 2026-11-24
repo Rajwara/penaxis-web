@@ -83,7 +83,12 @@ export default function IndustriesHub() {
         });
         gsap.set(".ih-link", { strokeDashoffset: 0 });
       } else {
-        const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+        // This banner is now the page's second section (below the hero),
+        // so play its intro when it scrolls into view rather than on load.
+        const intro = gsap.timeline({
+          defaults: { ease: "power3.out" },
+          scrollTrigger: { trigger: ".ih-poster", start: "top 70%", once: true },
+        });
         intro
           .to(".ih-eyebrow", { opacity: 1, y: 0, duration: 0.8 }, 0.1)
           .to(".ih-ring", { scale: 1, opacity: 1, duration: 1.4, stagger: 0.12 }, 0.3)
@@ -221,17 +226,17 @@ export default function IndustriesHub() {
           ))}
         </div>
 
-        <h1 className="ih-headline">
+        <h2 className="ih-headline">
           <span className="ih-line ih-line-1"><span className="ih-inner">GROWTH ACROSS</span></span>
           <span className="ih-line ih-line-2"><span className="ih-inner">EVERY INDUSTRY</span></span>
-        </h1>
+        </h2>
         <p className="ih-sub">
           13 industries, one team - from software and healthcare to logistics
           and real estate, we build for how each one actually works.
         </p>
       </section>
 
-      <section className="ih-section-grid">
+      <section id="all-industries" className="ih-section-grid">
         <div className="ih-grid-head">
           <div className="ih-eyebrow2">All 13, in detail</div>
           <h2 className="section-heading">Every industry we build for.</h2>
