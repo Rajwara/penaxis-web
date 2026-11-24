@@ -123,9 +123,8 @@ export default function HomeV2Services() {
           {/* Service rows */}
           <div className="hv2s-list">
             {services.map((s, i) => {
-              const tags = s.pillars.map((p) => p.title);
-              const shown = tags.slice(0, 2);
-              const more = tags.length - shown.length;
+              // Max two tags per row, as in the supplied design.
+              const shown = s.pillars.slice(0, 2).map((p) => p.title);
               return (
                 <a
                   key={s.slug}
@@ -157,7 +156,6 @@ export default function HomeV2Services() {
                             {t}
                           </span>
                         ))}
-                        {more > 0 && <span className="hv2s-tag hv2s-tag--more">+{more} more</span>}
                       </div>
                     </div>
                   </div>
