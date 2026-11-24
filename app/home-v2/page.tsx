@@ -1,33 +1,16 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import CityScene from "@/components/CityScene";
-import HorizontalGallery from "@/components/HorizontalGallery";
-import PinnedGallery from "@/components/PinnedGallery";
-import RetroHero from "@/components/RetroHero";
-import MaterialHeading from "@/components/MaterialHeading";
-import LiquidHeading from "@/components/LiquidHeading";
-import Hero from "@/components/Hero";
-import StarfieldBanner from "@/components/StarfieldBanner";
-import About from "@/components/About";
-import AIShowcase from "@/components/AIShowcase";
-import Coverage from "@/components/Coverage";
-import Services from "@/components/Services";
-import ServicesExpand from "@/components/ServicesExpand";
-import Industries from "@/components/Industries";
-import WhyUs from "@/components/WhyUs";
-import Team from "@/components/Team";
-import ShapeGrid from "@/components/ShapeGrid";
-import SpotlightDeck from "@/components/SpotlightDeck";
-import CTA from "@/components/CTA";
+import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
 
-// Clone of the homepage (app/page.tsx) at /home-v2, for testing/
-// comparing changes without touching the live homepage. Keep this in
-// sync manually, or replace its contents entirely once it becomes the
-// place for new homepage experiments.
+// /home-v2: the new homepage being built section by section.
+// Starts from the live homepage's Navbar, VideoBanner and Footer; new
+// sections get added inside <main> below the banner. Once approved it
+// replaces app/page.tsx.
 
-// Component sandbox, not a real content page - kept out of search.
+// Work in progress, kept out of search.
 export const metadata: Metadata = {
+  title: "Penaxis | Home v2 (preview)",
   robots: {
     index: false,
     follow: false,
@@ -39,28 +22,7 @@ export default function HomeV2() {
     <>
       <Navbar />
       <main>
-        <CityScene />
-        <HorizontalGallery />
-        <PinnedGallery />
-        <RetroHero />
-        <MaterialHeading />
-        <LiquidHeading />
-        <Hero />
-        <StarfieldBanner />
-        <About />
-        <AIShowcase />
-        <Coverage />
-        <Services />
-        <ServicesExpand />
-        <Industries />
-        <WhyUs />
-        <Team />
-
-        {/* TEMPORARY PREVIEW — remove or relocate once a placement is decided */}
-        <ShapeGrid />
-        <SpotlightDeck />
-
-        <CTA />
+        <VideoBanner />
       </main>
       <Footer />
     </>
