@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
 
 // /home-v2: new homepage built from scratch between the Navbar and Footer.
@@ -19,7 +20,10 @@ export default function HomeV2() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">{/* New homepage sections go here */}</main>
+      <main>
+        <VideoBanner />
+        {/* New homepage sections go here */}
+      </main>
       <Footer />
     </>
   );
