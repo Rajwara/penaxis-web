@@ -40,6 +40,8 @@ export default function BlogPage() {
       <Navbar />
       <main>
         <ContactBanner
+          image="/images/hero/contact-us-banner.webp"
+          shade={0.45}
           label="From the blog"
           title="Penaxis Insights"
           intro="Notes from the projects we build, the teams we work with, and what we're learning about shipping software and AI products well."
