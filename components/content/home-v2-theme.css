@@ -166,3 +166,8 @@ body .fwb .am-btn.am-btn.am-btn:hover { background: var(--fw-accent); border-col
 @media (prefers-reduced-motion: reduce) { .fwb .pc, .fwb .pc-media img, .fwb .pc-arrow { transition: none; } }
 .fwb .bl .pc-title { font: 500 clamp(1.6rem, 1.2rem + 0.8vw, 2rem)/1.02 var(--fw-display); letter-spacing: -0.03em; text-transform: uppercase; }
 .fwb .bl .pc-excerpt { margin-top: 14px; }
+/* Search + topic pills on one line */
+.fwb .bl .blog-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--fw-line); }
+.fwb .bl .blog-toolbar .blog-search { margin-top: 0; flex: 0 1 26rem; }
+.fwb .bl .blog-toolbar .filters { margin: 0; padding: 0; border: 0; }
+@media (max-width: 767px) { .fwb .bl .blog-toolbar .blog-search { flex-basis: 100%; } }

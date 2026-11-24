@@ -35,24 +35,25 @@ export default function BlogList({ posts, categories, author }: { posts: PostSum
       <div className="blog-browse" ref={filtersRef}>
         <span className="blog-browse-label">Archive</span>
         <h2 className="blog-browse-title">Browse by topic</h2>
-        <label className="blog-search">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="7" />
-            <path d="m20 20-3.5-3.5" />
-          </svg>
-          <span className="sr-only">Search articles</span>
-          <input
-            type="search"
-            placeholder="Search articles"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setPage(0);
-            }}
-          />
-        </label>
       </div>
-      <div className="filters" role="group" aria-label="Filter posts by category">
+      <div className="blog-toolbar">
+          <label className="blog-search">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <span className="sr-only">Search articles</span>
+            <input
+              type="search"
+              placeholder="Search articles"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setPage(0);
+              }}
+            />
+          </label>
+        <div className="filters" role="group" aria-label="Filter posts by category">
         {["all", ...categories].map((c) => (
           <button
             key={c}
@@ -67,6 +68,7 @@ export default function BlogList({ posts, categories, author }: { posts: PostSum
             {c === "all" ? "All" : c}
           </button>
         ))}
+      </div>
       </div>
       <div className="post-grid">
         {visible.map((p) => (
