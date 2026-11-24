@@ -21,7 +21,8 @@ export function Avatar({ large, className = "" }: { large?: boolean; className?:
 }
 
 // Blog card in the /home-v2 look: white rounded card, inset image that
-// zooms on hover, purple "CATEGORY · READ TIME" line, Big Shoulders
+// zooms on hover, glass category chip (top-left) and read-time chip
+// (bottom-right) on the image, Big Shoulders
 // uppercase title, 2-line excerpt, and a footer with author/date and a
 // round arrow that fills purple on hover. The whole card is one link.
 export default function PostCard({ post, author }: { post: PostSummary; author: string }) {
@@ -31,13 +32,16 @@ export default function PostCard({ post, author }: { post: PostSummary; author: 
       <div className="pc-media">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={post.image} alt="" loading="lazy" />
+        <span className="pc-chip pc-chip--cat">{post.category}</span>
+        <span className="pc-chip pc-chip--time">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v5l3 2" />
+          </svg>
+          {post.readTime}
+        </span>
       </div>
       <div className="pc-body">
-        <p className="pc-meta">
-          <span>{post.category}</span>
-          <span className="pc-dot" aria-hidden="true" />
-          <span>{post.readTime}</span>
-        </p>
         <h3 className="pc-title">
           <Link href={href} className="pc-link">
             {post.title}

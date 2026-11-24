@@ -171,3 +171,23 @@ body .fwb .am-btn.am-btn.am-btn:hover { background: var(--fw-accent); border-col
 .fwb .bl .blog-toolbar .blog-search { margin-top: 0; flex: 0 1 26rem; }
 .fwb .bl .blog-toolbar .filters { margin: 0; padding: 0; border: 0; }
 @media (max-width: 767px) { .fwb .bl .blog-toolbar .blog-search { flex-basis: 100%; } }
+/* Glass chips on the card image (same recipe as the navbar's dark glass) */
+.fwb .pc-chip {
+  position: absolute; z-index: 1;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(28, 28, 28, 0.32);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 6px 18px rgba(0, 0, 0, 0.12);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  color: #fff;
+  font: 500 15px/1 var(--fw-display); letter-spacing: 0; text-transform: uppercase;
+  pointer-events: none;
+}
+.fwb .pc-chip--cat { top: 12px; left: 12px; }
+.fwb .pc-chip--time { right: 12px; bottom: 12px; }
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .fwb .pc-chip { background: rgba(28, 28, 28, 0.75); }
+}
