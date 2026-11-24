@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import AboutHeroBanner from "@/components/AboutHeroBanner";
+import AboutTestimonials from "@/components/AboutTestimonials";
 import AboutV2TeamPhoto from "@/components/AboutV2TeamPhoto";
 import AboutV2Bento from "@/components/AboutV2Bento";
 import AboutV2Banner from "@/components/AboutV2Banner";
@@ -28,6 +29,7 @@ export default function AboutV2Page() {
         <AboutV2Bento />
         <AboutV2Values />
         <AboutV2Timeline />
+        <AboutTestimonials />
       </main>
       <Footer />
     </>

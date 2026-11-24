@@ -1,34 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { testimonials } from "@/lib/data";
 
 // Auto-sliding client testimonials for the /home-v2 Why Choose Us card.
 // Real testimonials (same ones used elsewhere on the site). Slides every
 // 5s, pauses while hovered, and the dots let visitors jump to a quote.
 
-const TESTIMONIALS = [
-  {
-    quote:
-      "Penaxis has been a great extension of our team. They've supported us with software development when we needed extra resources, and have also been helping us improve our marketing and reach new markets.",
-    name: "Rohail Malih",
-    role: "CTO, Oktabytes",
-    image: "/images/team/malih.webp",
-  },
-  {
-    quote:
-      "Penaxis helped us make our outreach more focused and approach new markets with a clearer strategy. Their team helped us position our sports goods better and connect with the right potential buyers.",
-    name: "Zohaib Khalid",
-    role: "CEO, NAS Enterprises",
-    image: "/images/team/zohaib-khalid.webp",
-  },
-  {
-    quote:
-      "What I liked about working with Penaxis was that they understood the business first, rather than just jumping into building a website. They helped us create a digital presence that feels premium, credible and much more aligned with The Plate Agent as a brand.",
-    name: "Amarjit",
-    role: "Founder, The Plate Agent",
-    image: "/images/team/amar-jeet.webp",
-  },
-];
+const TESTIMONIALS = testimonials;
 
 const INTERVAL = 5000;
 

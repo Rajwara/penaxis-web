@@ -1352,3 +1352,35 @@ export const careers = [
     ],
   },
 ];
+
+// Client testimonials (real, from the clients named). Used by the /home-v2
+// testimonial card and the About page testimonials section.
+export const testimonials = [
+  {
+    quote:
+      "Penaxis has been a great extension of our team. They've supported us with software development when we needed extra resources, and have also been helping us improve our marketing and reach new markets.",
+    name: "Rohail Malih",
+    role: "CTO, Oktabytes",
+    company: "OktaBytes",
+    logo: "/images/press/oktabytes.webp",
+    image: "/images/team/malih.webp",
+  },
+  {
+    quote:
+      "Penaxis helped us make our outreach more focused and approach new markets with a clearer strategy. Their team helped us position our sports goods better and connect with the right potential buyers.",
+    name: "Zohaib Khalid",
+    role: "CEO, NAS Enterprises",
+    company: "NAS Enterprises",
+    logo: "/images/press/nas-enterprises.webp",
+    image: "/images/team/zohaib-khalid.webp",
+  },
+  {
+    quote:
+      "What I liked about working with Penaxis was that they understood the business first, rather than just jumping into building a website. They helped us create a digital presence that feels premium, credible and much more aligned with The Plate Agent as a brand.",
+    name: "Amarjit",
+    role: "Founder, The Plate Agent",
+    company: "The Plate Agent",
+    logo: "/images/press/the-plate-agent.webp",
+    image: "/images/team/amar-jeet.webp",
+  },
+];
