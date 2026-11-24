@@ -4,13 +4,13 @@ import { FormEvent, useState } from "react";
 import { contact, offices } from "@/lib/data";
 import { submitForm } from "@/lib/submitForm";
 import OfficeLocator from "@/components/contact-v2/OfficeLocator";
+import ContactBanner from "@/components/contact-v2/ContactBanner";
 // Same fonts as the supplied template (self-hosted, used only here).
 import "@fontsource-variable/manrope/index.css";
 import "@fontsource-variable/sora/index.css";
 
 // Main contact page content (/contact-us; first built at /contact-v2), ported from a client-supplied contact page template:
-// grey top area with a red gradient page-title banner (outlined vertical
-// word + notched breadcrumbs), a "get in touch" section with contact info
+// a photo banner (ContactBanner), a "get in touch" section with contact info
 // and a form card, and an office locator map (components/contact-v2). Colours, sizes and spacing follow
 // the template. The form posts to the site's /api/contact endpoint.
 
@@ -83,21 +83,8 @@ export default function ContactV2() {
         <span />
       </div>
 
-      {/* Top area: grey card with the page-title banner */}
-      <div className="cv2-top-area">
-        <section className="cv2-page-title" data-nav-theme="dark">
-          <div className="cv2-pt-content">
-            <img src="/images/logo/penaxis-logo-white.png" alt="" />
-            <h1>Contact Us</h1>
-          </div>
-          <div className="cv2-vertical" aria-hidden="true">Contact</div>
-          <nav className="cv2-breadcrumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span className="cv2-sep">/</span>
-            Contact
-          </nav>
-        </section>
-      </div>
+      {/* Banner (ported from the supplied contact banner) */}
+      <ContactBanner />
 
       {/* Contact section */}
       <section className="cv2-contact">
