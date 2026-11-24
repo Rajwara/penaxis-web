@@ -38,7 +38,7 @@ const TEAM_PHOTO = "/images/hero/team-group.webp";
 
 export default function ServicesMegaMenu() {
   return (
-    <div className="w-full min-h-[26rem] rounded-3xl bg-paper shadow-2xl border border-ink/5 overflow-hidden grid grid-cols-[1fr_240px] xl:grid-cols-[1fr_280px]">
+    <div className="mega-panel w-full min-h-[26rem] rounded-3xl bg-paper shadow-2xl border border-ink/5 overflow-hidden grid grid-cols-[1fr_240px] xl:grid-cols-[1fr_280px]">
       {/* Main area */}
       <div className="p-8 xl:p-9 flex flex-col">
         <h4 className="font-display font-bold text-lg text-ink mb-1">Services</h4>

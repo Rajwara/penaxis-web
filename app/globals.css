@@ -9690,3 +9690,124 @@ h1 {
   .nav-glass--dark { background-color: rgba(28, 28, 28, 0.85); }
   .nav-glass--light { background-color: rgba(248, 248, 248, 0.92); }
 }
+
+/* ==================================================================
+   /home-v3 — two-colour palette + 50px type cap
+   Only #F8F8F8 and #222222 (and tints of them) on this page: no purple,
+   red or orange. Every font size is capped at 50px. Shared parts that
+   appear on the page (navbar, footer, floating buttons) are recoloured
+   only here via body:has(.hv3-page), so other pages keep their colours.
+   ================================================================== */
+.hv3-page {
+  --aw-h1: clamp(36px, 3.6vw, 50px);
+  --aw-h2: clamp(36px, 3.6vw, 50px);
+  --aw-h3: clamp(32px, 3.47vw, 50px);
+  --aw-h4: clamp(28px, 3vw, 44px);
+  --aw-h5: clamp(24px, 2.5vw, 36px);
+  --aw-h6: clamp(22px, 2vw, 30px);
+  --mono-light: #F8F8F8;
+  --mono-dark: #222222;
+}
+/* Images and video in monochrome so no colour comes in through photos */
+.hv3-page img,
+.hv3-page video { filter: grayscale(1); }
+
+/* Ported sections: re-point their colour variables to the two colours */
+.hv3-page .hv2s-wrap,
+.hv3-page .hv2c-wrap,
+.hv3-page .hv2q-root {
+  --primary-red: #F8F8F8;
+  --black: #222222;
+  --white: #F8F8F8;
+  --dark-gray: #222222;
+  --card-bg: #222222;
+  --line-dark: rgba(248, 248, 248, 0.15);
+  --border-dark: rgba(248, 248, 248, 0.25);
+}
+
+/* Services list */
+.hv3-page .hv2s-row.is-active .hv2s-arrow { color: #222222; }
+
+/* Case studies */
+.hv3-page .hv2c-card { border: 1px solid rgba(248, 248, 248, 0.15); }
+.hv3-page .hv2c-card-overlay { background: rgba(34, 34, 34, 0.55); }
+.hv3-page .hv2c-btn.is-solid { color: #222222; border: 1px solid #F8F8F8; }
+.hv3-page .hv2c-btn.is-solid .hv2c-btn-fill { background: #222222; }
+.hv3-page .hv2c-btn.is-solid .hv2c-btn-inner.is-hover { color: #F8F8F8; }
+
+/* CTA banner */
+.hv3-page .hv2q-inner { background: #222222; }
+.hv3-page .hv2q-bg { mix-blend-mode: luminosity; opacity: 0.22; }
+.hv3-page .hv2q-overlay { background: rgba(34, 34, 34, 0.2); }
+.hv3-page .hv2q-form-card { background: rgba(34, 34, 34, 0.85); border-color: rgba(248, 248, 248, 0.2); }
+.hv3-page .hv2q-values-text {
+  background-image: none;
+  color: rgba(34, 34, 34, 0.08);
+  -webkit-text-fill-color: rgba(34, 34, 34, 0.08);
+}
+.hv3-page .hv2q-button { color: #222222; border: 1px solid #F8F8F8; }
+.hv3-page .hv2q-button-fill { background: #222222; }
+.hv3-page .hv2q-button-inner.is-hover { color: #F8F8F8; }
+.hv3-page .hv2q-message { background: rgba(248, 248, 248, 0.08); border-color: rgba(248, 248, 248, 0.2) rgba(248, 248, 248, 0.2) rgba(248, 248, 248, 0.2) #F8F8F8; }
+
+/* Logo strip */
+.hv3-page .hv2-logos { background: #F8F8F8; border-bottom-color: rgba(34, 34, 34, 0.1); }
+.hv3-page .hv2-logo-pill { background: #F8F8F8; border-color: rgba(34, 34, 34, 0.12); }
+.hv3-page .hv2-logo-pill:hover img { filter: grayscale(1); opacity: 1; }
+.hv3-page .hv2-logos-divider { background: rgba(34, 34, 34, 0.15); }
+.hv3-page .hv2-avatars img { border-color: #F8F8F8; }
+
+/* Why Choose Us + cards */
+.hv3-page .hv2-why { background: #F8F8F8; }
+.hv3-page .hv2-card--stat,
+.hv3-page .hv2-card--quote { background: #F8F8F8; border-color: rgba(34, 34, 34, 0.14); }
+.hv3-page .hv2-card--photo { background: #222222; }
+.hv3-page .hv2-photo-shade { background: linear-gradient(180deg, rgba(34,34,34,0.45) 0%, rgba(34,34,34,0.05) 35%, rgba(34,34,34,0.25) 55%, rgba(34,34,34,0.9) 100%); }
+.hv3-page .hv2-photo-text h3,
+.hv3-page .hv2-photo-text p { color: #F8F8F8; }
+.hv3-page .hv2-photo-logo { filter: none; }
+.hv3-page .hv2-btn { background: #222222; color: #F8F8F8; }
+.hv3-page .hv2-btn:hover { background: #222222; }
+.hv3-page .hv2-btn-icon { background: #F8F8F8; color: #222222; }
+.hv3-page .hv2-tst-mark { color: #222222; }
+.hv3-page .hv2-tst-dot { background: rgba(34, 34, 34, 0.15); }
+.hv3-page .hv2-tst-dot.is-active { background: rgba(34, 34, 34, 0.3); }
+.hv3-page .hv2-tst-progress,
+.hv3-page .hv2-tst-dot.is-active:not(:has(.hv2-tst-progress)) { background: #222222; }
+
+/* ---------- Shared parts, on this page only ---------- */
+/* Navbar */
+body:has(.hv3-page) .nav-glass--dark { background-color: rgba(34, 34, 34, 0.3); border-color: rgba(248, 248, 248, 0.16); }
+body:has(.hv3-page) .nav-glass--light { background-color: rgba(248, 248, 248, 0.5); border-color: rgba(248, 248, 248, 0.7); }
+body:has(.hv3-page) header img,
+body:has(.hv3-page) .fixed img { filter: grayscale(1) brightness(0.35); }
+body:has(.hv3-page) header img[src*="logo-white"],
+body:has(.hv3-page) .fixed img[src*="logo-white"] { filter: grayscale(1); }
+body:has(.hv3-page) .text-volt { color: #F8F8F8 !important; }
+body:has(.hv3-page) .text-violet-600 { color: #222222 !important; }
+body:has(.hv3-page) [class*="hover:text-violet"]:hover { color: #222222 !important; }
+body:has(.hv3-page) [class*="hover:text-volt"]:hover { color: #F8F8F8 !important; }
+body:has(.hv3-page) .btn-grad {
+  background: #222222 !important;
+  color: #F8F8F8 !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(248, 248, 248, 0.2);
+}
+/* Footer (already #222222) */
+body:has(.hv3-page) footer { background: #222222; color: #F8F8F8; }
+body:has(.hv3-page) footer .btn-grad { background: #F8F8F8 !important; color: #222222 !important; }
+body:has(.hv3-page) footer .text-white { color: #F8F8F8; }
+body:has(.hv3-page) footer .bg-white,
+body:has(.hv3-page) footer [class*="bg-white/70"] { background-color: #F8F8F8 !important; color: #222222; }
+body:has(.hv3-page) footer [class*="FC6607"] { border-color: rgba(248, 248, 248, 0.4) !important; color: #F8F8F8 !important; }
+body:has(.hv3-page) footer [class*="hover:text-[#FC6607]"]:hover { color: #F8F8F8 !important; opacity: 0.7; }
+body:has(.hv3-page) footer svg[stroke="#FC6607"] { stroke: #F8F8F8; }
+body:has(.hv3-page) footer [class*="text-[20vw]"] { font-size: 50px; }
+/* Floating buttons + their pop-ups */
+body:has(.hv3-page) .qq-tab,
+body:has(.hv3-page) .stt-btn { background: #222222; color: #F8F8F8; }
+body:has(.hv3-page) .sl-tab { background: #F8F8F8; color: #222222; }
+body:has(.hv3-page) .qq-modal,
+body:has(.hv3-page) .sl-modal { filter: grayscale(1); }
+/* Navbar mega menus (Services / Industries / Case Studies) on this page: monochrome */
+body:has(.hv3-page) .mega-panel { filter: grayscale(1); }

@@ -60,7 +60,7 @@ export default function CaseStudiesMegaMenu() {
   const colB = rightItems.slice(half);
 
   return (
-    <div className="w-full min-h-[26rem] rounded-3xl bg-paper shadow-2xl border border-ink/5 overflow-hidden grid grid-cols-[240px_1fr] xl:grid-cols-[280px_1fr]">
+    <div className="mega-panel w-full min-h-[26rem] rounded-3xl bg-paper shadow-2xl border border-ink/5 overflow-hidden grid grid-cols-[240px_1fr] xl:grid-cols-[280px_1fr]">
       {/* Directions */}
       <div className="bg-ink/[0.02] border-r border-ink/5 p-7 flex flex-col">
         <span className="block text-[11px] font-semibold tracking-widest text-ink/40 uppercase mb-4">
