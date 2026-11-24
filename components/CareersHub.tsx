@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Reveal from "./Reveal";
+import PillButton from "./PillButton";
 import { careers, contact } from "@/lib/data";
 import { submitForm } from "@/lib/submitForm";
 
@@ -254,13 +255,7 @@ export default function CareersHub() {
                   </p>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="btn-grad w-full py-4 disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {submitting ? "Submitting…" : "Submit Application"}
-                </button>
+                <PillButton type="submit" label={submitting ? "Submitting…" : "Submit Application"} disabled={submitting} block />
               </form>
             )}
           </Reveal>

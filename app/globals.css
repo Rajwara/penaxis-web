@@ -10698,3 +10698,126 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
   .cb-section { padding-top: 8px; }
   .cb-card { min-height: 24rem; padding-top: 8rem; padding-bottom: 4rem; }
 }
+
+/* ==================================================================
+   /careers — same style as /home-v2: Big Shoulders (uppercase headings),
+   Wix Madefor Display (body), black/#444 on #F8F8F8, purple #6A449A
+   accents, "• Label •" eyebrows, pill buttons, black panels.
+   ================================================================== */
+.car-page {
+  --cp-heading: "Big Shoulders Variable", "Big Shoulders", Arial, sans-serif;
+  --cp-body: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  --cp-accent: #6A449A;
+  --cp-h-sec: clamp(2.5rem, 1.25rem + 3.5vw, 4rem);   /* 64px, like home-v2 section headings */
+  --cp-h-card: clamp(1.5rem, 1rem + 1.4vw, 2.25rem);  /* 36px, like home-v2 card titles */
+  background: #F8F8F8;
+  font-family: var(--cp-body);
+  color: #000;
+  letter-spacing: -0.01em;
+}
+/* shared bits */
+.car-page .cp-eyebrow,
+.car-page .crh-eyebrow,
+.car-page .crh-label,
+.car-page .car-eyebrow,
+.car-page .car-roles-pill {
+  display: inline-flex; align-items: center; justify-content: flex-start; column-gap: 0.75rem;
+  padding: 0; border: 0; background: none;
+  font-family: var(--cp-heading); font-size: 18px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em; text-transform: uppercase; color: var(--cp-accent);
+}
+.car-page .crh-eyebrow::before, .car-page .crh-eyebrow::after,
+.car-page .crh-label::before, .car-page .crh-label::after,
+.car-page .car-eyebrow::before, .car-page .car-eyebrow::after,
+.car-page .car-roles-pill::before, .car-page .car-roles-pill::after {
+  content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+}
+.car-page .crh-eyebrow-icon, .car-page .crh-label-icon { display: none; }
+.car-page .hv2-btn {
+  font-family: var(--cp-heading); font-size: 18px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em; text-transform: uppercase;
+}
+.car-page .hv2-btn-icon { color: var(--cp-accent); }
+.car-page .hv2-btn:hover { background: var(--cp-accent); }
+.car-page .hv2-btn--light .hv2-btn-icon { background: #222; color: #fff; }
+.car-page .hv2-btn--light:hover { color: #fff; }
+.car-page .hv2-btn--light:hover .hv2-btn-icon { background: #fff; color: var(--cp-accent); }
+.car-page .hv2-btn--outline { color: #fff; border-color: rgba(255, 255, 255, 0.5); }
+.car-page .hv2-btn--outline .hv2-btn-icon { background: #fff; }
+.car-page .hv2-btn--outline .hv2-btn-icon svg { color: #000; }
+.car-page .hv2-btn--outline:hover { border-color: var(--cp-accent); }
+
+/* ---- Hero (CareersHero) ---- */
+.car-page .crh { background: #F8F8F8; color: #000; }
+.car-page .crh-eyebrow { justify-content: center; margin-bottom: 1.5rem; }
+.car-page .crh-title {
+  font-family: var(--cp-heading);
+  font-size: clamp(3rem, 1.6rem + 5vw, 6.25rem);       /* up to 100px */
+  font-weight: 500 !important; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #000;
+}
+.car-page .crh-muted { color: #b3b3b3; }
+.car-page .crh-tile { border-radius: 0.16em; }
+.car-page .crh-intro { font-size: 18px; line-height: 27px; color: #444; max-width: 40rem; }
+.car-page .crh-dark { background: #000; }
+.car-page .crh-label { color: #a988d3; }
+.car-page .crh-dark-title {
+  font-family: var(--cp-heading); font-size: clamp(2.5rem, 1.25rem + 3.5vw, 4rem);
+  font-weight: 500; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase;
+}
+.car-page .crh-dark-muted { color: #8a8a8a; }
+.car-page .crh-dark-text { font-size: 16px; line-height: 24px; color: rgba(255, 255, 255, 0.75); }
+.car-page .crh-mini-title { font-family: var(--cp-heading); font-size: 24px; line-height: 1.05; font-weight: 500; letter-spacing: -0.02em; text-transform: uppercase; }
+.car-page .crh-mini-link { font-family: var(--cp-heading); font-size: 16px; font-weight: 500; letter-spacing: -0.02em; text-transform: uppercase; color: #a988d3; }
+.car-page .crh-stat-value { font-family: var(--cp-heading); font-size: 48px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: #000; }
+.car-page .crh-stat-value span { color: var(--cp-accent); }
+.car-page .crh-stat-label { font-size: 14px; color: #444; }
+.car-page .crh-stat-chip { font-size: 13px; color: #000; }
+
+/* ---- Second banner ("Help us build what's next") ---- */
+.car-page .car-banner { background: #F8F8F8; }
+.car-page .car-eyebrow { margin-bottom: 1.25rem; }
+.car-page .car-heading {
+  font-family: var(--cp-heading); font-size: var(--cp-h-sec);
+  font-weight: 500; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #000; max-width: 48rem;
+}
+.car-page .car-intro { font-family: var(--cp-body); font-size: 18px; line-height: 27px; color: #444; }
+
+/* ---- Open roles (black panel like the home-v2 dark sections) ---- */
+.car-page .car-roles-inner {
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgba(106, 68, 154, 0.28), rgba(0, 0, 0, 0) 60%),
+    #000;
+}
+.car-page .car-roles-pill { margin-bottom: 1.25rem; color: #a988d3; }
+.car-page .car-roles-title {
+  font-family: var(--cp-heading); font-size: var(--cp-h-sec);
+  font-weight: 500; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase;
+}
+.car-page .car-roles-note { font-size: 16px; line-height: 24px; color: rgba(255, 255, 255, 0.65); }
+.car-page .car-row-title {
+  font-family: var(--cp-heading); font-size: 28px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.03em; text-transform: uppercase;
+}
+.car-page .car-row-meta { font-size: 14px; color: rgba(255, 255, 255, 0.6); }
+.car-page .car-row-cta {
+  font-family: var(--cp-heading); font-size: 18px; font-weight: 500;
+  letter-spacing: -0.02em; text-transform: uppercase; color: #c2a8e6;
+}
+
+/* ---- Application form ---- */
+.car-page .car-form-section { background: #F8F8F8; }
+.car-page .car-form-heading {
+  font-family: var(--cp-heading) !important; font-size: var(--cp-h-sec) !important;
+  font-weight: 500 !important; line-height: 1 !important; letter-spacing: -0.03em; text-transform: uppercase; color: #000;
+}
+.car-page .car-form-sub { font-size: 18px; line-height: 27px; color: #444; }
+.car-page .car-form-card { background: #fff; border: 1px solid rgba(0, 0, 0, 0.07); border-radius: 20px; }
+.car-page .car-form-card label,
+.car-page .car-form-card .text-xs { font-family: var(--cp-body); }
+.car-page .car-form-card input,
+.car-page .car-form-card select,
+.car-page .car-form-card textarea { font-family: var(--cp-body); }
+.car-page .car-form-card .border-b:focus-within { border-color: var(--cp-accent); }
+.car-page .car-form-card [class*="hover:text-violet-700"]:hover { color: var(--cp-accent); }
+.car-page .crh-eyebrow { display: flex; justify-content: center; }
+.car-page .crh-stat-value span { text-transform: uppercase; }

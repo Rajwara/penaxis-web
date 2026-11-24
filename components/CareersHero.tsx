@@ -1,5 +1,6 @@
 import { careers, pressLogos, team } from "@/lib/data";
 import Reveal from "./Reveal";
+import PillButton from "./PillButton";
 
 // Careers page hero, built from a supplied reference layout: centred eyebrow,
 // big two-tone headline with an inline icon tile, intro line, then a dark
@@ -70,12 +71,8 @@ export default function CareersHero() {
               side by side, with AI and modern tools built into how we deliver every project.
             </p>
             <div className="crh-btns">
-              <a href="#open-roles" className="crh-btn crh-btn--accent">
-                See open roles <ArrowIcon className="crh-btn-icon" />
-              </a>
-              <a href="/who-we-are" className="crh-btn crh-btn--light">
-                About us <ArrowIcon className="crh-btn-icon" />
-              </a>
+              <PillButton href="#open-roles" label="See open roles" variant="light" />
+              <PillButton href="/who-we-are" label="About us" variant="outline" />
             </div>
 
             <a href="/case-studies" className="crh-mini">

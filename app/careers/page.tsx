@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+// Same type system as /home-v2 (Big Shoulders + Wix Madefor Display).
+import "@fontsource-variable/big-shoulders/opsz.css";
+import "@fontsource-variable/wix-madefor-display/index.css";
 import CareersHero from "@/components/CareersHero";
 import CareersHub from "@/components/CareersHub";
 import Footer from "@/components/Footer";
@@ -16,7 +19,7 @@ export default function CareersPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="car-page">
         <CareersHero />
         <CareersHub />
       </main>
