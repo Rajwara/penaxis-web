@@ -8,13 +8,13 @@ import { FAQ } from "@/lib/faq";
 import "./faq.css";
 import "@/components/content/home-v2-theme.css";
 
-// /faq: the content-pages FAQ design (photo banner, topic tabs, numbered
-// rows that blur on hover with a tilted photo, click to open) with the Penaxis FAQs from lib/faq.ts. The site's main FAQ page;
-// the old /faqs address redirects here.
+// /faqs: the content-pages FAQ design (photo banner, topic tabs, numbered
+// rows that blur on hover with a tilted photo, click to open) with the
+// Penaxis FAQs from lib/faq.ts. The site's main FAQ page; /faq redirects here.
 export const metadata: Metadata = {
   title: "FAQs - Penaxis",
   description: "Answers to common questions about working with Penaxis: getting started, our services, how we work, pricing and ownership.",
-  alternates: { canonical: "/faq" },
+  alternates: { canonical: "/faqs" },
 };
 
 export default function FaqPage() {

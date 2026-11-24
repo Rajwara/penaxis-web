@@ -1,5 +1,5 @@
 /**
- * FAQ for /faq (the content-pages FAQ design), grouped by topic.
+ * FAQ for /faqs (the content-pages FAQ design), grouped by topic.
  *
  * Questions, answers and images were copied word for word from the original
  * /faqs page; this file is now the only source for the FAQs. Topics group the original

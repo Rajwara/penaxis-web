@@ -28,7 +28,7 @@ const nextConfig = {
       { source: "/privacy-policy", destination: "/policies/privacy", permanent: true },
       { source: "/terms-conditions", destination: "/policies/terms", permanent: true },
       { source: "/insights", destination: "/blog", permanent: true },
-      { source: "/faqs", destination: "/faq", permanent: true },
+      { source: "/faq", destination: "/faqs", permanent: true },
       { source: "/insights/:slug", destination: "/blog/:slug", permanent: true },
       // The /contact-v2 design is now the main contact page.
       {

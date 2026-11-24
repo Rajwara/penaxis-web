@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/case-studies`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE_URL}/careers`, changeFrequency: "weekly", priority: 0.6 },
     { url: `${BASE_URL}/contact-us`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${BASE_URL}/faq`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/faqs`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/game-changers`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/industries`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },
