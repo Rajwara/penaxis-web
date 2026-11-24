@@ -10821,3 +10821,66 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 .car-page .car-form-card [class*="hover:text-violet-700"]:hover { color: var(--cp-accent); }
 .car-page .crh-eyebrow { display: flex; justify-content: center; }
 .car-page .crh-stat-value span { text-transform: uppercase; }
+
+/* ==================================================================
+   /careers/[slug] job pages — same style as /home-v2 and /careers:
+   Big Shoulders uppercase headings, Wix Madefor body, black/#444 on
+   #F8F8F8, purple #6A449A accents, white form card, pill buttons.
+   ================================================================== */
+.job-page {
+  --jp-heading: "Big Shoulders Variable", "Big Shoulders", Arial, sans-serif;
+  --jp-body: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  --job-text: #000;
+  --job-muted: #444;
+  --job-border: rgba(0, 0, 0, 0.1);
+  --job-chip: #fff;
+  font-family: var(--jp-body);
+  letter-spacing: -0.01em;
+}
+.job-page .job-back {
+  font-family: var(--jp-heading); font-size: 18px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em; text-transform: uppercase; color: var(--job-accent);
+}
+.job-page .job-back:hover { color: #000; }
+.job-page .job-title {
+  font-family: var(--jp-heading);
+  font-size: clamp(2.5rem, 1.25rem + 3.5vw, 4rem); /* 64px, like home-v2 section headings */
+  font-weight: 500 !important; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #000;
+  margin-bottom: 20px;
+}
+.job-page .job-meta { font-size: 15px; color: #444; }
+.job-page .job-meta svg { color: var(--job-accent); }
+.job-page .job-chip {
+  padding: 0.4rem 1rem; border-radius: 999px; border-color: rgba(0, 0, 0, 0.12);
+  font-size: 14px; font-weight: 500; color: #444; background: #fff;
+}
+.job-page .job-content h2 {
+  font-family: var(--jp-heading); font-size: 28px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.03em; text-transform: uppercase; color: #000; margin-bottom: 16px;
+}
+.job-page .job-content p,
+.job-page .job-content li { font-size: 16px; line-height: 26px; color: #444; }
+
+/* Form card */
+.job-page .job-sticky { border-radius: 20px; border-color: rgba(0, 0, 0, 0.07); }
+.job-page .job-apply-title {
+  font-family: var(--jp-heading); font-size: clamp(1.5rem, 1rem + 1.4vw, 2.25rem); /* 36px */
+  font-weight: 500; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #000; margin-bottom: 24px;
+}
+.job-page .job-field label, .job-page .job-label { font-size: 14px; font-weight: 600; color: #000; }
+.job-page .job-field input:not([type="file"]) { font-family: var(--jp-body); border-radius: 10px; border-color: rgba(0, 0, 0, 0.12); }
+.job-page .job-upload { border-color: rgba(0, 0, 0, 0.14); border-radius: 14px; }
+.job-page .job-upload-icon { background: rgba(106, 68, 154, 0.1); }
+.job-page .job-upload strong { font-weight: 600; color: #000; }
+.job-page .hv2-btn {
+  font-family: var(--jp-heading); font-size: 18px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em; text-transform: uppercase;
+}
+.job-page .hv2-btn-icon { color: var(--job-accent); }
+.job-page .hv2-btn:hover { background: var(--job-accent); }
+.job-page .hv2-btn--outline { color: #000; border-color: rgba(0, 0, 0, 0.3); }
+.job-page .hv2-btn--outline .hv2-btn-icon { background: #000; }
+.job-page .hv2-btn--outline .hv2-btn-icon svg { color: #fff; }
+.job-page .hv2-btn--outline:hover { color: #fff; border-color: var(--job-accent); }
+.job-page .job-submit { margin-top: 8px; }
+.job-page .job-apply-done p { font-size: 16px; color: #444; }

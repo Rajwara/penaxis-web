@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { submitForm } from "@/lib/submitForm";
+import PillButton from "./PillButton";
 
 // Sticky "Apply for this position" form on /careers/[slug], from the
 // supplied single-job template. Sends through the site's /api/contact
@@ -75,9 +76,7 @@ export default function JobApplyForm({ roleTitle }: { roleTitle: string }) {
       <div className="job-apply-done" role="status">
         <h2 className="job-apply-title">Application sent</h2>
         <p>Thanks for applying for {roleTitle}. Our team will review your resume and get back to you.</p>
-        <button type="button" className="job-btn job-btn--ghost" onClick={() => setStatus("idle")}>
-          Send another application
-        </button>
+        <PillButton label="Send another application" variant="outline" onClick={() => setStatus("idle")} />
       </div>
     );
   }
@@ -123,10 +122,7 @@ export default function JobApplyForm({ roleTitle }: { roleTitle: string }) {
       </div>
       {/* Honeypot — hidden from people, filled by bots */}
       <input className="job-hp" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.company_website} onChange={set("company_website")} />
-      <button type="submit" className="job-btn job-submit" disabled={status === "sending"}>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 2 11 13" /><path d="M22 2 15 22l-4-9-9-4 20-7Z" /></svg>
-        {status === "sending" ? "Sending…" : "Submit Application"}
-      </button>
+      <PillButton type="submit" label={status === "sending" ? "Sending…" : "Submit Application"} disabled={status === "sending"} block className="job-submit" />
       {status === "error" && <p className="job-error" role="alert">{error}</p>}
     </form>
   );

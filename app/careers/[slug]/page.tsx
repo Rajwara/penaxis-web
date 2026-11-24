@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JobApplyForm from "@/components/JobApplyForm";
+// Same type system as /home-v2 (Big Shoulders + Wix Madefor Display).
+import "@fontsource-variable/big-shoulders/opsz.css";
+import "@fontsource-variable/wix-madefor-display/index.css";
 import { careers } from "@/lib/data";
 
 // Single job page, from the supplied single-job template: job details on the
