@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContentShell from "@/components/content/ContentShell";
+import ContactBanner from "@/components/contact-v2/ContactBanner";
 import BtnContent from "@/components/content/BtnContent";
 import BlogList from "@/components/content/BlogList";
 import { Avatar, type PostSummary } from "@/components/content/PostCard";
@@ -38,13 +39,13 @@ export default function BlogPage() {
     <>
       <Navbar />
       <main>
-        <ContentShell>
+        <ContactBanner
+          label="From the blog"
+          title="Penaxis Insights"
+          intro="Notes from the projects we build, the teams we work with, and what we're learning about shipping software and AI products well."
+        />
+        <ContentShell className="fwb--after-banner">
           <div className="bl">
-            <section className="page-hero">
-              <span className="eyebrow eyebrow-dot">From the blog</span>
-              <h1>Penaxis Insights</h1>
-              <p>Notes from the projects we build, the teams we work with, and what we&apos;re learning about shipping software and AI products well.</p>
-            </section>
 
             <section className="section">
               <div className="container">

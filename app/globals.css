@@ -10949,3 +10949,14 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 /* Job pages: longer descriptions */
 .job-page .job-content p + p { margin-top: 14px; }
 .job-page .job-content .job-lead { font-size: 18px; line-height: 28px; color: #000; }
+
+/* Banner intro line (used by /blog) */
+.cb-intro {
+  max-width: 40rem; margin: 0.5rem 0 0;
+  font-family: var(--cb-body); font-size: 18px; line-height: 27px; font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+@media (max-width: 767px) { .cb-intro { font-size: 16px; line-height: 24px; } }
+/* /blog: banner sits above the content shell, page background continues */
+.cb-section:has(+ .fwb--after-banner) { background: #F8F8F8; }
+.fwb.fwb--after-banner { padding-top: 0; }

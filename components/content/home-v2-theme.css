@@ -95,3 +95,25 @@ body .fwb .am-btn.am-btn.am-btn:hover { background: var(--fw-accent); border-col
 .fwb .pol-point h3 { font: 500 28px/1 var(--fw-display); text-transform: uppercase; letter-spacing: -0.03em; }
 .fwb .pol-section h3 { font-size: 22px; }
 .fwb .cat-hero .eyebrow::before, .fwb .cat-hero .eyebrow::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* Blog: "Archive / Browse by topic" header with search */
+.fwb .bl .blog-browse { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; margin-bottom: 1.5rem; scroll-margin-top: 110px; }
+.fwb .bl .blog-browse-label {
+  display: inline-flex; align-items: center; column-gap: 0.75rem;
+  font: 500 18px/1 var(--fw-display); letter-spacing: -0.02em; text-transform: uppercase; color: var(--fw-accent);
+}
+.fwb .bl .blog-browse-label::before, .fwb .bl .blog-browse-label::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.fwb .bl .blog-browse-title { margin: 0; font-size: clamp(2.5rem, 1.25rem + 3.5vw, 4rem); line-height: 1; color: #000; }
+.fwb .bl .blog-search {
+  display: flex; align-items: center; gap: 0.6rem;
+  width: 100%; max-width: 32rem; height: 52px; margin-top: 0.75rem; padding: 0 1.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.18); border-radius: 999px; background: #fff; color: #666;
+  transition: border-color .2s, box-shadow .2s;
+}
+.fwb .bl .blog-search:focus-within { border-color: var(--fw-accent); box-shadow: 0 0 0 3px rgba(106, 68, 154, 0.15); color: var(--fw-accent); }
+.fwb .bl .blog-search input {
+  flex: 1; min-width: 0; height: 100%; border: 0; outline: none; background: transparent;
+  font: 500 16px/1 var(--fw-body); color: #000;
+}
+.fwb .bl .blog-search input::placeholder { color: #8a8a8a; }
+.fwb .bl .blog-search input::-webkit-search-cancel-button { cursor: pointer; }

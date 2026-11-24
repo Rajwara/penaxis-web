@@ -5,16 +5,20 @@ import { useEffect, useRef, useState } from "react";
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
 
-// Contact page banner. Ported from a client-supplied "contact banner"
+// Contact page banner (also used on /blog). Ported from a client-supplied "contact banner"
 // (static HTML/CSS/JS): rounded photo card, animated "• Contact •" label,
 // and a big title whose letters fade/slide in one after another (0.065s
 // apart). Fonts, sizes and timings match the supplied files. Background:
 // Penaxis's own banner artwork.
 
-const TITLE = "Get in touch";
 const BG_IMAGE = "/images/hero/contact-banner.webp"; // supplied banner artwork
 
-export default function ContactBanner() {
+// Reusable: the Contact page uses the defaults; other pages (e.g. /blog)
+// pass their own label, title, optional intro line and image.
+type Props = { label?: string; title?: string; intro?: string; image?: string };
+
+export default function ContactBanner({ label = "Contact", title = "Get in touch", intro, image = BG_IMAGE }: Props) {
+  const TITLE = title;
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -62,7 +66,7 @@ export default function ContactBanner() {
   return (
     <section ref={sectionRef} className={`cb-section${jsReady ? " cb-js" : ""}${loaded ? " is-loaded" : ""}`}>
       <div className="cb-card" data-nav-theme="dark">
-        <img ref={imgRef} className="cb-bg" src={BG_IMAGE} alt="" />
+        <img ref={imgRef} className="cb-bg" src={image} alt="" />
         <div className="cb-shade" aria-hidden="true" />
 
         <div className="cb-content">
@@ -70,7 +74,7 @@ export default function ContactBanner() {
             <span className="cb-dot is-start" />
             <span className="cb-sub-mask">
               <span className="cb-sub-track">
-                <span>Contact</span>
+                <span>{label}</span>
                 <span className="cb-dot is-end" />
               </span>
             </span>
@@ -88,6 +92,7 @@ export default function ContactBanner() {
               </span>
             ))}
           </h1>
+          {intro && <p className="cb-intro">{intro}</p>}
         </div>
       </div>
     </section>
