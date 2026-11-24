@@ -10625,3 +10625,76 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
   .job-sticky { padding: 20px; }
 }
 .job-field .job-upload { display: flex; margin-bottom: 0; }
+
+/* ==================================================================
+   /contact-us — same fonts + colours as /home-v2:
+   Big Shoulders (uppercase headings) + Wix Madefor Display (body),
+   black / #444 text on #F8F8F8, purple #6A449A accents, pill button.
+   ================================================================== */
+.cv2 {
+  --cv2-heading: "Big Shoulders Variable", "Big Shoulders", Arial, sans-serif;
+  --cv2-body: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  --cv2-accent: #6A449A;
+  --line: rgba(0, 0, 0, 0.06);
+  background: #F8F8F8;
+  color: #000;
+  font-family: var(--cv2-body);
+  letter-spacing: -0.01em;
+}
+.cv2 .cb-section, .cv2 .cv2-locator { background: #F8F8F8; }
+
+/* Eyebrow "• GET IN TOUCH •" */
+.cv2 .cv2-subtitle {
+  display: inline-flex; align-items: center; column-gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--cv2-heading); font-size: 18px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em; text-transform: uppercase; color: var(--cv2-accent);
+}
+.cv2 .cv2-subtitle::before, .cv2 .cv2-subtitle::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--cv2-accent); }
+
+/* Section heading: like the /home-v2 section headings */
+.cv2 .cv2-left h2 {
+  font-family: var(--cv2-heading);
+  font-size: clamp(2.5rem, 1.25rem + 3.5vw, 4rem);
+  font-weight: 500; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #000;
+  max-width: 560px;
+}
+.cv2 .cv2-lead { font-family: var(--cv2-body); font-size: 18px; line-height: 27px; font-weight: 500; color: #444; }
+.cv2 .cv2-info-grid h6 {
+  font-family: var(--cv2-heading); font-size: 28px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.03em; text-transform: uppercase; color: #000;
+}
+.cv2 .cv2-info-grid p { font-size: 16px; line-height: 24px; color: #444; }
+.cv2 .cv2-info-grid a:hover { opacity: 1; color: var(--cv2-accent); }
+.cv2 .cv2-socials { color: #000; }
+.cv2 .cv2-socials a:hover { color: var(--cv2-accent); }
+
+/* Form card: white card on #F8F8F8, like the /home-v2 cards */
+.cv2 .cv2-form-card { background: #fff; border: 1px solid rgba(0, 0, 0, 0.07); border-radius: 20px; }
+.cv2 .cv2-form-card h3 {
+  font-family: var(--cv2-heading);
+  font-size: clamp(1.5rem, 1rem + 1.4vw, 2.25rem);
+  font-weight: 500; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #000;
+}
+.cv2 .cv2-field input, .cv2 .cv2-field textarea { font-family: var(--cv2-body); font-size: 15px; color: #000; border-bottom-color: #d6d6d6; }
+.cv2 .cv2-field input:focus, .cv2 .cv2-field textarea:focus { border-color: var(--cv2-accent); }
+.cv2 .cv2-field input::placeholder, .cv2 .cv2-field textarea::placeholder { color: #8a8a8a; }
+.cv2 .cv2-submit {
+  margin-top: 12px;
+  font-family: var(--cv2-heading); font-size: 18px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em; text-transform: uppercase;
+}
+.cv2 .cv2-submit .hv2-btn-icon { color: var(--cv2-accent); }
+.cv2 .cv2-submit:hover { background: var(--cv2-accent); }
+.cv2 .cv2-form-msg { font-family: var(--cv2-body); color: #000; }
+.cv2 .cv2-form-msg.is-error { color: #c0262d; }
+
+/* Contact banner: starts at the top (behind the see-through navbar) and is
+   a little taller; extra top padding keeps the title clear of the navbar. */
+.cb-section { padding-top: 12px; }
+.cb-card { min-height: 38rem; padding-top: 10rem; padding-bottom: 7rem; }
+@media (max-width: 991px) { .cb-card { min-height: 28rem; } }
+@media (max-width: 767px) {
+  .cb-section { padding-top: 8px; }
+  .cb-card { min-height: 24rem; padding-top: 8rem; padding-bottom: 4rem; }
+}

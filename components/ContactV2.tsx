@@ -6,8 +6,9 @@ import { submitForm } from "@/lib/submitForm";
 import OfficeLocator from "@/components/contact-v2/OfficeLocator";
 import ContactBanner from "@/components/contact-v2/ContactBanner";
 // Same fonts as the supplied template (self-hosted, used only here).
-import "@fontsource-variable/manrope/index.css";
-import "@fontsource-variable/sora/index.css";
+import "@fontsource-variable/big-shoulders/opsz.css";
+import "@fontsource-variable/wix-madefor-display/index.css";
+import PillButton from "@/components/PillButton";
 
 // Main contact page content (/contact-us; first built at /contact-v2), ported from a client-supplied contact page template:
 // a photo banner (ContactBanner), a "get in touch" section with contact info
@@ -90,7 +91,7 @@ export default function ContactV2() {
       <section className="cv2-contact">
         <div className="cv2-container cv2-contact-grid">
           <div className="cv2-left">
-            <div className="cv2-subtitle">/ get in touch /</div>
+            <div className="cv2-subtitle">Get in touch</div>
             <h2>We are always ready to help you and answer your questions</h2>
             <p className="cv2-lead">
               Have a project in mind or a question about our services? Reach out and our team will get
@@ -153,9 +154,7 @@ export default function ContactV2() {
               </div>
               {/* Honeypot — hidden from people, filled by bots */}
               <input className="cv2-hp" type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.company_website} onChange={update("company_website")} />
-              <button type="submit" className="cv2-btn-dark" disabled={status === "sending"}>
-                <span className="cv2-arrow">&gt;</span> {status === "sending" ? "Sending…" : "Send a message"}
-              </button>
+              <PillButton type="submit" label={status === "sending" ? "Sending…" : "Send a message"} disabled={status === "sending"} className="cv2-submit" />
               {status === "sent" && <p className="cv2-form-msg" role="status">Thanks! Your message has been sent.</p>}
               {status === "error" && <p className="cv2-form-msg is-error" role="alert">{error}</p>}
             </form>

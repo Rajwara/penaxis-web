@@ -1,15 +1,15 @@
 /* Contact & store locator */
 .page {
-  /* fonts from the supplied store-locator section (Big Shoulders + Space Grotesk) */ --grey: #f6f6f6; --line: #e4e4e4; --muted: #666; --display: "Big Shoulders Variable", "Big Shoulders", "Arial Narrow", sans-serif; --text: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif; --ease: cubic-bezier(.16, 1, .3, 1); color: #000; font: 400 16px/24px var(--text); }
+  /* fonts + colours follow /home-v2: Big Shoulders headings, Wix Madefor body, purple accent */ --grey: #f6f6f6; --line: #e4e4e4; --muted: #666; --display: "Big Shoulders Variable", "Big Shoulders", "Arial Narrow", sans-serif; --text: "Wix Madefor Display Variable", "Wix Madefor Display", system-ui, sans-serif; --ease: cubic-bezier(.16, 1, .3, 1); color: #000; font: 400 16px/24px var(--text); }
 .page h1, .page h2 { font-family: var(--display); font-weight: 500 !important; text-transform: uppercase; letter-spacing: -.04em; line-height: .95; }
-.label { display: block; margin-bottom: 10px; font: 500 16px/24px var(--display); text-transform: uppercase; letter-spacing: .01em; color: #ff4a17; }
+.label { display: block; margin-bottom: 10px; font: 500 16px/24px var(--display); text-transform: uppercase; letter-spacing: .01em; color: #6A449A; }
 .crumb { margin-bottom: 18px; font: 500 16px/24px var(--display); text-transform: uppercase; letter-spacing: .01em; color: #888; }
 .crumb a { color: #000; }
 
 /* Locator */
 .locator { width: min(1240px, 100% - 48px); margin: 0 auto; padding: 80px 0 40px; }
 .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 28px; }
-.head h2 { font-size: 56px; line-height: 1.02; }
+.head h2 { font-size: clamp(2.5rem, 1.25rem + 3.5vw, 4rem); line-height: 1; letter-spacing: -.03em; }
 .head p { max-width: 400px; color: var(--muted); }
 .mapWrap { position: relative; scroll-margin-top: 100px; }
 .mapBox { position: relative; height: 620px; border-radius: 16px; overflow: hidden; background: #ececec; isolation: isolate; }
@@ -97,7 +97,7 @@
 .storeImg img { object-fit: cover; }
 .storeType, .storeNew { position: absolute; top: 12px; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 600; }
 .storeType { left: 12px; background: #fff; color: #000; }
-.storeNew { right: 12px; background: #ff4a17; color: #fff; }
+.storeNew { right: 12px; background: #6A449A; color: #fff; }
 .storeBody { display: flex; flex-direction: column; flex: 1; padding: 18px; }
 .storeBody h3 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -.03em; }
 .storeAddr { margin-top: 2px; font-size: 14px; line-height: 20px; color: var(--muted); }
@@ -124,7 +124,6 @@
   .locator { width: calc(100% - 32px); }
   .locator { padding-top: 56px; }
   .head { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .head h2 { font-size: 40px; }
   .mapBox { height: 520px; border-radius: 14px; }
   .filterBar { left: 8px; right: 8px; transform: none; max-width: none; overflow-x: auto; border-radius: 16px; scrollbar-width: none; }
   .filterBar::-webkit-scrollbar { display: none; }
@@ -142,3 +141,14 @@
 .storeEmail:hover { border-color: #000; }
 .storeContacts { display: flex; flex-direction: column; gap: 4px; }
 .page button { font: inherit; background: none; color: inherit; cursor: pointer; }
+
+/* /home-v2 look: "• LABEL •" eyebrow, purple hovers */
+.label { display: inline-flex; align-items: center; column-gap: .75rem; font-size: 18px; line-height: 1; letter-spacing: -.02em; }
+.label::before, .label::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.head p { color: #444; font-size: 18px; line-height: 27px; }
+.darkBtn:hover { background: #6A449A; }
+.ghostBtn:hover, .cardBtn:hover { border-color: #6A449A; }
+.cardBtn:hover { background: #6A449A; color: #fff; }
+.storeOn { border-color: #6A449A; box-shadow: 0 0 0 1px #6A449A; }
+.storePhone:hover, .storeEmail:hover { border-color: #6A449A; color: #6A449A; }
+.map :global(.leaflet-control-attribution a) { color: #444; }

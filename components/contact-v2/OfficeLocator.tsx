@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { OFFICES, directionsUrl, telHref, typeLabels, type OfficeType } from "./offices";
+import { OFFICES, typeLabels, type OfficeType } from "./offices";
 import s from "./locator.module.css";
 // Same fonts as the supplied store-locator section (self-hosted, used only here).
 import "@fontsource-variable/big-shoulders/opsz.css";
@@ -10,7 +10,7 @@ import "@fontsource-variable/space-grotesk/index.css";
 
 // Office locator for /contact-v2. Ported from a client-supplied "store
 // locator" section: photo pins, numbered clusters, a floating filter bar,
-// a card above the selected pin, and the location list below. Filled with
+// and a card above the selected pin (office list cards removed). Filled with
 // Penaxis's two offices. Opening hours / "Open now" from the original are
 // left out because the site has no office hours to show.
 
@@ -35,10 +35,6 @@ export default function OfficeLocator() {
   }, [list, selected]);
 
   const select = useCallback((id: string | null) => setSelected(id), []);
-  const showOnMap = (id: string) => {
-    setSelected(id);
-    mapTop.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   return (
     <section className={`${s.page} ${s.locator}`} aria-labelledby="cv2-offices-title">
@@ -68,32 +64,6 @@ export default function OfficeLocator() {
         <OfficeMap offices={list} selected={selected} onSelect={select} />
       </div>
 
-      <div className={s.storeGrid}>
-        {list.map((o) => (
-          <article key={o.id} className={`${s.store} ${selected === o.id ? s.storeOn : ""}`}>
-            <div className={s.storeImg}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={o.image} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-              <span className={s.storeType}>{typeLabels[o.type]}</span>
-            </div>
-            <div className={s.storeBody}>
-              <h3>{o.name}</h3>
-              <p className={s.storeAddr}>{o.address}</p>
-              <p className={s.storeBlurb}>{o.blurb}</p>
-              <div className={s.storeFoot}>
-                <div className={s.storeContacts}>
-                  <a href={telHref(o.phone)} className={s.storePhone}>{o.phone}</a>
-                  <a href={`mailto:${o.email}`} className={s.storeEmail}>{o.email}</a>
-                </div>
-                <div className={s.storeBtns}>
-                  <button type="button" className={s.ghostBtn} onClick={() => showOnMap(o.id)}>Show on map</button>
-                  <a className={s.darkBtn} href={directionsUrl(o)} target="_blank" rel="noopener noreferrer">Directions</a>
-                </div>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
     </section>
   );
 }
