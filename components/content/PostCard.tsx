@@ -23,9 +23,8 @@ export function Avatar({ large, className = "" }: { large?: boolean; className?:
 // Blog card in the /home-v2 look: white rounded card, inset image that
 // zooms on hover, glass category chip (top-left) and read-time chip
 // (bottom-right) on the image, Big Shoulders
-// uppercase title, 2-line excerpt, and a footer with author/date and a
-// round arrow that fills purple on hover. The whole card is one link.
-export default function PostCard({ post, author }: { post: PostSummary; author: string }) {
+// uppercase title and 2-line excerpt. The whole card is one link.
+export default function PostCard({ post }: { post: PostSummary; author?: string }) {
   const href = `/blog/${post.slug}`;
   return (
     <article className="pc" data-category={post.category}>
@@ -48,20 +47,6 @@ export default function PostCard({ post, author }: { post: PostSummary; author: 
           </Link>
         </h3>
         <p className="pc-excerpt">{post.excerpt}</p>
-        <div className="pc-foot">
-          <div className="pc-author">
-            <Avatar />
-            <span>
-              <span className="pc-author-name">{author}</span>
-              <span className="pc-date">{post.date}</span>
-            </span>
-          </div>
-          <span className="pc-arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 17 17 7M8 7h9v9" />
-            </svg>
-          </span>
-        </div>
       </div>
     </article>
   );
