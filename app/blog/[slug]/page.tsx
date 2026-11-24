@@ -55,7 +55,7 @@ export default function BlogPostPage({ params }: Props) {
     <>
       <Navbar />
       <main>
-        <ContentShell>
+        <ContentShell className="fwb--post">
           <div className="bl">
             <section className="page-hero page-hero-post">
               <span className="eyebrow eyebrow-dot">{post.category}</span>

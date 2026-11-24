@@ -191,3 +191,18 @@ body .fwb .am-btn.am-btn.am-btn:hover { background: var(--fw-accent); border-col
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .fwb .pc-chip { background: rgba(28, 28, 28, 0.75); }
 }
+
+/* Single post: every section matches the navbar's width
+   (1280px max, 24px side padding; 16px below 768px). */
+.fwb--post { --nav-w: 1280px; --nav-pad: 24px; }
+@media (max-width: 767px) { .fwb--post { --nav-pad: 16px; } }
+.fwb--post .bl .container { max-width: var(--nav-w); padding-inline: var(--nav-pad); }
+.fwb--post .bl .page-hero,
+.fwb--post .bl .related {
+  width: calc(100% - 2 * var(--nav-pad));
+  max-width: calc(var(--nav-w) - 2 * var(--nav-pad));
+  margin-left: auto; margin-right: auto;
+}
+.fwb--post .bl .page-hero-post h1 { max-width: none; }
+.fwb--post .bl .article { max-width: none; }
+.fwb--post .bl .related .container { padding-inline: clamp(16px, 3vw, 40px); }
