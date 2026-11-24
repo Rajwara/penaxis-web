@@ -10151,3 +10151,27 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 .hv2-page .hv2q-wrap { padding-left: var(--gut); padding-right: var(--gut); }
 .hv2-page .hv2c-wrap { padding-top: 0; }                 /* How We Work sits between the two panels */
 .hv2-page .hv2q-root { padding-top: calc(var(--sec-y) / 2); padding-bottom: var(--gut); } /* frame above the footer */
+
+/* ==================================================================
+   /home-v2 — smaller heading scale (fluid; desktop / tablet / phone)
+     section headings  64 / ~49 / 40px   (was 100 / 80 / 48)
+     CTA heading       80 / ~57 / 44px   (was 120)
+     card & step titles 36 / ~28 / 24px  (was 48)
+     "request a quote" marquee 120 / 64px (was 176)
+   ================================================================== */
+.hv2-page {
+  --h-sec: clamp(2.5rem, 1.25rem + 3.5vw, 4rem);
+  --h-cta: clamp(2.75rem, 1.5rem + 4vw, 5rem);
+  --h-card: clamp(1.5rem, 1rem + 1.4vw, 2.25rem);
+  --h-marq: clamp(4rem, 2rem + 6vw, 7.5rem);
+}
+.hv2-page .hv2-why-heading,
+.hv2-page .hv2-stat-value,
+.hv2-page .hv2w-heading { font-size: var(--h-sec); }
+.hv2-page .hv2-photo-text h3,
+.hv2-page .hv2w-step h3,
+.hv2-page .hv2c-card-title { font-size: var(--h-card); }
+.hv2-page .hv2s-wrap,
+.hv2-page .hv2c-wrap { --fs-h2: var(--h-sec); --fs-h5: var(--h-card); }
+.hv2-page .hv2q-root { --fs-h1: var(--h-cta); --fs-h5: var(--h-card); }
+.hv2-page .hv2q-values-text { font-size: var(--h-marq); }
