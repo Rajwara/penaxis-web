@@ -44,7 +44,7 @@ export default function QuickQuote() {
   return (
     <>
       <button type="button" className="qq-tab" onClick={() => setOpen(true)}>
-        Let&apos;s chat
+        Let&apos;s Chat
       </button>
 
       {open && (

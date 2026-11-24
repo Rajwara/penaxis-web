@@ -10625,3 +10625,23 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
   .job-sticky { padding: 20px; }
 }
 .job-field .job-upload { display: flex; margin-bottom: 0; }
+
+/* ==================================================================
+   /home-v2 — boxed layout: navbar, every section and the footer sit in
+   one centred 1440px-wide frame. Wider screens show the page background
+   either side; at 1440px and below nothing changes.
+   ================================================================== */
+body:has(.hv2-page) main.hv2-page,
+body:has(.hv2-page) footer {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* The fixed navbar bar is centred within the same 1440px frame */
+body:has(.hv2-page) header.fixed {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Footer watermark: size it to the 1440px frame, not the full screen */
+body:has(.hv2-page) .footer-watermark { font-size: min(20vw, 288px); }

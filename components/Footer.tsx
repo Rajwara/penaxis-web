@@ -98,7 +98,7 @@ export default function Footer() {
     <footer data-nav-theme="dark" className="relative bg-ink text-white overflow-hidden">
       {/* Giant full-bleed wordmark with the email pill centered over it */}
       <div className="relative min-h-[18rem] md:min-h-[24rem] py-20 flex items-center justify-center overflow-hidden">
-        <span className="absolute inset-0 flex items-center justify-center font-display font-black text-[20vw] leading-none text-white/[0.05] whitespace-nowrap select-none pointer-events-none">
+        <span className="footer-watermark absolute inset-0 flex items-center justify-center font-display font-black text-[20vw] leading-none text-white/[0.05] whitespace-nowrap select-none pointer-events-none">
           PENAXIS
         </span>
         <a
