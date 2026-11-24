@@ -1,9 +1,8 @@
 "use client";
 
-import Reveal from "./Reveal";
 import { careers } from "@/lib/data";
 
-// /careers page (below CareersHero): a banner and the list of open roles
+// /careers page (below CareersHero): the list of open roles
 // (condensed from the team's real LinkedIn postings — see lib/data.ts).
 // Each role links to its own /careers/[slug] page, which has the
 // application form (sent to the careers inbox via /api/contact).
@@ -11,20 +10,6 @@ import { careers } from "@/lib/data";
 export default function CareersHub() {
   return (
     <>
-      <section className="car-banner">
-        <div className="mx-auto max-w-7xl px-6">
-          <Reveal>
-            <span className="car-eyebrow">Careers</span>
-            <h2 className="car-heading">Help us build what&apos;s next</h2>
-            <p className="car-intro">
-              We&apos;re a small, hands-on team across Pakistan, the UAE, and beyond - building
-              AI-powered products, software, and growth systems for real clients. Here&apos;s
-              what we&apos;re hiring for right now.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
       <section id="open-roles" className="car-roles car-roles--list" aria-labelledby="car-roles-title">
         <div className="car-roles-inner" data-nav-theme="dark">
           <div className="car-roles-head">
