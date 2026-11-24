@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-// /home-v2: blank page for building the new homepage from scratch.
+// /home-v2: new homepage built from scratch between the Navbar and Footer.
 // Add new sections inside <main> below. Once approved it replaces
 // app/page.tsx.
 
@@ -14,5 +16,11 @@ export const metadata: Metadata = {
 };
 
 export default function HomeV2() {
-  return <main className="min-h-screen" />;
+  return (
+    <>
+      <Navbar />
+      <main className="min-h-screen">{/* New homepage sections go here */}</main>
+      <Footer />
+    </>
+  );
 }
