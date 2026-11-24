@@ -8544,3 +8544,277 @@ h1 {
 }
 .hv2-tst-dot.is-active:not(:has(.hv2-tst-progress)) { background: #222222; }
 @keyframes hv2-tst-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ==================================================================
+   /home-v2 — CTA banner (HomeV2Cta)
+   Ported from the client-supplied "Request a Quote" section. Fonts,
+   sizes, colours and timings match the supplied zip; scoped to this
+   section only.
+   ================================================================== */
+.hv2q-root {
+  --font-heading-pf: "Big Shoulders Variable", "Big Shoulders", Impact, sans-serif;
+  --font-body-pf: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  --primary-red: #b91f33;
+  --black: #000;
+  --white: #fff;
+  --dark-gray: #444;
+  --fs-body: 1.125rem;
+  --fs-body-s: 1rem;
+  --fs-h1: 7.5rem;    /* 120px */
+  --fs-h5: 3rem;      /* 48px */
+  --fs-h6: 1.75rem;   /* 28px */
+  --fs-button: 1.125rem;
+  --lh-body: 1.5;
+  --lh-heading: 1;
+  --fw-heading: 500;
+  --ls-body: -0.01em;
+  --ls-heading: -0.03em;
+  --container-max: 84.375rem;
+  --container-px: 1.875rem;
+  --section-padding: 7.5rem;
+  --button-py: 1rem;
+  --button-px: 1.75rem;
+  --radius-m: 0.9375rem;
+  --radius-full: 100rem;
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  background: #F8F8F8;
+  padding-top: 3rem;
+  color: var(--dark-gray);
+  font-family: var(--font-body-pf);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: 500;
+  letter-spacing: var(--ls-body);
+  -webkit-font-smoothing: antialiased;
+}
+.hv2q-container { position: relative; width: 100%; max-width: var(--container-max); padding: 0 var(--container-px); margin: 0 auto; }
+
+/* Marquee */
+.hv2q-marquee { padding: 1rem 0; overflow: hidden; }
+.hv2q-track { display: flex; width: max-content; will-change: transform; }
+.hv2q-values-text {
+  flex-shrink: 0;
+  padding-right: 6rem;
+  font-family: var(--font-heading-pf);
+  font-size: 11rem; /* 176px */
+  line-height: var(--lh-heading);
+  font-weight: var(--fw-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #e6e6e6;
+  background-image: linear-gradient(#d9d9d9, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Section shell */
+.hv2q-wrap { padding: 0 1.25rem; margin-top: -3rem; } /* card overlaps the marquee text */
+.hv2q-inner {
+  position: relative;
+  overflow: clip;
+  padding: var(--section-padding) 0;
+  border-radius: var(--radius-m);
+  background: var(--primary-red);
+}
+.hv2q-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  mix-blend-mode: multiply;
+}
+.hv2q-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.2); }
+
+/* Layout */
+.hv2q-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 3rem 4rem;
+  width: 100%;
+}
+.hv2q-col { display: flex; flex-direction: column; justify-content: space-between; row-gap: 3rem; }
+.hv2q-heading {
+  margin: 0;
+  font-family: var(--font-heading-pf);
+  color: var(--white);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-heading);
+  font-weight: var(--fw-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+}
+.hv2q-word { position: relative; display: inline-block; white-space: nowrap; }
+.hv2q-letter { position: relative; display: inline-block; will-change: opacity, transform; }
+
+/* Contacts */
+.hv2q-contacts { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem 4.5rem; padding-bottom: 3.75rem; }
+.hv2q-contact { display: flex; align-items: center; column-gap: 1.5rem; color: var(--white); }
+.hv2q-avatar { flex-shrink: 0; width: 3.75rem; height: 3.75rem; margin-right: -0.75rem; object-fit: cover; border-radius: var(--radius-full); }
+.hv2q-text-s { margin: 0; font-size: var(--fs-body-s); line-height: var(--lh-body); }
+.hv2q-text-s.is-light { color: var(--white); margin-bottom: 10px; }
+.hv2q-link {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--font-heading-pf);
+  color: var(--white);
+  font-size: var(--fs-h6);
+  line-height: var(--lh-heading);
+  font-weight: var(--fw-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+  transition: opacity 0.3s;
+}
+.hv2q-link:hover { opacity: 0.8; }
+.hv2q-link.is-underline { text-decoration: underline; }
+
+/* Form card */
+.hv2q-form-card {
+  padding: 3.75rem 3.75rem 3rem;
+  color: var(--white);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-m);
+  -webkit-backdrop-filter: blur(80px);
+  backdrop-filter: blur(80px);
+}
+.hv2q-form-title {
+  margin: 0 0 1rem;
+  font-family: var(--font-heading-pf);
+  color: var(--white);
+  font-size: var(--fs-h5);
+  line-height: var(--lh-heading);
+  font-weight: var(--fw-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+}
+.hv2q-form { display: flex; flex-direction: column; align-items: stretch; row-gap: 1.25rem; margin-top: 2rem; }
+.hv2q-label, .hv2q-hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.hv2q-input {
+  display: block;
+  width: 100%;
+  height: 3.75rem;
+  margin: 0;
+  padding: 0 1.875rem;
+  font-family: var(--font-body-pf);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-body);
+  line-height: var(--lh-body);
+  color: var(--white);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  outline: none;
+  transition: border-color 0.3s;
+}
+.hv2q-input:focus { border-color: rgba(255, 255, 255, 0.4); }
+.hv2q-input::placeholder { color: rgba(255, 255, 255, 0.85); opacity: 1; }
+.hv2q-input.is-invalid { border-color: rgba(255, 255, 255, 0.7); }
+.hv2q-input.is-textarea { height: 8.75rem; min-height: 8.75rem; padding-top: 1.25rem; border-radius: 1.5rem; resize: vertical; }
+
+/* Button (red, white fill on hover, text turns black) */
+.hv2q-button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.625rem;
+  overflow: hidden;
+  width: 100%;
+  padding: var(--button-py) var(--button-px);
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--primary-red);
+  color: var(--white);
+  font-family: var(--font-heading-pf);
+  font-size: var(--fs-button);
+  line-height: var(--lh-heading);
+  font-weight: var(--fw-heading);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.hv2q-button:disabled { cursor: wait; }
+.hv2q-button-fill {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--white);
+  transform: scale(1.02) translateY(102%);
+  transition: transform 0.5s var(--ease);
+}
+.hv2q-button:hover .hv2q-button-fill { transform: scale(1.02) translateY(0); }
+.hv2q-button-clip { position: relative; z-index: 1; display: block; overflow: hidden; }
+.hv2q-button-inner { display: flex; justify-content: center; align-items: center; column-gap: 0.625rem; transition: transform 0.5s var(--ease); }
+.hv2q-button-inner.is-hover { position: absolute; top: 100%; left: 0; width: 100%; color: var(--black); }
+.hv2q-button:hover .hv2q-button-inner { transform: translateY(-100%); }
+.hv2q-button-icon { display: flex; flex-shrink: 0; width: 1.25em; height: 1.25em; max-width: 1.375rem; max-height: 1.375rem; }
+.hv2q-button-icon svg { width: 100%; height: 100%; }
+
+/* Form states */
+.hv2q-success { color: var(--white); text-align: center; }
+.hv2q-state { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 25rem; padding: 1.25rem 0; }
+.hv2q-state-row { display: flex; align-items: center; column-gap: 0.875rem; text-align: left; }
+.hv2q-state-icon { display: flex; flex-shrink: 0; width: 3rem; height: 3rem; margin-bottom: 1.5rem; color: var(--white); }
+.hv2q-state-icon svg { width: 100%; height: 100%; }
+.hv2q-state-icon.is-small { width: 2rem; height: 2rem; margin-bottom: 0; }
+.hv2q-state-title { margin: 0 0 0.625rem; font-family: var(--font-heading-pf); font-size: 2rem; line-height: 1; font-weight: var(--fw-heading); text-transform: uppercase; }
+.hv2q-state-title.is-small { margin-bottom: 0.25rem; font-size: 1.375rem; }
+.hv2q-state-text { margin: 0; opacity: 0.8; font-size: var(--fs-body-s); line-height: var(--lh-body); }
+.hv2q-message {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+  border-style: solid;
+  border-width: 1px 1px 1px 3px;
+  border-color: #fff3 #fff3 #fff3 var(--white);
+}
+
+/* Slide-in: contacts from the left, form card from the right */
+.hv2q-slide { opacity: 0; transition: opacity 1s var(--ease-out), transform 1.2s var(--ease-out); }
+.hv2q-slide.is-left { transform: translate3d(-160px, 0, 0); }
+.hv2q-slide.is-right { transform: translate3d(160px, 0, 0); }
+.hv2q-slide.in-view { opacity: 1; transform: translate3d(0, 0, 0); }
+.hv2q-contact.hv2q-slide:nth-child(2) { transition-delay: 0.1s; }
+
+/* Responsive — same breakpoints and type scale as the zip */
+@media (max-width: 991px) {
+  .hv2q-root { --fs-h1: 4.5rem; --fs-h5: 1.75rem; --fs-h6: 1.25rem; --section-padding: 5rem; }
+  .hv2q-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 767px) {
+  .hv2q-root { --fs-h1: 3.75rem; --fs-h5: 1.625rem; --fs-h6: 1.25rem; --section-padding: 4rem; }
+  .hv2q-wrap { padding: 0 0.75rem; }
+  .hv2q-values-text { padding-right: 3rem; font-size: 5.5rem; }
+  .hv2q-form-card { padding: 2rem 1.25rem; }
+  .hv2q-state { min-height: 20rem; }
+}
+@media (max-width: 479px) {
+  .hv2q-root { --fs-h1: 3rem; --fs-h5: 1.5rem; --fs-h6: 1.125rem; --container-px: 1rem; --section-padding: 3.75rem; }
+  .hv2q-state-title { font-size: 1.75rem; }
+  .hv2q-message { padding-left: 0.875rem; padding-right: 0.875rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hv2q-root *, .hv2q-root *::before, .hv2q-root *::after { transition-duration: 0.01ms !important; transition-delay: 0s !important; }
+}
