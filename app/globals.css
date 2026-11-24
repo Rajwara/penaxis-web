@@ -9905,8 +9905,8 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
   object-position: 50% 50%;
   mix-blend-mode: multiply;
 }
-/* Our photo is lighter than the original's, so darken it a little for the white title */
-.cb-shade { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.45); }
+/* The banner artwork is already dark, so only a very light shade for the white title */
+.cb-shade { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.1); }
 .cb-content {
   position: relative;
   z-index: 1;

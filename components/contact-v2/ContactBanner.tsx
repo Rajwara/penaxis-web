@@ -8,11 +8,11 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 // Contact page banner. Ported from a client-supplied "contact banner"
 // (static HTML/CSS/JS): rounded photo card, animated "• Contact •" label,
 // and a big title whose letters fade/slide in one after another (0.065s
-// apart). Fonts, sizes and timings match the supplied files. The photo is
-// Penaxis's own (the original pointed at another site's image).
+// apart). Fonts, sizes and timings match the supplied files. Background:
+// Penaxis's own banner artwork.
 
 const TITLE = "Get in touch";
-const BG_IMAGE = "/images/hero/office-logo-desk.jpg";
+const BG_IMAGE = "/images/hero/contact-banner.webp"; // supplied banner artwork
 
 export default function ContactBanner() {
   const sectionRef = useRef<HTMLElement>(null);
