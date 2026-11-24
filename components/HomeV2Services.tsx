@@ -23,6 +23,20 @@ function Arrow({ className = "" }: { className?: string }) {
 export default function HomeV2Services() {
   const rootRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
+  // Rows' "scrolled into view" state lives in React (not a manually added
+  // class) so re-rendering on hover can't wipe it and replay the reveal.
+  const [rowsVisible, setRowsVisible] = useState<boolean[]>(() => services.map(() => false));
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Small hover-intent delay: sweeping the mouse across several rows
+  // doesn't fire an open/close animation for every row it passes over.
+  const activate = (i: number) => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setActive(i), 90);
+  };
+  const cancelActivate = () => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+  };
 
   // Scroll-in animations: add .in-view once each target enters the viewport.
   useEffect(() => {
@@ -32,21 +46,30 @@ export default function HomeV2Services() {
     const targets = root.querySelectorAll("[data-anim]");
     if (!("IntersectionObserver" in window)) {
       targets.forEach((t) => t.classList.add("in-view"));
+      setRowsVisible(services.map(() => true));
       return;
     }
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) {
+          if (!e.isIntersecting) return;
+          const row = (e.target as HTMLElement).dataset.row;
+          if (row !== undefined) {
+            const idx = Number(row);
+            setRowsVisible((prev) => (prev[idx] ? prev : prev.map((v, k) => (k === idx ? true : v))));
+          } else {
             e.target.classList.add("in-view");
-            io.unobserve(e.target);
           }
+          io.unobserve(e.target);
         });
       },
-      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
     );
     targets.forEach((t) => io.observe(t));
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    };
   }, []);
 
   let letterIndex = 0;
@@ -107,39 +130,47 @@ export default function HomeV2Services() {
 
           {/* Service rows */}
           <div className="hv2s-list">
-            {services.map((s, i) => (
-              <a
-                key={s.slug}
-                href={`/services/${s.slug}`}
-                className={`hv2s-row${active === i ? " is-active" : ""}`}
-                onMouseEnter={() => setActive(i)}
-                onFocus={() => setActive(i)}
-                data-anim
-              >
-                <div className="hv2s-media">
-                  <img className="hv2s-img" src={s.heroImage} alt="" />
-                </div>
-                <div className="hv2s-body">
-                  <div className="hv2s-info">
-                    <div className="hv2s-num">{s.number}</div>
-                    <h3 className="hv2s-title">{s.title}</h3>
-                    <p className="hv2s-short">{s.short}</p>
+            {services.map((s, i) => {
+              const tags = s.pillars.map((p) => p.title);
+              const shown = tags.slice(0, 2);
+              const more = tags.length - shown.length;
+              return (
+                <a
+                  key={s.slug}
+                  href={`/services/${s.slug}`}
+                  className={`hv2s-row${active === i ? " is-active" : ""}${rowsVisible[i] ? " in-view" : ""}`}
+                  style={{ ["--d" as string]: `${i * 0.08}s` }}
+                  onMouseEnter={() => activate(i)}
+                  onMouseLeave={cancelActivate}
+                  onFocus={() => setActive(i)}
+                  data-anim
+                  data-row={i}
+                >
+                  <div className="hv2s-media">
+                    <img className="hv2s-img" src={s.heroImage} alt="" />
                   </div>
-                  <div className="hv2s-bottom">
-                    <span className="hv2s-arrow">
-                      <Arrow className="hv2s-arrow-icon" />
-                    </span>
-                    <div className="hv2s-tags">
-                      {s.pillars.map((p) => (
-                        <span key={p.title} className="hv2s-tag">
-                          {p.title}
-                        </span>
-                      ))}
+                  <div className="hv2s-body">
+                    <div className="hv2s-info">
+                      <div className="hv2s-num">{s.number}</div>
+                      <h3 className="hv2s-title">{s.title}</h3>
+                    </div>
+                    <div className="hv2s-bottom">
+                      <span className="hv2s-arrow">
+                        <Arrow className="hv2s-arrow-icon" />
+                      </span>
+                      <div className="hv2s-tags">
+                        {shown.map((t) => (
+                          <span key={t} className="hv2s-tag">
+                            {t}
+                          </span>
+                        ))}
+                        {more > 0 && <span className="hv2s-tag hv2s-tag--more">+{more} more</span>}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
