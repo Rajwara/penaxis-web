@@ -103,7 +103,7 @@ export default function PinnedGallery() {
   return (
     <div ref={pinOuterRef} className="hg-pin-outer">
       <div ref={pinWrapRef} className="hg-pin-wrap">
-        <h2 className="hg-pin-heading">
+        <h2 className="section-heading hg-pin-heading">
           AI-powered products, digital transformation, fractional sales,
           and the web/CRM/software systems that hold it all together.
         </h2>

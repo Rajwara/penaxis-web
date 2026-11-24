@@ -13,7 +13,7 @@ export default function CaseStudyOverview({
     <section className="cso-section">
       <div className="mx-auto max-w-3xl px-6">
         <Reveal>
-          <h2 className="cso-heading">Project Overview</h2>
+          <h2 className="section-heading cso-heading">Project Overview</h2>
         </Reveal>
         <Reveal delay={0.05}>
           <p className="cso-p">{blurb}</p>

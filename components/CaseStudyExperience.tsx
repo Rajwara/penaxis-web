@@ -133,7 +133,7 @@ const hexToVec3 = (hex: string): [number, number, number] => {
   return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
 };
 
-const BG_COLORS = { dark: "#171717", light: "#faf9fd" };
+const BG_COLORS = { dark: "#171717", light: "#F8F8F8" };
 const ACCENT_COLORS = { dark: "#fc6607", light: "#5c3e82" };
 
 export default function CaseStudyExperience() {

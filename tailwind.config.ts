@@ -8,8 +8,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#212121",
-        paper: "#FAF9FD",
+        ink: "#222222",
+        paper: "#F8F8F8",
         haze: "#F1EEFB",
         violet: {
           50: "#F2EFFE",

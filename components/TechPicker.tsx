@@ -64,7 +64,7 @@ export default function TechPicker() {
           Our Stack
         </Reveal>
         <Reveal>
-          <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight mb-4">
+          <h2 className="section-heading font-display font-bold text-3xl md:text-5xl leading-tight mb-4">
             Pick a piece of the stack.
           </h2>
         </Reveal>

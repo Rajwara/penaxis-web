@@ -75,7 +75,7 @@ export default function WhyChooseUs() {
               </span>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="wcu-heading">
+              <h2 className="section-heading wcu-heading">
                 We Help Businesses
                 <br />
                 Grow With Clarity

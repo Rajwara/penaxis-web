@@ -106,7 +106,7 @@ export default function Footer() {
           className="btn-grad relative gap-4 px-10 py-6 font-display text-xl md:text-2xl"
         >
           <span className="w-9 h-9 rounded-full bg-white/70 flex items-center justify-center shrink-0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#212121" strokeWidth="2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#222222" strokeWidth="2">
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <path d="m3 6 9 6 9-6" />
             </svg>

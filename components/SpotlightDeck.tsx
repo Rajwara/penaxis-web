@@ -80,7 +80,7 @@ export default function SpotlightDeck() {
     <section className="relative py-24 md:py-32 bg-paper" aria-labelledby="spotlight-title">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal as="div" className="text-center mb-14 max-w-xl mx-auto">
-          <h2 id="spotlight-title" className="font-display font-bold text-3xl md:text-4xl text-ink tracking-tight">
+          <h2 id="spotlight-title" className="section-heading font-display font-bold text-3xl md:text-4xl text-ink tracking-tight">
             Spotlight deck
           </h2>
           <p className="mt-3 text-ink/60">

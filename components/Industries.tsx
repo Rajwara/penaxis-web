@@ -12,7 +12,7 @@ export default function Industries() {
             Industries We Serve
           </Reveal>
           <Reveal>
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-ink">
+            <h2 className="section-heading font-display font-bold text-4xl md:text-5xl text-ink">
               Built for how <span className="text-violet-600">your</span>{" "}
               industry actually works.
             </h2>

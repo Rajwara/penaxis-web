@@ -15,7 +15,7 @@ export default function HorizontalGallery() {
   return (
     <section className="hg-intro">
       <div className="hg-intro-eyebrow">From our founders</div>
-      <h2>Work that moves sideways</h2>
+      <h2 className="section-heading">Work that moves sideways</h2>
       <p>Scroll through a few of the things Penaxis has been building lately.</p>
       <div className="hg-intro-video">
         <video controls poster="/images/hero/founders-video-poster.webp" preload="metadata">

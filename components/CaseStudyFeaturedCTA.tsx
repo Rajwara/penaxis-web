@@ -19,7 +19,7 @@ export default function CaseStudyFeaturedCTA({
     <section className="csf-section">
       <div className="mx-auto max-w-4xl px-6 text-center">
         <Reveal>
-          <h2 className="csf-heading">See How We Turn Ideas Into Impact</h2>
+          <h2 className="section-heading csf-heading">See How We Turn Ideas Into Impact</h2>
         </Reveal>
         <Reveal delay={0.05}>
           <p className="csf-sub">

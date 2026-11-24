@@ -67,7 +67,7 @@ export default function PortfolioDemo() {
       <section className="pfd-behind">
         <div className="pfd-behind-left">
           <p className="pfd-eyebrow pfd-eyebrow--dark">Behind the Work</p>
-          <h2 className="pfd-behind-heading">Shaping Solutions That Move Business Forward</h2>
+          <h2 className="section-heading pfd-behind-heading">Shaping Solutions That Move Business Forward</h2>
         </div>
         <div className="pfd-behind-right">
           <p className="pfd-behind-copy">

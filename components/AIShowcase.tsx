@@ -21,7 +21,7 @@ export default function AIShowcase() {
           AI &amp; Automation
         </Reveal>
         <Reveal>
-          <h2 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-[1.05] text-white max-w-3xl">
+          <h2 className="section-heading font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-[1.05] text-white max-w-3xl">
             Human expertise.
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-ember-400">

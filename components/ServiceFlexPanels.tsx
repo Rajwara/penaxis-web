@@ -21,7 +21,7 @@ export default function ServiceFlexPanels() {
       <div className="fp-header">
         <div className="fp-header-left">
           <span className="fp-eyebrow">Our Services</span>
-          <h2 className="fp-heading">
+          <h2 className="section-heading fp-heading">
             Explore ways we can move your
             <br />
             business <span className="fp-underline">forward</span>

@@ -25,7 +25,7 @@ export default function CaseStudiesAccordion() {
             <span className="csa-eyebrow-dot" />
             Case Studies
           </span>
-          <h2 className="csa-heading">Work That Speaks for Itself</h2>
+          <h2 className="section-heading csa-heading">Work That Speaks for Itself</h2>
         </Reveal>
 
         <div className="csa-list">

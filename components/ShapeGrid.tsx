@@ -64,7 +64,7 @@ export default function ShapeGrid() {
     <section className="relative py-24 md:py-32 bg-paper" aria-labelledby="shape-grid-title">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal as="div" className="text-center mb-16 max-w-xl mx-auto">
-          <h2 id="shape-grid-title" className="font-display font-bold text-3xl md:text-4xl text-ink tracking-tight">
+          <h2 id="shape-grid-title" className="section-heading font-display font-bold text-3xl md:text-4xl text-ink tracking-tight">
             Where we work from
           </h2>
           <p className="mt-3 text-ink/60">

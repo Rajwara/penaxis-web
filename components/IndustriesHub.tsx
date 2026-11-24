@@ -234,7 +234,7 @@ export default function IndustriesHub() {
       <section className="ih-section-grid">
         <div className="ih-grid-head">
           <div className="ih-eyebrow2">All 13, in detail</div>
-          <h2>Every industry we build for.</h2>
+          <h2 className="section-heading">Every industry we build for.</h2>
         </div>
         <div className="ih-grid">
           {industries.map((ind) => (
@@ -257,7 +257,7 @@ export default function IndustriesHub() {
       <section className="ih-cta-section">
         <div className="ih-cta-inner">
           <div className="ih-cta-tag">START A PROJECT</div>
-          <h2>
+          <h2 className="section-heading">
             Whatever your industry, <em>we build for it.</em>
           </h2>
           <p>

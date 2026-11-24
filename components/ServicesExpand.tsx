@@ -72,7 +72,7 @@ export default function ServicesExpand() {
   return (
     <section className="se-section">
       <div className="se-head">
-        <h2>Four ways we help you grow</h2>
+        <h2 className="section-heading">Four ways we help you grow</h2>
         <p>Click a panel to see what it actually involves.</p>
       </div>
       <div ref={groupRef} className="se-group">

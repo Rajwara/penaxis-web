@@ -82,7 +82,7 @@ export default function WhyUs() {
               Why Choose Us
             </Reveal>
             <Reveal>
-              <h2 className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight mb-6">
+              <h2 className="section-heading font-display font-bold text-4xl md:text-5xl text-ink leading-tight mb-6">
                 Insight-led execution, not{" "}
                 <span className="text-violet-600">guesswork.</span>
               </h2>

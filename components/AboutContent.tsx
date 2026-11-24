@@ -339,7 +339,7 @@ export default function AboutContent() {
         <div className="ab-team-head">
           <div>
             <p className="eyebrow text-ember-500 mb-4">The Crew · {team.length} strong</p>
-            <h2>
+            <h2 className="section-heading">
               Strategists, builders
               <br />
               and the <em>quietly brilliant</em>.

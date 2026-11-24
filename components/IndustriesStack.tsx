@@ -101,7 +101,7 @@ export default function IndustriesStack() {
       <StarfieldBackground />
       <div className="ind-eyebrow-wrap">
         <div className="eyebrow">Where we work</div>
-        <h2>13 industries, one team</h2>
+        <h2 className="section-heading">13 industries, one team</h2>
       </div>
 
       <div ref={sliderRef} className="ind-slider" style={{ visibility: "hidden" }}>

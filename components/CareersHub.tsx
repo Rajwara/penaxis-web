@@ -141,7 +141,7 @@ export default function CareersHub() {
       <section className="car-form-section" ref={formRef}>
         <div className="mx-auto max-w-2xl px-6">
           <Reveal>
-            <h2 className="car-form-heading">Apply now</h2>
+            <h2 className="section-heading car-form-heading">Apply now</h2>
             <p className="car-form-sub">
               Don&apos;t see the right fit? Apply anyway - tell us what you&apos;re looking for, or
               reach out directly at {contact.email}.

@@ -22,7 +22,7 @@ export default function CTA() {
             Let&apos;s Talk
           </Reveal>
           <Reveal>
-            <h2 className="font-display font-bold text-4xl md:text-5xl leading-tight mb-6">
+            <h2 className="section-heading font-display font-bold text-4xl md:text-5xl leading-tight mb-6">
               Ready to move <span className="text-ember-400">forward?</span>
             </h2>
           </Reveal>

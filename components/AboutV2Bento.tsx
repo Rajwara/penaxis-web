@@ -20,7 +20,7 @@ export default function AboutV2Bento() {
           {/* Large card — now white/light instead of dark, since the section itself is dark */}
           <Reveal className="avbt-black">
             <span className="avbt-eyebrow">More About Us</span>
-            <h2 className="avbt-heading">
+            <h2 className="section-heading avbt-heading">
               There&apos;s more to
               <br />
               how we build

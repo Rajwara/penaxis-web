@@ -39,7 +39,7 @@ export default function FAQSection() {
           <span className="w-1.5 h-1.5 rounded-full bg-ember-500" />
           FAQs
         </span>
-        <h2 className="mt-6 font-display font-bold text-4xl md:text-6xl text-ink">
+        <h2 className="section-heading mt-6 font-display font-bold text-4xl md:text-6xl text-ink">
           Frequently Asked
           <br />
           Questions

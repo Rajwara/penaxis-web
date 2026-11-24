@@ -216,7 +216,7 @@ export default function RetroHero() {
         </div>
 
         <div className="rh-deco-star" id="rh-s1" style={{ top: "25%", left: "28%", color: "#734fa0" }}>✦</div>
-        <div className="rh-deco-star" id="rh-s2" style={{ top: "60%", left: "10%", color: "#212121" }}>★</div>
+        <div className="rh-deco-star" id="rh-s2" style={{ top: "60%", left: "10%", color: "#222222" }}>★</div>
         <div className="rh-deco-star" id="rh-s3" style={{ top: "30%", right: "25%", color: "#fc6607" }}>✦</div>
         <div className="rh-deco-star" id="rh-s4" style={{ bottom: "28%", left: "22%", color: "#b49fda" }}>★</div>
 

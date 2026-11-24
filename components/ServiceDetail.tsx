@@ -80,7 +80,7 @@ export default function ServiceDetail({ slug }: { slug: string }) {
       <section className="svd-section svd-section--alt">
         <div className="mx-auto max-w-7xl px-6">
           <Reveal>
-            <h2 className="svd-h2">Tools &amp; stack</h2>
+            <h2 className="section-heading svd-h2">Tools &amp; stack</h2>
             <div className="svd-chips">
               {service.stack.map((t) => (
                 <span key={t} className="svd-chip">

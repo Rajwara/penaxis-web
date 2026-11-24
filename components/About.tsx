@@ -44,7 +44,7 @@ export default function About() {
               About Us
             </Reveal>
             <Reveal>
-              <h2 className="font-display font-bold text-4xl md:text-5xl leading-tight text-ink mb-6">
+              <h2 className="section-heading font-display font-bold text-4xl md:text-5xl leading-tight text-ink mb-6">
                 We Build, Transform &amp;{" "}
                 <span className="text-violet-600">Accelerate Businesses</span>
               </h2>

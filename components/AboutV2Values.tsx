@@ -60,7 +60,7 @@ export default function AboutV2Values() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="av2-values-head">
           <Reveal>
-            <h2 className="av2-values-heading">
+            <h2 className="section-heading av2-values-heading">
               We Operate with Unwavering <span className="text-violet-600">Focus</span> &
               Integrity
             </h2>

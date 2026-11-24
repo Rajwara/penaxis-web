@@ -1127,7 +1127,7 @@ export const caseStudyGradients = [
   "linear-gradient(150deg, #734FA0, #2a1d43)",
   "linear-gradient(150deg, #FC6607, #a83e00)",
   "linear-gradient(150deg, #FC6607, #7c8f1c)",
-  "linear-gradient(150deg, #8a6fc4, #212121)",
+  "linear-gradient(150deg, #8a6fc4, #222222)",
 ];
 
 // Insights — Penaxis's own editorial content (not client case studies).

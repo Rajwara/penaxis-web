@@ -64,7 +64,7 @@ export default function Testimonials() {
           <div className="tm-col-text">
             <Reveal as="div" className="mb-12">
               <span className="tm-badge">Testimonials</span>
-              <h2 id="tm-title" className="tm-heading">
+              <h2 id="tm-title" className="section-heading tm-heading">
                 What Our
                 <br />
                 Clients Say

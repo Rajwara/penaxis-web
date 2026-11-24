@@ -166,7 +166,7 @@ export default function ContactFormSection() {
                 <span className="w-1.5 h-1.5 rounded-full bg-ember-500" />
                 Contact
               </span>
-              <h2 className="mt-5 font-display font-bold text-4xl md:text-5xl text-ink leading-tight">
+              <h2 className="section-heading mt-5 font-display font-bold text-4xl md:text-5xl text-ink leading-tight">
                 Let's build
                 <br />
                 what's next.

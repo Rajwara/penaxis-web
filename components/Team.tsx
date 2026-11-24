@@ -25,7 +25,7 @@ export default function Team() {
               Our Team
             </Reveal>
             <Reveal>
-              <h2 className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight">
+              <h2 className="section-heading font-display font-bold text-4xl md:text-5xl text-ink leading-tight">
                 The people behind{" "}
                 <span className="text-violet-600">
                   strategy, technology &amp; growth.

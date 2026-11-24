@@ -57,7 +57,7 @@ export default function Coverage() {
               Regions We Have Worked In
             </Reveal>
             <Reveal>
-              <h2 className="font-display font-bold text-4xl md:text-5xl text-ink">
+              <h2 className="section-heading font-display font-bold text-4xl md:text-5xl text-ink">
                 Geographical <span className="text-violet-600">Coverage</span>
               </h2>
             </Reveal>

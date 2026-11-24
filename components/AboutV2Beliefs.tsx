@@ -46,7 +46,7 @@ export default function AboutV2Beliefs() {
           </span>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 className="avb-heading">
+          <h2 className="section-heading avb-heading">
             At our core, we believe good technology is more than code, it&apos;s
             partnership
           </h2>

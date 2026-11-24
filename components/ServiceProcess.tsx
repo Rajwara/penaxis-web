@@ -74,7 +74,7 @@ export default function ServiceProcess({
         <div className="svp-sticky">
           <Reveal>
             <span className="svp-eyebrow">Process</span>
-            <h2 className="svp-heading">
+            <h2 className="section-heading svp-heading">
               Combine Creativity
               <br />
               With Strategy

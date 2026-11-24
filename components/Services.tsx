@@ -28,7 +28,7 @@ export default function Services() {
             Our Services
           </Reveal>
           <Reveal>
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight">
+            <h2 className="section-heading font-display font-bold text-4xl md:text-5xl text-ink leading-tight">
               From Strategy and Software to{" "}
               <span className="text-ember-500">
                 Marketing and Sales Execution.

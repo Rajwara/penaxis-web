@@ -20,7 +20,7 @@ export default function InsightsSection() {
         <div className="ins-head">
           <Reveal as="div">
             <span className="ins-eyebrow">Insights</span>
-            <h2 className="ins-heading">News &amp; Articles</h2>
+            <h2 className="section-heading ins-heading">News &amp; Articles</h2>
           </Reveal>
           <Reveal delay={0.05}>
             <a href="/insights" className="ins-all-link">

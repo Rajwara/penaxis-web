@@ -82,7 +82,7 @@ export default function ServicesShowcase() {
   return (
     <section className="ssh-section">
       <div className="ssh-head">
-        <h2>Four ways we help you grow</h2>
+        <h2 className="section-heading">Four ways we help you grow</h2>
         <p>Click a panel to see what it actually involves.</p>
       </div>
       <div className="ssh-layout">

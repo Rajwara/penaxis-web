@@ -39,7 +39,7 @@ export default function ConnectSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-white">
+    <section id="contact" className="py-20 md:py-28 bg-paper">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid lg:grid-cols-[1fr_1.15fr] rounded-[2rem] overflow-hidden border border-ink/5 shadow-[0_30px_60px_-25px_rgba(46,31,66,0.15)]">
           {/* Left — form card */}
@@ -50,7 +50,7 @@ export default function ConnectSection() {
               </span>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="font-display font-bold text-4xl md:text-5xl text-violet-900 mb-4">
+              <h2 className="section-heading font-display font-bold text-4xl md:text-5xl text-ink mb-4">
                 Let&apos;s Connect
               </h2>
             </Reveal>

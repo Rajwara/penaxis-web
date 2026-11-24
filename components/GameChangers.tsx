@@ -28,7 +28,7 @@ export default function GameChangers() {
           Meet the
         </Reveal>
         <Reveal>
-          <h2 className="gc-heading">Game Changers</h2>
+          <h2 className="section-heading gc-heading">Game Changers</h2>
         </Reveal>
         <Reveal delay={0.1}>
           <p className="gc-sub">
