@@ -5,7 +5,8 @@ import Reveal from "./Reveal";
 import { careers, contact } from "@/lib/data";
 import { submitForm } from "@/lib/submitForm";
 
-// /careers page: a banner, a list of open roles (rows that open in place) (condensed from the team's
+// /careers page: a banner, a list of open roles (each links to its own
+// /careers/[slug] page with an application form) (condensed from the team's
 // real LinkedIn postings — see lib/data.ts) each expandable for the full
 // requirements list, and a single shared application form below with a
 // role dropdown + resume upload. Submits via the same /api/contact
@@ -29,12 +30,6 @@ export default function CareersHub() {
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [error, setError] = useState("");
-  const [openRole, setOpenRole] = useState<string | null>(null);
-
-  const applyFor = (title: string) => {
-    setForm((f) => ({ ...f, role: title }));
-    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   const handleFileSelected = (selected: FileList | null) => {
     if (!selected || selected.length === 0) return;
@@ -95,23 +90,16 @@ export default function CareersHub() {
             </div>
             <p className="car-roles-note">
               These are the roles we&apos;re hiring for right now. Open a role to see the full
-              requirements, then apply with the form below.
+              details and apply for it directly.
             </p>
           </div>
 
           <ul className="car-list">
             {careers.map((role) => {
-              const isOpen = openRole === role.slug;
               const kind = role.type.split(" - ")[0];
               return (
-                <li key={role.slug} className={`car-row${isOpen ? " is-open" : ""}`}>
-                  <button
-                    type="button"
-                    className="car-row-head"
-                    onClick={() => setOpenRole(isOpen ? null : role.slug)}
-                    aria-expanded={isOpen}
-                    aria-controls={`role-${role.slug}`}
-                  >
+                <li key={role.slug} className="car-row">
+                  <a href={`/careers/${role.slug}`} className="car-row-head">
                     <span className="car-row-text">
                       <span className="car-row-title">{role.title}</span>
                       <span className="car-row-meta">
@@ -119,31 +107,12 @@ export default function CareersHub() {
                       </span>
                     </span>
                     <span className="car-row-cta">
-                      {isOpen ? "Close" : "View role"}
+                      View role
                       <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M7 17 17 7M8 7h9v9" />
                       </svg>
                     </span>
-                  </button>
-
-                  {isOpen && (
-                    <div className="car-row-body" id={`role-${role.slug}`}>
-                      <p className="car-row-summary">{role.summary}</p>
-                      <p className="car-row-type">{role.department} &middot; {role.type}</p>
-                      <ul className="car-row-reqs">
-                        {role.requirements.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                      {role.note && <p className="car-row-note">{role.note}</p>}
-                      <button type="button" className="car-row-apply" onClick={() => applyFor(role.title)}>
-                        Apply for this role
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
-                          <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </button>
-                    </div>
-                  )}
+                  </a>
                 </li>
               );
             })}
