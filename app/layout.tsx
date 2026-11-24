@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { allowIndexing } from "@/lib/indexing.mjs";
 // import CuboidLoader from "@/components/CuboidLoader"; // temporarily disabled per client request
 // import CookieConsent from "@/components/CookieConsent"; // temporarily disabled per client request
 import ScrollToTop from "@/components/ScrollToTop";
@@ -11,6 +12,10 @@ export const metadata: Metadata = {
   description:
     "Penaxis combines AI, software development, digital strategy, and sales expertise to help businesses operate smarter and grow faster.",
   metadataBase: new URL("https://www.penaxis.com"),
+  // noindex site-wide until ALLOW_INDEXING=true (see lib/indexing.mjs).
+  robots: allowIndexing
+    ? { index: true, follow: true }
+    : { index: false, follow: false, googleBot: { index: false, follow: false } },
   alternates: {
     canonical: "/",
   },

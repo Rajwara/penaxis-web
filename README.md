@@ -46,3 +46,22 @@ change.
   photo assets.
 - Replace the map in `Coverage.tsx` with a real world-map SVG/GeoJSON if
   you want geographic accuracy beyond the stylized dot layout.
+
+## Deploy on Vercel
+
+1. Vercel → **Add New… → Project** → import `Rajwara/penaxis-web`.
+   Framework is auto-detected as Next.js; keep the default build settings.
+2. **Environment Variables** (Settings → Environment Variables), from `.env.example`:
+   `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `CONTACT_TO_EMAIL`.
+3. Deploy.
+
+## Search-engine indexing (currently OFF)
+
+The site is **noindexed** by default: every response carries
+`X-Robots-Tag: noindex, nofollow` and every page has a
+`<meta name="robots" content="noindex, nofollow">` tag. The sitemap is not
+advertised in `robots.txt`.
+
+To allow Google later: add `ALLOW_INDEXING` = `true` in Vercel's
+Environment Variables (Production only) and redeploy. The switch lives in
+`lib/indexing.mjs`.
