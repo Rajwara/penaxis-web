@@ -122,9 +122,9 @@ export default function Navbar() {
   };
 
   const isDark = theme === "dark";
-  const capsuleSurface = isDark
-    ? "bg-ink/70 border-white/10 text-paper"
-    : "bg-paper/80 border-ink/10 text-ink";
+  // Frosted-glass capsules: translucent tint + backdrop blur/saturation so the
+  // page shows through softly (see .nav-glass in globals.css).
+  const capsuleSurface = isDark ? "nav-glass nav-glass--dark text-paper" : "nav-glass nav-glass--light text-ink";
 
   const RING_R = 19;
   const RING_C = 2 * Math.PI * RING_R;
@@ -137,7 +137,7 @@ export default function Navbar() {
           {/* LEFT CAPSULE */}
           <nav
             aria-label="Primary"
-            className={`relative pointer-events-auto flex items-center gap-1 rounded-full border backdrop-blur-md px-2 py-2 transition-colors duration-500 ${capsuleSurface}`}
+            className={`relative pointer-events-auto flex items-center gap-1 rounded-full px-2 py-2 transition-colors duration-500 ${capsuleSurface}`}
           >
             {navLeft.map((item, i) =>
               item.href ? (
@@ -231,7 +231,7 @@ export default function Navbar() {
             type="button"
             onClick={scrollToTop}
             aria-label="Penaxis home"
-            className={`pointer-events-auto relative flex items-center justify-center rounded-full border backdrop-blur-md transition-all duration-500 ease-out overflow-hidden ${capsuleSurface} ${
+            className={`pointer-events-auto relative flex items-center justify-center rounded-full transition-all duration-500 ease-out overflow-hidden ${capsuleSurface} ${
               scrolled ? "w-14 h-14" : "w-[168px] h-14"
             }`}
           >
@@ -292,7 +292,7 @@ export default function Navbar() {
 
           {/* RIGHT CAPSULE */}
           <div
-            className={`pointer-events-auto flex items-center gap-1 rounded-full border backdrop-blur-md px-2 py-2 transition-colors duration-500 ${capsuleSurface}`}
+            className={`pointer-events-auto flex items-center gap-1 rounded-full px-2 py-2 transition-colors duration-500 ${capsuleSurface}`}
           >
             {navRight.map((item, i) => (
               <div
@@ -350,7 +350,7 @@ export default function Navbar() {
             type="button"
             onClick={scrollToTop}
             aria-label="Penaxis home"
-            className={`flex items-center justify-center rounded-full border backdrop-blur-md w-12 h-12 transition-colors duration-500 ${capsuleSurface}`}
+            className={`flex items-center justify-center rounded-full w-12 h-12 transition-colors duration-500 ${capsuleSurface}`}
           >
             <span className="relative flex items-center justify-center w-7 h-7">
               {scrolled && (
@@ -373,7 +373,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
             aria-expanded={mobileOpen}
-            className={`flex items-center justify-center rounded-full border backdrop-blur-md w-12 h-12 transition-colors duration-500 ${capsuleSurface}`}
+            className={`flex items-center justify-center rounded-full w-12 h-12 transition-colors duration-500 ${capsuleSurface}`}
           >
             <span className="flex flex-col gap-[5px]">
               <span className="block w-5 h-[1.5px] bg-current" />
