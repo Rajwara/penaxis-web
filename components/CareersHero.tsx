@@ -42,7 +42,9 @@ export default function CareersHero() {
             <span className="crh-line">
               Career
               <span className="crh-tile" aria-hidden="true">
-                <ArrowIcon />
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17 17 7M8 7h9v9" />
+                </svg>
               </span>
               <span className="crh-muted">Move</span>
             </span>

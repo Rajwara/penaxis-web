@@ -10884,3 +10884,15 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 .job-page .hv2-btn--outline:hover { color: #fff; border-color: var(--job-accent); }
 .job-page .job-submit { margin-top: 8px; }
 .job-page .job-apply-done p { font-size: 16px; color: #444; }
+/* Careers hero: line with the purple tile is laid out as a centred row so
+   the tile sits level with the capitals and matches their height. */
+.car-page .crh-title .crh-line:has(.crh-tile) { display: flex; justify-content: center; align-items: center; gap: 0.14em; }
+.car-page .crh-tile {
+  width: 0.95em; height: 0.74em; margin: 0;
+  border-radius: 0.14em;
+  vertical-align: baseline;
+  transform: translateY(-0.05em); /* Big Shoulders capitals sit slightly above the centre of the line box */
+}
+.car-page .crh-tile svg { width: 48%; height: 48%; }
+.car-page .crh-tile { height: 0.8em; transform: translateY(-0.02em); }
+.car-page .crh-tile svg { width: 52%; height: 52%; }
