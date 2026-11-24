@@ -3,11 +3,8 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { services } from "@/lib/data";
 // Same fonts as the supplied section (self-hosted, used only here).
-import "@fontsource/big-shoulders/500.css";
-import "@fontsource/big-shoulders/600.css";
-import "@fontsource/wix-madefor-display/400.css";
-import "@fontsource/wix-madefor-display/500.css";
-import "@fontsource/wix-madefor-display/600.css";
+import "@fontsource-variable/big-shoulders/opsz.css";
+import "@fontsource-variable/wix-madefor-display/index.css";
 
 // /home-v2 services list. Ported from a client-supplied "Creative Portfolio"
 // section (static HTML/CSS/JS) and filled with Penaxis's real services data:

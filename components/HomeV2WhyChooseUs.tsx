@@ -1,14 +1,10 @@
 import Reveal from "./Reveal";
+import HomeV2TestimonialCard from "./HomeV2TestimonialCard";
 
 // /home-v2 "Why Choose Us": side label + heading/intro/CTA on top, then a
-// row of three cards — a headline stat, a photo card, and a client quote.
+// row of three cards — a headline stat, a photo card, and auto-sliding
+// client testimonials.
 // Copy comes from Penaxis's real stats, whyUs points and testimonials.
-
-const CLIENTS = [
-  { src: "/images/team/zohaib-khalid.webp" },
-  { src: "/images/team/malih.webp" },
-  { src: "/images/team/amar-jeet.webp" },
-];
 
 function ArrowIcon() {
   return (
@@ -76,29 +72,9 @@ export default function HomeV2WhyChooseUs() {
             </div>
           </Reveal>
 
-          {/* 3 — client quote */}
+          {/* 3 — auto-sliding client testimonials */}
           <Reveal delay={0.16} className="hv2-card hv2-card--quote">
-            <div className="hv2-quote-head">
-              <div className="hv2-avatars hv2-avatars--sm" aria-hidden="true">
-                {CLIENTS.map((c) => (
-                  <img key={c.src} src={c.src} alt="" />
-                ))}
-              </div>
-              <span className="hv2-quote-stat">12+ industries</span>
-            </div>
-            <p className="hv2-quote-trust">Trusted by founders and teams across 10+ markets</p>
-
-            <blockquote className="hv2-quote-text">
-              &ldquo;Penaxis has been a great extension of our team. They&apos;ve supported us with
-              software development when we needed extra resources.&rdquo;
-            </blockquote>
-            <div className="hv2-quote-author">
-              <img src="/images/team/malih.webp" alt="" />
-              <div>
-                <div className="hv2-quote-name">Rohail Malih</div>
-                <div className="hv2-quote-role">CTO, Oktabytes</div>
-              </div>
-            </div>
+            <HomeV2TestimonialCard />
           </Reveal>
         </div>
       </div>
