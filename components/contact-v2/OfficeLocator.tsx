@@ -1,8 +1,8 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { OFFICES, typeLabels, type OfficeType } from "./offices";
+import { useCallback, useRef, useState } from "react";
+import { OFFICES } from "./offices";
 import s from "./locator.module.css";
 // Same fonts as the supplied store-locator section (self-hosted, used only here).
 import "@fontsource-variable/big-shoulders/opsz.css";
@@ -25,14 +25,10 @@ const OfficeMap = dynamic(() => import("./OfficeMap"), {
 });
 
 export default function OfficeLocator() {
-  const [type, setType] = useState<"all" | OfficeType>("all");
-  const [selected, setSelected] = useState<string | null>(null);
+  // Tabs pick an office; the map zooms to it and opens its card. Lahore
+  // (head office) is selected to start with.
+  const [selected, setSelected] = useState<string | null>(OFFICES[0]?.id ?? null);
   const mapTop = useRef<HTMLDivElement>(null);
-
-  const list = useMemo(() => OFFICES.filter((o) => type === "all" || o.type === type), [type]);
-  useEffect(() => {
-    if (selected && !list.some((o) => o.id === selected)) setSelected(null);
-  }, [list, selected]);
 
   const select = useCallback((id: string | null) => setSelected(id), []);
 
@@ -47,21 +43,22 @@ export default function OfficeLocator() {
       </div>
 
       <div className={s.mapWrap} ref={mapTop}>
-        <form className={s.filterBar} data-filter-bar onSubmit={(e) => e.preventDefault()} aria-label="Filter offices">
-          <label className={s.select}>
-            <span className="sr-only">Office type</span>
-            <select value={type} onChange={(e) => setType(e.target.value as typeof type)}>
-              <option value="all">All offices</option>
-              <option value="head">{typeLabels.head}</option>
-              <option value="regional">{typeLabels.regional}</option>
-            </select>
-          </label>
-          <span className={s.count} aria-live="polite">
-            {list.length} {list.length === 1 ? "office" : "offices"}
-          </span>
-        </form>
+        <div className={s.filterBar} data-filter-bar role="tablist" aria-label="Choose an office">
+          {OFFICES.map((o) => (
+            <button
+              key={o.id}
+              type="button"
+              role="tab"
+              aria-selected={selected === o.id}
+              className={`${s.tab} ${selected === o.id ? s.tabOn : ""}`}
+              onClick={() => setSelected(o.id)}
+            >
+              {o.name}
+            </button>
+          ))}
+        </div>
 
-        <OfficeMap offices={list} selected={selected} onSelect={select} />
+        <OfficeMap offices={OFFICES} selected={selected} onSelect={select} />
       </div>
 
     </section>

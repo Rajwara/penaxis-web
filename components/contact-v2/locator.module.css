@@ -152,3 +152,15 @@
 .storeOn { border-color: #6A449A; box-shadow: 0 0 0 1px #6A449A; }
 .storePhone:hover, .storeEmail:hover { border-color: #6A449A; color: #6A449A; }
 .map :global(.leaflet-control-attribution a) { color: #444; }
+
+/* Office tabs (replace the dropdown + count) */
+.tab {
+  height: 40px; padding: 0 20px; border: 1px solid transparent; border-radius: 999px;
+  font: 500 18px/1 var(--display); letter-spacing: -.02em; text-transform: uppercase; color: #000; white-space: nowrap;
+  transition: background-color .25s, color .25s, border-color .25s;
+}
+.tab:hover { border-color: #6A449A; color: #6A449A; }
+.tabOn, .tabOn:hover { background: #000; border-color: #000; color: #fff; }
+.page .tab { font: 500 18px/1 var(--display); letter-spacing: -.02em; text-transform: uppercase; color: #000; background: transparent; }
+.page .tab:hover { color: #6A449A; }
+.page .tabOn, .page .tabOn:hover { background: #000; border-color: #000; color: #fff; }
