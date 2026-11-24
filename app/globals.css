@@ -10960,3 +10960,5 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 /* /blog: banner sits above the content shell, page background continues */
 .cb-section:has(+ .fwb--after-banner) { background: #F8F8F8; }
 .fwb.fwb--after-banner { padding-top: 0; }
+/* Contact banner photo: keep the person in frame on narrow screens */
+.cb-bg[src*="contact-us-banner"] { object-position: 72% 50%; }

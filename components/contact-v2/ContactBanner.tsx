@@ -15,9 +15,9 @@ const BG_IMAGE = "/images/hero/contact-banner.webp"; // supplied banner artwork
 
 // Reusable: the Contact page uses the defaults; other pages (e.g. /blog)
 // pass their own label, title, optional intro line and image.
-type Props = { label?: string; title?: string; intro?: string; image?: string };
+type Props = { label?: string; title?: string; intro?: string; image?: string; shade?: number };
 
-export default function ContactBanner({ label = "Contact", title = "Get in touch", intro, image = BG_IMAGE }: Props) {
+export default function ContactBanner({ label = "Contact", title = "Get in touch", intro, image = BG_IMAGE, shade }: Props) {
   const TITLE = title;
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -67,7 +67,7 @@ export default function ContactBanner({ label = "Contact", title = "Get in touch
     <section ref={sectionRef} className={`cb-section${jsReady ? " cb-js" : ""}${loaded ? " is-loaded" : ""}`}>
       <div className="cb-card" data-nav-theme="dark">
         <img ref={imgRef} className="cb-bg" src={image} alt="" />
-        <div className="cb-shade" aria-hidden="true" />
+        <div className="cb-shade" aria-hidden="true" style={shade !== undefined ? { background: `rgba(0, 0, 0, ${shade})` } : undefined} />
 
         <div className="cb-content">
           <div className="cb-sub">
