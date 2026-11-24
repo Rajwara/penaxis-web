@@ -2,13 +2,19 @@
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import { services } from "@/lib/data";
+// Same fonts as the supplied section (self-hosted, used only here).
+import "@fontsource/big-shoulders/500.css";
+import "@fontsource/big-shoulders/600.css";
+import "@fontsource/wix-madefor-display/400.css";
+import "@fontsource/wix-madefor-display/500.css";
+import "@fontsource/wix-madefor-display/600.css";
 
 // /home-v2 services list. Ported from a client-supplied "Creative Portfolio"
 // section (static HTML/CSS/JS) and filled with Penaxis's real services data:
 // dark inset panel, animated eyebrow + top rule, letter-by-letter heading
 // reveal, and a list of rows where the hovered row "opens" its image,
-// brightens its number and fills its arrow. Restyled to the site standard
-// (Inter Tight, #FC6607 accent, 50px/600 section heading).
+// brightens its number and fills its arrow.
+// Fonts, font sizes and colours match the supplied section exactly.
 
 const HEADING = "Services Built For Growth";
 
@@ -108,7 +114,7 @@ export default function HomeV2Services() {
 
           {/* Heading + description */}
           <div className="hv2s-head">
-            <h2 id="hv2s-title" className="section-heading hv2s-heading" data-anim aria-label={HEADING}>
+            <h2 id="hv2s-title" className="hv2s-heading" data-anim aria-label={HEADING}>
               {HEADING.split(" ").map((word, w) => (
                 <Fragment key={w}>
                   {w > 0 && " "}
