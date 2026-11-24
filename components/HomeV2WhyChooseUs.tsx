@@ -20,12 +20,12 @@ export default function HomeV2WhyChooseUs() {
       <div className="hv2-why-inner">
         <div className="hv2-why-top">
           <Reveal>
-            <p className="hv2-why-label">/ Why Choose Us</p>
+            <p className="hv2-why-label">Why Choose Us</p>
           </Reveal>
 
           <div className="hv2-why-intro">
             <Reveal delay={0.05}>
-              <h2 id="hv2-why-title" className="section-heading hv2-why-heading">
+              <h2 id="hv2-why-title" className="hv2-why-heading">
                 We Help Businesses Grow With Clarity And Build What Comes Next
               </h2>
             </Reveal>

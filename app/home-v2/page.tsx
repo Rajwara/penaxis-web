@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+// The whole page uses the services section's type system: Big Shoulders
+// (headings) + Wix Madefor Display (body). See .hv2-page in globals.css.
+import "@fontsource-variable/big-shoulders/opsz.css";
+import "@fontsource-variable/wix-madefor-display/index.css";
 import VideoBanner from "@/components/VideoBanner";
 import HomeV2Logos from "@/components/HomeV2Logos";
 import HomeV2WhyChooseUs from "@/components/HomeV2WhyChooseUs";
@@ -25,7 +29,7 @@ export default function HomeV2() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="hv2-page">
         <VideoBanner />
         <HomeV2Logos />
         <HomeV2WhyChooseUs />
