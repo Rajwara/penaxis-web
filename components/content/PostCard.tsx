@@ -20,28 +20,42 @@ export function Avatar({ large, className = "" }: { large?: boolean; className?:
   );
 }
 
+// Blog card in the /home-v2 look: white rounded card, inset image that
+// zooms on hover, purple "CATEGORY · READ TIME" line, Big Shoulders
+// uppercase title, 2-line excerpt, and a footer with author/date and a
+// round arrow that fills purple on hover. The whole card is one link.
 export default function PostCard({ post, author }: { post: PostSummary; author: string }) {
   const href = `/blog/${post.slug}`;
   return (
-    <article className="post-card" data-category={post.category}>
-      <Link className="post-media" href={href} tabIndex={-1} aria-hidden="true">
+    <article className="pc" data-category={post.category}>
+      <div className="pc-media">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={post.image} alt="" loading="lazy" />
-        <span className="post-tag">{post.category}</span>
-      </Link>
-      <div className="post-body">
-        <h3>
-          <Link href={href}>{post.title}</Link>
+      </div>
+      <div className="pc-body">
+        <p className="pc-meta">
+          <span>{post.category}</span>
+          <span className="pc-dot" aria-hidden="true" />
+          <span>{post.readTime}</span>
+        </p>
+        <h3 className="pc-title">
+          <Link href={href} className="pc-link">
+            {post.title}
+          </Link>
         </h3>
-        <p>{post.excerpt}</p>
-        <div className="post-foot-rule" />
-        <div className="post-foot">
-          <div className="author">
+        <p className="pc-excerpt">{post.excerpt}</p>
+        <div className="pc-foot">
+          <div className="pc-author">
             <Avatar />
-            <span className="author-name">{author}</span>
+            <span>
+              <span className="pc-author-name">{author}</span>
+              <span className="pc-date">{post.date}</span>
+            </span>
           </div>
-          <span className="post-meta">
-            {post.date} &bull; {post.readTime}
+          <span className="pc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M7 17 17 7M8 7h9v9" />
+            </svg>
           </span>
         </div>
       </div>
