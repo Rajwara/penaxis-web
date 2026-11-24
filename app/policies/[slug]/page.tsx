@@ -45,34 +45,6 @@ const ICONS: Record<PolicyIcon, React.ReactNode> = {
 const PHONE_HREF = `tel:${contact.phone.replace(/[^+\d]/g, "")}`;
 const EMAIL_HREF = `mailto:${contact.email}`;
 
-const arrow = (
-  <span className="ico">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M4 12h16M14 6l6 6-6 6" />
-    </svg>
-  </span>
-);
-const Btn = ({ href, label, light }: { href: string; label: string; light?: boolean }) => {
-  const inner = (
-    <>
-      <span className="roll">
-        <span data-t={label}>{label}</span>
-      </span>
-      {arrow}
-    </>
-  );
-  const cls = light ? "pol-btn light" : "pol-btn";
-  return href.startsWith("/") ? (
-    <Link className={cls} href={href}>
-      {inner}
-    </Link>
-  ) : (
-    <a className={cls} href={href}>
-      {inner}
-    </a>
-  );
-};
-
 const date = (iso: string) => new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 function Runs({ parts }: { parts: Inline[] }) {
@@ -186,21 +158,6 @@ export default function PolicyPage({ params }: Props) {
                 ))}
               </article>
             </div>
-
-            <section className="pol-cta">
-              <div className="pol-container pol-cta-row">
-                <div>
-                  <span className="pol-label">Still have a question?</span>
-                  <h2>We&apos;re Here To Help</h2>
-                  <p>Send us a message through our contact page, email the team, or give us a call.</p>
-                </div>
-                <div className="pol-cta-btns">
-                  <Btn href="/contact-us" label="Contact us" light />
-                  <Btn href={EMAIL_HREF} label="Email us" light />
-                  <Btn href={PHONE_HREF} label="Call us" light />
-                </div>
-              </div>
-            </section>
           </div>
         </ContentShell>
       </main>
