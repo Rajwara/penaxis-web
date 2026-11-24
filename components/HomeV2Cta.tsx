@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { contact } from "@/lib/data";
 import { submitForm } from "@/lib/submitForm";
+import PillButton from "./PillButton";
 // Same fonts as the supplied section (self-hosted, used only here).
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
@@ -20,14 +21,6 @@ const SPREAD = 5;
 const MARQUEE_SPEED = 55; // px per second (from the zip)
 const MARQUEE_COPIES = 8; // ~9,000px of text: covers 2x even ultra-wide screens
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
-
-function Arrow() {
-  return (
-    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-      <path d="M18.256 23.076l-0.944-0.959 5.451-5.451h-16.097v-1.333h16.097l-5.451-5.451 0.944-0.959 7.077 7.077-7.077 7.077z" />
-    </svg>
-  );
-}
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -234,19 +227,7 @@ export default function HomeV2Cta() {
                       {/* Honeypot — hidden from people, filled by bots */}
                       <input className="hv2q-hp" type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.company_website} onChange={update("company_website")} />
 
-                      <button type="submit" className="hv2q-button" disabled={status === "sending"}>
-                        <span className="hv2q-button-fill" />
-                        <span className="hv2q-button-clip">
-                          <span className="hv2q-button-inner">
-                            <span>{btnLabel}</span>
-                            <span className="hv2q-button-icon"><Arrow /></span>
-                          </span>
-                          <span className="hv2q-button-inner is-hover" aria-hidden="true">
-                            <span>{btnLabel}</span>
-                            <span className="hv2q-button-icon"><Arrow /></span>
-                          </span>
-                        </span>
-                      </button>
+                      <PillButton type="submit" label={btnLabel} variant="light" block disabled={status === "sending"} />
                     </form>
                   ) : (
                     <div className="hv2q-success" role="status">

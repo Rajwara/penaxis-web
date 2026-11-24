@@ -1,18 +1,11 @@
 import Reveal from "./Reveal";
+import PillButton from "./PillButton";
 import HomeV2TestimonialCard from "./HomeV2TestimonialCard";
 
 // /home-v2 "Why Choose Us": side label + heading/intro/CTA on top, then a
 // row of three cards — a headline stat, a photo card, and auto-sliding
 // client testimonials.
 // Copy comes from Penaxis's real stats, whyUs points and testimonials.
-
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M7 17 17 7M8 7h9v9" />
-    </svg>
-  );
-}
 
 export default function HomeV2WhyChooseUs() {
   return (
@@ -38,12 +31,7 @@ export default function HomeV2WhyChooseUs() {
               </p>
             </Reveal>
             <Reveal delay={0.15}>
-              <a href="/who-we-are" className="hv2-btn">
-                Our Approach
-                <span className="hv2-btn-icon">
-                  <ArrowIcon />
-                </span>
-              </a>
+              <PillButton href="/who-we-are" label="Our Approach" />
             </Reveal>
           </div>
         </div>

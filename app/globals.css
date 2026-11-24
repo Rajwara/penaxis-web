@@ -9841,3 +9841,30 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
   .hv2-logo-pill { width: 160px; height: 66px; padding: 0.75rem 1.1rem; }
   .hv2-page .hv2-logos-proof p { font-size: 1rem; }
 }
+
+/* ==================================================================
+   PillButton variants — the "Our Approach" button in dark / light /
+   outline (components/PillButton.tsx). Base look: .hv2-btn above.
+   ================================================================== */
+.hv2-btn { border: 1px solid transparent; cursor: pointer; white-space: nowrap; text-decoration: none; }
+.hv2-btn:disabled { opacity: 0.7; cursor: wait; }
+.hv2-btn--block { display: flex; width: 100%; justify-content: space-between; }
+/* Light: white pill, black circle with white arrow (for dark backgrounds) */
+.hv2-btn--light { background: #fff; color: #000; }
+.hv2-btn--light .hv2-btn-icon { background: #222222; color: #fff; }
+.hv2-btn--light:hover { background: #f0f0f0; }
+/* Outline: transparent pill, border + circle in the current text colour */
+.hv2-btn--outline { background: transparent; color: inherit; border-color: currentColor; }
+.hv2-btn--outline .hv2-btn-icon { background: currentColor; }
+.hv2-btn--outline .hv2-btn-icon svg { color: #fff; }
+
+/* /home-v2: purple accents — arrow in the circle, purple fill on hover */
+.hv2-page .hv2-btn--light .hv2-btn-icon { background: #222222; color: #fff; }
+.hv2-page .hv2-btn--light:hover { background: var(--pf-red); color: #fff; }
+.hv2-page .hv2-btn--light:hover .hv2-btn-icon { background: #fff; color: var(--pf-red); }
+
+/* /home-v3: keep it to #F8F8F8 / #222222 */
+.hv3-page .hv2-btn--light { background: #F8F8F8; color: #222222; }
+.hv3-page .hv2-btn--light .hv2-btn-icon { background: #222222; color: #F8F8F8; }
+.hv3-page .hv2-btn--light:hover { background: #F8F8F8; color: #222222; border-color: #F8F8F8; }
+.hv3-page .hv2-btn--light:hover .hv2-btn-icon { background: #222222; color: #F8F8F8; }

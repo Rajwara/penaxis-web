@@ -2,6 +2,7 @@
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import { services } from "@/lib/data";
+import PillButton from "./PillButton";
 // Same fonts as the supplied section (self-hosted, used only here).
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
@@ -79,18 +80,7 @@ export default function HomeV2Services() {
               </span>
             </div>
 
-            <a href="/services" className="hv2s-link">
-              <span className="hv2s-link-clip">
-                <span className="hv2s-link-inner">
-                  View all services
-                  <Arrow className="hv2s-link-icon" />
-                </span>
-                <span className="hv2s-link-inner is-hover" aria-hidden="true">
-                  View all services
-                  <Arrow className="hv2s-link-icon" />
-                </span>
-              </span>
-            </a>
+            <PillButton href="/services" label="View all services" variant="light" />
 
             <div className="hv2s-top-line" data-anim aria-hidden="true" />
           </div>
