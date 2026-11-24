@@ -1,10 +1,8 @@
 /**
  * FAQ for /faq (the content-pages FAQ design), grouped by topic.
  *
- * Questions, answers and images are copied word for word from the FAQS list
- * in components/FAQsPageAccordion.tsx (the live /faqs page); that list is a
- * const inside a client component, so it can't be imported here. If an
- * answer changes there, change it here too. Topics group the original
+ * Questions, answers and images were copied word for word from the original
+ * /faqs page; this file is now the only source for the FAQs. Topics group the original
  * per-question tags (noted on each item). Items whose original link was
  * /contact-us have no link here: the page's contact panel covers them.
  * `image` is shown, tilted, beside the list while a question is hovered or open.

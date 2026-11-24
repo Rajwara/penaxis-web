@@ -3,7 +3,7 @@ import { services, caseStudies, insights, industries, slugify } from "@/lib/data
 
 const BASE_URL = "https://www.penaxis.com";
 
-// /home-v2, /home-v3, /faq (work in progress) and /testing are noindex via their own
+// /home-v2, /home-v3 (work in progress) and /testing are noindex via their own
 // metadata), so they're intentionally left out of here too.
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/case-studies`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE_URL}/careers`, changeFrequency: "weekly", priority: 0.6 },
     { url: `${BASE_URL}/contact-us`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${BASE_URL}/faqs`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/faq`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/game-changers`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/industries`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },

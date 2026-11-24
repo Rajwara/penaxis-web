@@ -12,12 +12,12 @@ import "@/components/content/home-v2-theme.css";
 
 // /faq: the content-pages FAQ design (photo banner, topic tabs, numbered
 // rows that blur on hover with a tilted photo, click to open, contact
-// panel) with the Penaxis FAQs from lib/faq.ts. Work in progress, kept out
-// of search; the live FAQ page is still /faqs.
+// panel) with the Penaxis FAQs from lib/faq.ts. The site's main FAQ page;
+// the old /faqs address redirects here.
 export const metadata: Metadata = {
   title: "FAQs - Penaxis",
   description: "Answers to common questions about working with Penaxis: getting started, our services, how we work, pricing and ownership.",
-  robots: { index: false, follow: false },
+  alternates: { canonical: "/faq" },
 };
 
 const PHONE_HREF = `tel:${contact.phone.replace(/[^+\d]/g, "")}`;
