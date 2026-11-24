@@ -10896,3 +10896,14 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 .car-page .crh-tile svg { width: 48%; height: 48%; }
 .car-page .crh-tile { height: 0.8em; transform: translateY(-0.02em); }
 .car-page .crh-tile svg { width: 52%; height: 52%; }
+/* Careers hero photo (portrait): keep the face in view above the stat cards */
+.crh-photo-img { object-position: 50% 18%; }
+@media (max-width: 560px) {
+  .crh-photo { min-height: 34rem; }
+  .crh-photo-img { object-position: 50% 8%; }
+  .crh-stats { grid-template-columns: 1fr 1fr; left: 0.6rem; right: 0.6rem; bottom: 0.6rem; gap: 0.5rem; }
+  .crh-stat { padding: 0.75rem; }
+  .car-page .crh-stat-value { font-size: 34px; }
+  .crh-stat-label { font-size: 12px; }
+  .crh-stat-chip { margin-top: 0.5rem; padding: 0.25rem 0.45rem; font-size: 11px; }
+}

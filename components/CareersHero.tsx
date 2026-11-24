@@ -92,7 +92,7 @@ export default function CareersHero() {
           {/* Photo card with stats */}
           <Reveal delay={0.1} className="crh-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="crh-photo-img" src="/images/who-we-are/team-photo.webp" alt="The Penaxis team" />
+            <img className="crh-photo-img" src="/images/hero/careers-hero.webp" alt="Sitara from the Penaxis team" />
             <div className="crh-stats">
               <div className="crh-stat">
                 <div className="crh-stat-value">
