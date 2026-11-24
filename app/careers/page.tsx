@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import CareersHero from "@/components/CareersHero";
 import CareersHub from "@/components/CareersHub";
 import Footer from "@/components/Footer";
 
@@ -16,6 +17,7 @@ export default function CareersPage() {
     <>
       <Navbar />
       <main>
+        <CareersHero />
         <CareersHub />
       </main>
       <Footer />

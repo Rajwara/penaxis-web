@@ -5,7 +5,7 @@ import Reveal from "./Reveal";
 import { careers, contact } from "@/lib/data";
 import { submitForm } from "@/lib/submitForm";
 
-// /careers page: a banner, 4 open-role cards (condensed from the team's
+// /careers page: a banner, a list of open roles (rows that open in place) (condensed from the team's
 // real LinkedIn postings — see lib/data.ts) each expandable for the full
 // requirements list, and a single shared application form below with a
 // role dropdown + resume upload. Submits via the same /api/contact
@@ -76,7 +76,7 @@ export default function CareersHub() {
         <div className="mx-auto max-w-7xl px-6">
           <Reveal>
             <span className="car-eyebrow">Careers</span>
-            <h1 className="car-heading">Help us build what&apos;s next</h1>
+            <h2 className="car-heading">Help us build what&apos;s next</h2>
             <p className="car-intro">
               We&apos;re a small, hands-on team across Pakistan, the UAE, and beyond - building
               AI-powered products, software, and growth systems for real clients. Here&apos;s
@@ -86,55 +86,68 @@ export default function CareersHub() {
         </div>
       </section>
 
-      <section className="car-roles">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="car-grid">
-            {careers.map((role, i) => {
+      <section id="open-roles" className="car-roles car-roles--list" aria-labelledby="car-roles-title">
+        <div className="car-roles-inner" data-nav-theme="dark">
+          <div className="car-roles-head">
+            <div>
+              <span className="car-roles-pill">Open roles</span>
+              <h2 id="car-roles-title" className="car-roles-title">Open roles</h2>
+            </div>
+            <p className="car-roles-note">
+              These are the roles we&apos;re hiring for right now. Open a role to see the full
+              requirements, then apply with the form below.
+            </p>
+          </div>
+
+          <ul className="car-list">
+            {careers.map((role) => {
               const isOpen = openRole === role.slug;
+              const kind = role.type.split(" - ")[0];
               return (
-                <Reveal key={role.slug} y={16} delay={0.05 + i * 0.06}>
-                  <div className="car-card">
-                    <div className="car-card-tags">
-                      <span className="car-card-tag">{role.department}</span>
-                      <span className="car-card-tag">{role.location}</span>
-                      <span className="car-card-tag">{role.experience}</span>
-                    </div>
-                    <h3 className="car-card-title">{role.title}</h3>
-                    <p className="car-card-meta">{role.type}</p>
-                    <p className="car-card-summary">{role.summary}</p>
+                <li key={role.slug} className={`car-row${isOpen ? " is-open" : ""}`}>
+                  <button
+                    type="button"
+                    className="car-row-head"
+                    onClick={() => setOpenRole(isOpen ? null : role.slug)}
+                    aria-expanded={isOpen}
+                    aria-controls={`role-${role.slug}`}
+                  >
+                    <span className="car-row-text">
+                      <span className="car-row-title">{role.title}</span>
+                      <span className="car-row-meta">
+                        {role.location} &middot; {kind} &middot; {role.experience}
+                      </span>
+                    </span>
+                    <span className="car-row-cta">
+                      {isOpen ? "Close" : "View role"}
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M7 17 17 7M8 7h9v9" />
+                      </svg>
+                    </span>
+                  </button>
 
-                    {isOpen && (
-                      <div className="car-card-details">
-                        <ul className="car-card-requirements">
-                          {role.requirements.map((item) => (
-                            <li key={item}>{item}</li>
-                          ))}
-                        </ul>
-                        {role.note && <p className="car-card-note">{role.note}</p>}
-                      </div>
-                    )}
-
-                    <div className="car-card-actions">
-                      <button
-                        type="button"
-                        className="car-details-toggle"
-                        onClick={() => setOpenRole(isOpen ? null : role.slug)}
-                        aria-expanded={isOpen}
-                      >
-                        {isOpen ? "Show less" : "View full role"}
-                      </button>
-                      <button type="button" className="car-apply-btn" onClick={() => applyFor(role.title)}>
-                        Apply
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4">
+                  {isOpen && (
+                    <div className="car-row-body" id={`role-${role.slug}`}>
+                      <p className="car-row-summary">{role.summary}</p>
+                      <p className="car-row-type">{role.department} &middot; {role.type}</p>
+                      <ul className="car-row-reqs">
+                        {role.requirements.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                      {role.note && <p className="car-row-note">{role.note}</p>}
+                      <button type="button" className="car-row-apply" onClick={() => applyFor(role.title)}>
+                        Apply for this role
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
                           <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </button>
                     </div>
-                  </div>
-                </Reveal>
+                  )}
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
       </section>
 
