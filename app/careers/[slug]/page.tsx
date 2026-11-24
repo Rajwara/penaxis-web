@@ -78,8 +78,21 @@ export default function JobPage({ params }: { params: { slug: string } }) {
               <div className="job-content">
                 <section>
                   <h2>About the role</h2>
-                  <p>{role.summary}</p>
+                  <p className="job-lead">{role.summary}</p>
+                  {role.about?.map((para) => (
+                    <p key={para}>{para}</p>
+                  ))}
                 </section>
+                {role.responsibilities && (
+                  <section>
+                    <h2>What you&apos;ll do</h2>
+                    <ul>
+                      {role.responsibilities.map((r) => (
+                        <li key={r}>{r}</li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
                 <section>
                   <h2>Requirements</h2>
                   <ul>
@@ -94,6 +107,22 @@ export default function JobPage({ params }: { params: { slug: string } }) {
                     <ul>
                       {nice.map((r) => (
                         <li key={r}>{r}</li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+                {role.success && (
+                  <section>
+                    <h2>What success looks like</h2>
+                    <p>{role.success}</p>
+                  </section>
+                )}
+                {role.offer && (
+                  <section>
+                    <h2>What we offer</h2>
+                    <ul>
+                      {role.offer.map((o) => (
+                        <li key={o}>{o}</li>
                       ))}
                     </ul>
                   </section>

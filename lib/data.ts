@@ -1285,7 +1285,10 @@ export const offices = [
 
 // Careers — real current openings, condensed from the postings the team
 // runs on LinkedIn (salary figures intentionally left out; candidates state
-// their own expectations when applying instead).
+// their own expectations when applying instead). The longer `about`,
+// `responsibilities`, `success` and `offer` fields are drafts written from
+// those postings and the site's own content (no invented pay or perks) -
+// review and edit before going live.
 export const careers = [
   {
     slug: "graphic-motion-designer",
@@ -1295,6 +1298,25 @@ export const careers = [
     type: "Full-time, on-site",
     experience: "3+ years",
     summary: "A creative, detail-oriented designer who can bring strong visual ideas to life through both graphic design and motion.",
+    about: [
+      "You'll be the visual voice behind Penaxis and the brands we build for. From social campaigns and pitch decks to product launches and short-form video, you'll turn ideas into polished static and motion work that looks as good on a phone screen as it does on a billboard.",
+      "You'll work closely with our creative, marketing and growth teams, taking briefs from first concept through to final delivery, and you'll have room to experiment with AI-powered creative tools to move faster without lowering the bar.",
+    ],
+    responsibilities: [
+      "Design social media creatives, ad sets, presentations and brand assets for Penaxis and client accounts",
+      "Produce motion graphics and short-form video - reels, product explainers, animated ads and launch content",
+      "Turn rough briefs into clear visual concepts, then refine them through feedback rounds",
+      "Keep brand systems consistent across every channel and format",
+      "Use AI-powered creative tools where they speed up ideation and production",
+      "Manage your own timelines across several projects at once and hand over clean, organised files",
+    ],
+    success: "In your first few months you'll have taken ownership of our day-to-day design and motion output, built a library of on-brand templates the team can reuse, and shipped campaign work for Penaxis and client brands that clearly lifts how they look online.",
+    offer: [
+      "Real creative ownership across Penaxis and client brands in 12+ industries",
+      "Room to work with AI-powered creative tools as part of your everyday workflow",
+      "A small, hands-on team in our DHA Rahbar, Lahore office",
+      "Close collaboration with strategy, marketing, engineering and growth",
+    ],
     requirements: [
       "At least 3 years of professional design experience",
       "Proficiency in Adobe Illustrator, Photoshop, and After Effects - confident with both static and motion design, not just one",
@@ -1310,6 +1332,25 @@ export const careers = [
     type: "Full-time, on-site - Mon-Fri, 10 AM-7 PM",
     experience: "4+ years",
     summary: "An experienced, results-driven lead to take complete ownership of our organic growth and paid advertising strategy - for Penaxis and our international clients.",
+    about: [
+      "You'll own how Penaxis and our international clients get found and grow online. That means setting the organic and paid strategy, running it hands-on, and reporting on what it delivers in leads and revenue, not just traffic.",
+      "Search is changing fast, so you'll lead our work on AI-search visibility (AEO and GEO) alongside classic technical, on-page, off-page and local SEO, and you'll run Google Ads and Meta Ads campaigns built around lead generation.",
+    ],
+    responsibilities: [
+      "Build and run the SEO strategy end to end: keyword research, on-page, off-page, technical and local SEO",
+      "Lead AI-search optimisation (AEO/GEO) so Penaxis and client brands show up in AI-generated answers",
+      "Plan, launch and optimise Google Ads and Meta Ads campaigns focused on qualified leads",
+      "Shape SEO-driven content strategy with the content and design team",
+      "Set up and maintain tracking in Search Console, GA4 and Tag Manager",
+      "Report clearly on results (CPL, CPA, ROAS, rankings, conversions) and turn the data into next steps",
+    ],
+    success: "In your first few months you'll have audited and stabilised our own SEO and ad accounts, set up reliable tracking and reporting, and launched improvements for client accounts that show measurable gains in rankings, qualified leads and cost per acquisition.",
+    offer: [
+      "Full ownership of organic and paid growth for Penaxis and international clients",
+      "Work across a wide mix of industries and markets",
+      "A small, senior-minded team in our DHA Rahbar, Lahore office (Mon-Fri, 10 AM-7 PM)",
+      "Close collaboration with design, content, engineering and sales",
+    ],
     requirements: [
       "Advanced SEO: keyword research, on-page/off-page/technical SEO, link building, competitor analysis",
       "AEO, GEO, and AI-search optimization, plus local SEO (Google Business Profile, citations, local landing pages)",
@@ -1327,6 +1368,25 @@ export const careers = [
     type: "Full-time, on-site - Mon-Fri, 10 AM-7 PM",
     experience: "3+ years",
     summary: "A self-driven engineer with strong fundamentals in Next.js, React, TypeScript, and Python, comfortable using AI-assisted development tools to ship production work.",
+    about: [
+      "You'll build and ship production software for Penaxis clients: web platforms, dashboards, portals, MVPs and integrations across a range of industries. You'll work across the stack, from the interface in Next.js and React to APIs, data and deployment.",
+      "We use AI coding agents as part of how we deliver, so you'll move quickly, but we care just as much about fundamentals: clean architecture, secure authentication, sensible data models and software that holds up in production.",
+    ],
+    responsibilities: [
+      "Build features end to end with Next.js, React, TypeScript and Python",
+      "Design and implement REST APIs, authentication and database schemas (PostgreSQL/MySQL)",
+      "Use AI coding agents (e.g. Claude Code, Codex, Cursor) to speed up delivery while reviewing everything they produce",
+      "Own deployments and production troubleshooting on Vercel, AWS, DigitalOcean and Docker-based setups",
+      "Integrate third-party services, CMS platforms and LLM APIs where projects need them",
+      "Work directly with project managers, designers and clients to scope and ship work",
+    ],
+    success: "In your first few months you'll have shipped production features on live client projects, owned at least one deployment end to end, and become someone the team relies on to turn a loosely defined requirement into working, well-structured software.",
+    offer: [
+      "Production work on real client products across 12+ industries",
+      "AI-assisted development built into how the team works",
+      "A small, hands-on engineering team in our DHA Rahbar, Lahore office (Mon-Fri, 10 AM-7 PM)",
+      "Ownership from scoping to deployment, not just tickets",
+    ],
     requirements: [
       "3+ years building production applications with Next.js, React, TypeScript, and Python",
       "Solid backend experience - REST APIs, authentication, database architecture (PostgreSQL/MySQL)",
@@ -1343,6 +1403,25 @@ export const careers = [
     type: "Full-time, on-site - Monday-Friday",
     experience: "0-2 years",
     summary: "An energetic, confident BDA to drive our international outbound sales - cold calling, LinkedIn outreach, and lead generation for B2B clients across the US, UK, and Australia.",
+    about: [
+      "You'll be on the front line of how Penaxis wins new business, starting conversations with B2B companies across the US, UK and Australia and turning them into qualified opportunities for our team.",
+      "Most of your day will be outbound: international cold calls, LinkedIn outreach and organised follow-up. It's a great fit for a confident communicator who wants to build a sales career quickly, whether you're a fresh graduate or have a couple of years' experience.",
+    ],
+    responsibilities: [
+      "Make daily international cold calls to B2B prospects and handle early objections with confidence",
+      "Run LinkedIn outreach and prospecting (Sales Navigator or similar)",
+      "Research target companies and decision-makers to build quality lead lists",
+      "Follow up consistently and keep every conversation logged and organised",
+      "Book qualified meetings and hand them over with clear notes to the sales team",
+      "Share what you hear from the market so our messaging keeps improving",
+    ],
+    success: "In your first few months you'll have built a steady daily outreach rhythm, learned to pitch Penaxis's services clearly, and started booking qualified meetings with international prospects every week.",
+    offer: [
+      "A fast start in international B2B sales, with markets across the US, UK and Australia",
+      "Hands-on learning alongside an experienced growth team",
+      "A small, energetic team in our DHA Rahbar, Lahore office (Mon-Fri)",
+      "Exposure to how a modern AI, software and growth agency wins work",
+    ],
     requirements: [
       "Comfortable with daily international cold calling and confident handling early objections",
       "LinkedIn outreach and prospecting (Sales Navigator or similar) with organized, consistent follow-up",

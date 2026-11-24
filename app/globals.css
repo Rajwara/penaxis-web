@@ -10946,3 +10946,6 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 @media (prefers-reduced-motion: reduce) {
   .car-row, .car-row-desc { transition: none; }
 }
+/* Job pages: longer descriptions */
+.job-page .job-content p + p { margin-top: 14px; }
+.job-page .job-content .job-lead { font-size: 18px; line-height: 28px; color: #000; }
