@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { caseStudies } from "@/lib/data";
+import { CASE_STUDY_SHORT_TITLES as SHORT_TITLES } from "@/lib/caseStudyCards";
 import PillButton from "./PillButton";
 // Same fonts as the supplied section: variable Big Shoulders (with its
 // optical-size axis) + Wix Madefor Display. Self-hosted, used only here.
@@ -19,16 +20,6 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 const HEADING = "Featured Work";
 const SPREAD = 5; // how many letters animate at once (from the zip)
 
-// Short card titles — the full case-study titles are too long for the
-// 48px uppercase card heading.
-const SHORT_TITLES: Record<string, string> = {
-  "drivelo-logistics-platform": "Drivelo Logistics",
-  "ai-receptionist-visitor-kiosk": "AI Visitor Kiosk",
-  "bidlogics-tender-intelligence": "BidLogics Tender AI",
-  "seka-gravel-cycling-platform": "Seka Gravel Cycling",
-  "hotel-booking-revenue-platform": "Hotel Revenue Hub",
-  "the-plate-agent-marketplace": "The Plate Agent",
-};
 
 const ITEMS = caseStudies.slice(0, 6).map((c, i) => ({
   slug: c.slug,

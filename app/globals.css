@@ -11964,3 +11964,33 @@ section.cs-section:has(> .cs-container) { display: block; min-height: 0; padding
 .im-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.92); text-decoration: none; transition: color .2s, padding-left .25s; }
 .im-links a:hover { color: var(--im-accent); padding-left: 4px; }
 @media (max-width: 1180px) { .mega-panel.im { grid-template-columns: 260px minmax(0, 1fr); } .im-title { font-size: 28px; } }
+
+/* ==================================================================
+   /case-studies grid (components/CaseStudyV2Grid.tsx): homepage card
+   design (.hv2c-card) in a 3-column grid, inside the black panel.
+   ================================================================== */
+.csv2-grid-section.hv2c-wrap { --primary-red: #6A449A; background: #F8F8F8; padding: 20px; z-index: auto; }
+.csv2-head { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+.csv2-title { margin: 0; font: 500 var(--fs-h2)/1 var(--font-heading-pf); letter-spacing: var(--ls-heading); text-transform: uppercase; color: #fff; }
+.csv2-lead { margin: 0; max-width: 40rem; font-size: 18px; line-height: 1.5; color: rgba(255,255,255,.65); }
+.csv2-grid-section.hv2c-wrap .csv2-filters { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: 6px; }
+.csv2-grid-section.hv2c-wrap .csv2-filter { font-family: var(--font-heading-pf); font-size: 16px; font-weight: 500; letter-spacing: -.01em; text-transform: uppercase; color: rgba(255,255,255,.75); background: transparent; border-radius: 999px; white-space: nowrap; }
+.csv2-grid-section.hv2c-wrap .csv2-filter:hover { background: rgba(255,255,255,.1); color: #fff; }
+.csv2-grid-section.hv2c-wrap .csv2-filter.is-active { background: #6A449A; color: #fff; }
+.csv2-cardgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; margin-top: 56px; }
+.csv2-cardlink { display: block; text-decoration: none; color: inherit; border-radius: var(--radius-l); }
+.csv2-cardlink:focus-visible { outline: 2px solid #a988d3; outline-offset: 4px; }
+.csv2-cardgrid .hv2c-card { height: 35rem; }
+.csv2-cardgrid .hv2c-card-title { font-size: 2.5rem; }
+.csv2-cardlink:hover .hv2c-card-bg { opacity: 1; top: -1.25rem; bottom: -1.25rem; }
+.csv2-cardgrid .csv2-card-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin-top: 1.5rem; }
+.csv2-cardgrid .csv2-tag { padding: 5px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; font-family: var(--font-body-pf); font-size: 12px; font-weight: 600; letter-spacing: 0; color: #c2a8e6; }
+@media (max-width: 1199px) { .csv2-cardgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 991px) { .csv2-grid-section.hv2c-wrap .csv2-title { font-size: 5rem; } }
+@media (max-width: 767px) {
+  .csv2-grid-section.hv2c-wrap { padding: 10px; }
+  .csv2-title { font-size: 3.5rem !important; }
+  .csv2-cardgrid { grid-template-columns: 1fr; gap: 1.25rem; margin-top: 40px; }
+  .csv2-cardgrid .hv2c-card { height: auto; min-height: 26rem; }
+  .csv2-cardgrid .hv2c-card-title { font-size: 2.25rem; }
+}
