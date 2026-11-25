@@ -3,11 +3,12 @@
 import { useEffect, useRef } from "react";
 import { team } from "@/lib/data";
 import PillButton from "./PillButton";
+import ContactBanner from "./contact-v2/ContactBanner";
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
 
 // /game-changers (our team), built from the supplied "Our Team" template:
-// centred eyebrow + big heading + lead, a 3-column grid of tall photo cards
+// photo banner (shared ContactBanner, like /contact-us), a 3-column grid of tall photo cards
 // (image zooms on hover; members with a LinkedIn profile get a glass
 // LinkedIn pill), and a dark "Join our team" banner with flowing lines.
 // Branded like /home-v2: Big Shoulders + Wix Madefor, purple #6A449A.
@@ -85,17 +86,16 @@ export default function TeamPage() {
 
   return (
     <div ref={rootRef} className="tm">
-      <section className="tm-section">
+      {/* Photo banner, same design as /contact-us */}
+      <ContactBanner
+        image="/images/hero/game-changers-banner.webp"
+        shade={0.45}
+        label="Our team"
+        title="Small team, big results"
+        intro="Meet the people behind Penaxis's strategy, technology and growth work, across Pakistan, the UAE and beyond."
+      />
+      <section className="tm-section tm-after-banner">
         <div className="tm-container">
-          <div className="tm-head">
-            <p className="tm-subtitle tm-reveal">Our team</p>
-            <h1 className="tm-h1 tm-reveal">Small team, big results</h1>
-            <p className="tm-lead tm-reveal">
-              Meet the people behind Penaxis&apos;s strategy, technology and growth work, across
-              Pakistan, the UAE and beyond.
-            </p>
-          </div>
-
           <div className="tm-grid">
             {team.map((m, i) => (
               <article

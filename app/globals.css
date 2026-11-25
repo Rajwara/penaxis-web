@@ -11088,6 +11088,9 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 @media (max-width: 991px) { .tm .tm-section { padding: 130px 0 90px; } .tm .tm-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 767px) { .tm .tm-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
 .tm { overflow-x: clip; }
+.tm .tm-section.tm-after-banner { padding-top: 120px; } /* banner sits above, no navbar to clear */
+@media (max-width: 991px) { .tm .tm-section.tm-after-banner { padding-top: 90px; } }
+@media (max-width: 767px) { .tm .tm-section.tm-after-banner { padding-top: 70px; } }
 
 /* ==================================================================
    "LET'S CHAT" / Quick Quote pop-up in the /home-v2 style:
