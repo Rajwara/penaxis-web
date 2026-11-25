@@ -10502,8 +10502,8 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 .tst-box.is-testi { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; padding: 36px 28px; min-height: 416px; }
 .tst-quote {
   margin: 0;
-  font-family: var(--tst-heading); font-size: 28px; font-weight: 500;
-  line-height: 28px; letter-spacing: -0.84px; text-transform: uppercase; color: var(--tst-black);
+  font-family: var(--tst-heading); font-size: 22px; font-weight: 500;
+  line-height: 30px; letter-spacing: -0.84px; text-transform: uppercase; color: var(--tst-black);
 }
 .tst-author { display: flex; align-items: center; gap: 12px; }
 .tst-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; display: block; }
@@ -10522,7 +10522,7 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
   .tst-container { padding: 0 16px; }
   .tst-title { font-size: 52px; line-height: 52px; letter-spacing: -1.5px; }
   .tst-box.is-head, .tst-box.is-testi { padding-left: 20px; padding-right: 20px; }
-  .tst-quote { font-size: 24px; line-height: 24px; }
+  .tst-quote { font-size: 22px; line-height: 30px; }
   .tst-box.is-testi { min-height: 260px; }
 }
 
