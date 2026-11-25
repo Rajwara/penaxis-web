@@ -10,37 +10,44 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 const BG_IMAGE = "/images/who-we-are/about-banner-bg.webp"; // uploaded banner background
 const PILL_IMAGE = "/images/who-we-are/about-banner-pill.jpg"; // uploaded pill image
 
-export default function AboutHeroBanner() {
+// Reusable: /who-we-are uses the defaults; /services passes its own copy.
+type Props = { label?: string; line1?: string; line2?: string; text?: string; bg?: string; pill?: string };
+
+export default function AboutHeroBanner({
+  label = "About us",
+  line1 = "Growth & tech",
+  line2 = "Partner",
+  text = "We combine AI, software development, digital strategy and sales expertise to help businesses operate smarter and grow faster.",
+  bg = BG_IMAGE,
+  pill = PILL_IMAGE,
+}: Props) {
   return (
     <section className="abh" aria-labelledby="abh-title">
       <div className="abh-card" data-nav-theme="dark">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="abh-bg" src={BG_IMAGE} alt="" />
+        <img className="abh-bg" src={bg} alt="" />
         <div className="abh-overlay" aria-hidden="true" />
 
         <div className="abh-content">
           <div className="abh-left">
             <div className="abh-subtitle">
               <span className="abh-dot" />
-              About us
+              {label}
               <span className="abh-dot" />
             </div>
             <h1 id="abh-title" className="abh-title">
-              Growth &amp; tech
+              {line1}
               <span className="abh-line">
-                Partner
+                {line2}
                 <span className="abh-pill">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={PILL_IMAGE} alt="" />
+                  <img src={pill} alt="" />
                 </span>
               </span>
             </h1>
           </div>
 
-          <p className="abh-text">
-            We combine AI, software development, digital strategy and sales expertise to help
-            businesses operate smarter and grow faster.
-          </p>
+          <p className="abh-text">{text}</p>
         </div>
       </div>
     </section>
