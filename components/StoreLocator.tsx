@@ -26,6 +26,35 @@ const LOCATIONS = [
 
 const PLACEHOLDER_LINE = "123456";
 
+function CopyBtn({ text, label }: { text: string; label: string }) {
+  const [done, setDone] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+    }
+    setDone(true);
+    setTimeout(() => setDone(false), 1500);
+  };
+  return (
+    <button type="button" className={`sl-copy${done ? " is-done" : ""}`} onClick={copy} aria-label={done ? "Copied" : `Copy ${label}`} title={done ? "Copied" : `Copy ${label}`}>
+      {done ? (
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+      ) : (
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V6a2 2 0 0 1 2-2h9" /></svg>
+      )}
+    </button>
+  );
+}
+
 export default function StoreLocator() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
@@ -103,26 +132,36 @@ export default function StoreLocator() {
                   </svg>
                 </span>
                 <span className="sl-card-title">{location.label} Office</span>
+                <span className="sl-copy-all">
+                  Copy all
+                  <CopyBtn
+                    text={`Penaxis ${location.label} Office\n${location.address}\nPhone: ${phone}\nEmail: ${contact.email}\nHours: Mon-Sat 10:00am - 7:00pm, Sunday closed`}
+                    label="all details"
+                  />
+                </span>
               </div>
 
               <div className="sl-row">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7" />
                 </svg>
-                <span>{location.address}</span>
+                <span className="sl-row-text">{location.address}</span>
+                <CopyBtn text={location.address} label="address" />
               </div>
               <div className="sl-row">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z" />
                 </svg>
-                <span>{phone}</span>
+                <span className="sl-row-text">{phone}</span>
+                <CopyBtn text={phone} label="phone number" />
               </div>
               <div className="sl-row">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <rect x="3" y="5" width="18" height="14" rx="2" />
                   <path d="m4 7 8 6 8-6" />
                 </svg>
-                <span>{contact.email}</span>
+                <span className="sl-row-text">{contact.email}</span>
+                <CopyBtn text={contact.email} label="email" />
               </div>
 
               <div className="sl-hours">
@@ -132,7 +171,8 @@ export default function StoreLocator() {
                     <circle cx="12" cy="12" r="9" />
                     <path d="M12 7v5l3 3" strokeLinecap="round" />
                   </svg>
-                  <span>Mon-Sat: 10:00am - 7:00pm</span>
+                  <span className="sl-row-text">Mon-Sat: 10:00am - 7:00pm</span>
+                  <CopyBtn text={"Mon-Sat: 10:00am - 7:00pm, Sunday: Closed"} label="opening hours" />
                 </div>
                 <p className="sl-hours-closed">Sunday: Closed</p>
               </div>

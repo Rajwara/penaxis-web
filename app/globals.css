@@ -11994,3 +11994,14 @@ section.cs-section:has(> .cs-container) { display: block; min-height: 0; padding
   .csv2-cardgrid .hv2c-card { height: auto; min-height: 26rem; }
   .csv2-cardgrid .hv2c-card-title { font-size: 2.25rem; }
 }
+
+/* Find a Location pop-up: details are selectable, with copy buttons */
+.sl-modal, .sl-modal * { -webkit-user-select: text; user-select: text; }
+.sl-modal button, .sl-modal button * { -webkit-user-select: none; user-select: none; }
+.sl-row-text { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.sl-copy { flex: none; display: grid; place-items: center; width: 28px; height: 28px; margin: -4px -4px -4px 4px; padding: 0; border: 1px solid transparent; border-radius: 8px; background: transparent; color: rgba(33,33,33,.45); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.sl-copy svg { margin: 0 !important; color: currentColor !important; }
+.sl-copy:hover { background: rgba(92,62,130,.08); border-color: rgba(92,62,130,.2); color: #5c3e82; }
+.sl-copy:focus-visible { outline: 2px solid #5c3e82; outline-offset: 2px; }
+.sl-copy.is-done { color: #1f9d55; background: rgba(31,157,85,.08); }
+.sl-copy-all { margin-left: auto; display: inline-flex; align-items: center; gap: 2px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: #5c3e82; }
