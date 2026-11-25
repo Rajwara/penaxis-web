@@ -26,9 +26,9 @@ export default function HomeV2Logos() {
             ))}
           </div>
           <p>
-            Trusted by 50+ businesses
+            Relied on by 30+ global brands
             <br />
-            &amp; founders worldwide
+            &amp; Enterprises
           </p>
         </div>
 

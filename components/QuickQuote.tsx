@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { contact } from "@/lib/data";
 import PillButton from "./PillButton";
+import ContactMethodSelect from "./ContactMethodSelect";
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
 import { submitForm } from "@/lib/submitForm";
@@ -128,23 +129,16 @@ export default function QuickQuote() {
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     />
                   </label>
-                  <label className="qq-field">
-                    <span>Preferred way to contact</span>
-                    <select
+                  <div className="qq-field">
+                    <span id="qq-method-label">Preferred way to contact</span>
+                    <ContactMethodSelect
                       name="contactMethod"
+                      labelId="qq-method-label"
+                      options={CONTACT_METHODS}
                       value={form.contactMethod}
-                      onChange={(e) => setForm({ ...form, contactMethod: e.target.value })}
-                    >
-                      <option value="" disabled>
-                        Select an option
-                      </option>
-                      {CONTACT_METHODS.map((m) => (
-                        <option key={m} value={m}>
-                          {m}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
+                      onChange={(v) => setForm({ ...form, contactMethod: v })}
+                    />
+                  </div>
 
                   {error && <p className="qq-error">{error}</p>}
 
