@@ -10226,7 +10226,7 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 /* Cards */
 .crh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3.5rem; }
 .crh-dark {
-  display: flex; flex-direction: column; justify-content: center;
+  display: flex; flex-direction: column;
   min-height: 34rem; padding: 2rem;
   border-radius: 1.5rem; background: #222222; color: #F8F8F8;
 }
@@ -10240,6 +10240,7 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 .crh-dark-muted { color: #9a9a9a; }
 .crh-dark-text { max-width: 30rem; margin: 1.25rem 0 0; font-size: 0.95rem; line-height: 1.6; color: #c9c9c9; }
 .crh-btns { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.75rem; }
+.crh-dark .crh-btns { margin-top: auto; padding-top: 1.75rem; margin-bottom: 1rem; } /* buttons sit at the bottom of the card */
 .crh-btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.6rem 1.1rem; border-radius: 999px;
