@@ -11368,3 +11368,65 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 /* /services: the home-v2 services section, with breathing room around it */
 .svc-page-list { background: #F8F8F8; padding: 20px 0; }
 .svc-page-list .hv2s-top .hv2-btn { display: none; } /* already on /services */
+
+/* ==================================================================
+   /who-we-are — Mission / Vision / Values (components/AboutMission.tsx),
+   from the supplied about-mission-section; purple instead of red.
+   ================================================================== */
+.cs-section {
+  --cs-accent: #6A449A;
+  --cs-ease: cubic-bezier(.22, 1, .36, 1);
+  --cs-display: "Big Shoulders Variable", "Big Shoulders", Impact, sans-serif;
+  --cs-body: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  padding: 120px 0; overflow: hidden; background: #F8F8F8;
+  font-family: var(--cs-body); font-size: 18px; font-weight: 500; line-height: 27px; letter-spacing: -.18px; color: #444;
+}
+.cs-container { max-width: 1350px; margin: 0 auto; padding: 0 30px; }
+.cs-head { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.cs-sub { display: flex; align-items: center; gap: 12px; font: 500 18px/18px var(--cs-display); letter-spacing: -.36px; text-transform: uppercase; color: var(--cs-accent); }
+.cs-sub-dot { display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--cs-accent); flex: none; }
+.cs-sub-mask { display: block; overflow: hidden; }
+.cs-sub-track { display: flex; align-items: center; gap: 12px; }
+.cs-title { max-width: 760px; margin: 0; font: 500 100px/100px var(--cs-display); letter-spacing: -3px; text-transform: uppercase; color: #000; }
+.cs-title .w { display: inline-block; white-space: nowrap; }
+.cs-title .c { display: inline-block; }
+.cs-list { margin-top: 80px; border-bottom: 1px solid #ddd; }
+.cs-row { display: grid; grid-template-columns: 1fr 1fr 416px; column-gap: 64px; align-items: center; padding: 40px 0; border-top: 1px solid #ddd; }
+.cs-row h3 { margin: 0; font: 500 64px/64px var(--cs-display); letter-spacing: -1.92px; text-transform: uppercase; color: #000; }
+.cs-row p { margin: 0; max-width: 340px; color: #000; }
+.cs-img-wrap { width: 100%; height: 224px; }
+.cs-img-wrap img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; }
+/* animation (only once JS is running) */
+.cs-js .cs-sub-dot.is-start { transform: scale(0); transition: transform .5s var(--cs-ease); }
+.cs-js .cs-sub-dot.is-end { transform: scale(.3); transition: transform .9s var(--cs-ease) .15s; }
+.cs-js .cs-sub-track { transform: translateX(-101%); transition: transform .9s var(--cs-ease) .15s; }
+.cs-js .cs-sub.in .cs-sub-dot, .cs-js .cs-sub.in .cs-sub-track { transform: none; }
+.cs-js .cs-title .c { opacity: .3; transform: translateX(10px); transition: opacity .27s linear, transform .27s linear; }
+.cs-js .cs-title.in .c { opacity: 1; transform: none; }
+.cs-js .cs-img-wrap { opacity: 0; transform: translateX(160px); transition: opacity 1.2s var(--cs-ease), transform 1.2s var(--cs-ease); }
+.cs-js .cs-row.in .cs-img-wrap { opacity: 1; transform: none; }
+@media (max-width: 991px) {
+  .cs-section { padding: 90px 0; }
+  .cs-title { font-size: 80px; line-height: 80px; letter-spacing: -2.4px; }
+  .cs-row { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+  .cs-row h3 { font-size: 52px; line-height: 52px; }
+  .cs-img-wrap { grid-column: 1 / -1; height: 300px; }
+}
+@media (max-width: 767px) {
+  .cs-section { padding: 70px 0; }
+  .cs-container { padding: 0 20px; }
+  .cs-title { font-size: 56px; line-height: 58px; letter-spacing: -1.6px; }
+  .cs-list { margin-top: 50px; }
+  .cs-row { grid-template-columns: 1fr; padding: 32px 0; }
+  .cs-row h3 { font-size: 44px; line-height: 44px; }
+  .cs-row p { max-width: none; }
+  .cs-img-wrap { height: 240px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-js .cs-sub-dot, .cs-js .cs-sub-track, .cs-js .cs-title .c, .cs-js .cs-img-wrap { transition: none !important; transform: none !important; opacity: 1 !important; }
+}
+/* Override the older CaseStudyExperience .cs-section rule (min-height/flex) */
+section.cs-section:has(> .cs-container) { display: block; min-height: 0; padding: 120px 0; }
+@media (max-width: 991px) { section.cs-section:has(> .cs-container) { padding: 90px 0; } }
+@media (max-width: 767px) { section.cs-section:has(> .cs-container) { padding: 70px 0; } }
+.cs-img-wrap { border-radius: 15px; background: #ece9f2; overflow: hidden; }
