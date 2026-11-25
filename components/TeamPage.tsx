@@ -88,8 +88,8 @@ export default function TeamPage() {
     <div ref={rootRef} className="tm">
       {/* Photo banner, same design as /contact-us */}
       <ContactBanner
-        image="/images/hero/game-changers-banner.webp"
-        shade={0.45}
+        image="/images/hero/contact-us-banner-v2.webp"
+        shade={0.4}
         label="Our team"
         title="Small team, big results"
         intro="Meet the people behind Penaxis's strategy, technology and growth work, across Pakistan, the UAE and beyond."
