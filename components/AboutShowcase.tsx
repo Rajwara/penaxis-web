@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { contact, pressLogos, services } from "@/lib/data";
+import { useEffect, useRef, useState } from "react";
+import { momentum, pressLogos } from "@/lib/data";
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
 
@@ -9,9 +9,10 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 // title and a coloured showcase (zooming background, sliding big text),
 // ported as-is from the supplied logo-marquee-and-showcase template.
 // Penaxis details swapped in: client logos alternate with the template's
-// photo pills, real services/phone/email, the founders video, purple accent.
-// TEMP IMAGES: template photos from its own CDN (MARQUEE_PHOTOS, SHOW_BG) —
-// replace with Penaxis images later.
+// photo pills, the founders video, purple accent. The coloured showcase now
+// holds the Momentum timeline (quarter tabs left, projects delivered right,
+// background cross-fades to that quarter's team photo).
+// TEMP IMAGES: marquee photos from the template's CDN — replace later.
 
 const CDN = "https://cdn.prod.website-files.com/6ae1b423d7bb90956e94a0c5/";
 const MARQUEE_PHOTOS = [
@@ -21,7 +22,12 @@ const MARQUEE_PHOTOS = [
   CDN + "6aeae122c48e48733c76b36f_about-img8.webp",
   CDN + "6aeae12b61093d5fbe155d1a_about-img7.webp",
 ];
-const SHOW_BG = CDN + "6aeae12279e756616076221b_about_bg1.webp";
+// Quarters without their own photo use the nearest earlier one.
+const photoFor = (index: number) => {
+  for (let i = index; i >= 0; i--) if (momentum[i].image) return momentum[i].image!;
+  return momentum.find((m) => m.image)!.image!;
+};
+const PHOTOS = Array.from(new Set(momentum.map((_, i) => photoFor(i))));
 const VIDEO_SRC = "/videos/founders-video.mp4";
 const VIDEO_POSTER = "/images/hero/founders-video-poster.webp";
 
@@ -48,10 +54,12 @@ export default function AboutShowcase() {
   const rootRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const showRef = useRef<HTMLDivElement>(null);
-  const bgRef = useRef<HTMLImageElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
   const bigRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDialogElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [active, setActive] = useState(momentum.length - 1);
+  const current = momentum[active];
 
   useEffect(() => {
     const root = rootRef.current;
@@ -181,29 +189,38 @@ export default function AboutShowcase() {
           </dialog>
 
           <div ref={showRef} className="cz-show">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img ref={bgRef} className="cz-show-bg" src={SHOW_BG} alt="" />
-
-            <div className="cz-services" data-cz-anim>
-              {services.map((s) => (
-                <a key={s.slug} href={`/services/${s.slug}`} className="cz-service">
-                  <span className="cz-arrow">
-                    <Arrow />
-                  </span>
-                  {s.title}
-                </a>
+            <div ref={bgRef} className="cz-show-bg" aria-hidden="true">
+              {PHOTOS.map((src) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img key={src} src={src} alt="" className={src === photoFor(active) ? "is-on" : ""} />
               ))}
             </div>
 
-            <div className="cz-contact" data-cz-anim>
-              <div className="cz-label">Call us</div>
-              <a href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`} className="cz-link">
-                {contact.phone}
-              </a>
-              <div className="cz-label is-gap">Email us</div>
-              <a href={`mailto:${contact.email}`} className="cz-link">
-                {contact.email}
-              </a>
+            <div className="cz-services" data-cz-anim role="tablist" aria-label="Momentum by quarter">
+              {momentum.map((m, i) => (
+                <button
+                  key={m.period}
+                  type="button"
+                  role="tab"
+                  aria-selected={i === active}
+                  onClick={() => setActive(i)}
+                  className={`cz-service cz-q${i === active ? " is-active" : ""}`}
+                >
+                  <span className="cz-arrow">
+                    <Arrow />
+                  </span>
+                  {m.period}
+                </button>
+              ))}
+            </div>
+
+            <div className="cz-contact" data-cz-anim aria-live="polite">
+              <div className="cz-label">Momentum · {current.period}</div>
+              <div className="cz-mo-num">{current.value}</div>
+              <div className="cz-link">Projects delivered</div>
+              <p className="cz-mo-copy">
+                Part of a steady, quarter-over-quarter climb as our team and client base keep growing.
+              </p>
             </div>
 
             <div ref={bigRef} className="cz-big" aria-hidden="true">

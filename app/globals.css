@@ -11477,7 +11477,19 @@ section.cs-section:has(> .cs-container) { display: block; min-height: 0; padding
 .cz-modal-close:hover { background: var(--cz-accent); }
 /* Showcase */
 .cz-show { position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; width: 100%; min-height: 736px; margin-top: 64px; padding: 128px 48px 160px; overflow: hidden; border-radius: 15px; background: var(--cz-accent); }
-.cz-show-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; transform: scale(1.25); will-change: transform; }
+.cz-show-bg { position: absolute; inset: 0; mix-blend-mode: multiply; transform: scale(1.25); will-change: transform; }
+.cz-show-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; }
+.cz-show-bg img.is-on { opacity: 1; }
+/* Momentum quarter tabs (styled like the template's service links) */
+.cz-q { padding: 0; border: 0; background: none; cursor: pointer; opacity: .55; }
+.cz-js .cz-services.in .cz-service.cz-q { opacity: .55; }
+.cz-q:hover, .cz-js .cz-services.in .cz-service.cz-q:hover { opacity: .85; }
+.cz-q.is-active, .cz-js .cz-services.in .cz-service.cz-q.is-active { opacity: 1; }
+.cz-q.is-active .cz-arrow { width: 1.75rem; opacity: 1; }
+.cz-q:focus-visible { outline: 2px solid #fff; outline-offset: 4px; border-radius: 4px; }
+.cz-mo-num { font: 500 120px/100px var(--cz-display); letter-spacing: -3.6px; color: #fff; margin-bottom: 8px; }
+.cz-mo-copy { max-width: 300px; margin: 12px 0 0; font-size: 16px; line-height: 24px; color: rgba(255,255,255,.85); }
+@media (max-width: 767px) { .cz-mo-num { font-size: 88px; line-height: 76px; } .cz-mo-copy { max-width: none; } }
 .cz-services { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
 .cz-service { display: flex; align-items: center; font: 500 28px/28px var(--cz-display); letter-spacing: -.84px; text-transform: uppercase; color: #fff; transition: opacity 1.1s var(--cz-ease), transform 1.1s var(--cz-ease); }
 .cz-js .cz-service { opacity: 0; transform: translateX(-40%); }
