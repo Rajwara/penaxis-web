@@ -456,6 +456,7 @@ export const team = [
   { name: "Sopio Pipia", role: "Business Partner", image: "/images/team/sopio-pipia.webp", linkedin: "https://www.linkedin.com/in/sopio-pipia", bio: "Builds partnerships and growth opportunities across every market." },
   { name: "Laiba Zafar", role: "Social Media Coordinator", image: "/images/team/laiba-zafar.webp", bio: "Shapes our voice and presence across every platform." },
   { name: "Saad Sultan", role: "Lead CRM & Automation Engineer", image: "/images/team/saad-sultan.webp", bio: "Builds the CRM and automation systems that keep everything connected." },
+  { name: "Sumaira Hussain", role: "HR Operations Executive", image: "/images/team/sumaira-hussain.webp", bio: "Keeps HR operations running smoothly for the whole team." },
   { name: "Hamza Durrani", role: "Business Development Manager", image: "/images/team/hamza-durrani.webp", bio: "Drives new business and keeps the pipeline moving." },
   { name: "Fizza Shahzad", role: "Creative & Brand Lead", image: "/images/team/fizza-shahzad.webp", bio: "Creates content that gets people talking." },
   { name: "Zaid Bin Arif", role: "Business Analyst", image: "/images/team/zaid-bin-arif.webp", bio: "Connects with prospects and turns conversations into deals." },
@@ -469,7 +470,6 @@ export const team = [
   { name: "Hamza Shabbir", role: "Business Development Representative", image: "/images/team/hamza-shabbir.webp", bio: "Opens conversations that turn into new business." },
   { name: "Muhammad Saad Salman", role: "CMS Developer", image: "/images/team/muhammad-saad-salman.webp", bio: "Builds and maintains the CMS-powered sites and platforms our clients run on." },
   { name: "Umer Faraz", role: "Regional Sales Manager", image: "/images/team/umer-faraz.webp", bio: "Drives regional sales strategy and keeps the pipeline moving forward." },
-  { name: "Sumaira Hussain", role: "HR Operations Executive", image: "/images/team/sumaira-hussain.webp", bio: "Keeps HR operations running smoothly for the whole team." },
   { name: "Abdul Ahad", role: "Performance Marketing", image: "/images/team/abdul-ahad.webp", bio: "Runs the paid campaigns that keep qualified leads coming in." },
 ];
 
