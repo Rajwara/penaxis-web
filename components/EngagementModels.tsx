@@ -1,46 +1,53 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import PillButton from "./PillButton";
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
 
-// /services: "Engagement models" section in the home-v2 style (Big Shoulders
-// + Wix Madefor, purple accent, "• label •" eyebrow). Models are the ones
-// already listed in lib/data.ts (service `engagements`) and lib/faq.ts
-// (pricing & payments answers) — no new commercial claims.
+// /services: "Engagement models", laid out like the supplied reference:
+// dark section, label pill, big heading and two cards (tag pill, title,
+// one line, three ticked points, link). The two models are the ones the
+// site already describes (lib/faq.ts: defined projects, or our team kept
+// on as an extension of yours) — no new commercial claims.
 
 const MODELS = [
   {
-    title: "Fixed-price project",
-    text: "A defined scope, timeline and price agreed upfront, paid against clear milestones.",
-    best: "MVPs, websites and builds with a clear brief",
-    points: ["Scope and estimate after a discovery call", "Milestone-based payments", "Handover period included"],
+    tag: "Defined scope",
+    title: "Project-based engagement",
+    text: "A delivery team built around one product or system, with a clear plan from start to launch.",
+    points: [
+      "Scope, milestones and deliverables agreed upfront",
+      "A team put together for your project",
+      "Milestone-based payments and a handover period",
+    ],
+    link: { label: "Start a project", href: "/contact-us" },
   },
   {
-    title: "Time & materials",
-    text: "You pay for the time we spend, so the scope can change as you learn what users need.",
-    best: "Evolving products, integrations and new features",
-    points: ["Flexible scope, priorities set together", "Clear reporting on time spent", "Scale effort up or down"],
-  },
-  {
-    title: "Dedicated team",
-    text: "A project lead, engineers and a designer working as an extension of your own team.",
-    best: "Long-running products and platforms",
-    points: ["A team matched to your project", "Backed by our wider specialists", "Recurring monthly billing"],
-  },
-  {
-    title: "Monthly retainer",
-    text: "Ongoing support, improvements and growth work after launch, for a recurring monthly fee.",
-    best: "Post-launch support, growth and sales",
-    points: ["Maintenance and continuous improvement", "Sales & BD: retainer plus commission", "Agreed upfront, no hidden fees"],
+    tag: "Dedicated team",
+    title: "Team as a Service",
+    text: "A dedicated Penaxis team that joins your roadmap and works the way you do.",
+    points: [
+      "Engineers, designers and a project lead on your product",
+      "Scale the team up or down as priorities change",
+      "Works inside your tools, rituals and processes",
+    ],
+    link: { label: "Build your team", href: "/contact-us" },
   },
 ];
 
 function Check() {
   return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M3 8.5l3 3 7-7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <circle cx="10" cy="10" r="10" fill="currentColor" />
+      <path d="M6 10.2l2.6 2.6L14 7.6" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function Arrow() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M7 17 17 7M8 7h9v9" />
     </svg>
   );
 }
@@ -68,52 +75,35 @@ export default function EngagementModels() {
   }, []);
 
   return (
-    <section ref={rootRef} className="em-section" aria-labelledby="em-title">
-      <div className="em-container">
-        <div className="em-head" data-em-anim>
-          <div>
-            <div className="em-sub">
-              <span className="em-dot is-start" />
-              <span className="em-sub-mask">
-                <span className="em-sub-track">
-                  <span>Engagement models</span>
-                  <span className="em-dot is-end" />
-                </span>
-              </span>
-            </div>
-            <h2 id="em-title" className="em-title">Ways to work with us</h2>
+    <section ref={rootRef} className="em-section" data-nav-theme="dark" aria-labelledby="em-title">
+      <div className="em-panel">
+        <div className="em-container">
+          <div className="em-head" data-em-anim>
+            <span className="em-pill">Engagement models</span>
+            <h2 id="em-title" className="em-title">Choose how we work together</h2>
           </div>
-          <p className="em-intro">
-            Every project is different, so we offer a few clear ways to work together. We&apos;ll recommend the right
-            fit after a short discovery call and agree everything upfront.
-          </p>
-        </div>
 
-        <div className="em-grid" data-em-anim>
-          {MODELS.map((m, i) => (
-            <article key={m.title} className="em-card" style={{ ["--d" as string]: `${(i * 0.1).toFixed(1)}s` } as React.CSSProperties}>
-              <div className="em-num">{String(i + 1).padStart(2, "0")}</div>
-              <h3 className="em-card-title">{m.title}</h3>
-              <p className="em-card-text">{m.text}</p>
-              <ul className="em-points">
-                {m.points.map((p) => (
-                  <li key={p}>
-                    <Check />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              <div className="em-best">
-                <span>Best for</span>
-                {m.best}
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="em-foot" data-em-anim>
-          <p>Not sure which model fits? Tell us about your project and we&apos;ll suggest one.</p>
-          <PillButton href="/contact-us" label="Book a discovery call" variant="light" />
+          <div className="em-grid" data-em-anim>
+            {MODELS.map((m, i) => (
+              <article key={m.title} className="em-card" style={{ ["--d" as string]: `${(i * 0.12).toFixed(2)}s` } as React.CSSProperties}>
+                <span className="em-tag">{m.tag}</span>
+                <h3 className="em-card-title">{m.title}</h3>
+                <p className="em-card-text">{m.text}</p>
+                <ul className="em-points">
+                  {m.points.map((p) => (
+                    <li key={p}>
+                      <Check />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+                <a href={m.link.href} className="em-link">
+                  {m.link.label}
+                  <Arrow />
+                </a>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
