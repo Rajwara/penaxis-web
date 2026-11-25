@@ -11613,3 +11613,77 @@ section.cs-section:has(> .cs-container) { display: block; min-height: 0; padding
   .wc-badge-ring{animation:none}
   .wc-js .wc-stat,.wc-js .wc-media,.wc-js .wc-sub-dot,.wc-js .wc-sub-track{opacity:1;transform:none;transition:none}
 }
+
+/* ==================================================================
+   /who-we-are — dark team slider (components/AboutTeamSlider.tsx);
+   card design from the supplied team template, purple accent.
+   ================================================================== */
+.ts-section {
+  --ts-accent: #6A449A; --ts-accent-light: #a988d3;
+  --ts-ease: cubic-bezier(.22, 1, .36, 1);
+  --ts-display: "Big Shoulders Variable", "Big Shoulders", Impact, sans-serif;
+  --ts-body: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  background: #0b0b0c; color: #fff; padding: 120px 0; overflow-x: clip;
+  font-family: var(--ts-body); font-size: 18px; font-weight: 500; line-height: 1.5; letter-spacing: -.01em;
+}
+.ts-section * { box-sizing: border-box; }
+.ts-container { max-width: 1350px; margin: 0 auto; padding: 0 30px; }
+.ts-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 64px; }
+.ts-sub { display: inline-flex; align-items: center; gap: 12px; font: 500 18px/1 var(--ts-display); letter-spacing: -.02em; text-transform: uppercase; color: var(--ts-accent-light); }
+.ts-sub::before, .ts-sub::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.ts-title { max-width: 760px; margin: 24px 0 0; font: 500 100px/100px var(--ts-display); letter-spacing: -3px; text-transform: uppercase; color: #fff; }
+.ts-nav { display: flex; gap: 12px; flex: none; }
+.ts-arrow { width: 60px; height: 60px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: transparent; color: #fff; display: grid; place-items: center; cursor: pointer; transition: background .3s, border-color .3s, color .3s, opacity .3s; }
+.ts-arrow svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ts-arrow:hover:not(:disabled) { background: #fff; border-color: #fff; color: #000; }
+.ts-arrow:disabled { opacity: .3; cursor: default; }
+/* track: starts aligned with the container, bleeds off the right edge */
+.ts-track {
+  --ts-pad: max(30px, calc((100vw - 1350px) / 2 + 30px));
+  display: flex; column-gap: 30px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: var(--ts-pad);
+  padding: 0 var(--ts-pad); scrollbar-width: none; cursor: grab; outline: none;
+}
+.ts-track::-webkit-scrollbar { display: none; }
+.ts-track.is-drag { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.ts-track.is-drag .ts-card { pointer-events: none; }
+.ts-card { flex: 0 0 338px; scroll-snap-align: start; display: flex; flex-direction: column; }
+.ts-media { position: relative; overflow: hidden; border-radius: 15px; background: #1a1a1d; aspect-ratio: 338 / 512; margin-bottom: 20px; }
+.ts-img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.ts-card:hover .ts-img { transform: scale(1.05); }
+.ts-media::after { content: ""; position: absolute; inset: auto 0 0 0; height: 50%; background: linear-gradient(to top, rgba(106,68,154,.55), transparent); opacity: 0; transition: opacity .4s; pointer-events: none; }
+.ts-card:hover .ts-media::after { opacity: 1; }
+.ts-hover { position: absolute; inset: auto 0 0 0; z-index: 1; display: flex; justify-content: center; padding-bottom: 30px; opacity: 0; transition: opacity .4s; }
+.ts-social { display: flex; gap: 18px; padding: 12px 28px; border-radius: 1600px; background: rgba(255,255,255,.25); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transform: translateY(30px); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.ts-social a { display: grid; place-items: center; width: 20px; height: 20px; color: #fff; }
+.ts-social a:hover { opacity: .7; }
+.ts-social svg { width: 18px; height: 18px; fill: currentColor; }
+.ts-card:hover .ts-hover, .ts-card:focus-within .ts-hover { opacity: 1; }
+.ts-card:hover .ts-social, .ts-card:focus-within .ts-social { transform: none; }
+.ts-name { margin: 0 0 8px; font: 500 28px/1 var(--ts-display); letter-spacing: -.01em; text-transform: uppercase; color: #fff; }
+.ts-role { font-size: 14px; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.6); }
+.ts-foot { display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-top: 56px; }
+.ts-progress { flex: 1; max-width: 420px; height: 2px; background: rgba(255,255,255,.15); overflow: hidden; border-radius: 2px; }
+.ts-progress span { display: block; height: 100%; background: var(--ts-accent-light); transform-origin: left; transition: transform .25s ease; }
+/* entrance */
+.ts-js .ts-head, .ts-js .ts-foot { opacity: 0; transform: translateY(60px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.ts-js .ts-track { opacity: 0; transform: translateX(80px); transition: opacity 1s ease, transform 1.2s var(--ts-ease); }
+.ts-js .in { opacity: 1 !important; transform: none !important; }
+@media (max-width: 991px) {
+  .ts-section { padding: 90px 0; }
+  .ts-title { font-size: 80px; line-height: 80px; letter-spacing: -2.4px; }
+  .ts-card { flex-basis: 300px; }
+}
+@media (max-width: 767px) {
+  .ts-section { padding: 70px 0; }
+  .ts-container { padding: 0 20px; }
+  .ts-track { --ts-pad: 20px; column-gap: 16px; }
+  .ts-head { flex-direction: column; align-items: flex-start; margin-bottom: 40px; }
+  .ts-title { font-size: 56px; line-height: 58px; letter-spacing: -1.6px; }
+  .ts-arrow { width: 48px; height: 48px; }
+  .ts-card { flex-basis: 78vw; }
+  .ts-foot { flex-direction: column; align-items: stretch; margin-top: 40px; }
+  .ts-progress { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ts-js .ts-head, .ts-js .ts-foot, .ts-js .ts-track { opacity: 1; transform: none; transition: none; }
+}
