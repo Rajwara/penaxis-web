@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import CaseStudyV2Banner from "@/components/CaseStudyV2Banner";
+import PageHeroBanner from "@/components/PageHeroBanner";
 import CaseStudyV2Grid from "@/components/CaseStudyV2Grid";
 import Footer from "@/components/Footer";
 
@@ -17,7 +17,11 @@ export default function CaseStudiesPage() {
     <>
       <Navbar />
       <main>
-        <CaseStudyV2Banner />
+        <PageHeroBanner
+          lines={[{ text: "Real work" }, { text: "that drives", indent: true }, { text: "results" }]}
+          text="Websites, platforms, CRMs and AI products we've shipped for clients across 12+ industries."
+          cta={{ label: "Start a project", href: "/contact-us" }}
+        />
         <CaseStudyV2Grid />
       </main>
       <Footer />

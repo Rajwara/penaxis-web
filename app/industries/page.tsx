@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import IndustriesHeroBanner from "@/components/IndustriesHeroBanner";
+import PageHeroBanner from "@/components/PageHeroBanner";
 import IndustriesHub from "@/components/IndustriesHub";
 import Footer from "@/components/Footer";
 
@@ -17,8 +17,11 @@ export default function IndustriesPage() {
     <>
       <Navbar />
       <main>
-        {/* New hero banner first; the previous banner (inside IndustriesHub) is now the second section */}
-        <IndustriesHeroBanner />
+        <PageHeroBanner
+          lines={[{ text: "Technology" }, { text: "for every", indent: true }, { text: "industry" }]}
+          text="From healthcare and logistics to retail and real estate, we build technology that fits how your industry works."
+          cta={{ label: "Discuss your project", href: "/contact-us" }}
+        />
         <IndustriesHub />
       </main>
       <Footer />
