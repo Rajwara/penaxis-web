@@ -22,8 +22,11 @@ const MARQUEE_PHOTOS = [
   CDN + "6aeae122c48e48733c76b36f_about-img8.webp",
   CDN + "6aeae12b61093d5fbe155d1a_about-img7.webp",
 ];
-// Quarters without their own photo use the nearest earlier one.
+// Q2 2026 keeps the template's showcase photo (TEMP, template CDN);
+// other quarters show their team photo, or the nearest earlier one.
+const SHOW_BG = CDN + "6aeae12279e756616076221b_about_bg1.webp";
 const photoFor = (index: number) => {
+  if (momentum[index].period === "Q2 2026") return SHOW_BG;
   for (let i = index; i >= 0; i--) if (momentum[i].image) return momentum[i].image!;
   return momentum.find((m) => m.image)!.image!;
 };
