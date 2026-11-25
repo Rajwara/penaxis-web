@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { contact } from "@/lib/data";
+import PillButton from "./PillButton";
+import "@fontsource-variable/big-shoulders/opsz.css";
+import "@fontsource-variable/wix-madefor-display/index.css";
 import { submitForm } from "@/lib/submitForm";
 
 // Fixed vertical tab on the left edge of the viewport. Clicking it opens a
@@ -65,9 +68,7 @@ export default function QuickQuote() {
                 </span>
                 <h3>Thanks - got it!</h3>
                 <p>We&apos;ll reach out using your preferred contact method shortly.</p>
-                <button type="button" className="qq-submit btn-grad" onClick={closeAndReset}>
-                  Close
-                </button>
+                <PillButton label="Close" onClick={closeAndReset} block className="qq-pill" />
               </div>
             ) : (
               <>
@@ -147,9 +148,7 @@ export default function QuickQuote() {
 
                   {error && <p className="qq-error">{error}</p>}
 
-                  <button type="submit" className="qq-submit btn-grad" disabled={submitting}>
-                    {submitting ? "Sending…" : "Request Quote"}
-                  </button>
+                  <PillButton type="submit" label={submitting ? "Sending…" : "Request Quote"} disabled={submitting} block className="qq-pill" />
                 </form>
               </>
             )}

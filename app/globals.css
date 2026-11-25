@@ -11087,3 +11087,49 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 @media (max-width: 991px) { .tm .tm-section { padding: 130px 0 90px; } .tm .tm-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 767px) { .tm .tm-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
 .tm { overflow-x: clip; }
+
+/* ==================================================================
+   "LET'S CHAT" / Quick Quote pop-up in the /home-v2 style:
+   Big Shoulders uppercase headings + Wix Madefor body, black / #444 on
+   white, purple #6A449A accents, "• Label •" eyebrow, pill button.
+   ================================================================== */
+.qq-modal {
+  --qq-heading: "Big Shoulders Variable", "Big Shoulders", Arial, sans-serif;
+  --qq-body: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  --qq-accent: #6A449A;
+  font-family: var(--qq-body);
+  border-radius: 20px;
+  letter-spacing: -0.01em;
+}
+.qq-eyebrow {
+  display: inline-flex; align-items: center; column-gap: 0.75rem;
+  font-family: var(--qq-heading); font-size: 18px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em; text-transform: uppercase; color: var(--qq-accent);
+}
+.qq-eyebrow::before, .qq-eyebrow::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.qq-title {
+  font-family: var(--qq-heading); font-size: clamp(2.25rem, 1.6rem + 2vw, 3rem);
+  font-weight: 500; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #000;
+}
+.qq-sub { font-family: var(--qq-body); font-size: 16px; line-height: 1.55; color: #444; }
+.qq-field span { font-family: var(--qq-body); font-size: 14px; font-weight: 600; color: #000; letter-spacing: -0.01em; }
+.qq-field input, .qq-field select {
+  font-family: var(--qq-body); font-size: 15px; color: #000;
+  border-radius: 12px; border-color: rgba(0, 0, 0, 0.12); background-color: #fff;
+}
+.qq-field input:focus, .qq-field select:focus { border-color: var(--qq-accent); box-shadow: 0 0 0 3px rgba(106, 68, 154, 0.15); outline: none; }
+.qq-close:hover { background: var(--qq-accent); color: #fff; }
+.qq-pill {
+  margin-top: 0.4rem;
+  font-family: var(--qq-heading); font-size: 18px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em; text-transform: uppercase;
+}
+.qq-pill .hv2-btn-icon { color: var(--qq-accent); }
+.qq-pill:hover { background: var(--qq-accent); }
+.qq-success h3 {
+  font-family: var(--qq-heading); font-size: 36px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.03em; text-transform: uppercase; color: #000;
+}
+.qq-success-icon { background: rgba(106, 68, 154, 0.12) !important; color: var(--qq-accent) !important; }
+.qq-success p { font-family: var(--qq-body); color: #444; }
+.qq-error { font-family: var(--qq-body); }
