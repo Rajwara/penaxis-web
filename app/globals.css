@@ -11364,3 +11364,7 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 .mm-work-img { aspect-ratio: 2.1 / 1; }
 .mm-work-title { font-size: 17px; }
 .mm-grid--3 { gap: 0.5rem 0.75rem; }
+
+/* /services: the home-v2 services section, with breathing room around it */
+.svc-page-list { background: #F8F8F8; padding: 20px 0; }
+.svc-page-list .hv2s-top .hv2-btn { display: none; } /* already on /services */

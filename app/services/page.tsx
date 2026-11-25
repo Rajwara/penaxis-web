@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import ServicesHero from "@/components/ServicesHero";
-import ServicesPageList from "@/components/ServicesPageList";
+import HomeV2Services from "@/components/HomeV2Services";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -18,7 +18,11 @@ export default function ServicesPage() {
       <Navbar />
       <main>
         <ServicesHero />
-        <ServicesPageList />
+        {/* Same services section as /home-v2 (the .hv2-page wrapper gives it
+            the /home-v2 purple accent, type and spacing) */}
+        <div className="hv2-page svc-page-list">
+          <HomeV2Services />
+        </div>
       </main>
       <Footer />
     </>
