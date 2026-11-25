@@ -8,8 +8,8 @@ import { contact } from "@/lib/data";
 // centered gradient email pill overlapping it, five link columns
 // (eyebrow + big title), a four-column social row with dividers, and
 // a bottom bar with address/copyright/phone/back-to-top. Colors are
-// Penaxis's own violet/volt instead of the reference's blue-teal
-// gradient; link destinations are real site pages. All four social
+// Penaxis purple, in the homepage style (dark rounded panel, Big
+// Shoulders uppercase headings, white pill button); link destinations are real site pages. All four social
 // links (Facebook, Instagram, LinkedIn, YouTube) are confirmed real
 // accounts.
 
@@ -75,7 +75,7 @@ const SOCIALS = [
 
 function PinIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FC6607" strokeWidth="2">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M12 2a7 7 0 0 0-7 7c0 5.25 6.14 11.6 6.4 11.86a.85.85 0 0 0 1.2 0C12.86 20.6 19 14.25 19 9a7 7 0 0 0-7-7z" />
       <circle cx="12" cy="9" r="2.5" />
     </svg>
@@ -93,101 +93,79 @@ function ArrowIcon() {
 
 export default function Footer() {
   return (
-    <footer data-nav-theme="dark" className="relative bg-ink text-white overflow-hidden">
-      {/* Giant full-bleed wordmark with the email pill centered over it */}
-      <div className="relative min-h-[18rem] md:min-h-[24rem] py-20 flex items-center justify-center overflow-hidden">
-        <span className="absolute inset-0 flex items-center justify-center font-display font-black text-[20vw] leading-none text-white/[0.05] whitespace-nowrap select-none pointer-events-none">
-          PENAXIS
-        </span>
-        <a
-          href={`mailto:${contact.email}`}
-          className="btn-grad relative gap-4 px-10 py-6 font-display text-xl md:text-2xl"
-        >
-          <span className="w-9 h-9 rounded-full bg-white/70 flex items-center justify-center shrink-0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#222222" strokeWidth="2">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m3 6 9 6 9-6" />
-            </svg>
-          </span>
-          {contact.email}
-        </a>
-      </div>
-
-      {/* Link columns */}
-      <div className="relative max-w-7xl mx-auto px-6 pb-16 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 text-center">
-        {LINK_COLUMNS.map((col, i) => (
-          <Reveal as="div" key={col.title} delay={i * 0.08} y={0} x={-30}>
-            <div className="text-[0.65rem] font-mono tracking-[0.2em] uppercase text-white/40 mb-2">
-              {col.eyebrow}
-            </div>
-            <a href={col.href} className="font-display font-bold text-2xl md:text-2xl lg:text-3xl whitespace-nowrap hover:text-[#FC6607] transition-colors">
-              {col.title}
-            </a>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* Social row — 4 columns with dividers, matching the reference layout */}
-      <div className="relative border-t border-white/10">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4">
-          {SOCIALS.map((s, i) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center justify-between px-6 py-4 border-b md:border-b-0 border-white/10 hover:bg-white/[0.03] transition-colors ${
-                i < SOCIALS.length - 1 ? "md:border-r" : ""
-              }`}
-            >
-              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
-                <span className="w-6 h-6 rounded-full bg-white text-ink flex items-center justify-center">
-                  {s.icon}
-                </span>
-                {s.label}
-              </span>
+    <footer data-nav-theme="dark" className="ft">
+      <div className="ft-panel">
+        {/* Giant wordmark with the email pill centred over it */}
+        <div className="ft-hero">
+          <span className="ft-giant" aria-hidden="true">PENAXIS</span>
+          <a href={`mailto:${contact.email}`} className="ft-email">
+            <span>{contact.email}</span>
+            <span className="ft-email-icon">
               <ArrowIcon />
-            </a>
+            </span>
+          </a>
+        </div>
+
+        {/* Link columns */}
+        <div className="ft-cols">
+          {LINK_COLUMNS.map((col, i) => (
+            <Reveal as="div" key={col.title} delay={i * 0.08} y={0} x={-30}>
+              <div className="ft-eyebrow">{col.eyebrow}</div>
+              <a href={col.href} className="ft-col-title">
+                {col.title}
+              </a>
+            </Reveal>
           ))}
         </div>
-      </div>
 
-      {/* Office locations */}
-      <div className="relative border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {OFFICES.map((office) => (
-            <div key={office.city} className="flex items-start gap-3">
-              <span className="w-8 h-8 rounded-full border border-[#FC6607]/40 flex items-center justify-center shrink-0 mt-0.5">
-                <PinIcon />
-              </span>
-              <div>
-                <div className="font-semibold text-sm text-white">{office.city}</div>
-                <div className="text-sm text-white/50 mt-1">{office.address}</div>
+        {/* Social row */}
+        <div className="ft-row">
+          <div className="ft-socials">
+            {SOCIALS.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="ft-social">
+                <span className="ft-social-label">
+                  <span className="ft-social-icon">{s.icon}</span>
+                  {s.label}
+                </span>
+                <ArrowIcon />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Office locations */}
+        <div className="ft-row">
+          <div className="ft-offices">
+            {OFFICES.map((office) => (
+              <div key={office.city} className="ft-office">
+                <span className="ft-pin">
+                  <PinIcon />
+                </span>
+                <div>
+                  <div className="ft-office-city">{office.city}</div>
+                  <div className="ft-office-addr">{office.address}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="relative border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
-          <span className="inline-flex items-center gap-3">
-            <a href="/policies/privacy" className="hover:text-white transition-colors">
-              Privacy Policy
+        {/* Bottom bar */}
+        <div className="ft-row">
+          <div className="ft-bottom">
+            <span className="ft-legal">
+              <a href="/policies/privacy">Privacy Policy</a>
+              <span aria-hidden="true">|</span>
+              <a href="/policies/terms">Terms &amp; Conditions</a>
+            </span>
+            <span>© {new Date().getFullYear()} Penaxis. All rights reserved.</span>
+            <a href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`} className="ft-phone">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z" />
+              </svg>
+              {contact.phone}
             </a>
-            <span aria-hidden="true">|</span>
-            <a href="/policies/terms" className="hover:text-white transition-colors">
-              Terms &amp; Conditions
-            </a>
-          </span>
-          <span>© {new Date().getFullYear()} Penaxis. All rights reserved.</span>
-          <span className="inline-flex items-center gap-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FC6607" strokeWidth="2">
-              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z" />
-            </svg>
-            {contact.phone}
-          </span>
+          </div>
         </div>
       </div>
     </footer>

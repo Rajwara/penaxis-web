@@ -20,12 +20,13 @@ const config: Config = {
           700: "#5C3E82",
           900: "#2E1F42",
         },
+        // Old orange accents now follow the homepage purple
         ember: {
-          400: "#FF8A4C",
-          500: "#FC6607",
-          600: "#E05500",
+          400: "#A988D3",
+          500: "#8B5FC7",
+          600: "#6A449A",
         },
-        volt: "#FC6607",
+        volt: "#8B5FC7",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
