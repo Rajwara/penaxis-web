@@ -10226,7 +10226,7 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 /* Cards */
 .crh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3.5rem; }
 .crh-dark {
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; justify-content: center;
   min-height: 34rem; padding: 2rem;
   border-radius: 1.5rem; background: #222222; color: #F8F8F8;
 }

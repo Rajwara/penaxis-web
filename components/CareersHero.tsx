@@ -76,17 +76,6 @@ export default function CareersHero() {
               <PillButton href="#open-roles" label="See open roles" variant="light" />
               <PillButton href="/who-we-are" label="About us" variant="outline" />
             </div>
-
-            <a href="/case-studies" className="crh-mini">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/hero/team-huddle.jpg" alt="" />
-              <span className="crh-mini-body">
-                <span className="crh-mini-title">Shipping 50+ websites, platforms and CRMs across 12+ industries</span>
-                <span className="crh-mini-link">
-                  See our work <ArrowIcon className="crh-btn-icon" />
-                </span>
-              </span>
-            </a>
           </Reveal>
 
           {/* Photo card with stats */}
