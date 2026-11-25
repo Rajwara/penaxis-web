@@ -5,10 +5,6 @@ import AboutTestimonials from "@/components/AboutTestimonials";
 import AboutMission from "@/components/AboutMission";
 import AboutShowcase from "@/components/AboutShowcase";
 import AboutWhyChoose from "@/components/AboutWhyChoose";
-import AboutV2TeamPhoto from "@/components/AboutV2TeamPhoto";
-import AboutV2Bento from "@/components/AboutV2Bento";
-import AboutV2Banner from "@/components/AboutV2Banner";
-import AboutV2Values from "@/components/AboutV2Values";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -29,10 +25,6 @@ export default function AboutV2Page() {
         <AboutMission />
         <AboutShowcase />
         <AboutWhyChoose />
-        <AboutV2TeamPhoto />
-        <AboutV2Banner />
-        <AboutV2Bento />
-        <AboutV2Values />
         <AboutTestimonials />
       </main>
       <Footer />
