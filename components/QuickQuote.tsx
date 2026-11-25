@@ -9,7 +9,7 @@ import { submitForm } from "@/lib/submitForm";
 // contact method). Submits to /api/contact, which emails the submission
 // to the Penaxis mailbox via Hostinger SMTP.
 
-const CONTACT_METHODS = ["WhatsApp", "Call", "Email"];
+const CONTACT_METHODS = ["WhatsApp", "Message", "Call", "Email"];
 
 export default function QuickQuote() {
   const [open, setOpen] = useState(false);
