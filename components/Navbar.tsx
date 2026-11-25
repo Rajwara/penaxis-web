@@ -1,5 +1,7 @@
 "use client";
 
+import "@fontsource-variable/big-shoulders/opsz.css";
+import "@fontsource-variable/wix-madefor-display/index.css";
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";

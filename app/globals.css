@@ -11173,3 +11173,73 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 @media (prefers-reduced-motion: reduce) { .cms-list { animation: none; } }
 .cms.is-up .cms-list { top: auto; bottom: calc(100% + 8px); animation-name: cms-in-up; }
 @keyframes cms-in-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ==================================================================
+   Navbar mega menus (Services / Industries / Case Studies) and the
+   About dropdown in the /home-v2 style: Big Shoulders uppercase
+   headings, Wix Madefor text, white panel, black side panels,
+   purple #6A449A accents, black pill buttons.
+   ================================================================== */
+.mega-panel {
+  --mm-heading: "Big Shoulders Variable", "Big Shoulders", Arial, sans-serif;
+  --mm-body: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  font-family: var(--mm-body);
+  letter-spacing: -0.01em;
+  border-radius: 20px;
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 30px 60px -20px rgba(17, 12, 30, 0.28);
+}
+/* Headings */
+.mega-panel .font-display {
+  font-family: var(--mm-heading);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.mega-panel h4.font-display { font-size: 28px; }
+.mega-panel h5.font-display,
+.mega-panel span.font-display { font-size: 20px; }
+.mega-panel .bg-ink h4.font-display { font-size: 20px; }
+/* Body text */
+.mega-panel p, .mega-panel a, .mega-panel li, .mega-panel span { font-family: inherit; }
+.mega-panel [class*="text-ink/5"], .mega-panel [class*="text-ink/7"] { color: #444; }
+/* Eyebrow labels (small uppercase) -> "• LABEL •" style */
+.mega-panel [class*="tracking-widest"][class*="uppercase"] {
+  display: inline-flex; align-items: center; column-gap: 0.6rem;
+  font-family: var(--mm-heading); font-size: 16px; font-weight: 500; letter-spacing: -0.01em; color: #6A449A;
+}
+.mega-panel [class*="tracking-widest"][class*="uppercase"]::before,
+.mega-panel [class*="tracking-widest"][class*="uppercase"]::after { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+/* Side panels: black like the home-v2 dark sections */
+.mega-panel .bg-paper { background: #F8F8F8; }
+.mega-panel > .bg-ink, .mega-panel .bg-ink.text-white { background: #000; }
+/* Purple accents (site violet -> brand purple) */
+.mega-panel .bg-violet-600 { background-color: #6A449A; }
+.mega-panel [class*="bg-violet-600/10"] { background-color: rgba(106, 68, 154, 0.1); }
+.mega-panel .text-violet-700, .mega-panel .text-violet-600 { color: #6A449A; }
+.mega-panel [class*="hover:text-violet"]:hover { color: #6A449A; }
+.mega-panel [class*="group-hover:bg-violet-600"] { transition: background-color .2s; }
+.mega-panel .group:hover [class*="group-hover:bg-violet-600"] { background-color: #6A449A; }
+.mega-panel [class*="hover:bg-ink/[0.04]"]:hover { background-color: rgba(106, 68, 154, 0.06); }
+.mega-panel [class*="from-violet-200"] { background-image: linear-gradient(135deg, #e7def3, #c9b5e6); }
+/* Buttons: black pill, purple on hover, Big Shoulders uppercase */
+.mega-panel .btn-grad {
+  background: #000 !important; background-image: none !important; box-shadow: none !important;
+  border-radius: 999px; color: #fff !important;
+  font-family: var(--mm-heading); font-size: 18px; font-weight: 500; letter-spacing: -0.02em; text-transform: uppercase;
+  transition: background-color .25s;
+}
+.mega-panel .btn-grad:hover { background: #6A449A !important; }
+
+/* About dropdown */
+.nav-about-dropdown {
+  font-family: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  border-radius: 16px;
+}
+.nav-about-dropdown li a {
+  font-family: "Big Shoulders Variable", "Big Shoulders", Arial, sans-serif;
+  font-size: 18px; font-weight: 500; letter-spacing: -0.01em; text-transform: uppercase; color: #000;
+}
+.nav-about-dropdown li a:hover { background: rgba(106, 68, 154, 0.08); color: #6A449A; }
