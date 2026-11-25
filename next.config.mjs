@@ -30,6 +30,8 @@ const nextConfig = {
       { source: "/insights", destination: "/blog", permanent: true },
       { source: "/faq", destination: "/faqs", permanent: true },
       { source: "/insights/:slug", destination: "/blog/:slug", permanent: true },
+      // The /home-v2 preview is now the homepage.
+      { source: "/home-v2", destination: "/", permanent: true },
       // The /contact-v2 design is now the main contact page.
       {
         source: "/contact-v2",
