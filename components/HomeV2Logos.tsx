@@ -26,7 +26,7 @@ export default function HomeV2Logos() {
             ))}
           </div>
           <p>
-            Relied on by 30+ global brands
+            Trusted by 30+ global brands
             <br />
             &amp; Enterprises
           </p>

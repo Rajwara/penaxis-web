@@ -1,13 +1,10 @@
 "use client";
 
-import { industries, contact, slugify } from "@/lib/data";
+import { industries, slugify } from "@/lib/data";
+import MegaShell, { MmArrow } from "./MegaShell";
 
-// Ported mechanism: a hover-triggered mega menu with a dark sidebar
-// (pill tags + a featured teaser) and a grid of categorized links —
-// seen on a real company's live site (Exergy Systems). That
-// company's specific service categories, branding, and blog post
-// weren't reused; this groups Penaxis's own real 13 industries into
-// 5 categories, with Penaxis's own content in the sidebar.
+// Industries mega menu: shared MegaShell layout with Penaxis's 13
+// industries grouped into 5 categories.
 
 const CATEGORIES = [
   {
@@ -61,68 +58,34 @@ const CATEGORIES = [
   },
 ];
 
-const findIndustry = (title: string) => industries.find((i) => i.title === title);
-
 export default function IndustriesMegaMenu() {
   return (
-    <div className="mega-panel w-full min-h-[26rem] rounded-3xl bg-paper shadow-2xl border border-ink/5 overflow-hidden grid grid-cols-[220px_1fr] xl:grid-cols-[260px_1fr]">
-      {/* Sidebar */}
-      <div className="bg-ink text-white p-7 flex flex-col">
-        <h4 className="font-display font-bold text-sm mb-3">Explore</h4>
-        <div className="flex flex-wrap gap-2 mb-8">
-          {["AI", "Software", "Growth"].map((tag) => (
-            <span key={tag} className="rounded-full bg-white/10 px-3 py-1.5 text-xs">
-              {tag}
-            </span>
-          ))}
-        </div>
-        <h4 className="font-display font-bold text-sm mb-3">13 industries, one team</h4>
-        <a
-          href="/industries"
-          className="block rounded-xl overflow-hidden h-36 mb-4 relative group"
-        >
-          <img
-            src="/images/hero/industries-network.webp"
-            alt="Global industry network"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent group-hover:from-black/80 transition-colors" />
-          <span className="absolute inset-0 flex items-end p-4 text-xs font-semibold text-white">
-            See all industries →
-          </span>
-        </a>
-        <a href="/contact-us" className="mt-auto text-xs text-white/60 hover:text-white transition-colors">
-          Don't see yours? {contact.email}
-        </a>
-      </div>
-
-      {/* Categories grid */}
-      <div className="p-8 xl:p-9 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-x-7 gap-y-9 content-start">
+    <MegaShell
+      eyebrow="Industries"
+      title="13 industries, one team"
+      text="From software and healthcare to logistics and real estate, we build for how each one actually works."
+      cta={{ label: "Explore industries", href: "/industries" }}
+      sectionLabel="Where we work"
+      viewAll={{ label: "All industries", href: "/industries" }}
+    >
+      <div className="mm-cats">
         {CATEGORIES.map((cat) => (
-          <div key={cat.heading}>
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-ink text-white mb-3.5">
-              <span className="w-4 h-4">{cat.icon}</span>
-            </span>
-            <h5 className="font-display font-bold text-sm text-ink mb-2.5">{cat.heading}</h5>
-            <ul className="space-y-2">
-              {cat.items.map((title) => {
-                const ind = findIndustry(title);
-                return (
-                  <li key={title}>
-                    <a
-                      href={`/industries/${slugify(title)}`}
-                      title={ind?.copy}
-                      className="text-sm text-ink/55 hover:text-violet-700 transition-colors"
-                    >
-                      {title}
-                    </a>
-                  </li>
-                );
-              })}
+          <div key={cat.heading} className="mm-cat">
+            <span className="mm-icon">{cat.icon}</span>
+            <p className="mm-item-title">{cat.heading}</p>
+            <ul className="mm-links">
+              {cat.items.map((title) => (
+                <li key={title}>
+                  <a href={`/industries/${slugify(title)}`} title={industries.find((i) => i.title === title)?.copy}>
+                    <span>{title}</span>
+                    <MmArrow />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         ))}
       </div>
-    </div>
+    </MegaShell>
   );
 }

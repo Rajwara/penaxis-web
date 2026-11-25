@@ -1,12 +1,10 @@
 "use client";
 
 import { services } from "@/lib/data";
+import MegaShell, { MmArrow } from "./MegaShell";
 
-// Ported mechanism from a reference product/services mega menu (a row of
-// icon+title+description items with one highlighted card, plus a side card
-// with an image and supporting links) — restyled with Penaxis's own 4 real
-// services and brand palette instead of the reference's product lineup.
-// Side card uses the real Penaxis team group photo.
+// Services mega menu: shared MegaShell layout (black intro panel + white
+// area) with Penaxis's 4 services as matching item cards.
 
 const ICONS: Record<string, JSX.Element> = {
   "ai-mvp": (
@@ -33,81 +31,30 @@ const ICONS: Record<string, JSX.Element> = {
   ),
 };
 
-const HIGHLIGHT_SLUG = "ai-mvp";
-const TEAM_PHOTO = "/images/hero/team-group.webp";
-
 export default function ServicesMegaMenu() {
   return (
-    <div className="mega-panel w-full min-h-[26rem] rounded-3xl bg-paper shadow-2xl border border-ink/5 overflow-hidden grid grid-cols-[1fr_240px] xl:grid-cols-[1fr_280px]">
-      {/* Main area */}
-      <div className="p-8 xl:p-9 flex flex-col">
-        <h4 className="font-display font-bold text-lg text-ink mb-1">Services</h4>
-        <p className="text-sm text-ink/50 mb-8 max-w-md">
-          Automate and manage the full journey - from first build to ongoing growth.
-        </p>
-
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 flex-1">
-          {services.map((s) => {
-            const isHighlight = s.slug === HIGHLIGHT_SLUG;
-            return (
-              <a
-                key={s.slug}
-                href={`/services/${s.slug}`}
-                className={`group relative rounded-2xl p-5 transition-colors flex flex-col ${
-                  isHighlight ? "bg-violet-600 text-white" : "hover:bg-ink/[0.04]"
-                }`}
-              >
-                {isHighlight && (
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="14"
-                    height="14"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="absolute top-4 right-4 opacity-70"
-                  >
-                    <path d="M7 17L17 7M7 7h10v10" />
-                  </svg>
-                )}
-                <span
-                  className={`inline-flex items-center justify-center w-9 h-9 rounded-lg mb-4 ${
-                    isHighlight ? "bg-white/15" : "bg-ink/[0.06] text-ink"
-                  }`}
-                >
-                  <span className="w-4 h-4">{ICONS[s.slug]}</span>
-                </span>
-                <h5 className={`font-display font-bold text-sm mb-2 ${isHighlight ? "text-white" : "text-ink"}`}>
-                  {s.title}
-                </h5>
-                <p className={`text-xs leading-relaxed ${isHighlight ? "text-white/75" : "text-ink/50"}`}>
-                  {s.short.length > 100 ? s.short.slice(0, 100).trimEnd() + "…" : s.short}
-                </p>
-              </a>
-            );
-          })}
-        </div>
+    <MegaShell
+      eyebrow="Services"
+      title="Build, transform & grow"
+      text="From first build to ongoing growth: AI products, digital transformation, software and sales support."
+      cta={{ label: "Start a project", href: "/contact-us" }}
+      sectionLabel="What we do"
+      viewAll={{ label: "All services", href: "/services" }}
+    >
+      <div className="mm-grid mm-grid--2">
+        {services.map((s) => (
+          <a key={s.slug} href={`/services/${s.slug}`} className="mm-item">
+            <span className="mm-icon">{ICONS[s.slug]}</span>
+            <span className="mm-item-body">
+              <span className="mm-item-title">{s.title}</span>
+              <span className="mm-item-text">{s.short}</span>
+            </span>
+            <span className="mm-item-arrow">
+              <MmArrow />
+            </span>
+          </a>
+        ))}
       </div>
-
-      {/* Side card */}
-      <div className="bg-paper border-l border-ink/5 p-6 flex flex-col">
-        <a
-          href="/game-changers"
-          className="block rounded-xl overflow-hidden h-60 mb-5 relative bg-gradient-to-br from-violet-200 to-volt/40"
-        >
-          <img src={TEAM_PHOTO} alt="The Penaxis team" className="w-full h-full object-cover object-top" />
-        </a>
-        <h5 className="font-display font-bold text-sm text-ink mb-2">Our team</h5>
-        <a href="/game-changers" className="text-sm text-ink/55 hover:text-violet-700 transition-colors mb-2.5">
-          Meet the people behind the work
-        </a>
-        <a
-          href="/contact-us"
-          className="btn-grad mt-auto text-sm px-5 py-3"
-        >
-          Start a project
-        </a>
-      </div>
-    </div>
+    </MegaShell>
   );
 }
