@@ -24,7 +24,7 @@ const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export default function HomeV2Cta() {
+export default function HomeV2Cta({ source = "Home v2 — Request a quote banner" }: { source?: string }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -131,7 +131,7 @@ export default function HomeV2Cta() {
 
     setStatus("sending");
     try {
-      await submitForm("Home v2 — Request a quote banner", {
+      await submitForm(source, {
         name: form.name.trim(),
         email: form.email.trim(),
         subject: form.subject.trim(),

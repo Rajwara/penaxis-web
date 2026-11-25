@@ -6,6 +6,7 @@ import AboutMission from "@/components/AboutMission";
 import AboutShowcase from "@/components/AboutShowcase";
 import AboutWhyChoose from "@/components/AboutWhyChoose";
 import AboutTeamSlider from "@/components/AboutTeamSlider";
+import HomeV2Cta from "@/components/HomeV2Cta";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -28,6 +29,10 @@ export default function AboutV2Page() {
         <AboutWhyChoose />
         <AboutTeamSlider />
         <AboutTestimonials />
+        {/* Same banner as /home-v2; .hv2-page gives it the purple/home-v2 styling */}
+        <div className="hv2-page">
+          <HomeV2Cta source="Who we are — Request a quote banner" />
+        </div>
       </main>
       <Footer />
     </>
