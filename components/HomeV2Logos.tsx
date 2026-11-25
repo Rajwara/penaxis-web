@@ -6,10 +6,10 @@ import { pressLogos } from "@/lib/data";
 // live homepage's "Featured in" strip.
 
 const AVATARS = [
-  { src: "/images/team/zohaib-khalid.webp", alt: "Zohaib Khalid, NAS Enterprises" },
-  { src: "/images/team/malih.webp", alt: "Rohail Malih, Oktabytes" },
   { src: "/images/team/amar-jeet.webp", alt: "Amarjit, The Plate Agent" },
-  { src: "/images/team/adeel-aslam.webp", alt: "Adeel Aslam, Penaxis" },
+  { src: "/images/team/client-eric.webp", alt: "Eric" },
+  { src: "/images/team/client-ismat.webp", alt: "Ismat" },
+  { src: "/images/team/client-johana.webp", alt: "Johana" },
 ];
 
 export default function HomeV2Logos() {
