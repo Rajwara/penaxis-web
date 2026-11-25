@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import AboutContent from "@/components/AboutContent";
+import TeamPage from "@/components/TeamPage";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -12,12 +12,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
+export default function GameChangersPage() {
   return (
     <>
       <Navbar />
       <main>
-        <AboutContent />
+        <TeamPage />
       </main>
       <Footer />
     </>

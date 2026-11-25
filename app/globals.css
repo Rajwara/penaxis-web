@@ -10976,3 +10976,114 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
   mask-image: linear-gradient(180deg, transparent 0, #000 40px);
 }
 @media (max-width: 767px) { .cb-bg[src*="contact-us-banner-v2"] { top: 56px; } }
+
+/* ==================================================================
+   /game-changers — team page (components/TeamPage.tsx), from the
+   supplied "Our Team" template, in the /home-v2 branding.
+   ================================================================== */
+.tm {
+  --tm-accent: #6A449A;
+  --tm-display: "Big Shoulders Variable", "Big Shoulders", Impact, sans-serif;
+  --tm-body: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  background: #F8F8F8;
+  color: #444;
+  font-family: var(--tm-body);
+  font-size: 18px; font-weight: 500; line-height: 1.5; letter-spacing: -0.01em;
+}
+.tm-container { max-width: 1135px; margin: 0 auto; padding: 0 30px; }
+.tm-wide { max-width: 1440px; margin: 0 auto; padding: 0 20px 20px; }
+.tm-section { padding: 150px 0 120px; } /* top clears the fixed navbar */
+
+.tm-subtitle {
+  display: inline-flex; align-items: center; gap: 12px; margin: 0;
+  font-family: var(--tm-display); font-size: 18px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em; text-transform: uppercase; color: var(--tm-accent);
+}
+.tm-subtitle::before, .tm-subtitle::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.tm-subtitle.is-light { color: #fff; }
+
+.tm-head { display: flex; flex-direction: column; align-items: center; margin-bottom: 64px; text-align: center; }
+.tm-h1 {
+  max-width: 800px; margin: 22px 0 28px;
+  font-family: var(--tm-display); font-size: clamp(56px, 10.5vw, 120px);
+  font-weight: 500 !important; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #000;
+}
+.tm-lead { max-width: 520px; margin: 0; font-size: 20px; line-height: 1.5; }
+
+/* Team grid */
+.tm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 30px; }
+.tm-card { display: flex; flex-direction: column; }
+.tm-media { position: relative; overflow: hidden; margin-bottom: 20px; aspect-ratio: 338 / 512; border-radius: 15px; background: #eceaf1; }
+.tm-img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.tm-card:hover .tm-img { transform: scale(1.05); }
+.tm-hover {
+  position: absolute; inset: auto 0 0 0; height: 50%;
+  display: flex; align-items: flex-end; justify-content: center; padding-bottom: 30px;
+  background: linear-gradient(to top, rgba(0, 0, 0, .55), transparent);
+  opacity: 0; transition: opacity .4s;
+}
+.tm-social {
+  display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 1600px;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  color: #fff; font: 500 16px/1 var(--tm-display); text-transform: uppercase;
+  transform: translateY(30px); transition: transform .45s cubic-bezier(.2, .7, .2, 1), background-color .25s;
+}
+.tm-social:hover { background: var(--tm-accent); }
+.tm-social svg { width: 16px; height: 16px; fill: currentColor; }
+.tm-card:hover .tm-hover, .tm-card:focus-within .tm-hover { opacity: 1; }
+.tm-card:hover .tm-social, .tm-card:focus-within .tm-social { transform: none; }
+.tm-name {
+  margin: 0 0 8px;
+  font-family: var(--tm-display); font-size: 28px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.01em; text-transform: uppercase; color: #000;
+}
+.tm-card:hover .tm-name { color: var(--tm-accent); }
+.tm-role { font-size: 14px; font-weight: 600; line-height: 1.5; color: #444; }
+
+/* Scroll reveal (only once JS is running) */
+.tm-js .tm-reveal { opacity: 0; transform: translateY(60px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1); }
+.tm-js .tm-reveal.from-left { transform: translateX(-60px); }
+.tm-js .tm-reveal.from-right { transform: translateX(60px); }
+.tm-js .tm-reveal.in { opacity: 1; transform: none; }
+
+/* CTA */
+.tm-cta {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 100px 30px; border-radius: 20px; background: #000; color: #fff; text-align: center;
+}
+.tm-cta-bg { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; }
+.tm-cta h2 {
+  max-width: 760px; margin: 22px auto 40px;
+  font-family: var(--tm-display); font-size: clamp(48px, 8vw, 100px);
+  font-weight: 500; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #fff;
+}
+.tm-fade { background: linear-gradient(90deg, #fff 0%, #a988d3 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tm-cta .hv2-btn { font-family: var(--tm-display); font-size: 18px; font-weight: 500; letter-spacing: -0.02em; text-transform: uppercase; }
+.tm-cta .hv2-btn:hover { background: var(--tm-accent); color: #fff; }
+
+@media (max-width: 991px) {
+  .tm-grid { grid-template-columns: repeat(2, 1fr); }
+  .tm-section { padding: 130px 0 90px; }
+}
+@media (max-width: 767px) {
+  .tm-container { padding: 0 20px; }
+  .tm-wide { padding: 0 10px 10px; }
+  .tm-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .tm-lead { font-size: 18px; }
+  .tm-cta { padding: 70px 20px; }
+  /* touch screens: show the LinkedIn pill without hover */
+  .tm-hover { opacity: 1; }
+  .tm-social { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tm-js .tm-reveal { opacity: 1; transform: none; transition: none; }
+}
+/* Scope over the older homepage-testimonials .tm-section / .tm-grid rules */
+.tm .tm-section { background: transparent; overflow: visible; padding: 150px 0 120px; }
+.tm .tm-grid { grid-template-columns: repeat(3, 1fr); gap: 40px 30px; align-items: start; }
+@media (max-width: 991px) { .tm .tm-section { padding: 130px 0 90px; } .tm .tm-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 767px) { .tm .tm-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
+.tm { overflow-x: clip; }
