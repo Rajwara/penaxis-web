@@ -11940,3 +11940,41 @@ section.cs-section:has(> .cs-container) { display: block; min-height: 0; padding
   .phb-video { width: 1em; height: 1em; top: auto; left: auto; right: -3%; bottom: 4%; transform: none; animation: phbFadeIn .8s .6s both; }
   .phb-brands { padding-top: 2rem; }
 }
+
+/* ==================================================================
+   Industries mega menu (components/IndustriesMegaMenu.tsx): dark panel,
+   intro column + 3-column grid of groups, like the supplied reference.
+   ================================================================== */
+.mega-panel.im {
+  --im-accent: #a988d3;
+  --im-heading: "Big Shoulders Variable", "Big Shoulders", Arial, sans-serif;
+  --im-body: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif;
+  display: grid; grid-template-columns: 300px minmax(0, 1fr); width: 100%; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.1); border-radius: 20px;
+  background: radial-gradient(120% 90% at 100% 0%, rgba(106,68,154,.28), transparent 60%), #0d0b12;
+  box-shadow: 0 30px 60px -20px rgba(17,12,30,.45);
+  font-family: var(--im-body); color: #fff; letter-spacing: -.01em;
+}
+.im p { margin: 0; }
+.im-intro { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 28px 24px; border-right: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.02); }
+.im-pill { padding: 6px 14px; border: 1px solid rgba(169,136,211,.45); border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--im-accent); background: rgba(106,68,154,.15); }
+.im-title { font: 500 34px/1 var(--im-heading); letter-spacing: -.02em; text-transform: uppercase; color: #fff; }
+.im-explore { font-size: 14px; font-weight: 600; color: var(--im-accent); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(169,136,211,.45); transition: color .2s; }
+.im-explore:hover { color: #fff; }
+.im-feature { display: flex; flex-direction: column; gap: 6px; width: 100%; margin-top: auto; padding: 10px; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; background: rgba(255,255,255,.04); text-decoration: none; transition: background .25s, border-color .25s; }
+.im-feature:hover { background: rgba(255,255,255,.08); border-color: rgba(169,136,211,.4); }
+.im-feature-img { display: block; height: 110px; margin-bottom: 6px; border-radius: 10px; overflow: hidden; background: #1c1824; }
+.im-feature-img img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.im-feature:hover .im-feature-img img { transform: scale(1.05); }
+.im-feature-label { font-size: 11px; font-weight: 600; color: var(--im-accent); }
+.im-feature-title { font: 500 18px/1.05 var(--im-heading); letter-spacing: -.01em; text-transform: uppercase; color: #fff; }
+.im-feature-text { font-size: 12px; line-height: 1.45; color: rgba(255,255,255,.6); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.im-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 18px; align-content: start; }
+.im-group { padding: 16px 16px 18px; border-radius: 12px; transition: background .25s; }
+.im-group:hover { background: rgba(106,68,154,.16); }
+.im-group-title { font: 500 18px/1 var(--im-heading); letter-spacing: -.01em; text-transform: uppercase; color: var(--im-accent); }
+.im-group-text { margin-top: 8px !important; font-size: 12.5px; line-height: 1.5; color: rgba(255,255,255,.58); }
+.im-links { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 9px; }
+.im-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.92); text-decoration: none; transition: color .2s, padding-left .25s; }
+.im-links a:hover { color: var(--im-accent); padding-left: 4px; }
+@media (max-width: 1180px) { .mega-panel.im { grid-template-columns: 260px minmax(0, 1fr); } .im-title { font-size: 28px; } }

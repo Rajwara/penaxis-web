@@ -1,84 +1,79 @@
 "use client";
 
-import { industries, slugify } from "@/lib/data";
-import MegaShell, { MmArrow } from "./MegaShell";
+import { caseStudies, industries, slugify } from "@/lib/data";
 
-// Industries mega menu: shared MegaShell layout with Penaxis's 13
-// industries grouped into 5 categories.
+// Industries mega menu, laid out like the supplied reference: dark panel,
+// intro column on the left (label pill, heading, "Explore all" link and a
+// featured case study card) and a 3-column grid of groups on the right,
+// each with a title, a one-line description and its industry links.
+// Penaxis's 13 industries in 6 groups. Styles: .im-* in app/globals.css.
 
-const CATEGORIES = [
+const GROUPS = [
   {
-    heading: "Technology & Digital",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
-      </svg>
-    ),
-    items: ["Software, IT & SaaS", "Education & EdTech", "Fintech & Financial Services"],
+    title: "Technology & SaaS",
+    text: "Platforms, portals and AI tools for software companies and learning businesses.",
+    items: ["Software, IT & SaaS", "Education & EdTech"],
   },
   {
-    heading: "Commerce & Retail",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M3 6h18l-1.5 11a2 2 0 0 1-2 1.7H6.5a2 2 0 0 1-2-1.7L3 6z" />
-        <path d="M8 6V5a4 4 0 0 1 8 0v1" />
-      </svg>
-    ),
-    items: ["E-Commerce & Retail", "Food Delivery & Grocery", "Real Estate & Property"],
+    title: "Finance & Professional",
+    text: "Secure, compliant systems for financial services and people-driven firms.",
+    items: ["Fintech & Financial Services", "Consulting, Staffing & Immigration"],
   },
   {
-    heading: "Health & Lifestyle",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M20.8 8.6c0 5.4-8.8 10.4-8.8 10.4S3.2 14 3.2 8.6a4.6 4.6 0 0 1 8.8-1.8 4.6 4.6 0 0 1 8.8 1.8z" />
-      </svg>
-    ),
+    title: "Commerce & Retail",
+    text: "Stores, marketplaces and ordering apps built to convert and scale.",
+    items: ["E-Commerce & Retail", "Food Delivery & Grocery"],
+  },
+  {
+    title: "Health & Lifestyle",
+    text: "Booking, care and membership platforms that people enjoy using.",
     items: ["Healthcare & Wellness", "Sports & Fitness", "Pet Care & Veterinary"],
   },
   {
-    heading: "Operations & Mobility",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <rect x="1" y="7" width="13" height="10" rx="1" />
-        <path d="M14 10h4l4 4v3h-8z" />
-      </svg>
-    ),
-    items: ["Logistics & Transportation", "Automotive & Auto Care", "Home Services & Maintenance"],
+    title: "Mobility & Logistics",
+    text: "Dispatch, fleet and service systems that keep operations moving.",
+    items: ["Logistics & Transportation", "Automotive & Auto Care"],
   },
   {
-    heading: "Professional Services",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <circle cx="12" cy="8" r="4" />
-        <path d="M4 20c0-3.5 3.5-6 8-6s8 2.5 8 6" />
-      </svg>
-    ),
-    items: ["Consulting, Staffing & Immigration"],
+    title: "Property & Home",
+    text: "Listings, CRMs and on-demand service apps for property and home businesses.",
+    items: ["Real Estate & Property", "Home Services & Maintenance"],
   },
 ];
 
+const FEATURED = caseStudies.find((c) => c.slug === "drivelo-logistics-platform") ?? caseStudies[0];
+
 export default function IndustriesMegaMenu() {
   return (
-    <MegaShell
-      eyebrow="Industries"
-      title="13 industries, one team"
-      text="From software and healthcare to logistics and real estate, we build for how each one actually works."
-      cta={{ label: "Explore industries", href: "/industries" }}
-      sectionLabel="Where we work"
-      viewAll={{ label: "All industries", href: "/industries" }}
-    >
-      <div className="mm-cats">
-        {CATEGORIES.map((cat) => (
-          <div key={cat.heading} className="mm-cat">
-            <span className="mm-icon">{cat.icon}</span>
-            <p className="mm-item-title">{cat.heading}</p>
-            <ul className="mm-links">
-              {cat.items.map((title) => (
-                <li key={title}>
-                  <a href={`/industries/${slugify(title)}`} title={industries.find((i) => i.title === title)?.copy}>
-                    <span>{title}</span>
-                    <MmArrow />
+    <div className="mega-panel im">
+      <div className="im-intro">
+        <span className="im-pill">Industries</span>
+        <p className="im-title">{industries.length} industries, one team</p>
+        <a href="/industries" className="im-explore">
+          Explore all industries
+        </a>
+
+        <a href={`/case-studies/${FEATURED.slug}`} className="im-feature">
+          <span className="im-feature-img">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={FEATURED.gridImage || FEATURED.image} alt="" loading="lazy" />
+          </span>
+          <span className="im-feature-label">Featured work</span>
+          <span className="im-feature-title">{FEATURED.title}</span>
+          <span className="im-feature-text">{FEATURED.blurb}</span>
+        </a>
+      </div>
+
+      <div className="im-grid">
+        {GROUPS.map((g) => (
+          <div key={g.title} className="im-group">
+            <p className="im-group-title">{g.title}</p>
+            <p className="im-group-text">{g.text}</p>
+            <ul className="im-links">
+              {g.items.map((t) => (
+                <li key={t}>
+                  <a href={`/industries/${slugify(t)}`} title={industries.find((i) => i.title === t)?.copy}>
+                    {t}
                   </a>
                 </li>
               ))}
@@ -86,6 +81,6 @@ export default function IndustriesMegaMenu() {
           </div>
         ))}
       </div>
-    </MegaShell>
+    </div>
   );
 }
