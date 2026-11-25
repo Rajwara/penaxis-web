@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import ServicesHero from "@/components/ServicesHero";
 import HomeV2Services from "@/components/HomeV2Services";
+import EngagementModels from "@/components/EngagementModels";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function ServicesPage() {
         <div className="hv2-page svc-page-list">
           <HomeV2Services />
         </div>
+        <EngagementModels />
       </main>
       <Footer />
     </>
