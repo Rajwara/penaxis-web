@@ -51,7 +51,7 @@ export default function HomeV2WhyChooseUs() {
 
           {/* 2 — photo card */}
           <Reveal delay={0.08} className="hv2-card hv2-card--photo">
-            <img className="hv2-photo-bg" src="/images/hero/team-huddle.jpg" alt="The Penaxis team working together" loading="lazy" />
+            <img className="hv2-photo-bg" src="/images/hero/smarter-way-card.webp" alt="The Penaxis team working together" loading="lazy" />
             <div className="hv2-photo-shade" aria-hidden="true" />
             <img className="hv2-photo-logo" src="/images/logo/penaxis-logo-white.png" alt="Penaxis" />
             <div className="hv2-photo-text">
