@@ -34,22 +34,56 @@ export function Feature({ title, text, i, href }: { title: string; text: string;
 }
 
 
-type Item = { title: string; text: string; href?: string };
+type Item = { title: string; text: string; href?: string; icon?: keyof typeof LIGHT_ICONS };
 
-export function NxFeaturesSection({ label, heading, items }: { label: string; heading: string; items: Item[] }) {
+// Lightweight line icons for the "light" variant (no boxes), one per capability.
+const LIGHT_ICONS = {
+  ai: <path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4zM18 15l.9 2.1L21 18l-2.1.9L18 21l-.9-2.1L15 18l2.1-.9z" />,
+  automation: <><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1" /></>,
+  software: <><rect x="3" y="4" width="18" height="14" rx="2" /><path d="M8 21h8M9 9l-2 2 2 2M15 9l2 2-2 2" /></>,
+  experience: <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M7 6.5h.01M10 6.5h.01" /><path d="M8 14l3 2 5-4" /></>,
+  ecosystem: <><circle cx="6" cy="6" r="2.5" /><circle cx="18" cy="6" r="2.5" /><circle cx="12" cy="18" r="2.5" /><path d="M8.2 7.4 10.6 16M15.8 7.4 13.4 16M8.5 6h7" /></>,
+  growth: <><path d="M3 20h18" /><path d="M5 16l5-5 3 3 6-7" /><path d="M15 7h4v4" /></>,
+  security: <><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z" /><path d="M9 12l2 2 4-4" /></>,
+  scale: <><rect x="3" y="14" width="5" height="7" rx="1" /><rect x="10" y="9" width="5" height="12" rx="1" /><rect x="17" y="4" width="4" height="17" rx="1" /></>,
+};
+
+export function NxFeaturesSection({
+  label,
+  heading,
+  intro,
+  items,
+  variant,
+}: {
+  label: string;
+  heading: string;
+  intro?: string;
+  items: Item[];
+  variant?: "light";
+}) {
+  const light = variant === "light";
   return (
-    <section className="nx-features nx-lines">
+    <section className={`nx-features nx-lines${light ? " nx-features--light" : ""}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="nx-waves" src={NX_IMG.waves} alt="" aria-hidden="true" />
       <div className="nx-container">
         <div className="pd-reveal">
           <span className="nx-label">/ {label} /</span>
           <h2 className="nx-h2 nx-features-h2">{heading}</h2>
+          {intro && <p className="nx-features-intro">{intro}</p>}
         </div>
         <div className="nx-fgrid">
-          {items.map((it, i) => (
-            <Feature key={it.title} title={it.title} text={it.text} i={i} href={it.href} />
-          ))}
+          {items.map((it, i) =>
+            light ? (
+              <div key={it.title} className="nx-cap pd-reveal">
+                <svg className="nx-cap-ico" viewBox="0 0 24 24" aria-hidden="true">{LIGHT_ICONS[it.icon ?? "ai"]}</svg>
+                <h5>{it.title}</h5>
+                <p>{it.text}</p>
+              </div>
+            ) : (
+              <Feature key={it.title} title={it.title} text={it.text} i={i} href={it.href} />
+            )
+          )}
         </div>
       </div>
     </section>

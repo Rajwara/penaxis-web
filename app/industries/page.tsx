@@ -37,19 +37,21 @@ export default function IndustriesPage() {
               { label: "Sports & Fitness", href: "/industries/sports-and-fitness" },
             ]}
           />
-          {/* Same features section as the single industry pages */}
+          {/* 03 Industry expertise */}
           <NxFeaturesSection
-            label="what we can build"
-            heading="Practical solutions & the results they deliver"
+            variant="light"
+            label="Expertise without boundaries"
+            heading="Different challenges. One technology partner."
+            intro="Every industry operates differently. We combine industry understanding, intelligent technology and business expertise to develop solutions tailored to the way your business operates, competes and grows."
             items={[
-              { title: "Custom platforms", text: "Web platforms and SaaS products built around how your business actually works.", href: "/services/web-crm-software" },
-              { title: "Customer & mobile apps", text: "Booking, ordering and self-service apps your customers enjoy using." },
-              { title: "CRMs & portals", text: "CRMs, client portals and internal tools that replace spreadsheets and workarounds.", href: "/services/web-crm-software" },
-              { title: "AI assistants", text: "Assistants and smart search that answer questions and cut manual work.", href: "/services/ai-mvp" },
-              { title: "Workflow automation", text: "Repetitive tasks automated so your team can focus on higher-value work.", href: "/services/digital-transformation" },
-              { title: "Integrations", text: "Payments, maps, messaging and the tools you already use, connected cleanly." },
-              { title: "Dashboards & insights", text: "Clear dashboards that turn operational data into decisions." },
-              { title: "Sales & growth", text: "Pipelines, outreach and digital presence that turn products into revenue.", href: "/services/sales-growth" },
+              { icon: "ai", title: "Applied AI & Intelligence", text: "Practical AI applications that address real industry challenges." },
+              { icon: "automation", title: "Business Automation", text: "Streamline repetitive processes and improve operational efficiency." },
+              { icon: "software", title: "Custom Software Solutions", text: "Purpose-built platforms, applications, CRMs and ERP systems." },
+              { icon: "experience", title: "Digital Experiences", text: "High-performing websites and intuitive customer experiences." },
+              { icon: "ecosystem", title: "Connected Ecosystems", text: "Integrate existing tools, systems and business data." },
+              { icon: "growth", title: "Sales & Business Growth", text: "Build scalable acquisition strategies and revenue operations." },
+              { icon: "security", title: "Security & Compliance", text: "Consider relevant security and regulatory requirements." },
+              { icon: "scale", title: "Scalable Architecture", text: "Build technology that evolves alongside your business." },
             ]}
           />
         </div>
