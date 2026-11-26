@@ -3,10 +3,7 @@ import DetailReveal from "@/components/detail/DetailReveal";
 import HomeV2Cta from "@/components/HomeV2Cta";
 import FaqSections from "@/components/FaqSections";
 import { INDUSTRY_MENU } from "@/lib/industryMenu";
-import { NX_IMG } from "./NxHero";
 import AboutHeroBanner from "@/components/AboutHeroBanner";
-import { Feature } from "./NxFeatures";
-import NxMarquee from "./NxMarquee";
 import ServiceTabs from "./ServiceTabs";
 import { caseStudies, industries, services, slugify } from "@/lib/data";
 import { CASE_STUDY_SHORT_TITLES } from "@/lib/caseStudyCards";
@@ -28,12 +25,6 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 // app/globals.css.
 
 
-const SHORT_SERVICE: Record<string, string> = {
-  "ai-mvp": "AI & MVPs",
-  "digital-transformation": "Automation",
-  "sales-growth": "Sales & growth",
-  "web-crm-software": "Web & CRM",
-};
 
 type Industry = (typeof industries)[number];
 
@@ -159,63 +150,6 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
             </div>
           </section>
         )}
-
-        {/* 03 What we can build (features) */}
-        <section className="nx-features nx-lines">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="nx-waves" src={NX_IMG.waves} alt="" aria-hidden="true" />
-          <div className="nx-container">
-            <div className="pd-reveal">
-              <Label>what we can build</Label>
-              <h2 className="nx-h2 nx-features-h2">Practical solutions &amp; the results they deliver</h2>
-            </div>
-            <div className="nx-fgrid">
-              {industry.solutions.map((s, i) => (
-                <Feature key={s} title={`Solution ${String(i + 1).padStart(2, "0")}`} text={s} i={i} />
-              ))}
-              {industry.outcomes.map((o, i) => (
-                <Feature key={o} title={`Outcome ${String(i + 1).padStart(2, "0")}`} text={o} i={i + 3} />
-              ))}
-              {svc.slice(0, 2).map((s, i) => (
-                <Feature key={s.slug} title={s.title} text={s.short} i={i + 6} href={`/services/${s.slug}`} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 04 AI use cases (how it works) */}
-        {extra && (
-          <section className="nx-how nx-lines">
-            <div className="nx-container">
-              <div className="nx-grid2 nx-how-grid">
-                <div className="nx-mock-wrap pd-reveal">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={NX_IMG.dashboard} alt="AI dashboard" />
-                </div>
-                <div className="pd-reveal">
-                  <Label>AI use cases</Label>
-                  <h2 className="nx-h2">How AI works for {industry.title.split(" & ")[0].toLowerCase()}</h2>
-                  <p className="nx-intro">Practical AI built into the tools your team and customers already use, with people staying in control of every decision.</p>
-                  {extra.ai.map((a, i) => (
-                    <div key={a.title} className="nx-step">
-                      <span className="nx-num">{String(i + 1).padStart(2, "0")}</span>
-                      <div>
-                        <h6>{a.title}</h6>
-                        <p>{a.text}</p>
-                      </div>
-                    </div>
-                  ))}
-                  <div className="nx-step-btn">
-                    <Btn href="/services/ai-mvp">Explore AI development</Btn>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Marquee */}
-        <NxMarquee text={`${industry.title} is shaping the future of technology.`} />
 
         {/* 05 Compliance: what we deliver against each framework */}
         <section className="nx-cf" aria-labelledby="nx-cf-title">
