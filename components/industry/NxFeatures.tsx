@@ -64,8 +64,10 @@ export function NxFeaturesSection({
   const light = variant === "light";
   return (
     <section className={`nx-features nx-lines${light ? " nx-features--light" : ""}`}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="nx-waves" src={NX_IMG.waves} alt="" aria-hidden="true" />
+      {!light && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className="nx-waves" src={NX_IMG.waves} alt="" aria-hidden="true" />
+      )}
       <div className="nx-container">
         <div className="pd-reveal">
           <span className="nx-label">/ {label} /</span>
