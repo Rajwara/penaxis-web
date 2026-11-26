@@ -4,6 +4,7 @@ import NxHero from "@/components/industry/NxHero";
 import IndustrySearch from "@/components/industry/IndustrySearch";
 import DetailReveal from "@/components/detail/DetailReveal";
 import { NxFeaturesSection } from "@/components/industry/NxFeatures";
+import NxMarquee from "@/components/industry/NxMarquee";
 import IndustriesHub from "@/components/IndustriesHub";
 import Footer from "@/components/Footer";
 
@@ -53,6 +54,12 @@ export default function IndustriesPage() {
               { icon: "security", title: "Security & Compliance", text: "Consider relevant security and regulatory requirements." },
               { icon: "scale", title: "Scalable Architecture", text: "Build technology that evolves alongside your business." },
             ]}
+          />
+          {/* 04 Dual animated marquees (opposite directions) */}
+          <NxMarquee
+            text="Transforming Industries • Engineering Possibilities • Empowering Businesses"
+            bottom="Artificial Intelligence • Digital Transformation • Technology & Growth"
+            flush
           />
         </div>
         </DetailReveal>

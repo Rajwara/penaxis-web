@@ -4,6 +4,7 @@ import HomeV2Cta from "@/components/HomeV2Cta";
 import IndustryFaq from "./IndustryFaq";
 import NxHero, { NX_IMG } from "./NxHero";
 import { Feature } from "./NxFeatures";
+import NxMarquee from "./NxMarquee";
 import { caseStudies, industries, services, slugify } from "@/lib/data";
 import { CASE_STUDY_SHORT_TITLES } from "@/lib/caseStudyCards";
 import { GENERAL_FAQS, INDUSTRY_EXTRAS, SECURITY_BASELINE } from "@/lib/industryExtras";
@@ -54,7 +55,6 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
     .filter((s): s is (typeof services)[number] => !!s);
   const faqs = [...(extra?.faqs ?? []), ...GENERAL_FAQS];
   const word = industry.title.split(/[ ,&]/)[0];
-  const ribbon = `${industry.title} is shaping the future of technology. / `.repeat(4);
 
   return (
     <DetailReveal>
@@ -158,10 +158,7 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
         )}
 
         {/* Marquee */}
-        <div className="nx-marquee" aria-hidden="true">
-          <div className="nx-ribbon nx-r1"><div className="nx-track">{ribbon}{ribbon}</div></div>
-          <div className="nx-ribbon nx-r2"><div className="nx-track">{ribbon}{ribbon}</div></div>
-        </div>
+        <NxMarquee text={`${industry.title} is shaping the future of technology.`} />
 
         {/* 05 Compliance & security (features grid) */}
         {extra && (

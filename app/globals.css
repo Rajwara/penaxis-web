@@ -12443,3 +12443,6 @@ a.nx-feat:hover h5 { color: var(--nx-accent); }
   .nx-cap p { font-size: 13.5px; line-height: 1.5; }
 }
 @media (max-width: 380px) { .nx-features--light .nx-fgrid { grid-template-columns: 1fr; } }
+.nx-marquee.is-flush { margin-bottom: 0; height: 290px; }
+@media (max-width: 800px) { .nx-marquee.is-flush { height: 230px; } }
+.nx-r1 { background: #734FA0 !important; color: #fff !important; }
