@@ -20,7 +20,7 @@ const VIDEO_POSTER = "/images/hero/founders-video-poster.webp";
 const BADGE = "STRATEGY • DESIGN • TECHNOLOGY • GROWTH •";
 
 type Line = { text: string; indent?: boolean };
-type Props = { lines: Line[]; text: string; cta: { label: string; href: string } };
+type Props = { lines: Line[]; text: string; cta: { label: string; href: string }; bg?: string; person?: string };
 
 function Arrow() {
   return (
@@ -32,7 +32,7 @@ function Arrow() {
   );
 }
 
-export default function PageHeroBanner({ lines, text, cta }: Props) {
+export default function PageHeroBanner({ lines, text, cta, bg = BG, person }: Props) {
   const modalRef = useRef<HTMLDialogElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const title = lines.map((l) => l.text).join(" ");
@@ -50,7 +50,11 @@ export default function PageHeroBanner({ lines, text, cta }: Props) {
     <section className="phb">
       <div className="phb-card" data-nav-theme="dark">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="phb-bg" src={BG} alt="" fetchPriority="high" />
+        <img className="phb-bg" src={bg} alt="" fetchPriority="high" />
+        {person && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className="phb-person" src={person} alt="" fetchPriority="high" />
+        )}
         <div className="phb-overlay" aria-hidden="true" />
 
         <div className="phb-content">

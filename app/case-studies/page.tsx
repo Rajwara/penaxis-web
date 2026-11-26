@@ -21,6 +21,8 @@ export default function CaseStudiesPage() {
           lines={[{ text: "Real work" }, { text: "that drives", indent: true }, { text: "results" }]}
           text="Websites, platforms, CRMs and AI products we've shipped for clients across 12+ industries."
           cta={{ label: "Start a project", href: "/contact-us" }}
+          bg="/images/hero/case-studies-bg.webp"
+          person="/images/hero/case-studies-person.webp"
         />
         <CaseStudyV2Grid />
       </main>

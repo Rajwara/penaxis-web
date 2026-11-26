@@ -12860,3 +12860,12 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
 .spf .spf-title { margin: 18px 0 0; font: 500 clamp(42px, 4.8vw, 68px)/1 var(--font-display) !important; letter-spacing: -.02em; text-transform: uppercase; color: #111; }
 @media (max-width: 640px) { .spf { padding: 70px 0; } .spf-container { padding: 0 20px; } }
 .svc-cta-wrap { margin-top: 20px; }
+/* Case Studies banner: cut-out person layered on the background, behind the text */
+.phb-person { position: absolute; z-index: 0; bottom: 0; left: 50%; height: 92%; width: auto; max-width: none; transform: translateX(-38%); pointer-events: none; animation: phbPersonIn 1.6s cubic-bezier(.22,1,.36,1) both; }
+@keyframes phbPersonIn { from { opacity: 0; transform: translateX(-38%) translateY(30px); } to { opacity: 1; transform: translateX(-38%); } }
+.phb-card:has(.phb-person) .phb-overlay { z-index: 0; }
+@media (max-width: 991px) { .phb-person { height: 62%; left: 50%; transform: translateX(-30%); animation: none; } }
+@media (max-width: 767px) { .phb-person { height: 52%; transform: translateX(-20%); } }
+@media (prefers-reduced-motion: reduce) { .phb-person { animation: none; } }
+.phb-card:has(.phb-person) .phb-overlay { opacity: .75; background-image: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,0) 45%), linear-gradient(270deg, rgba(0,0,0,.7), rgba(0,0,0,0) 45%); }
+@media (max-width: 991px) { .phb-card:has(.phb-person) .phb-overlay { background-image: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.15) 40%, rgba(0,0,0,.75)); } }
