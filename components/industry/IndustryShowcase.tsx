@@ -4,26 +4,60 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { industries, slugify } from "@/lib/data";
 import { moreIndustries } from "@/lib/industriesMore";
+import { INDUSTRY_MENU } from "@/lib/industryMenu";
 
 // /industries "showcase" gallery, ported from the supplied
 // community-showcase file: dark rounded box, "/ label /" + heading that
 // reveals letter by letter, 4-column masonry (each card goes into the
-// shortest column, same ratios as the file), image zoom + title on hover,
+// shortest column, same ratios as the file), image zoom + overlay with
+// number, title and short copy on hover,
 // cut off with a bottom fade and a pill button. Cards = Penaxis industries,
 // each linking to its page. Styles: .isc-* in app/globals.css.
 
 const RATIOS = [322 / 428, 322 / 318, 322 / 428, 322 / 490, 322 / 428, 322 / 428, 322 / 490, 322 / 318, 322 / 428, 322 / 490, 322 / 318, 322 / 428];
-const TITLE = "Industries we help move forward";
+const TITLE = "Industry Expertise. Real-World Solutions.";
+const INTRO =
+  "Explore how Penaxis addresses the unique challenges of businesses across diverse industries through tailored technology, intelligent automation and growth-focused solutions.";
 
-// First 12 shown on load; "Load more industries" adds the next 12 (the
-// 13th original industry + the 11 newer ones, whose photos are temporary
-// duplicates until real images are uploaded).
-const ITEMS = [...industries, ...moreIndustries].slice(0, 24).map((ind, i) => ({
-  title: ind.title,
-  href: `/industries/${slugify(ind.title)}`,
-  image: ind.image,
-  ratio: RATIOS[i % RATIOS.length],
-}));
+// Priority order + short card copy (supplied). The first 12 show on load;
+// "Load more industries" adds the remaining 12. This order balances existing
+// experience and target opportunities - it is not a claim that every sector
+// has completed projects.
+const CARDS: [string, string][] = [
+  ["Hospitality & Tourism", "Connected guest experiences, booking platforms and smarter operations."],
+  ["Food & Beverage", "Intelligent ordering, restaurant management and customer engagement."],
+  ["Healthcare & Medical Clinics", "Patient platforms, connected healthcare and clinical automation."],
+  ["Sports, Fitness & Wellness", "Membership platforms, bookings and smarter fitness management."],
+  ["Retail & E-commerce", "Connected commerce, intelligent inventory and personalized journeys."],
+  ["Real Estate & Property Management", "Property operations, leasing platforms and intelligent CRMs."],
+  ["Fashion, Beauty & Lifestyle", "Digital storefronts and customer engagement strategies."],
+  ["Automotive & Mobility", "Fleet management, digital bookings and connected operations."],
+  ["Architecture, Interiors & Fit-Out", "Digital portfolios, project management and client experiences."],
+  ["Technology, SaaS & Startups", "Product validation, scalable software and AI-powered innovation."],
+  ["Pharmaceuticals & Life Sciences", "Professional portals and connected business operations."],
+  ["Cybersecurity & Information Security", "Digital platforms, sales enablement and growth for security firms."],
+  ["Physiotherapy & Rehabilitation", "Appointment systems, patient journeys and practice workflows."],
+  ["Mental Health & Psychology", "Accessible digital experiences and secure practice workflows."],
+  ["Construction & Engineering", "Project visibility, procurement and operational management."],
+  ["Facilities Management & Home Services", "Service scheduling, workforce coordination and maintenance tracking."],
+  ["Logistics & Transportation", "Fleet visibility, delivery workflows and connected operations."],
+  ["Manufacturing & Industrial", "Production visibility, workflow automation and reporting."],
+  ["Wholesale & Distribution", "B2B ordering, inventory and distribution workflows."],
+  ["Education & EdTech", "Learning platforms, admissions and connected administration."],
+  ["IT & Managed Services", "Client portals, service workflows and growth enablement."],
+  ["Professional & Business Services", "Client management, digital presence and business automation."],
+  ["Recruitment & Human Resources", "Candidate workflows, staffing platforms and HR systems."],
+  ["Personal Brands & Professionals", "Premium portfolio websites and digital presence."],
+];
+
+const MENU = INDUSTRY_MENU.flatMap((g) => g.items);
+const PAGES = [...industries, ...moreIndustries];
+
+const ITEMS = CARDS.map(([title, copy], i) => {
+  const href = MENU.find((m) => m.label === title)?.href ?? "/industries";
+  const page = PAGES.find((p) => `/industries/${slugify(p.title)}` === href);
+  return { title, copy, href, image: page?.image ?? industries[0].image, ratio: RATIOS[i % RATIOS.length], num: String(i + 1).padStart(2, "0") };
+});
 const FIRST = 12;
 
 const colsFor = (w: number) => (w <= 767 ? 1 : w <= 1024 ? 2 : 4);
@@ -105,7 +139,7 @@ export default function IndustryShowcase() {
     <section ref={sectionRef} className="isc-section" aria-labelledby="isc-title">
       <div ref={boxRef} className={`isc${expanded ? " is-expanded" : ""}`} data-nav-theme="dark" style={expanded && fullH ? { height: fullH } : undefined}>
         <div className="isc-head">
-          <span className="isc-sub">industries</span>
+          <span className="isc-sub">industries we empower</span>
           <h2 ref={titleRef} id="isc-title" className={`isc-title${shown ? " is-visible" : ""}`} aria-label={TITLE}>
             {TITLE.split(" ").map((w, wi) => (
               <span key={wi}>
@@ -120,6 +154,7 @@ export default function IndustryShowcase() {
               </span>
             ))}
           </h2>
+          <p className="isc-intro">{INTRO}</p>
         </div>
 
         <div id="isc-gallery" className="isc-gallery" aria-live="polite">
@@ -134,7 +169,10 @@ export default function IndustryShowcase() {
                     <img src={it.image} alt="" loading="lazy" />
                   </span>
                   <span className="isc-content">
+                    <span className="isc-num">{it.num}</span>
                     <span className="isc-item-title">{it.title}</span>
+                    <span className="isc-item-copy">{it.copy}</span>
+                    <span className="isc-item-more">Explore industry ➚</span>
                   </span>
                 </Link>
                 );
