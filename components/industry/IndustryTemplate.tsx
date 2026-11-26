@@ -34,6 +34,18 @@ const SHORT_SERVICE: Record<string, string> = {
 
 type Industry = (typeof industries)[number];
 
+// Closest real project for industries that have no case study tagged with them.
+const RELATED_CASES: Record<string, string[]> = {
+  "Hospitality & Tourism": ["hotel-booking-revenue-platform"],
+  "Fashion, Beauty & Lifestyle": ["luxury-furniture-ecommerce"],
+  "Architecture, Interiors & Fit-Out": ["luxury-furniture-ecommerce"],
+  "Pharmaceuticals & Life Sciences": ["patient-care-management-platform"],
+  "Physiotherapy & Rehabilitation": ["patient-care-management-platform"],
+  "Mental Health & Psychology": ["patient-care-management-platform"],
+  "Wholesale & Distribution": ["drivelo-logistics-platform"],
+  "Cybersecurity & Information Security": ["cybersecurity-hr-platform"],
+};
+
 const Label = ({ children }: { children: React.ReactNode }) => <span className="nx-label">/ {children} /</span>;
 
 function Btn({ href, children, light }: { href: string; children: React.ReactNode; light?: boolean }) {
@@ -50,8 +62,11 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
   const extra = INDUSTRY_EXTRAS[industry.title];
   const idx = industries.findIndex((i) => i.title === industry.title);
   const related = industries.slice(idx + 1).concat(industries.slice(0, idx));
-  const own = caseStudies.filter((s) => s.tags.includes(industry.title));
-  const studies = [...own, ...caseStudies.filter((s) => !own.includes(s))].slice(0, 2);
+  // Real projects for this industry: case studies tagged with it, plus a
+  // hand-picked closest match for industries without a tagged project.
+  // Delivered projects first, max 2. No match -> the section is hidden.
+  const own = caseStudies.filter((s) => s.tags.includes(industry.title) || (RELATED_CASES[industry.title] ?? []).includes(s.slug));
+  const studies = [...own].sort((a, b) => Number(b.status === "delivered") - Number(a.status === "delivered")).slice(0, 2);
   const svc = (extra?.services ?? services.map((s) => s.slug))
     .map((slug) => services.find((s) => s.slug === slug))
     .filter((s): s is (typeof services)[number] => !!s);
@@ -98,6 +113,51 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
             </div>
           </div>
         </section>
+
+        {/* Real projects in this industry */}
+        {studies.length > 0 && (
+          <section id="case-studies" className="nx-proj" aria-labelledby="nx-proj-title">
+            <div className="nx-container">
+              <div className="nx-proj-head pd-reveal">
+                <div>
+                  <Label>case studies</Label>
+                  <h2 id="nx-proj-title" className="nx-h2">Real projects in this industry</h2>
+                </div>
+                <Btn href="/case-studies">All case studies</Btn>
+              </div>
+              <div className={`nx-proj-list${studies.length === 1 ? " is-single" : ""}`}>
+                {studies.map((s) => {
+                  const img = ("bannerImages" in s && s.bannerImages?.[0]) || s.gridImage || s.image;
+                  return (
+                    <Link key={s.slug} href={`/case-studies/${s.slug}`} className="nx-proj-card pd-reveal">
+                      <span className="nx-proj-media">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={img} alt="" loading="lazy" />
+                        <span className="nx-proj-status">{s.status === "delivered" ? "Delivered" : "Concept"}</span>
+                      </span>
+                      <span className="nx-proj-body">
+                        <span className="nx-proj-tags">
+                          {s.tags.map((t) => <span key={t}>{t}</span>)}
+                          <span className="is-region">{s.region}</span>
+                        </span>
+                        <span className="nx-proj-title">{CASE_STUDY_SHORT_TITLES[s.slug] ?? s.title}</span>
+                        <span className="nx-proj-text">{s.blurb}</span>
+                        {s.metrics?.length ? (
+                          <span className="nx-proj-metrics">
+                            {s.metrics.slice(0, 2).map((m) => (
+                              <span key={m.label}><b>{m.value}</b>{m.label}</span>
+                            ))}
+                          </span>
+                        ) : null}
+                        <span className="nx-proj-link">View case study ➚</span>
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* 03 What we can build (features) */}
         <section className="nx-features nx-lines">
@@ -175,35 +235,6 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
             </div>
           </section>
         )}
-
-        {/* 06 Case studies (blog cards) */}
-        <section id="case-studies" className="nx-blog nx-lines">
-          <div className="nx-container">
-            <div className="nx-blog-top pd-reveal">
-              <div>
-                <Label>case studies</Label>
-                <h2 className="nx-h2">Real projects: the problems we solved and what we built</h2>
-              </div>
-              <Btn href="/case-studies">More case studies</Btn>
-            </div>
-            <div className="nx-posts">
-              {studies.map((s) => (
-                <Link key={s.slug} href={`/case-studies/${s.slug}`} className="nx-post pd-reveal">
-                  <span className="nx-post-media">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={s.gridImage || s.image} alt="" loading="lazy" />
-                    <span className="nx-post-date">{s.region} / {s.status === "delivered" ? "delivered" : "concept"}</span>
-                  </span>
-                  <span className="nx-post-body">
-                    <h3>{CASE_STUDY_SHORT_TITLES[s.slug] ?? s.title}</h3>
-                    <p>{s.blurb}</p>
-                    <span className="nx-tags">/ {s.tags.join(" / ")} /</span>
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* 07 Relevant services (features grid) */}
         <section className="nx-features nx-services nx-lines">
