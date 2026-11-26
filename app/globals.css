@@ -12140,3 +12140,8 @@ section.cs-section:has(> .cs-container) { display: block; min-height: 0; padding
   .ft-offices { grid-template-columns: 1fr; padding: 28px 20px; }
   .ft-bottom { flex-direction: column; text-align: center; padding: 20px; }
 }
+
+/* /careers: gap between the black "Open roles" band and the footer panel
+   (same 20px / 10px frame the homepage uses between dark panels) */
+.car-page .car-roles--list { margin: 0 20px 20px; border-radius: 20px; overflow: hidden; }
+@media (max-width: 767px) { .car-page .car-roles--list { margin: 0 10px 10px; border-radius: 16px; } }
