@@ -163,7 +163,7 @@ export default function HomeV2Cta({ source = "Home v2 — Request a quote banner
       {/* CTA section */}
       <section className="hv2q-wrap" data-nav-theme="dark" aria-labelledby="hv2q-title">
         <div className="hv2q-inner">
-          <img className="hv2q-bg" src="/images/hero/office-logo-desk.jpg" alt="" />
+          <img className="hv2q-bg" src="/images/hero/lets-work-together.webp" alt="" />
           <div className="hv2q-overlay" />
 
           <div className="hv2q-container">
