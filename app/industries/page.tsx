@@ -6,6 +6,7 @@ import DetailReveal from "@/components/detail/DetailReveal";
 import { NxFeaturesSection } from "@/components/industry/NxFeatures";
 import NxMarquee from "@/components/industry/NxMarquee";
 import IndustryShowcase from "@/components/industry/IndustryShowcase";
+import IndustryCaseSlider from "@/components/industry/IndustryCaseSlider";
 import IndustriesHub from "@/components/IndustriesHub";
 import Footer from "@/components/Footer";
 
@@ -66,6 +67,8 @@ export default function IndustriesPage() {
         </DetailReveal>
         {/* 05 Industries showcase gallery */}
         <IndustryShowcase />
+        {/* 07 Featured case studies (published, delivered projects only) */}
+        <IndustryCaseSlider />
         <IndustriesHub />
       </main>
       <Footer />
