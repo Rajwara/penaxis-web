@@ -103,6 +103,7 @@ export const services = [
       "Turning ideas into launch-ready SaaS products, AI assistants, automation tools, and scalable MVPs built for real-world validation and growth.",
     long: "We transform concepts into scalable digital products with practical AI built in. From SaaS tools and dashboards to AI assistants and automation platforms, we build launch-ready MVPs focused on essential functionality, speed to market, and measurable business value.",
     heroImage: "/images/services/ai-mvp-about.webp",
+    listImage: "/images/services/ai-mvp-list.webp", // services list (homepage, /services)
     highlightImage: "/images/services/ai-mvp-highlight.webp",
     pillars: [
       {
@@ -137,6 +138,7 @@ export const services = [
       "Helping businesses improve how they operate and grow through business analysis, process optimization, workflow automation, social media marketing, and a stronger digital presence.",
     long: "From business analysis and digital strategy to workflow automation and social media marketing, we help businesses improve efficiency, strengthen their digital presence, and build a more scalable foundation for growth.",
     heroImage: "/images/services/digital-transformation-about.webp",
+    listImage: "/images/services/digital-transformation-list.webp", // services list (homepage, /services)
     highlightImage: "/images/services/digital-transformation-highlight.webp",
     pillars: [
       {
@@ -166,6 +168,7 @@ export const services = [
       "Providing dedicated sales and growth support to identify prospects, generate qualified leads, build pipelines, and convert opportunities into revenue.",
     long: "We work as an extension of your sales team to identify ideal prospects, start qualified conversations, build a consistent pipeline, and support opportunities through the sales process. Clients engage us on a monthly retainer, with an additional commission linked to the sales opportunities we help generate and close.",
     heroImage: "/images/services/sales-growth-about.webp",
+    listImage: "/images/services/sales-growth-list.webp", // services list (homepage, /services)
     highlightImage: "/images/services/sales-growth-highlight.webp",
     pillars: [
       {
@@ -185,6 +188,7 @@ export const services = [
       "Designing websites, custom CRMs, business portals, dashboards, and integrated software tailored to your workflows and business goals.",
     long: "We design and develop digital systems tailored to how your business actually works. From high-performing websites and custom CRMs to portals, dashboards, and internal platforms, we build solutions that improve and simplify operations, and support long-term growth.",
     heroImage: "/images/services/web-crm-software-about.webp",
+    listImage: "/images/services/web-crm-software-list.webp", // services list (homepage, /services)
     highlightImage: "/images/services/web-crm-software-highlight.webp",
     pillars: [
       {

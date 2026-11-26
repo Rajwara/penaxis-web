@@ -126,7 +126,7 @@ export default function HomeV2Services() {
                   data-row={i}
                 >
                   <div className="hv2s-media">
-                    <img className="hv2s-img" src={s.heroImage} alt="" />
+                    <img className="hv2s-img" src={s.listImage ?? s.heroImage} alt="" />
                   </div>
                   <div className="hv2s-body">
                     <div className="hv2s-info">
