@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { caseStudies } from "@/lib/data";
 import { CASE_STUDY_SHORT_TITLES } from "@/lib/caseStudyCards";
 
@@ -43,47 +43,49 @@ function Arrow({ dir }: { dir: "prev" | "next" }) {
 }
 
 export default function IndustryCaseSlider() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const [edge, setEdge] = useState({ start: true, end: false });
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef<HTMLSpanElement>(null);
 
+  // Like the homepage "Featured Work": while you scroll through this block it
+  // pins, and the page scroll moves the cards sideways (no arrows needed).
   useEffect(() => {
-    const t = trackRef.current;
-    if (!t) return;
-    const on = () => {
-      const max = t.scrollWidth - t.clientWidth;
-      setEdge({ start: t.scrollLeft < 4, end: t.scrollLeft > max - 4 });
-      setProgress(max > 0 ? t.scrollLeft / max : 1);
+    const scroller = scrollerRef.current;
+    const track = trackRef.current;
+    if (!scroller || !track) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      scroller.classList.add("is-static");
+      return;
+    }
+    let dist = 0;
+    const measure = () => {
+      const pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+      dist = Math.max(0, track.scrollWidth - window.innerWidth + pad);
+      scroller.style.height = `${window.innerHeight + dist}px`;
     };
-    on();
-    t.addEventListener("scroll", on, { passive: true });
-    window.addEventListener("resize", on);
-    // mouse drag (touch scrolls natively)
-    let down = false, x0 = 0, l0 = 0, moved = false;
-    const md = (e: MouseEvent) => { down = true; moved = false; x0 = e.pageX; l0 = t.scrollLeft; t.classList.add("is-drag"); };
-    const mm = (e: MouseEvent) => { if (!down) return; const dx = e.pageX - x0; if (Math.abs(dx) > 4) moved = true; t.scrollLeft = l0 - dx; };
-    const mu = () => { down = false; t.classList.remove("is-drag"); };
-    const ck = (e: MouseEvent) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } };
-    t.addEventListener("mousedown", md);
-    window.addEventListener("mousemove", mm);
-    window.addEventListener("mouseup", mu);
-    t.addEventListener("click", ck, true);
+    measure();
+    window.addEventListener("resize", measure);
+    const ro = new ResizeObserver(measure);
+    ro.observe(track);
+    let cur = 0, raf = 0;
+    const tick = () => {
+      const top = scroller.getBoundingClientRect().top;
+      const target = dist > 0 ? Math.min(1, Math.max(0, -top / dist)) : 0;
+      cur += (target - cur) * 0.12;
+      if (Math.abs(target - cur) < 0.0005) cur = target;
+      track.style.transform = `translate3d(${(-cur * dist).toFixed(1)}px,0,0)`;
+      if (barRef.current) barRef.current.style.transform = `scaleX(${Math.max(0.08, cur)})`;
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
     return () => {
-      t.removeEventListener("scroll", on);
-      window.removeEventListener("resize", on);
-      t.removeEventListener("mousedown", md);
-      window.removeEventListener("mousemove", mm);
-      window.removeEventListener("mouseup", mu);
-      t.removeEventListener("click", ck, true);
+      window.removeEventListener("resize", measure);
+      ro.disconnect();
+      cancelAnimationFrame(raf);
+      scroller.style.height = "";
     };
   }, []);
-
-  const step = (d: 1 | -1) => {
-    const t = trackRef.current;
-    const card = t?.querySelector<HTMLElement>(".ics-card");
-    if (!t || !card) return;
-    t.scrollBy({ left: d * (card.offsetWidth + 24), behavior: "smooth" });
-  };
 
   if (!SLIDES.length) return null;
 
@@ -96,17 +98,15 @@ export default function IndustryCaseSlider() {
             <h2 id="ics-title" className="ics-title">From Insights to Outcome.</h2>
             <p className="ics-intro">Explore how we translate industry knowledge and technological expertise into practical solutions for real businesses.</p>
           </div>
-          <div className="ics-nav">
-            <button type="button" className="ics-arrow" onClick={() => step(-1)} disabled={edge.start} aria-label="Previous case study"><Arrow dir="prev" /></button>
-            <button type="button" className="ics-arrow" onClick={() => step(1)} disabled={edge.end} aria-label="Next case study"><Arrow dir="next" /></button>
-          </div>
         </div>
       </div>
 
+      <div ref={scrollerRef} className="ics-scroller">
+      <div className="ics-sticky">
       {/* Same card design as the homepage "Featured Work" cards (.hv2c-card) */}
-      <div ref={trackRef} className="ics-track hv2c-wrap" tabIndex={0} aria-label="Featured case studies">
+      <div ref={trackRef} className="ics-track hv2c-wrap" aria-label="Featured case studies">
         {SLIDES.map((s, i) => (
-          <Link key={s.slug} href={`/case-studies/${s.slug}`} className="ics-card" draggable={false} aria-label={`${s.title} case study`}>
+          <Link key={s.slug} href={`/case-studies/${s.slug}`} className="ics-card" aria-label={`${s.title} case study`}>
             <div className="hv2c-card">
               <div className="hv2c-card-icon"><CardIcon /></div>
               <div className="hv2c-card-bg">
@@ -150,13 +150,15 @@ export default function IndustryCaseSlider() {
       </div>
 
       <div className="ics-container ics-foot">
-        <div className="ics-progress" aria-hidden="true"><span style={{ transform: `scaleX(${Math.max(0.12, progress)})` }} /></div>
+        <div className="ics-progress" aria-hidden="true"><span ref={barRef} /></div>
         <Link href="/case-studies" className="hv2-btn">
           <span className="hv2-btn-label">Explore Our Work</span>
           <span className="hv2-btn-icon">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
           </span>
         </Link>
+      </div>
+      </div>
       </div>
     </section>
   );

@@ -12615,3 +12615,27 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
 .ics-card .hv2c-card { height: auto; min-height: 35rem; }
 .ics-card .hv2c-card-icon { display: none; }
 .ics-card .hv2c-card-bottom { height: 4.75rem; }
+
+/* Case study slider: pinned, scroll-driven (like the homepage) + equal card heights */
+.ics { padding-bottom: 40px; }
+.ics-head { margin-bottom: 24px; }
+.ics-scroller { position: relative; }
+.ics-sticky { position: sticky; top: 0; display: flex; flex-direction: column; justify-content: center; height: 100vh; height: 100svh; overflow: hidden; }
+.ics-track.hv2c-wrap { overflow: visible; scroll-snap-type: none; cursor: default; will-change: transform; padding-top: 24px; }
+.ics-card { flex: 0 0 25.625rem; display: flex; }
+.ics-card .hv2c-card { flex: 1; height: clamp(30rem, calc(100svh - 190px), 37rem) !important; min-height: 0 !important; }
+.ics-card .hv2c-card-desc { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.ics-tags { max-height: 4.6rem; overflow: hidden; }
+.ics-card .hv2c-card-bottom { margin-top: auto; }
+.ics-metrics { margin-top: auto; }
+.ics-scroller.is-static .ics-sticky { position: relative; height: auto; padding: 20px 0; }
+.ics-scroller.is-static .ics-track { overflow-x: auto; }
+@media (max-width: 800px) {
+  .ics-card { flex-basis: 84vw; }
+  .ics-card .hv2c-card { height: clamp(28rem, calc(100svh - 170px), 34rem) !important; }
+}
+/* FAQ image stays pinned beside the questions until the last one passes (desktop) */
+@media (min-width: 992px) {
+  .fq-grid { align-items: flex-start; }
+  .fq-image { position: sticky; top: 110px; }
+}
