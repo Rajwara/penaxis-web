@@ -12498,10 +12498,17 @@ a.nx-feat:hover h5 { color: var(--nx-accent); }
   .isc-fade { height: 480px; padding-top: 320px; }
 }
 @media (prefers-reduced-motion: reduce) { .isc-letter { opacity: 1; transform: none; transition: none; } }
-/* showcase: "Load more" expands the panel to show all cards */
+/* showcase: "Load more" / "Show fewer" animate the panel height */
 button.isc-btn { cursor: pointer; font-family: var(--font-body); }
-.isc.is-expanded { height: auto; padding-bottom: 70px; }
-.isc-end { display: flex; justify-content: center; margin-top: 30px; }
-.isc.is-expanded .isc-item { animation: iscIn .6s ease both; }
-@keyframes iscIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .isc.is-expanded .isc-item { animation: none; } }
+.isc { transition: height .9s cubic-bezier(.65, 0, .35, 1); }
+.isc-fade { transition: opacity .5s ease; }
+.isc.is-expanded .isc-fade { opacity: 0; pointer-events: none; }
+.isc.is-expanded .isc-fade .isc-btn { pointer-events: none; }
+.isc-end { display: flex; justify-content: center; padding: 30px 0 70px; opacity: 0; transition: opacity .5s ease .35s; pointer-events: none; }
+.isc.is-expanded .isc-end { opacity: 1; pointer-events: auto; }
+.isc-btn.is-up .isc-arrow svg { transform: rotate(-90deg); }
+.isc-item.is-extra { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+.isc.is-expanded .isc-item.is-extra { opacity: 1; transform: none; transition-delay: .25s; }
+@media (prefers-reduced-motion: reduce) {
+  .isc, .isc-fade, .isc-end, .isc-item.is-extra { transition: none; }
+}

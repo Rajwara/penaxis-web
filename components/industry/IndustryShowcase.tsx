@@ -40,7 +40,13 @@ export default function IndustryShowcase() {
   const [cols, setCols] = useState(4);
   const [shown, setShown] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const visible = expanded ? ITEMS : ITEMS.slice(0, FIRST);
+  const [fullH, setFullH] = useState<number | null>(null);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  // All 24 are laid out from the start (placement is deterministic, so the
+  // first 12 never move); the panel's height animates between the cut-off
+  // height and the full content height.
+  const visible = ITEMS;
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -66,6 +72,24 @@ export default function IndustryShowcase() {
     return () => io.disconnect();
   }, []);
 
+  const measure = () => boxRef.current && setFullH(boxRef.current.scrollHeight);
+  useEffect(() => {
+    if (!expanded) return;
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [expanded, cols]);
+
+  const expand = () => {
+    measure();
+    setExpanded(true);
+  };
+  const collapse = () => {
+    setExpanded(false);
+    const top = sectionRef.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   // masonry: shortest column first (as in the file)
   const columns: (typeof visible)[] = Array.from({ length: cols }, () => []);
   const heights = new Array(cols).fill(0);
@@ -78,8 +102,8 @@ export default function IndustryShowcase() {
 
   let li = 0;
   return (
-    <section className="isc-section" aria-labelledby="isc-title">
-      <div className={`isc${expanded ? " is-expanded" : ""}`} data-nav-theme="dark">
+    <section ref={sectionRef} className="isc-section" aria-labelledby="isc-title">
+      <div ref={boxRef} className={`isc${expanded ? " is-expanded" : ""}`} data-nav-theme="dark" style={expanded && fullH ? { height: fullH } : undefined}>
         <div className="isc-head">
           <span className="isc-sub">industries</span>
           <h2 ref={titleRef} id="isc-title" className={`isc-title${shown ? " is-visible" : ""}`} aria-label={TITLE}>
@@ -101,8 +125,10 @@ export default function IndustryShowcase() {
         <div id="isc-gallery" className="isc-gallery" aria-live="polite">
           {columns.map((col, ci) => (
             <div key={ci} className="isc-col">
-              {col.map((it) => (
-                <Link key={it.title} href={it.href} className="isc-item">
+              {col.map((it) => {
+                const extra = ITEMS.indexOf(it) >= FIRST;
+                return (
+                <Link key={it.title} href={it.href} className={`isc-item${extra ? " is-extra" : ""}`} tabIndex={extra && !expanded ? -1 : undefined} aria-hidden={extra && !expanded ? true : undefined}>
                   <span className="isc-media" style={{ aspectRatio: String(it.ratio) }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={it.image} alt="" loading="lazy" />
@@ -111,29 +137,26 @@ export default function IndustryShowcase() {
                     <span className="isc-item-title">{it.title}</span>
                   </span>
                 </Link>
-              ))}
+                );
+              })}
             </div>
           ))}
         </div>
 
-        {!expanded && (
-          <div className="isc-fade">
-            <button type="button" className="isc-btn" onClick={() => setExpanded(true)} aria-controls="isc-gallery">
-              <span className="isc-arrow is-left"><Chevron /></span>
-              Load more industries
-              <span className="isc-arrow is-right"><Chevron /></span>
-            </button>
-          </div>
-        )}
-        {expanded && (
-          <div className="isc-end">
-            <a className="isc-btn" href="#all-industries">
-              <span className="isc-arrow is-left"><Chevron /></span>
-              Explore all industries
-              <span className="isc-arrow is-right"><Chevron /></span>
-            </a>
-          </div>
-        )}
+        <div className="isc-fade" aria-hidden={expanded}>
+          <button type="button" className="isc-btn" onClick={expand} aria-expanded={expanded} aria-controls="isc-gallery" tabIndex={expanded ? -1 : undefined}>
+            <span className="isc-arrow is-left"><Chevron /></span>
+            Load more industries
+            <span className="isc-arrow is-right"><Chevron /></span>
+          </button>
+        </div>
+        <div className="isc-end" aria-hidden={!expanded}>
+          <button type="button" className="isc-btn is-up" onClick={collapse} aria-expanded={expanded} aria-controls="isc-gallery" tabIndex={expanded ? undefined : -1}>
+            <span className="isc-arrow is-left"><Chevron /></span>
+            Show fewer industries
+            <span className="isc-arrow is-right"><Chevron /></span>
+          </button>
+        </div>
       </div>
     </section>
   );
