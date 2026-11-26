@@ -4,6 +4,7 @@ import Reveal from "./Reveal";
 import AboutHeroBanner from "./AboutHeroBanner";
 import ServiceWhyUs from "./ServiceWhyUs";
 import ServiceOurProcess from "./ServiceOurProcess";
+import ServiceBenefits from "./ServiceBenefits";
 import ServiceTicker from "./ServiceTicker";
 import ServiceProcess from "./ServiceProcess";
 import ServiceHighlights from "./ServiceHighlights";
@@ -62,6 +63,9 @@ export default function ServiceDetail({ slug }: { slug: string }) {
 
       {/* Our process */}
       <ServiceOurProcess />
+
+      {/* Our initiative: key benefits and outcomes */}
+      <ServiceBenefits slug={service.slug} serviceTitle={service.title} />
 
       <section className="svi-section svi-section--service">
         <div className="mx-auto max-w-6xl px-6">
