@@ -192,7 +192,7 @@ export default function HomeV2Cta({ source = "Home v2 — Request a quote banner
                   </div>
 
                   <div className={`hv2q-contact ${slide("left")}`}>
-                    <img className="hv2q-avatar" src="/images/team/adeel-aslam.webp" alt="" />
+                    <img className="hv2q-avatar" src="/images/team/email-avatar.webp" alt="" />
                     <div>
                       <div className="hv2q-text-s is-light">Email us</div>
                       <a href={`mailto:${contact.email}`} className="hv2q-link is-underline">{contact.email}</a>
