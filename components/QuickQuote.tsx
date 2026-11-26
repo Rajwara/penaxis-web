@@ -22,6 +22,13 @@ export default function QuickQuote() {
   const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", email: "", phone: "", contactMethod: "" });
 
+  // Other components can open this form: window.dispatchEvent(new Event("penaxis:open-quote"))
+  useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener("penaxis:open-quote", onOpen);
+    return () => window.removeEventListener("penaxis:open-quote", onOpen);
+  }, []);
+
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {

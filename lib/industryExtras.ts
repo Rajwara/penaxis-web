@@ -257,3 +257,195 @@ export const INDUSTRY_EXTRAS: Record<string, IndustryExtra> = {
     ],
   },
 };
+
+// ---- The 11 newer industries (lib/industriesMore.ts) - DRAFT COPY ----
+const MORE: Record<string, IndustryExtra> = {
+  "Hospitality & Tourism": {
+    ai: [
+      { title: "Guest concierge assistant", text: "Answers guest questions and handles requests in any language, day or night." },
+      { title: "Dynamic pricing support", text: "Rate suggestions based on demand, events and occupancy trends." },
+      { title: "Review insights", text: "Guest reviews summarised into clear themes your team can act on." },
+    ],
+    compliance: [
+      { title: "Guest data privacy", text: "Guest records handled under GDPR, with clear consent for marketing." },
+      { title: "Secure payments", text: "Deposits and payments through PCI-compliant providers." },
+      { title: "Role-based access", text: "Front desk, housekeeping and managers each see what they need." },
+    ],
+    services: ["web-crm-software", "ai-mvp", "sales-growth"],
+    faqs: [
+      { q: "Can you connect to our channel manager or PMS?", a: "In most cases, yes. We integrate with common channel managers and property systems through their APIs." },
+      { q: "Can guests book directly on our website?", a: "Yes. We build direct booking engines that sync availability and rates, so you rely less on OTAs." },
+    ],
+  },
+  "Fashion, Beauty & Lifestyle": {
+    ai: [
+      { title: "Personal recommendations", text: "Products and treatments suggested from each customer's taste and history." },
+      { title: "Virtual style assistant", text: "Helps shoppers find the right size, shade or look before they buy." },
+      { title: "Content generation", text: "Product copy and campaign ideas drafted for your team to refine." },
+    ],
+    compliance: [
+      { title: "Customer data privacy", text: "GDPR-ready consent, cookies and account deletion." },
+      { title: "Secure checkout", text: "Payments through PCI-compliant providers like Stripe or Shopify Payments." },
+      { title: "Loyalty data protection", text: "Points and personal data stored securely and only used with consent." },
+    ],
+    services: ["web-crm-software", "digital-transformation", "sales-growth"],
+    faqs: [
+      { q: "Do you build Shopify stores?", a: "Yes. We build custom Shopify and headless storefronts designed around your brand." },
+      { q: "Can clients book salon or studio appointments online?", a: "Yes. We build booking, packages and loyalty into one app or site." },
+    ],
+  },
+  "Pharmaceuticals & Life Sciences": {
+    ai: [
+      { title: "Document review support", text: "AI that summarises and checks documents for reviewers to approve." },
+      { title: "Demand forecasting", text: "Stock forecasts that reduce shortages and expiry waste." },
+      { title: "Knowledge search", text: "Teams find SOPs and product information in seconds." },
+    ],
+    compliance: [
+      { title: "Audit-ready records", text: "Every approval and change logged for inspections and audits." },
+      { title: "Data integrity", text: "Controlled access and versioning designed around GxP principles." },
+      { title: "Secure partner access", text: "Distributors and partners see only their own data." },
+    ],
+    services: ["web-crm-software", "digital-transformation", "ai-mvp"],
+    faqs: [
+      { q: "Can you build validated systems?", a: "We design with validation and audit trails in mind and work alongside your QA team on validation." },
+      { q: "Can you integrate with our ERP?", a: "Yes. We connect portals and dashboards to ERPs and inventory systems through their APIs." },
+    ],
+  },
+  "Physiotherapy & Rehabilitation": {
+    ai: [
+      { title: "Smart booking", text: "Appointments balanced across practitioners with automatic reminders." },
+      { title: "Progress insights", text: "Exercise adherence and progress summarised for each patient." },
+      { title: "Note drafting", text: "Treatment notes drafted from session details for practitioners to review." },
+    ],
+    compliance: [
+      { title: "Patient data protection", text: "Health records handled under GDPR and local health-data rules." },
+      { title: "Consent management", text: "Clear patient consent for treatment records and communication." },
+      { title: "Secure records", text: "Notes and files encrypted, with access by role." },
+    ],
+    services: ["web-crm-software", "ai-mvp", "digital-transformation"],
+    faqs: [
+      { q: "Can patients get exercise videos in an app?", a: "Yes. We build home-exercise apps with videos, reminders and progress tracking." },
+      { q: "Can it handle packages and memberships?", a: "Yes. Session packages, memberships and payments can all be managed in one system." },
+    ],
+  },
+  "Mental Health & Psychology": {
+    ai: [
+      { title: "Scheduling assistant", text: "Clients book, reschedule and get reminders without admin effort." },
+      { title: "Session summaries", text: "Drafted summaries practitioners can edit, saving admin time." },
+      { title: "Wellbeing check-ins", text: "Gentle prompts and mood tracking between sessions." },
+    ],
+    compliance: [
+      { title: "Confidential by design", text: "Client data encrypted and access strictly limited to their practitioner." },
+      { title: "Health-data regulations", text: "Built around GDPR and HIPAA requirements for sensitive data." },
+      { title: "Secure sessions", text: "Encrypted video and messaging for online therapy." },
+    ],
+    services: ["web-crm-software", "ai-mvp", "digital-transformation"],
+    faqs: [
+      { q: "Can you build online therapy platforms?", a: "Yes. We build secure booking, video sessions and client portals for practices." },
+      { q: "How do you protect client confidentiality?", a: "Encryption, strict role-based access and audit logs are built in from the start." },
+    ],
+  },
+  "Architecture, Interiors & Fit-Out": {
+    ai: [
+      { title: "Concept visualisation", text: "AI-assisted moodboards and visuals to speed up early design conversations." },
+      { title: "Quote assistance", text: "First-draft estimates from room sizes and specifications." },
+      { title: "Project summaries", text: "Automatic progress updates for clients from site notes." },
+    ],
+    compliance: [
+      { title: "Client file security", text: "Drawings and contracts stored securely with access control." },
+      { title: "Version control", text: "Clear version history so everyone works from the latest drawings." },
+      { title: "Data privacy", text: "Client details handled under GDPR." },
+    ],
+    services: ["web-crm-software", "sales-growth", "digital-transformation"],
+    faqs: [
+      { q: "Can clients approve drawings online?", a: "Yes. We build client portals for drawings, comments and approvals." },
+      { q: "Can you build a portfolio website?", a: "Yes. We design portfolio sites that showcase projects and generate enquiries." },
+    ],
+  },
+  "Construction & Engineering": {
+    ai: [
+      { title: "Report generation", text: "Site photos and notes turned into structured daily reports." },
+      { title: "Risk flags", text: "Early warnings when costs or schedules drift." },
+      { title: "Document search", text: "Find specs, RFIs and drawings instantly." },
+    ],
+    compliance: [
+      { title: "Health & safety records", text: "Inspections, permits and incidents logged and easy to audit." },
+      { title: "Secure documents", text: "Contracts and drawings stored with role-based access." },
+      { title: "Clear audit trail", text: "Every change to cost and scope recorded." },
+    ],
+    services: ["web-crm-software", "digital-transformation", "ai-mvp"],
+    faqs: [
+      { q: "Do your site apps work offline?", a: "Yes. Site apps can work offline and sync once a connection is available." },
+      { q: "Can subcontractors use the platform?", a: "Yes. We build portals with limited access for subcontractors and suppliers." },
+    ],
+  },
+  "Manufacturing & Industrial": {
+    ai: [
+      { title: "Predictive maintenance", text: "Early warnings before machines fail, based on usage data." },
+      { title: "Demand planning", text: "Forecasts that help plan production and materials." },
+      { title: "Quality insights", text: "Defect patterns spotted from inspection data." },
+    ],
+    compliance: [
+      { title: "Traceability", text: "Batch and component records for every product." },
+      { title: "Access control", text: "Shop-floor, office and partner access separated by role." },
+      { title: "Secure integrations", text: "Machine and ERP data connected over secure channels." },
+    ],
+    services: ["web-crm-software", "digital-transformation", "ai-mvp"],
+    faqs: [
+      { q: "Can you connect to our machines and ERP?", a: "Often, yes. We integrate with ERPs and machine data through APIs, exports or IoT gateways." },
+      { q: "Do we need to replace our existing systems?", a: "Usually not. We build dashboards and tools around what you already use." },
+    ],
+  },
+  "Wholesale & Distribution": {
+    ai: [
+      { title: "Order capture", text: "Orders from email and messages read and entered automatically." },
+      { title: "Reorder suggestions", text: "Customers prompted to reorder based on their buying patterns." },
+      { title: "Stock forecasting", text: "Predicted demand that reduces stockouts and overstock." },
+    ],
+    compliance: [
+      { title: "Customer pricing security", text: "Each customer sees only their own prices and orders." },
+      { title: "Secure payments", text: "Invoices and card payments through trusted providers." },
+      { title: "Delivery records", text: "Proof of delivery stored for every order." },
+    ],
+    services: ["web-crm-software", "digital-transformation", "sales-growth"],
+    faqs: [
+      { q: "Can customers have their own prices?", a: "Yes. B2B portals support customer-specific pricing, credit limits and catalogues." },
+      { q: "Can it connect to our accounting system?", a: "Yes. We integrate orders and invoices with common accounting and ERP tools." },
+    ],
+  },
+  "Cybersecurity & Information Security": {
+    ai: [
+      { title: "Alert triage", text: "AI that groups and prioritises alerts so analysts focus on what matters." },
+      { title: "Report drafting", text: "Assessment findings turned into clear client reports for review." },
+      { title: "Threat summaries", text: "Plain-language summaries of incidents for client stakeholders." },
+    ],
+    compliance: [
+      { title: "Security-first builds", text: "Secure coding, encryption and least-privilege access as standard." },
+      { title: "Client data isolation", text: "Each client's findings kept strictly separate." },
+      { title: "Framework alignment", text: "Tools designed to support ISO 27001 and SOC 2 processes." },
+    ],
+    services: ["web-crm-software", "digital-transformation", "ai-mvp"],
+    faqs: [
+      { q: "Have you worked with security firms before?", a: "Yes. We digitised a Qatar-based cybersecurity company's website and internal HR platform." },
+      { q: "Can you build tools for our SOC team?", a: "Yes. We build internal dashboards, ticket workflows and client reporting portals." },
+    ],
+  },
+  "Personal Brands & Professionals": {
+    ai: [
+      { title: "Content assistant", text: "Post ideas and drafts in your voice, ready to edit and publish." },
+      { title: "Lead qualification", text: "Enquiries scored and routed so you spend time on the right clients." },
+      { title: "Booking assistant", text: "Answers common questions and books calls automatically." },
+    ],
+    compliance: [
+      { title: "Client data privacy", text: "Contact details and payments handled under GDPR." },
+      { title: "Secure payments", text: "Payments through trusted, PCI-compliant providers." },
+      { title: "Member access control", text: "Courses and communities protected by login." },
+    ],
+    services: ["web-crm-software", "sales-growth", "digital-transformation"],
+    faqs: [
+      { q: "Can you build a site with booking and payments?", a: "Yes. We build personal brand sites with bookings, payments and lead capture built in." },
+      { q: "Do you help with social media too?", a: "Yes. Our digital transformation service includes social media strategy and content planning." },
+    ],
+  },
+};
+Object.assign(INDUSTRY_EXTRAS, MORE);

@@ -30,7 +30,7 @@ export default function IndustriesPage() {
             search={<IndustrySearch placeholder="Find your industry…" />}
             chipsLabel="Popular searches:"
             chips={[
-              { label: "Hospitality", href: "/industries#all-industries" },
+              { label: "Hospitality", href: "/industries/hospitality-and-tourism" },
               { label: "Healthcare", href: "/industries/healthcare-and-wellness" },
               { label: "Restaurants", href: "/industries/food-delivery-and-grocery" },
               { label: "Real Estate", href: "/industries/real-estate-and-property" },

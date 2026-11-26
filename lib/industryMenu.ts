@@ -1,9 +1,10 @@
 // Industries as listed in the navbar (desktop mega menu + phone menu):
-// 6 groups, 24 industries. Items that match one of the 13 industry pages
-// in lib/data.ts link to that page; the rest link to /industries until
-// they get pages of their own.
+// 6 groups, 24 industries. Each links to its industry page (13 in
+// lib/data.ts, 11 in lib/industriesMore.ts); a few share a page.
 export type MenuIndustry = { label: string; href: string };
 export type MenuIndustryGroup = { title: string; icon: "bag" | "heart" | "building" | "truck" | "chip" | "briefcase"; items: MenuIndustry[] };
+
+import { slugify } from "./data";
 
 const page = (slug: string) => `/industries/${slug}`;
 const ALL = "/industries";
@@ -13,10 +14,10 @@ export const INDUSTRY_MENU: MenuIndustryGroup[] = [
     title: "Consumer, Retail & Hospitality",
     icon: "bag",
     items: [
-      { label: "Hospitality & Tourism", href: ALL },
+      { label: "Hospitality & Tourism", href: page(slugify("Hospitality & Tourism")) },
       { label: "Food & Beverage", href: page("food-delivery-and-grocery") },
       { label: "Retail & E-commerce", href: page("e-commerce-and-retail") },
-      { label: "Fashion, Beauty & Lifestyle", href: ALL },
+      { label: "Fashion, Beauty & Lifestyle", href: page(slugify("Fashion, Beauty & Lifestyle")) },
     ],
   },
   {
@@ -24,9 +25,9 @@ export const INDUSTRY_MENU: MenuIndustryGroup[] = [
     icon: "heart",
     items: [
       { label: "Healthcare & Medical Clinics", href: page("healthcare-and-wellness") },
-      { label: "Pharmaceuticals & Life Sciences", href: ALL },
-      { label: "Physiotherapy & Rehabilitation", href: ALL },
-      { label: "Mental Health & Psychology", href: ALL },
+      { label: "Pharmaceuticals & Life Sciences", href: page(slugify("Pharmaceuticals & Life Sciences")) },
+      { label: "Physiotherapy & Rehabilitation", href: page(slugify("Physiotherapy & Rehabilitation")) },
+      { label: "Mental Health & Psychology", href: page(slugify("Mental Health & Psychology")) },
     ],
   },
   {
@@ -34,8 +35,8 @@ export const INDUSTRY_MENU: MenuIndustryGroup[] = [
     icon: "building",
     items: [
       { label: "Real Estate & Property Management", href: page("real-estate-and-property") },
-      { label: "Architecture, Interiors & Fit-Out", href: ALL },
-      { label: "Construction & Engineering", href: ALL },
+      { label: "Architecture, Interiors & Fit-Out", href: page(slugify("Architecture, Interiors & Fit-Out")) },
+      { label: "Construction & Engineering", href: page(slugify("Construction & Engineering")) },
       { label: "Facilities Management & Home Services", href: page("home-services-and-maintenance") },
     ],
   },
@@ -45,8 +46,8 @@ export const INDUSTRY_MENU: MenuIndustryGroup[] = [
     items: [
       { label: "Automotive & Mobility", href: page("automotive-and-auto-care") },
       { label: "Logistics & Transportation", href: page("logistics-and-transportation") },
-      { label: "Manufacturing & Industrial", href: ALL },
-      { label: "Wholesale & Distribution", href: ALL },
+      { label: "Manufacturing & Industrial", href: page(slugify("Manufacturing & Industrial")) },
+      { label: "Wholesale & Distribution", href: page(slugify("Wholesale & Distribution")) },
     ],
   },
   {
@@ -54,7 +55,7 @@ export const INDUSTRY_MENU: MenuIndustryGroup[] = [
     icon: "chip",
     items: [
       { label: "Technology, SaaS & Startups", href: page("software-it-and-saas") },
-      { label: "Cybersecurity & Information Security", href: ALL },
+      { label: "Cybersecurity & Information Security", href: page(slugify("Cybersecurity & Information Security")) },
       { label: "Education & EdTech", href: page("education-and-edtech") },
       { label: "IT & Managed Services", href: page("software-it-and-saas") },
     ],
@@ -65,7 +66,7 @@ export const INDUSTRY_MENU: MenuIndustryGroup[] = [
     items: [
       { label: "Professional & Business Services", href: page("consulting-staffing-and-immigration") },
       { label: "Recruitment & Human Resources", href: page("consulting-staffing-and-immigration") },
-      { label: "Personal Brands & Professionals", href: ALL },
+      { label: "Personal Brands & Professionals", href: page(slugify("Personal Brands & Professionals")) },
       { label: "Sports, Fitness & Wellness", href: page("sports-and-fitness") },
     ],
   },
