@@ -8,15 +8,39 @@ import { GENERAL_FAQS, INDUSTRY_EXTRAS, SECURITY_BASELINE } from "@/lib/industry
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
 
-// Single industry page. The 11 sections (01 hero, 02 challenges, 03 what
-// we can build, 04 AI use cases, 05 compliance & security, 06 case
-// studies, 07 services, 08 FAQs, 09 related industries, 10 CTA & form,
-// 11 footer) laid out like the supplied "neuro" home layout: dark hero
-// with an image collage, dark about block with a big outlined word,
-// features grid, mock-app + numbered steps, rotated marquee ribbons,
-// dark boxed gallery, numbered FAQ rows and blog-style cards. Penaxis
-// fonts and purple instead of the template's fonts and blue/red.
-// Styles: .nx-* in app/globals.css.
+// Single industry page, built on the supplied "neuro home 4" layout
+// (neuro-home4-layout_1.html): same hero collage + prompt bar, about block,
+// features grid, dashboard + numbered steps, marquee ribbons, boxed
+// gallery, numbered FAQ rows, blog cards and image CTA. Sections in the
+// agreed order: 01 hero, 02 challenges, 03 what we can build, 04 AI use
+// cases, 05 compliance & security, 06 case studies, 07 services, 08 FAQs,
+// 09 related industries, 10 CTA & enquiry form, 11 footer (page).
+// TEMP IMAGES: the template's own images (NX_IMG) until Penaxis uploads
+// replacements. Penaxis fonts and purple accent. Styles: .nx-* in
+// app/globals.css.
+
+const CDN = "https://8ded8880.delivery.rocketcdn.me/themes/neuros/wp-content/uploads/";
+const NX_IMG = {
+  t1: CDN + "2024/03/home-4-1-min.jpg",
+  t2a: CDN + "2024/03/home-4-2-min.jpg",
+  t2b: CDN + "2024/02/mitchell-luo-mkNOHMD3a-I-unsplash-2-min.jpg",
+  t3: CDN + "2024/03/home-4-4-min.jpg",
+  t4: CDN + "2024/03/closeup-red-pattern-with-hexagon-holes-1-min.jpg",
+  t5: CDN + "2024/03/home-4-3-min.jpg",
+  t6: CDN + "2024/03/home-4-5-min.jpg",
+  aboutBg: CDN + "2024/03/Vector.png",
+  aboutShape: CDN + "2024/03/2.png",
+  waves: CDN + "2024/04/home-4-bg-1.png",
+  dashboard: CDN + "2024/04/Dashboard-min-1-1024x994.png",
+  cta: CDN + "2024/02/service-video-poster.jpg",
+};
+
+const SHORT_SERVICE: Record<string, string> = {
+  "ai-mvp": "AI & MVPs",
+  "digital-transformation": "Automation",
+  "sales-growth": "Sales & growth",
+  "web-crm-software": "Web & CRM",
+};
 
 type Industry = (typeof industries)[number];
 
@@ -31,26 +55,39 @@ function Btn({ href, children, light }: { href: string; children: React.ReactNod
 }
 
 const ICONS = [
-  <path key="a" d="M4 5h16v11H4zM8 20h8M12 16v4" />,
-  <path key="b" d="M12 3l8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8V7z" />,
-  <path key="c" d="M4 19V9M10 19V5M16 19v-7M22 19H2" />,
-  <path key="d" d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM16.5 13v7M13 16.5h7" />,
-  <path key="e" d="M12 3a9 9 0 1 0 9 9M12 7v5l3 3M21 3l-6 6" />,
-  <path key="f" d="M3 12h4l3-8 4 16 3-8h4" />,
+  <><rect x="3" y="5" width="18" height="14" rx="1" /><circle cx="8" cy="10" r="1.5" /><path d="m3 17 5-5 4 4 3-3 6 6" /></>,
+  <path d="M3 8l6 3 4-6 2 6 6-2-5 6 2 5-6-3-4 3 1-6z" />,
+  <><rect x="3" y="13" width="8" height="8" /><rect x="8" y="3" width="13" height="13" strokeDasharray="2 2" /><path d="m11 13 6-6m0 0h-4m4 0v4" /></>,
+  <path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z" />,
+  <><rect x="4" y="4" width="16" height="16" /><path d="M8 8h8M12 8v9M10 17h4" /></>,
+  <><path d="M7 3h10v14H7zM10 7h4M10 10h4M10 13h2" /><circle cx="7" cy="18" r="3" /></>,
+  <><rect x="4" y="4" width="16" height="16" /><circle cx="10" cy="10" r="2" /><path d="m4 17 6-4 10 6" /></>,
+  <><rect x="3" y="5" width="11" height="11" rx="1" /><rect x="10" y="9" width="11" height="11" rx="1" /></>,
 ];
 
-function Icon({ i }: { i: number }) {
-  return (
-    <span className="nx-ico">
-      <svg viewBox="0 0 24 24" aria-hidden="true">{ICONS[i % ICONS.length]}</svg>
-    </span>
+function Feature({ title, text, i, href }: { title: string; text: string; i: number; href?: string }) {
+  const inner = (
+    <>
+      <h5>{title}</h5>
+      <p>{text}</p>
+      <div className="nx-ico">
+        <svg viewBox="0 0 24 24" aria-hidden="true">{ICONS[i % ICONS.length]}</svg>
+      </div>
+    </>
+  );
+  return href ? (
+    <Link href={href} className="nx-feat pd-reveal">{inner}</Link>
+  ) : (
+    <div className="nx-feat pd-reveal">{inner}</div>
   );
 }
+
+const MASONRY_H = [530, 360, 400, 480, 420, 600, 530, 400, 620, 400, 500, 360];
 
 export default function IndustryTemplate({ industry }: { industry: Industry }) {
   const extra = INDUSTRY_EXTRAS[industry.title];
   const idx = industries.findIndex((i) => i.title === industry.title);
-  const related = [1, 2, 3, 4, 5, 6].map((k) => industries[(idx + k) % industries.length]);
+  const related = industries.slice(idx + 1).concat(industries.slice(0, idx));
   const own = caseStudies.filter((s) => s.tags.includes(industry.title));
   const studies = [...own, ...caseStudies.filter((s) => !own.includes(s))].slice(0, 2);
   const svc = (extra?.services ?? services.map((s) => s.slug))
@@ -58,41 +95,48 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
     .filter((s): s is (typeof services)[number] => !!s);
   const faqs = [...(extra?.faqs ?? []), ...GENERAL_FAQS];
   const word = industry.title.split(/[ ,&]/)[0];
-  // Big centre tile (t2) = this industry; the rest = neighbouring industries.
-  const near = [1, 2, 3, 4, 5].map((k) => industries[(idx + k) % industries.length].image);
-  const collage = [near[0], industry.image, ...near.slice(1)];
-  const mockImage = studies[0]?.gridImage || studies[0]?.image || industry.image;
-  const ribbon = `${industry.title} / AI / Software / Growth / `.repeat(4);
+  const ribbon = `${industry.title} is shaping the future of technology. / `.repeat(4);
 
   return (
     <DetailReveal>
       <div className="nx">
-        {/* 01 Hero & industry introduction */}
+        {/* 01 Hero (same banner as the template) */}
         <section className="nx-hero" data-nav-theme="dark">
           <div className="nx-collage" aria-hidden="true">
-            {collage.map((src, i) => (
-              <div key={i} className={`nx-tile nx-t${i + 1}`}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" />
-              </div>
-            ))}
+            {/* eslint-disable @next/next/no-img-element */}
+            <div className="nx-tile nx-t1"><img src={NX_IMG.t1} alt="" /></div>
+            <div className="nx-t2 nx-stack">
+              <div className="nx-tile"><img src={NX_IMG.t2a} alt="" /></div>
+              <div className="nx-tile"><img src={NX_IMG.t2b} alt="" /></div>
+            </div>
+            <div className="nx-tile nx-t3"><img src={NX_IMG.t3} alt="" /></div>
+            <div className="nx-tile nx-t4"><img src={NX_IMG.t4} alt="" /></div>
+            <div className="nx-tile nx-t5"><img src={NX_IMG.t5} alt="" /></div>
+            <div className="nx-tile nx-t6"><img src={NX_IMG.t6} alt="" /></div>
+            {/* eslint-enable @next/next/no-img-element */}
           </div>
           <div className="nx-hero-content">
-            <Label>industry</Label>
-            <h1 className="nx-h1">{industry.title}</h1>
-            <p>{industry.copy} We design, build and grow the software that makes it work.</p>
-            <div className="nx-hero-cta">
-              <Link href="/contact-us" className="nx-hero-btn is-solid">Start a project ➚</Link>
-              <a href="#case-studies" className="nx-hero-btn">See our work</a>
+            <h1 className="nx-h1">
+              Digital solutions for
+              <br />
+              {industry.title}
+            </h1>
+            <p>{industry.copy} Tell us what you want to build and we&apos;ll turn it into a working product.</p>
+            <form className="nx-prompt" action="/contact-us" method="get">
+              <input type="text" name="project" placeholder="Describe what you want to build" aria-label="Describe what you want to build" />
+              <button type="submit">➚ Get started</button>
+            </form>
+            <div className="nx-queries">
+              <span>Popular services:</span>
+              {svc.map((s) => (
+                <Link key={s.slug} href={`/services/${s.slug}`}>{SHORT_SERVICE[s.slug] ?? s.title}</Link>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* 02 Industry challenges (dark "about" block) */}
-        <section className="nx-about" data-nav-theme="dark">
-          <span className="nx-blob" style={{ width: 520, height: 520, left: -200, top: 150 }} />
-          <span className="nx-blob" style={{ width: 300, height: 300, left: 380, top: 160 }} />
-          <span className="nx-blob" style={{ width: 420, height: 420, left: 40, top: 480 }} />
+        {/* 02 Industry challenges (about block) */}
+        <section className="nx-about" data-nav-theme="dark" style={{ backgroundImage: `url(${NX_IMG.aboutBg})` }}>
           <div className="nx-container nx-rel">
             <div className="nx-grid2">
               <div />
@@ -104,20 +148,21 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
                       <stop offset="1" stopColor="#c2a8e6" />
                     </linearGradient>
                   </defs>
-                  <text x="0" y="150" fontSize="190" letterSpacing="-4" fill="none" stroke="url(#nx-og)" strokeWidth="1.4" textLength={word.length > 6 ? 560 : undefined} lengthAdjust="spacingAndGlyphs">
-                    {word.toUpperCase()}
+                  <text x="0" y="150" fontSize="175" letterSpacing="-2" fill="none" stroke="url(#nx-og)" strokeWidth="1.2" textLength={word.length > 5 ? 520 : undefined} lengthAdjust="spacingAndGlyphs">
+                    {word}
                   </text>
                 </svg>
+                <span className="nx-word-tag">AI</span>
               </div>
             </div>
             <div className="nx-grid2 nx-about-row">
               <div className="nx-big-logo" aria-hidden="true">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/logo/penaxis-mark.png" alt="" />
+                <img src={NX_IMG.aboutShape} alt="" />
               </div>
               <div className="pd-reveal">
                 <Label>the challenge</Label>
-                <h2 className="nx-h2">What makes {industry.title.split(" & ")[0].toLowerCase()} hard</h2>
+                <h2 className="nx-h2">What makes {industry.title.split(" & ")[0].toLowerCase()} hard to get right</h2>
                 <div className="nx-copy">
                   <p>{industry.challenge}</p>
                   <Btn href="/contact-us" light>Talk to us</Btn>
@@ -127,71 +172,42 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
           </div>
         </section>
 
-        {/* 03 What we can build (features grid) */}
+        {/* 03 What we can build (features) */}
         <section className="nx-features nx-lines">
-          <svg className="nx-waves" viewBox="0 0 760 300" fill="none" stroke="#b9a9d1" strokeWidth=".6" aria-hidden="true">
-            {Array.from({ length: 34 }, (_, i) => {
-              const o = i * 4;
-              return <path key={i} d={`M${o} 0 C${120 + o} ${180 + o / 2} ${220 + o} ${140 + o} ${330 + o / 2} ${140 + o} S${520 - o / 2} ${260 - o} ${700 - o} 0`} />;
-            })}
-          </svg>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="nx-waves" src={NX_IMG.waves} alt="" aria-hidden="true" />
           <div className="nx-container">
             <div className="pd-reveal">
               <Label>what we can build</Label>
-              <h2 className="nx-h2 nx-features-h2">Practical solutions for {industry.title}</h2>
+              <h2 className="nx-h2 nx-features-h2">Practical solutions &amp; the results they deliver</h2>
             </div>
             <div className="nx-fgrid">
               {industry.solutions.map((s, i) => (
-                <div key={s} className="pd-reveal">
-                  <h5>Solution {String(i + 1).padStart(2, "0")}</h5>
-                  <p>{s}</p>
-                  <Icon i={i} />
-                </div>
+                <Feature key={s} title={`Solution ${String(i + 1).padStart(2, "0")}`} text={s} i={i} />
               ))}
               {industry.outcomes.map((o, i) => (
-                <div key={o} className="pd-reveal">
-                  <h5>Outcome {String(i + 1).padStart(2, "0")}</h5>
-                  <p>{o}</p>
-                  <Icon i={i + 3} />
-                </div>
+                <Feature key={o} title={`Outcome ${String(i + 1).padStart(2, "0")}`} text={o} i={i + 3} />
+              ))}
+              {svc.slice(0, 2).map((s, i) => (
+                <Feature key={s.slug} title={s.title} text={s.short} i={i + 6} href={`/services/${s.slug}`} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* 04 AI use cases (mock app + numbered steps) */}
+        {/* 04 AI use cases (how it works) */}
         {extra && (
           <section className="nx-how nx-lines">
             <div className="nx-container">
               <div className="nx-grid2 nx-how-grid">
-                <div className="nx-mock-wrap pd-reveal" aria-hidden="true">
-                  <div className="nx-mock">
-                    <aside>
-                      <small>GENERAL</small>
-                      <div>⌕ Search</div>
-                      <div>▭ Reports</div>
-                      <small>AI TOOLS</small>
-                      {extra.ai.map((a, i) => (
-                        <div key={a.title} className={i === 0 ? "on" : ""}>
-                          <i /> {a.title}
-                        </div>
-                      ))}
-                      <div className="nx-mock-muted">⊕ Add workflow</div>
-                    </aside>
-                    <main>
-                      <h6>{industry.title}</h6>
-                      <span className="nx-mock-sub">AI assistant workspace</span>
-                      <div className="nx-mock-tabs"><span>▲ Studio</span><span>◯ Chat</span><span>▭ Library</span></div>
-                      <div className="nx-mock-ttl">‹ &nbsp;{extra.ai[0].title} <span>AI</span></div>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={mockImage} alt="" />
-                    </main>
-                  </div>
+                <div className="nx-mock-wrap pd-reveal">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={NX_IMG.dashboard} alt="AI dashboard" />
                 </div>
                 <div className="pd-reveal">
                   <Label>AI use cases</Label>
-                  <h2 className="nx-h2">Where AI makes a difference</h2>
-                  <p className="nx-intro">Practical AI, built into the tools your team and customers already use, with people staying in control of every decision.</p>
+                  <h2 className="nx-h2">How AI works for {industry.title.split(" & ")[0].toLowerCase()}</h2>
+                  <p className="nx-intro">Practical AI built into the tools your team and customers already use, with people staying in control of every decision.</p>
                   {extra.ai.map((a, i) => (
                     <div key={a.title} className="nx-step">
                       <span className="nx-num">{String(i + 1).padStart(2, "0")}</span>
@@ -210,47 +226,41 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
           </section>
         )}
 
-        {/* Marquee ribbons */}
+        {/* Marquee */}
         <div className="nx-marquee" aria-hidden="true">
           <div className="nx-ribbon nx-r1"><div className="nx-track">{ribbon}{ribbon}</div></div>
           <div className="nx-ribbon nx-r2"><div className="nx-track">{ribbon}{ribbon}</div></div>
         </div>
 
-        {/* 05 Compliance & security */}
+        {/* 05 Compliance & security (features grid) */}
         {extra && (
-          <section className="nx-comp nx-lines">
+          <section className="nx-features nx-comp nx-lines">
             <div className="nx-container">
-              <div className="nx-comp-top">
-                <div className="pd-reveal">
-                  <Label>compliance &amp; security</Label>
-                  <h2 className="nx-h2">Built to be trusted</h2>
-                </div>
-                <ul className="nx-check pd-reveal">
-                  {SECURITY_BASELINE.map((b) => <li key={b}>{b}</li>)}
-                </ul>
+              <div className="pd-reveal">
+                <Label>compliance &amp; security</Label>
+                <h2 className="nx-h2 nx-features-h2">Built to be trusted with your data</h2>
               </div>
-              <div className="nx-comp-grid">
+              <div className="nx-fgrid">
                 {extra.compliance.map((c, i) => (
-                  <div key={c.title} className="nx-comp-card pd-reveal">
-                    <Icon i={i + 1} />
-                    <h5>{c.title}</h5>
-                    <p>{c.text}</p>
-                  </div>
+                  <Feature key={c.title} title={c.title} text={c.text} i={i + 2} />
+                ))}
+                {SECURITY_BASELINE.map((b, i) => (
+                  <Feature key={b} title={b.split(" and ")[0].split(",")[0]} text={b + "."} i={i + 4} />
                 ))}
               </div>
             </div>
           </section>
         )}
 
-        {/* 06 Industry case studies (blog-style cards) */}
+        {/* 06 Case studies (blog cards) */}
         <section id="case-studies" className="nx-blog nx-lines">
           <div className="nx-container">
             <div className="nx-blog-top pd-reveal">
               <div>
-                <Label>{own.length ? "case studies" : "recent work"}</Label>
-                <h2 className="nx-h2">Proof from real projects we&apos;ve delivered</h2>
+                <Label>case studies</Label>
+                <h2 className="nx-h2">Real projects: the problems we solved and what we built</h2>
               </div>
-              <Btn href="/case-studies">All case studies</Btn>
+              <Btn href="/case-studies">More case studies</Btn>
             </div>
             <div className="nx-posts">
               {studies.map((s) => (
@@ -258,7 +268,7 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
                   <span className="nx-post-media">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={s.gridImage || s.image} alt="" loading="lazy" />
-                    <span className="nx-post-date">{s.region} / {s.status === "delivered" ? "Delivered" : "Concept"}</span>
+                    <span className="nx-post-date">{s.region} / {s.status === "delivered" ? "delivered" : "concept"}</span>
                   </span>
                   <span className="nx-post-body">
                     <h3>{CASE_STUDY_SHORT_TITLES[s.slug] ?? s.title}</h3>
@@ -271,63 +281,71 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
           </div>
         </section>
 
-        {/* 07 Relevant services (features-style row) */}
-        <section className="nx-services nx-lines">
+        {/* 07 Relevant services (features grid) */}
+        <section className="nx-features nx-services nx-lines">
           <div className="nx-container">
             <div className="pd-reveal">
               <Label>relevant services</Label>
-              <h2 className="nx-h2 nx-features-h2">How we can help you build it</h2>
+              <h2 className="nx-h2 nx-features-h2">Services that power {industry.title}</h2>
             </div>
-            <div className="nx-fgrid nx-fgrid-3">
+            <div className="nx-fgrid">
               {svc.map((s, i) => (
-                <Link key={s.slug} href={`/services/${s.slug}`} className="nx-svc pd-reveal">
-                  <h5>{s.title}</h5>
-                  <p>{s.short}</p>
-                  <span className="nx-svc-foot">
-                    <Icon i={i} />
-                    <span className="nx-svc-more">Learn more ❯</span>
-                  </span>
-                </Link>
+                <Feature key={s.slug} title={s.title} text={s.short} i={i} href={`/services/${s.slug}`} />
               ))}
+              <Feature title="Not sure where to start?" text="Book a short discovery call and we'll recommend the right service and engagement model." i={5} href="/contact-us" />
             </div>
           </div>
         </section>
 
-        {/* 08 FAQs (numbered rows) */}
+        {/* 08 FAQs */}
         <section className="nx-faq nx-boxed">
           <div className="nx-faq-head pd-reveal">
             <Label>faq</Label>
-            <h2 className="nx-h2">Everything you need to know</h2>
+            <h2 className="nx-h2">Everything you need<br />to know about</h2>
           </div>
           <IndustryFaq items={faqs} />
           <div className="nx-faq-btn">
-            <Btn href="/faqs">All FAQs</Btn>
+            <Btn href="/faqs">Explore more</Btn>
           </div>
         </section>
 
-        {/* 09 Related industries (dark boxed gallery) */}
+        {/* 09 Related industries (gallery) */}
         <section className="nx-gallery nx-boxed" data-nav-theme="dark">
           <div className="nx-gallery-head pd-reveal">
             <Label>related industries</Label>
-            <h2 className="nx-h2">Explore more industries we build for</h2>
+            <h2 className="nx-h2">More industries<br />we build for</h2>
           </div>
           <div className="nx-masonry">
             {related.map((ind, i) => (
-              <Link key={ind.title} href={`/industries/${slugify(ind.title)}`} className={`nx-mtile pd-reveal${i % 3 === 1 ? " is-tall" : ""}`}>
+              <Link key={ind.title} href={`/industries/${slugify(ind.title)}`} className="nx-mtile">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ind.image} alt="" loading="lazy" />
-                <span className="nx-mtile-cap">{ind.title} ➚</span>
+                <img src={ind.image} alt="" loading="lazy" style={{ height: MASONRY_H[i % MASONRY_H.length] * 0.6 }} />
+                <span className="nx-mtile-cap">{ind.title}</span>
               </Link>
             ))}
           </div>
           <div className="nx-center">
-            <Btn href="/industries" light>All industries</Btn>
+            <Btn href="/industries" light>See all industries</Btn>
           </div>
+        </section>
+
+        {/* 10 CTA */}
+        <section className="nx-cta nx-boxed" data-nav-theme="dark">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={NX_IMG.cta} alt="" />
+          <h2 className="nx-h2">
+            Drive efficiency
+            <br />
+            &amp; growth in
+            <br />
+            {industry.title}
+          </h2>
+          <Btn href="#enquiry" light>Start a project</Btn>
         </section>
       </div>
 
-      {/* 10 CTA & enquiry form (same as the homepage) */}
-      <div className="hv2-page nx-cta-wrap">
+      {/* 10 Enquiry form (same as the homepage) */}
+      <div id="enquiry" className="hv2-page nx-cta-wrap">
         <HomeV2Cta source={`Industry page — ${industry.title}`} />
       </div>
     </DetailReveal>
