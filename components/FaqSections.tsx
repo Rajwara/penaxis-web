@@ -15,6 +15,14 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 
 const TEMP_IMG = "https://cdn.prod.website-files.com/6ae1b423d7bb90956e94a0c5/6aea8ebe8d133aab9451baed_faq-image.webp";
 
+// Image beside each FAQs-page topic (falls back to TEMP_IMG).
+const TOPIC_IMAGES: Record<string, string> = {
+  "getting-started": "/images/faq/faq-getting-started.webp",
+  services: "/images/faq/faq-services.webp",
+  process: "/images/faq/faq-process.webp",
+  pricing: "/images/faq/faq-pricing.webp",
+};
+
 const HEADINGS: Record<string, string> = {
   "getting-started": "Starting a project with Penaxis",
   services: "What we build and how",
@@ -82,7 +90,7 @@ function Topic({ topic, index, heading, numbered, image }: { topic: FaqTopic; in
         <div className="fq-grid" data-fq-anim>
           <div className="fq-image">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={image ?? TEMP_IMG} alt="" loading="lazy" />
+            <img src={image ?? TOPIC_IMAGES[topic.id] ?? TEMP_IMG} alt="" loading="lazy" />
           </div>
 
           <div className="fq-list">

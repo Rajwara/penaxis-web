@@ -20,8 +20,8 @@ export default function FaqPage() {
       <Navbar />
       <main>
         <ContactBanner
-          image="/images/hero/contact-us-banner.webp"
-          shade={0.45}
+          image="/images/faq/faq-banner.webp"
+          shade={0.1}
           label="FAQs"
           title="Questions & answers"
           intro="Everything about getting started, our services, how we work and pricing, answered by the Penaxis team."
