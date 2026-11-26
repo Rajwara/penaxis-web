@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { industries, slugify } from "@/lib/data";
+import { moreIndustries } from "@/lib/industriesMore";
 
 // /industries "showcase" gallery, ported from the supplied
 // community-showcase file: dark rounded box, "/ label /" + heading that
@@ -14,12 +15,16 @@ import { industries, slugify } from "@/lib/data";
 const RATIOS = [322 / 428, 322 / 318, 322 / 428, 322 / 490, 322 / 428, 322 / 428, 322 / 490, 322 / 318, 322 / 428, 322 / 490, 322 / 318, 322 / 428];
 const TITLE = "Industries we help move forward";
 
-const ITEMS = industries.slice(0, 12).map((ind, i) => ({
+// First 12 shown on load; "Load more industries" adds the next 12 (the
+// 13th original industry + the 11 newer ones, whose photos are temporary
+// duplicates until real images are uploaded).
+const ITEMS = [...industries, ...moreIndustries].slice(0, 24).map((ind, i) => ({
   title: ind.title,
   href: `/industries/${slugify(ind.title)}`,
   image: ind.image,
-  ratio: RATIOS[i],
+  ratio: RATIOS[i % RATIOS.length],
 }));
+const FIRST = 12;
 
 const colsFor = (w: number) => (w <= 767 ? 1 : w <= 1024 ? 2 : 4);
 
@@ -34,6 +39,8 @@ function Chevron() {
 export default function IndustryShowcase() {
   const [cols, setCols] = useState(4);
   const [shown, setShown] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? ITEMS : ITEMS.slice(0, FIRST);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -60,9 +67,9 @@ export default function IndustryShowcase() {
   }, []);
 
   // masonry: shortest column first (as in the file)
-  const columns: (typeof ITEMS)[] = Array.from({ length: cols }, () => []);
+  const columns: (typeof visible)[] = Array.from({ length: cols }, () => []);
   const heights = new Array(cols).fill(0);
-  ITEMS.forEach((it) => {
+  visible.forEach((it) => {
     let min = 0;
     for (let i = 1; i < cols; i++) if (heights[i] < heights[min] - 1e-6) min = i;
     columns[min].push(it);
@@ -72,7 +79,7 @@ export default function IndustryShowcase() {
   let li = 0;
   return (
     <section className="isc-section" aria-labelledby="isc-title">
-      <div className="isc" data-nav-theme="dark">
+      <div className={`isc${expanded ? " is-expanded" : ""}`} data-nav-theme="dark">
         <div className="isc-head">
           <span className="isc-sub">industries</span>
           <h2 ref={titleRef} id="isc-title" className={`isc-title${shown ? " is-visible" : ""}`} aria-label={TITLE}>
@@ -91,7 +98,7 @@ export default function IndustryShowcase() {
           </h2>
         </div>
 
-        <div className="isc-gallery">
+        <div id="isc-gallery" className="isc-gallery" aria-live="polite">
           {columns.map((col, ci) => (
             <div key={ci} className="isc-col">
               {col.map((it) => (
@@ -109,13 +116,24 @@ export default function IndustryShowcase() {
           ))}
         </div>
 
-        <div className="isc-fade">
-          <a className="isc-btn" href="#all-industries">
-            <span className="isc-arrow is-left"><Chevron /></span>
-            Explore all industries
-            <span className="isc-arrow is-right"><Chevron /></span>
-          </a>
-        </div>
+        {!expanded && (
+          <div className="isc-fade">
+            <button type="button" className="isc-btn" onClick={() => setExpanded(true)} aria-controls="isc-gallery">
+              <span className="isc-arrow is-left"><Chevron /></span>
+              Load more industries
+              <span className="isc-arrow is-right"><Chevron /></span>
+            </button>
+          </div>
+        )}
+        {expanded && (
+          <div className="isc-end">
+            <a className="isc-btn" href="#all-industries">
+              <span className="isc-arrow is-left"><Chevron /></span>
+              Explore all industries
+              <span className="isc-arrow is-right"><Chevron /></span>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );

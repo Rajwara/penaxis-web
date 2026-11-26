@@ -12498,3 +12498,10 @@ a.nx-feat:hover h5 { color: var(--nx-accent); }
   .isc-fade { height: 480px; padding-top: 320px; }
 }
 @media (prefers-reduced-motion: reduce) { .isc-letter { opacity: 1; transform: none; transition: none; } }
+/* showcase: "Load more" expands the panel to show all cards */
+button.isc-btn { cursor: pointer; font-family: var(--font-body); }
+.isc.is-expanded { height: auto; padding-bottom: 70px; }
+.isc-end { display: flex; justify-content: center; margin-top: 30px; }
+.isc.is-expanded .isc-item { animation: iscIn .6s ease both; }
+@keyframes iscIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .isc.is-expanded .isc-item { animation: none; } }
