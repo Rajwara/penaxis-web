@@ -12766,3 +12766,32 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
   .nx-st-pillars { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .nx-st-panel { animation: none; } }
+
+/* Single service page: Why us (components/ServiceWhyUs.tsx) */
+.swu { padding: 120px 0; background: #fff; font-family: var(--font-body); color: #1a1a1a; }
+.swu *, .swu *::before, .swu *::after { box-sizing: border-box; }
+.swu-container { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px 72px; max-width: 1290px; margin: 0 auto; padding: 0 30px; }
+.swu-left { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.swu-eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 18px/1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; color: #734FA0; }
+.swu-eyebrow::before, .swu-eyebrow::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.swu .swu-title { margin: 0; font: 500 clamp(42px, 4.6vw, 66px)/1 var(--font-display) !important; letter-spacing: -.02em; text-transform: uppercase; color: #111; }
+.swu-intro { margin: 0; max-width: 30rem; font-size: 17px; line-height: 1.65; color: #555; }
+.swu-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; width: 100%; margin: 8px 0 10px; padding: 22px 0; border-top: 1px solid #e6e3ec; border-bottom: 1px solid #e6e3ec; }
+.swu-stat { display: flex; flex-direction: column; gap: 6px; }
+.swu-stat-value { font: 500 44px/1 var(--font-display); color: #734FA0; }
+.swu-stat-label { font-size: 13px; line-height: 1.4; color: #666; }
+.swu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.swu-item { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 28px 26px 30px; border-radius: 20px; background: #f6f4f9; transition: transform .45s cubic-bezier(.22,1,.36,1), background .35s, box-shadow .45s; }
+.swu-item:hover { transform: translateY(-4px); background: #fff; box-shadow: 0 26px 50px -28px rgba(46,31,66,.35); }
+.swu-num { position: absolute; right: 24px; top: 24px; font: 500 16px/1 var(--font-display); color: #b8a5d3; }
+.swu-ico { width: 30px; height: 30px; fill: none; stroke: #734FA0; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.swu-item h3 { margin: 6px 0 0; font: 500 26px/1.05 var(--font-display) !important; text-transform: uppercase; color: #111; }
+.swu-item p { margin: 0; font-size: 15px; line-height: 1.6; color: #555; }
+@media (max-width: 991px) { .swu-container { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .swu { padding: 72px 0; }
+  .swu-container { padding: 0 20px; gap: 40px; }
+  .swu-grid { grid-template-columns: 1fr; }
+  .swu-stat-value { font-size: 34px; }
+  .swu-stats { gap: 12px; }
+}
