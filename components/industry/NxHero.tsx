@@ -24,13 +24,15 @@ export const NX_IMG = {
 };
 
 type Props = {
+  eyebrow?: string;
   title: ReactNode;
+  search?: ReactNode; // replaces the default "describe what you want to build" bar
   text: string;
   chipsLabel?: string;
   chips: { label: string; href: string }[];
 };
 
-export default function NxHero({ title, text, chipsLabel = "Popular services:", chips }: Props) {
+export default function NxHero({ eyebrow, title, text, search, chipsLabel = "Popular services:", chips }: Props) {
   return (
     <section className="nx-hero" data-nav-theme="dark">
       <div className="nx-collage" aria-hidden="true">
@@ -47,12 +49,15 @@ export default function NxHero({ title, text, chipsLabel = "Popular services:", 
         {/* eslint-enable @next/next/no-img-element */}
       </div>
       <div className="nx-hero-content">
+        {eyebrow && <span className="nx-label nx-hero-eyebrow">/ {eyebrow} /</span>}
         <h1 className="nx-h1">{title}</h1>
         <p>{text}</p>
-        <form className="nx-prompt" action="/contact-us" method="get">
-          <input type="text" name="project" placeholder="Describe what you want to build" aria-label="Describe what you want to build" />
-          <button type="submit">➚ Get started</button>
-        </form>
+        {search ?? (
+          <form className="nx-prompt" action="/contact-us" method="get">
+            <input type="text" name="project" placeholder="Describe what you want to build" aria-label="Describe what you want to build" />
+            <button type="submit">➚ Get started</button>
+          </form>
+        )}
         <div className="nx-queries">
           <span>{chipsLabel}</span>
           {chips.map((c) => (
