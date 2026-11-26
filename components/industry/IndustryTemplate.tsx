@@ -2,7 +2,8 @@ import Link from "next/link";
 import DetailReveal from "@/components/detail/DetailReveal";
 import HomeV2Cta from "@/components/HomeV2Cta";
 import IndustryFaq from "./IndustryFaq";
-import NxHero, { NX_IMG } from "./NxHero";
+import { NX_IMG } from "./NxHero";
+import AboutHeroBanner from "@/components/AboutHeroBanner";
 import { Feature } from "./NxFeatures";
 import NxMarquee from "./NxMarquee";
 import { caseStudies, industries, services, slugify } from "@/lib/data";
@@ -55,15 +56,20 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
     .filter((s): s is (typeof services)[number] => !!s);
   const faqs = [...(extra?.faqs ?? []), ...GENERAL_FAQS];
   const word = industry.title.split(/[ ,&]/)[0];
+  // Split the title over the banner's two lines ("Healthcare &" / "Wellness").
+  const amp = industry.title.lastIndexOf(" & ");
+  const titleLines: [string, string] =
+    amp > 0 ? [industry.title.slice(0, amp + 2), industry.title.slice(amp + 3)] : [industry.title, "Solutions"];
 
   return (
     <DetailReveal>
       <div className="nx">
-        {/* 01 Hero (same banner as the template) */}
-        <NxHero
-          title={<>Digital solutions for<br />{industry.title}</>}
-          text={`${industry.copy} Tell us what you want to build and we'll turn it into a working product.`}
-          chips={svc.map((s) => ({ label: SHORT_SERVICE[s.slug] ?? s.title, href: `/services/${s.slug}` }))}
+        {/* 01 Hero: same banner as the About page (AboutHeroBanner), as-is */}
+        <AboutHeroBanner
+          label="Industry"
+          line1={titleLines[0]}
+          line2={titleLines[1]}
+          text={`${industry.copy} We design, build and grow the technology that helps businesses like yours succeed.`}
         />
 
         {/* 02 Industry challenges (about block) */}
