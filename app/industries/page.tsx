@@ -5,6 +5,7 @@ import IndustrySearch from "@/components/industry/IndustrySearch";
 import DetailReveal from "@/components/detail/DetailReveal";
 import { NxFeaturesSection } from "@/components/industry/NxFeatures";
 import NxMarquee from "@/components/industry/NxMarquee";
+import IndustryShowcase from "@/components/industry/IndustryShowcase";
 import IndustriesHub from "@/components/IndustriesHub";
 import Footer from "@/components/Footer";
 
@@ -63,6 +64,8 @@ export default function IndustriesPage() {
           />
         </div>
         </DetailReveal>
+        {/* 05 Industries showcase gallery */}
+        <IndustryShowcase />
         <IndustriesHub />
       </main>
       <Footer />
