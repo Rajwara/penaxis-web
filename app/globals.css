@@ -12191,3 +12191,110 @@ section.cs-section:has(> .cs-container) { display: block; min-height: 0; padding
   .sc-card.is-bottom { padding-bottom: 80px; }
   .sc-title { font-size: 30px; }
 }
+
+/* ==================================================================
+   Single industry page template (components/industry/IndustryTemplate)
+   — 11 sections, homepage style. Builds on .pd-* and .sc-* rules.
+   ================================================================== */
+.pd .ix-hero { padding-bottom: 48px; }
+.ix-hero-intro { max-width: 40rem; margin: 24px auto 0; font-size: 20px; line-height: 1.55; color: #444; }
+.ix-hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
+.ix-hero-img { margin-bottom: 0; }
+.ix-section { padding: 110px 0 0; }
+.ix-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; font: 500 18px/1 var(--pd-display); letter-spacing: -.02em; text-transform: uppercase; color: var(--pd-accent); }
+.ix-eyebrow::before, .ix-eyebrow::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.ix-h2 { margin: 0; font-size: clamp(2.5rem, 1.25rem + 3.5vw, 4rem); }
+.ix-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px 64px; align-items: start; }
+.ix-lead { margin: 0; font-size: 20px; line-height: 1.65; color: #222; }
+.ix-head { margin-bottom: 48px; }
+.ix-head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+.ix-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.ix-card { display: flex; flex-direction: column; gap: 16px; padding: 32px 28px; border-radius: 18px; background: #fff; border: 1px solid var(--pd-line); transition: transform .4s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .4s; }
+.ix-card:hover { transform: translateY(-4px); border-color: rgba(106,68,154,.35); box-shadow: 0 24px 50px -26px rgba(46,31,66,.3); }
+.ix-card p { margin: 0; font-size: 16px; line-height: 1.6; color: #333; }
+.ix-num { font: 500 56px/1 var(--pd-display); letter-spacing: -.03em; color: #e2dcec; transition: color .3s; }
+.ix-card:hover .ix-num { color: var(--pd-accent); }
+.ix-card-title { margin: 0; font: 500 26px/1.05 var(--pd-display); letter-spacing: -.02em; text-transform: uppercase; color: #000; }
+.ix-outcomes { display: grid; grid-template-columns: 200px 1fr; gap: 24px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--pd-line); }
+.ix-outcomes-label { font: 500 22px/1 var(--pd-display); text-transform: uppercase; color: #000; }
+.ix-outcomes ul, .ix-checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.ix-outcomes li, .ix-checklist li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; line-height: 1.45; color: #111; font-weight: 600; }
+.ix-outcomes svg, .ix-checklist svg { flex: none; width: 20px; height: 20px; margin-top: 1px; color: var(--pd-accent); }
+.ix-checklist { margin-top: 32px; }
+/* 04 dark AI panel */
+.ix-dark { padding: 110px 20px 0; }
+.ix-dark-panel { padding: 100px 0; border-radius: 20px; color: #fff; background: radial-gradient(70% 90% at 100% 0%, rgba(106,68,154,.32), transparent 60%), radial-gradient(60% 70% at 0% 100%, rgba(106,68,154,.18), transparent 60%), #0d0b12; }
+.ix-dark .ix-eyebrow { color: #a988d3; }
+.ix-dark .ix-h2 { color: #fff; }
+.ix-card.is-dark { background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border-color: rgba(255,255,255,.1); }
+.ix-card.is-dark:hover { border-color: rgba(169,136,211,.45); box-shadow: none; }
+.ix-card.is-dark .ix-card-title { color: #fff; }
+.ix-card.is-dark p { color: rgba(255,255,255,.72); }
+.ix-ai-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: rgba(106,68,154,.3); color: #c2a8e6; }
+.ix-ai-icon svg { width: 24px; height: 24px; }
+/* 05 compliance */
+.ix-comp { display: grid; gap: 16px; }
+.ix-comp-item { padding: 26px 28px; border-radius: 16px; background: #fff; border: 1px solid var(--pd-line); border-left: 3px solid var(--pd-accent); }
+.ix-comp-item p { margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: #333; }
+/* 06 case studies */
+.ix-textlink { display: inline-flex; align-items: center; gap: 8px; font: 500 18px/1 var(--pd-display); text-transform: uppercase; color: var(--pd-accent); text-decoration: none; white-space: nowrap; }
+.ix-textlink svg { width: 16px; height: 16px; }
+.ix-textlink:hover { color: #000; }
+.ix-cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.ix-case { display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit; }
+.ix-case-img { display: block; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: #ece9f2; margin-bottom: 8px; }
+.ix-case-img img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+.ix-case:hover .ix-case-img img { transform: scale(1.05); }
+.ix-case-tag { font-size: 13px; font-weight: 600; color: var(--pd-accent); }
+.ix-case-title { font: 500 28px/1 var(--pd-display); letter-spacing: -.02em; text-transform: uppercase; color: #000; }
+.ix-case-text { font-size: 15px; line-height: 1.55; color: #555; }
+/* 07 services */
+.ix-services { border-top: 1px solid var(--pd-line); }
+.ix-service { display: grid; grid-template-columns: 80px 1fr 56px; align-items: center; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--pd-line); text-decoration: none; color: inherit; transition: padding .35s cubic-bezier(.22,1,.36,1); }
+.ix-service:hover { padding-left: 12px; }
+.ix-service-num { font: 500 40px/1 var(--pd-display); color: #d6cfe2; }
+.ix-service-body { display: flex; flex-direction: column; gap: 8px; }
+.ix-service-title { font: 500 36px/1 var(--pd-display); letter-spacing: -.02em; text-transform: uppercase; color: #000; transition: color .25s; }
+.ix-service:hover .ix-service-title { color: var(--pd-accent); }
+.ix-service-text { max-width: 46rem; font-size: 16px; line-height: 1.55; color: #555; }
+.ix-service-arrow { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: #000; color: #fff; transition: background .3s, transform .3s; }
+.ix-service-arrow svg { width: 18px; height: 18px; }
+.ix-service:hover .ix-service-arrow { background: var(--pd-accent); transform: rotate(45deg); }
+/* 08 FAQs */
+.ix-faqs { border-top: 1px solid var(--pd-line); }
+.ix-faq { border-bottom: 1px solid var(--pd-line); }
+.ix-faq summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 26px 0; cursor: pointer; list-style: none; font: 500 24px/1.1 var(--pd-display); letter-spacing: -.02em; text-transform: uppercase; color: #000; transition: color .25s; }
+.ix-faq summary::-webkit-details-marker { display: none; }
+.ix-faq summary:hover, .ix-faq[open] summary { color: var(--pd-accent); }
+.ix-faq-icon { position: relative; flex: none; width: 16px; height: 16px; }
+.ix-faq-icon::before, .ix-faq-icon::after { content: ""; position: absolute; left: 0; top: 7px; width: 16px; height: 2px; background: currentColor; transition: transform .3s; }
+.ix-faq-icon::after { transform: rotate(90deg); }
+.ix-faq[open] .ix-faq-icon::after { transform: rotate(0deg); }
+.ix-faq p { margin: 0; padding: 0 0 26px; max-width: 44rem; font-size: 16px; line-height: 1.65; color: #444; }
+/* 09 related industries */
+.ix-related .sc-grid { margin-top: -12px; padding: 0 20px; }
+.ix-related .sc-card { height: 400px; }
+/* 10 CTA sits after this */
+.pd:has(.ix-hero) { padding-bottom: 0; }
+.pd .hv2-page { margin-top: 110px; }
+@media (max-width: 991px) {
+  .ix-split { grid-template-columns: 1fr; }
+  .ix-cards, .ix-cases { grid-template-columns: 1fr 1fr; }
+  .ix-outcomes { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .ix-section, .ix-dark { padding-top: 72px; }
+  .ix-dark { padding-left: 10px; padding-right: 10px; }
+  .ix-dark-panel { padding: 64px 0; border-radius: 16px; }
+  .ix-cards, .ix-cases { grid-template-columns: 1fr; }
+  .ix-head { margin-bottom: 32px; }
+  .ix-head-row { flex-direction: column; align-items: flex-start; }
+  .ix-hero-intro, .ix-lead { font-size: 17px; }
+  .ix-service { grid-template-columns: 1fr 44px; gap: 16px; }
+  .ix-service-num { display: none; }
+  .ix-service-title { font-size: 28px; }
+  .ix-service-arrow { width: 44px; height: 44px; }
+  .ix-faq summary { font-size: 20px; }
+  .ix-related .sc-grid { padding: 0 10px; }
+  .pd .hv2-page { margin-top: 72px; }
+}
