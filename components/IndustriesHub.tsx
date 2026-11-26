@@ -9,7 +9,8 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// /industries: scroll-revealed card grid of Penaxis's 13 industries and a
+// /industries: scroll-revealed card grid (3 per row, card design from the
+// supplied service-cards file: photo card, notched corner + round button) of Penaxis's 13 industries and a
 // closing CTA. (The hub-and-spoke "Where we work" diagram that used to sit
 // above the grid was removed on request.)
 
@@ -23,10 +24,10 @@ export default function IndustriesHub() {
 
     const ctx = gsap.context(() => {
       if (prefersReduced) return;
-      gsap.set(".ih-card", { opacity: 0, y: 40 });
+      gsap.set(".sc-col", { opacity: 0, y: 40 });
       gsap.set(".ih-cta-inner", { opacity: 0, y: 40 });
 
-      gsap.to(".ih-card", {
+      gsap.to(".sc-col", {
         opacity: 1,
         y: 0,
         duration: 1,
@@ -54,21 +55,35 @@ export default function IndustriesHub() {
           <div className="ih-eyebrow2">All 13, in detail</div>
           <h2 className="section-heading">Every industry we build for.</h2>
         </div>
-        <div className="ih-grid">
-          {industries.map((ind) => (
-            <article className="ih-card" key={ind.title}>
-              <div className="ih-card-media">
-                <img src={ind.image} alt="" />
+        <div className="sc-grid ih-grid">
+          {industries.map((ind, i) => {
+            const href = `/industries/${slugify(ind.title)}`;
+            return (
+              <div className="sc-col" key={ind.title}>
+                <article className={`sc-card${i % 2 ? " is-bottom" : ""}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img className="sc-bg" src={ind.image} alt="" loading="lazy" />
+                  <div className="sc-shade" aria-hidden="true" />
+                  <div className="sc-body">
+                    <h3 className="sc-title">
+                      <a href={href} className="sc-stretch">
+                        {ind.title}
+                      </a>
+                    </h3>
+                    <p className="sc-text">{ind.copy}</p>
+                  </div>
+                  <div className="sc-btn-wrap">
+                    <div className="sc-btn-inner">
+                      <span className="sc-btn" aria-hidden="true">
+                        <svg viewBox="0 0 13 13"><path d="M4 2.5 8.2 6.5 4 10.5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        <svg viewBox="0 0 13 13"><path d="M4 2.5 8.2 6.5 4 10.5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                      </span>
+                    </div>
+                  </div>
+                </article>
               </div>
-              <div className="ih-card-body">
-                <h3>{ind.title}</h3>
-                <p>{ind.copy}</p>
-                <a href={`/industries/${slugify(ind.title)}`} className="ih-card-link">
-                  Learn More
-                </a>
-              </div>
-            </article>
-          ))}
+            );
+          })}
         </div>
       </section>
 
