@@ -12700,3 +12700,28 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
   .nx-proj-body { padding: 24px 20px 26px; }
   .nx-proj-title { font-size: 32px; }
 }
+
+/* Single industry page: Compliance - what we deliver against each framework */
+.nx-cf { padding: 120px 0 100px; background: #fff; }
+.nx-cf-head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 28px 64px; align-items: end; margin-bottom: 48px; }
+.nx-cf-intro { font-size: 17px; line-height: 1.7; color: var(--nx-muted); }
+.nx-cf-list { border-top: 1px solid #e6e3ec; }
+.nx-cf-row { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 24px 48px; padding: 34px 0; border-bottom: 1px solid #e6e3ec; transition: background .3s; }
+.nx-cf-row:hover { background: linear-gradient(90deg, rgba(115,79,160,.05), transparent 70%); }
+.nx-cf-name { display: flex; gap: 22px; align-items: flex-start; }
+.nx-cf-num { flex: none; font: 500 18px/1.4 var(--font-display); color: #734FA0; }
+.nx-cf-name h3 { margin-bottom: 8px !important; font-size: 34px; line-height: 1; color: #111; }
+.nx-cf-name p { font-size: 15px; line-height: 1.55; color: var(--nx-muted); }
+.nx-cf-deliver { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; margin: 0; padding: 0; list-style: none; align-content: center; }
+.nx-cf-deliver li { display: flex; gap: 11px; align-items: flex-start; font-size: 15px; line-height: 1.45; font-weight: 500; color: #1a1a1a; }
+.nx-cf-deliver svg { flex: none; width: 19px; height: 19px; margin-top: 1px; }
+.nx-cf-deliver svg circle { fill: #734FA0; }
+.nx-cf-deliver svg path { fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.nx-cf-note { max-width: 46rem; margin-top: 28px !important; font-size: 13.5px; line-height: 1.6; color: #888; }
+@media (max-width: 991px) { .nx-cf-head, .nx-cf-row { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .nx-cf { padding: 72px 0 64px; }
+  .nx-cf-row { padding: 26px 0; }
+  .nx-cf-name h3 { font-size: 28px; }
+  .nx-cf-deliver { grid-template-columns: 1fr; gap: 11px; }
+}

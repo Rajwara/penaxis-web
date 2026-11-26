@@ -9,7 +9,8 @@ import NxMarquee from "./NxMarquee";
 import { caseStudies, industries, services, slugify } from "@/lib/data";
 import { CASE_STUDY_SHORT_TITLES } from "@/lib/caseStudyCards";
 import { INDUSTRY_CHALLENGES } from "@/lib/industryChallenges";
-import { GENERAL_FAQS, INDUSTRY_EXTRAS, SECURITY_BASELINE } from "@/lib/industryExtras";
+import { frameworksFor } from "@/lib/complianceFrameworks";
+import { GENERAL_FAQS, INDUSTRY_EXTRAS } from "@/lib/industryExtras";
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
 
@@ -72,6 +73,7 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
     .filter((s): s is (typeof services)[number] => !!s);
   const faqs = [...(extra?.faqs ?? []), ...GENERAL_FAQS];
   const challenges = INDUSTRY_CHALLENGES[industry.title] ?? [];
+  const frameworks = frameworksFor(industry.title);
   // Split the title over the banner's two lines ("Healthcare &" / "Wellness").
   const amp = industry.title.lastIndexOf(" & ");
   const titleLines: [string, string] =
@@ -216,25 +218,47 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
         {/* Marquee */}
         <NxMarquee text={`${industry.title} is shaping the future of technology.`} />
 
-        {/* 05 Compliance & security (features grid) */}
-        {extra && (
-          <section className="nx-features nx-comp nx-lines">
-            <div className="nx-container">
+        {/* 05 Compliance: what we deliver against each framework */}
+        <section className="nx-cf" aria-labelledby="nx-cf-title">
+          <div className="nx-container">
+            <div className="nx-cf-head">
               <div className="pd-reveal">
-                <Label>compliance &amp; security</Label>
-                <h2 className="nx-h2 nx-features-h2">Built to be trusted with your data</h2>
+                <Label>compliance</Label>
+                <h2 id="nx-cf-title" className="nx-h2">What we deliver against each framework</h2>
               </div>
-              <div className="nx-fgrid">
-                {extra.compliance.map((c, i) => (
-                  <Feature key={c.title} title={c.title} text={c.text} i={i + 2} />
-                ))}
-                {SECURITY_BASELINE.map((b, i) => (
-                  <Feature key={b} title={b.split(" and ")[0].split(",")[0]} text={b + "."} i={i + 4} />
-                ))}
-              </div>
+              <p className="nx-cf-intro pd-reveal">
+                Every build follows secure-by-design practice. For {industry.title.toLowerCase()}, these are the frameworks we
+                design around and the concrete features we deliver to support your compliance.
+              </p>
             </div>
-          </section>
-        )}
+            <div className="nx-cf-list">
+              {frameworks.map((f, i) => (
+                <div key={f.id} className="nx-cf-row pd-reveal">
+                  <div className="nx-cf-name">
+                    <span className="nx-cf-num">{String(i + 1).padStart(2, "0")}</span>
+                    <div>
+                      <h3>{f.name}</h3>
+                      <p>{f.scope}</p>
+                    </div>
+                  </div>
+                  <ul className="nx-cf-deliver">
+                    {f.deliver.map((d) => (
+                      <li key={d}>
+                        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" /><path d="M6 10.2l2.6 2.6L14 7.6" /></svg>
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <p className="nx-cf-note pd-reveal">
+              We build software that supports your compliance programme. Certification and regulatory responsibility remain with your
+              organisation, and we&apos;re happy to work alongside your legal, security and audit teams.
+            </p>
+          </div>
+        </section>
+
 
         {/* 07 Relevant services (features grid) */}
         <section className="nx-features nx-services nx-lines">
