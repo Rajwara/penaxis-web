@@ -2,6 +2,7 @@ import Link from "next/link";
 import DetailReveal from "@/components/detail/DetailReveal";
 import HomeV2Cta from "@/components/HomeV2Cta";
 import IndustryFaq from "./IndustryFaq";
+import NxHero, { NX_IMG } from "./NxHero";
 import { caseStudies, industries, services, slugify } from "@/lib/data";
 import { CASE_STUDY_SHORT_TITLES } from "@/lib/caseStudyCards";
 import { GENERAL_FAQS, INDUSTRY_EXTRAS, SECURITY_BASELINE } from "@/lib/industryExtras";
@@ -19,21 +20,6 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 // replacements. Penaxis fonts and purple accent. Styles: .nx-* in
 // app/globals.css.
 
-const CDN = "https://8ded8880.delivery.rocketcdn.me/themes/neuros/wp-content/uploads/";
-const NX_IMG = {
-  t1: CDN + "2024/03/home-4-1-min.jpg",
-  t2a: CDN + "2024/03/home-4-2-min.jpg",
-  t2b: CDN + "2024/02/mitchell-luo-mkNOHMD3a-I-unsplash-2-min.jpg",
-  t3: CDN + "2024/03/home-4-4-min.jpg",
-  t4: CDN + "2024/03/closeup-red-pattern-with-hexagon-holes-1-min.jpg",
-  t5: CDN + "2024/03/home-4-3-min.jpg",
-  t6: CDN + "2024/03/home-4-5-min.jpg",
-  aboutBg: CDN + "2024/03/Vector.png",
-  aboutShape: CDN + "2024/03/2.png",
-  waves: CDN + "2024/04/home-4-bg-1.png",
-  dashboard: CDN + "2024/04/Dashboard-min-1-1024x994.png",
-  cta: CDN + "2024/02/service-video-poster.jpg",
-};
 
 const SHORT_SERVICE: Record<string, string> = {
   "ai-mvp": "AI & MVPs",
@@ -101,39 +87,11 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
     <DetailReveal>
       <div className="nx">
         {/* 01 Hero (same banner as the template) */}
-        <section className="nx-hero" data-nav-theme="dark">
-          <div className="nx-collage" aria-hidden="true">
-            {/* eslint-disable @next/next/no-img-element */}
-            <div className="nx-tile nx-t1"><img src={NX_IMG.t1} alt="" /></div>
-            <div className="nx-t2 nx-stack">
-              <div className="nx-tile"><img src={NX_IMG.t2a} alt="" /></div>
-              <div className="nx-tile"><img src={NX_IMG.t2b} alt="" /></div>
-            </div>
-            <div className="nx-tile nx-t3"><img src={NX_IMG.t3} alt="" /></div>
-            <div className="nx-tile nx-t4"><img src={NX_IMG.t4} alt="" /></div>
-            <div className="nx-tile nx-t5"><img src={NX_IMG.t5} alt="" /></div>
-            <div className="nx-tile nx-t6"><img src={NX_IMG.t6} alt="" /></div>
-            {/* eslint-enable @next/next/no-img-element */}
-          </div>
-          <div className="nx-hero-content">
-            <h1 className="nx-h1">
-              Digital solutions for
-              <br />
-              {industry.title}
-            </h1>
-            <p>{industry.copy} Tell us what you want to build and we&apos;ll turn it into a working product.</p>
-            <form className="nx-prompt" action="/contact-us" method="get">
-              <input type="text" name="project" placeholder="Describe what you want to build" aria-label="Describe what you want to build" />
-              <button type="submit">➚ Get started</button>
-            </form>
-            <div className="nx-queries">
-              <span>Popular services:</span>
-              {svc.map((s) => (
-                <Link key={s.slug} href={`/services/${s.slug}`}>{SHORT_SERVICE[s.slug] ?? s.title}</Link>
-              ))}
-            </div>
-          </div>
-        </section>
+        <NxHero
+          title={<>Digital solutions for<br />{industry.title}</>}
+          text={`${industry.copy} Tell us what you want to build and we'll turn it into a working product.`}
+          chips={svc.map((s) => ({ label: SHORT_SERVICE[s.slug] ?? s.title, href: `/services/${s.slug}` }))}
+        />
 
         {/* 02 Industry challenges (about block) */}
         <section className="nx-about" data-nav-theme="dark" style={{ backgroundImage: `url(${NX_IMG.aboutBg})` }}>
