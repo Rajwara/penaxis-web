@@ -5,8 +5,9 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { navLeft, navRight, navCta, navMobile, services, caseStudies, industries, slugify } from "@/lib/data";
+import { navLeft, navRight, navCta, navMobile, services, caseStudies } from "@/lib/data";
 import IndustriesMegaMenu from "./IndustriesMegaMenu";
+import { INDUSTRY_MENU } from "@/lib/industryMenu";
 import ServicesMegaMenu from "./ServicesMegaMenu";
 import CaseStudiesMegaMenu from "./CaseStudiesMegaMenu";
 
@@ -41,7 +42,7 @@ const MOBILE_SUBMENUS: Record<string, { items: { label: string; href: string }[]
     items: services.map((s) => ({ label: s.title, href: `/services/${s.slug}` })),
   },
   Industries: {
-    items: industries.map((ind) => ({ label: ind.title, href: `/industries/${slugify(ind.title)}` })),
+    items: INDUSTRY_MENU.flatMap((g) => g.items),
   },
   "Case Studies": {
     items: caseStudies.map((c) => ({ label: c.title, href: `/case-studies/${c.slug}` })),
