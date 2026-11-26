@@ -8,6 +8,7 @@ import { Feature } from "./NxFeatures";
 import NxMarquee from "./NxMarquee";
 import { caseStudies, industries, services, slugify } from "@/lib/data";
 import { CASE_STUDY_SHORT_TITLES } from "@/lib/caseStudyCards";
+import { INDUSTRY_CHALLENGES } from "@/lib/industryChallenges";
 import { GENERAL_FAQS, INDUSTRY_EXTRAS, SECURITY_BASELINE } from "@/lib/industryExtras";
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
@@ -55,7 +56,7 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
     .map((slug) => services.find((s) => s.slug === slug))
     .filter((s): s is (typeof services)[number] => !!s);
   const faqs = [...(extra?.faqs ?? []), ...GENERAL_FAQS];
-  const word = industry.title.split(/[ ,&]/)[0];
+  const challenges = INDUSTRY_CHALLENGES[industry.title] ?? [];
   // Split the title over the banner's two lines ("Healthcare &" / "Wellness").
   const amp = industry.title.lastIndexOf(" & ");
   const titleLines: [string, string] =
@@ -72,39 +73,28 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
           text={`${industry.copy} We design, build and grow the technology that helps businesses like yours succeed.`}
         />
 
-        {/* 02 Industry challenges (about block) */}
-        <section className="nx-about" data-nav-theme="dark" style={{ backgroundImage: `url(${NX_IMG.aboutBg})` }}>
-          <div className="nx-container nx-rel">
-            <div className="nx-grid2">
-              <div />
-              <div className="nx-word pd-reveal" aria-hidden="true">
-                <svg viewBox="0 0 560 170">
-                  <defs>
-                    <linearGradient id="nx-og" x1="0" x2="1">
-                      <stop offset="0" stopColor="#6A449A" />
-                      <stop offset="1" stopColor="#c2a8e6" />
-                    </linearGradient>
-                  </defs>
-                  <text x="0" y="150" fontSize="175" letterSpacing="-2" fill="none" stroke="url(#nx-og)" strokeWidth="1.2" textLength={word.length > 5 ? 520 : undefined} lengthAdjust="spacingAndGlyphs">
-                    {word}
-                  </text>
-                </svg>
-                <span className="nx-word-tag">AI</span>
-              </div>
-            </div>
-            <div className="nx-grid2 nx-about-row">
-              <div className="nx-big-logo" aria-hidden="true">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={NX_IMG.aboutShape} alt="" />
-              </div>
+        {/* 02 Industry challenges */}
+        <section className="nx-chal" aria-labelledby="nx-chal-title">
+          <div className="nx-container">
+            <div className="nx-chal-head">
               <div className="pd-reveal">
-                <Label>the challenge</Label>
-                <h2 className="nx-h2">What makes {industry.title.split(" & ")[0].toLowerCase()} hard to get right</h2>
-                <div className="nx-copy">
-                  <p>{industry.challenge}</p>
-                  <Btn href="/contact-us" light>Talk to us</Btn>
-                </div>
+                <span className="nx-label">/ industry challenges /</span>
+                <h2 id="nx-chal-title" className="nx-h2">What makes {industry.title.split(" & ")[0].toLowerCase()} hard to get right</h2>
               </div>
+              <p className="nx-chal-intro pd-reveal">{industry.challenge}</p>
+            </div>
+            <div className="nx-chal-grid">
+              {challenges.map((c, i) => (
+                <article key={c.title} className="nx-chal-card pd-reveal">
+                  <span className="nx-chal-num">{String(i + 1).padStart(2, "0")}</span>
+                  <h3>{c.title}</h3>
+                  <p>{c.text}</p>
+                </article>
+              ))}
+            </div>
+            <div className="nx-chal-cta pd-reveal">
+              <span>Facing these challenges?</span>
+              <Btn href="#enquiry">Talk to us</Btn>
             </div>
           </div>
         </section>
