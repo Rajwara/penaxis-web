@@ -32,9 +32,9 @@ function Arrow() {
   );
 }
 
-function Topic({ topic, index }: { topic: FaqTopic; index: number }) {
+function Topic({ topic, index, heading, numbered, image }: { topic: FaqTopic; index: number; heading?: string; numbered?: boolean; image?: string }) {
   const [open, setOpen] = useState(0);
-  const title = HEADINGS[topic.id] ?? topic.title;
+  const title = heading ?? HEADINGS[topic.id] ?? topic.title;
   let li = 0;
 
   return (
@@ -82,7 +82,7 @@ function Topic({ topic, index }: { topic: FaqTopic; index: number }) {
         <div className="fq-grid" data-fq-anim>
           <div className="fq-image">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={TEMP_IMG} alt="" loading="lazy" />
+            <img src={image ?? TEMP_IMG} alt="" loading="lazy" />
           </div>
 
           <div className="fq-list">
@@ -98,7 +98,10 @@ function Topic({ topic, index }: { topic: FaqTopic; index: number }) {
                     aria-controls={id}
                     onClick={() => setOpen(isOpen ? -1 : i)}
                   >
-                    <span>{f.q}</span>
+                    <span className="fq-q-text">
+                      {numbered && <span className="fq-num">{String(i + 1).padStart(2, "0")}</span>}
+                      <span>{f.q}</span>
+                    </span>
                     <span className="fq-icon" aria-hidden="true">
                       <span className="fq-line" />
                       <span className="fq-line-v" />
@@ -124,7 +127,15 @@ function Topic({ topic, index }: { topic: FaqTopic; index: number }) {
   );
 }
 
-export default function FaqSections({ topics }: { topics: FaqTopic[] }) {
+type FaqProps = {
+  topics: FaqTopic[];
+  nav?: boolean; // topic jump links (FAQs page)
+  heading?: string; // single-topic use: override the big heading
+  numbered?: boolean; // 01, 02… before each question
+  image?: string;
+};
+
+export default function FaqSections({ topics, nav = true, heading, numbered, image }: FaqProps) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -148,6 +159,7 @@ export default function FaqSections({ topics }: { topics: FaqTopic[] }) {
 
   return (
     <div ref={rootRef} className="fq">
+      {nav && (
       <nav className="fq-topics" aria-label="FAQ topics">
         <div className="fq-container">
           {topics.map((t) => (
@@ -157,8 +169,9 @@ export default function FaqSections({ topics }: { topics: FaqTopic[] }) {
           ))}
         </div>
       </nav>
+      )}
       {topics.map((t, i) => (
-        <Topic key={t.id} topic={t} index={i} />
+        <Topic key={t.id} topic={t} index={i} heading={heading} numbered={numbered} image={image} />
       ))}
     </div>
   );

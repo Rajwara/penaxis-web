@@ -7,7 +7,20 @@ import { NxFeaturesSection } from "@/components/industry/NxFeatures";
 import NxMarquee from "@/components/industry/NxMarquee";
 import IndustryShowcase from "@/components/industry/IndustryShowcase";
 import IndustryCaseSlider from "@/components/industry/IndustryCaseSlider";
-import IndustriesHub from "@/components/IndustriesHub";
+import FaqSections from "@/components/FaqSections";
+import HomeV2Cta from "@/components/HomeV2Cta";
+import { INDUSTRY_MENU } from "@/lib/industryMenu";
+
+const INDUSTRY_FAQS = [
+  { q: "What if my industry is not listed?", a: "Our expertise is not limited to the industries listed. We assess your requirements and can develop tailored technology and growth solutions for your sector." },
+  { q: "Do you offer pre-built solutions or custom development?", a: "We primarily develop solutions tailored to your objectives, operations and existing technology. Where suitable, we can integrate and customize established platforms." },
+  { q: "Can you work with businesses of different sizes?", a: "We adapt our approach for startups, small and medium-sized businesses and established enterprises." },
+  { q: "Can you integrate with our existing systems?", a: "Subject to technical assessment, we can integrate CRMs, ERPs, payment gateways and third-party applications." },
+  { q: "How do you address industry-specific requirements?", a: "We assess workflows, objectives, the technical environment and applicable regulatory requirements before defining the solution." },
+  { q: "Can you help us identify AI opportunities?", a: "We evaluate processes and identify practical opportunities for AI and automation to improve efficiency, customer experience or decision-making." },
+  { q: "Do you provide ongoing support?", a: "Maintenance, technical support, optimization and growth services can be included in the agreed scope." },
+  { q: "Do you work internationally?", a: "We can collaborate across markets through remote delivery, structured project management and ongoing communication." },
+].map((f) => ({ ...f, image: "" }));
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -69,7 +82,32 @@ export default function IndustriesPage() {
         <IndustryShowcase />
         {/* 07 Featured case studies (published, delivered projects only) */}
         <IndustryCaseSlider />
-        <IndustriesHub />
+        {/* 08 FAQs (FAQs page design, numbered) */}
+        <div className="fq-solo">
+          <FaqSections
+            nav={false}
+            numbered
+            heading="Everything you need to know."
+            image="/images/hero/lets-work-together.webp"
+            topics={[{ id: "industries-faq", title: "Frequently asked questions", items: INDUSTRY_FAQS }]}
+          />
+        </div>
+        {/* 09 CTA & enquiry form (same banner as the homepage) */}
+        <div className="hv2-page">
+          <HomeV2Cta
+            source="Industries page — enquiry"
+            eyebrow="Let’s build what’s next"
+            heading="Your Industry. Your Challenges. Our Expertise."
+            intro="Whether you’re modernizing an established business, building a new digital product or exploring the possibilities of AI, we’re here to help you take the next step."
+            formTitle="Let’s Discuss Your Project"
+            formText="Tell us about your business and what you want to achieve. We’ll get back to you within one business day."
+            submitLabel="Let’s Discuss Your Project"
+            extended={{
+              industries: INDUSTRY_MENU.flatMap((g) => g.items.map((i) => i.label)),
+              services: ["AI-Powered MVP Development", "Digital Transformation", "Fractional Sales & Growth", "Web, CRM & Software Solutions", "Not Sure Yet"],
+            }}
+          />
+        </div>
       </main>
       <Footer />
     </>

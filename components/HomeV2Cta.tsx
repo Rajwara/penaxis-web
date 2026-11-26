@@ -16,7 +16,7 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 // files. The form posts to the site's existing /api/contact endpoint, so
 // submissions are emailed like every other form on the site.
 
-const HEADING = "Let's work together.";
+const DEFAULT_HEADING = "Let's work together.";
 const SPREAD = 5;
 const MARQUEE_SPEED = 55; // px per second (from the zip)
 const MARQUEE_COPIES = 8; // ~9,000px of text: covers 2x even ultra-wide screens
@@ -24,14 +24,37 @@ const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export default function HomeV2Cta({ source = "Home v2 — Request a quote banner" }: { source?: string }) {
+type Extended = { industries: string[]; services: string[] };
+type CtaProps = {
+  source?: string;
+  heading?: string;
+  eyebrow?: string;
+  intro?: string;
+  formTitle?: string;
+  formText?: string;
+  submitLabel?: string;
+  // Extended enquiry form (industry pages): company, phone, industry,
+  // service, requirements and privacy consent.
+  extended?: Extended;
+};
+
+export default function HomeV2Cta({
+  source = "Home v2 — Request a quote banner",
+  heading: HEADING = DEFAULT_HEADING,
+  eyebrow,
+  intro,
+  formTitle = "Ready to start your project?",
+  formText = "Let's turn your ideas into products, systems and growth. Tell us what you're building and we'll get back to you within one business day.",
+  submitLabel = "Send a message",
+  extended,
+}: CtaProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const [slidIn, setSlidIn] = useState(false);
   const [jsReady, setJsReady] = useState(false);
 
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "", company_website: "" });
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "", company_website: "", phone: "", company: "", industry: "", service: "", consent: "" });
   const [invalid, setInvalid] = useState<Record<string, boolean>>({});
   const [status, setStatus] = useState<Status>("idle");
   const [errorText, setErrorText] = useState("");
@@ -114,8 +137,9 @@ export default function HomeV2Cta({ source = "Home v2 — Request a quote banner
     };
   }, []);
 
-  const update = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((f) => ({ ...f, [key]: e.target.value }));
+  const update = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const v = e.target instanceof HTMLInputElement && e.target.type === "checkbox" ? (e.target.checked ? "yes" : "") : e.target.value;
+    setForm((f) => ({ ...f, [key]: v }));
     setInvalid((v) => ({ ...v, [key]: false }));
   };
 
@@ -125,19 +149,35 @@ export default function HomeV2Cta({ source = "Home v2 — Request a quote banner
     const bad = {
       name: form.name.trim() === "",
       email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()),
+      consent: !!extended && form.consent !== "yes",
     };
     setInvalid(bad);
-    if (bad.name || bad.email) return;
+    if (bad.name || bad.email || bad.consent) return;
 
     setStatus("sending");
     try {
-      await submitForm(source, {
-        name: form.name.trim(),
-        email: form.email.trim(),
-        subject: form.subject.trim(),
-        message: form.message.trim(),
-        company_website: form.company_website,
-      });
+      await submitForm(
+        source,
+        extended
+          ? {
+              name: form.name.trim(),
+              email: form.email.trim(),
+              phone: form.phone.trim(),
+              company: form.company.trim(),
+              industry: form.industry,
+              service: form.service,
+              message: form.message.trim(),
+              privacy_consent: "Agreed",
+              company_website: form.company_website,
+            }
+          : {
+              name: form.name.trim(),
+              email: form.email.trim(),
+              subject: form.subject.trim(),
+              message: form.message.trim(),
+              company_website: form.company_website,
+            }
+      );
       setStatus("success");
     } catch (err) {
       setErrorText(err instanceof Error ? err.message : "");
@@ -147,7 +187,7 @@ export default function HomeV2Cta({ source = "Home v2 — Request a quote banner
 
   const slide = (dir: "left" | "right") => `${jsReady ? `hv2q-slide is-${dir}` : ""}${slidIn ? " in-view" : ""}`;
   const telHref = `tel:${contact.phone.replace(/[^+\d]/g, "")}`;
-  const btnLabel = status === "sending" ? "Please wait" : "Send a message";
+  const btnLabel = status === "sending" ? "Please wait" : submitLabel;
 
   return (
     <div className="hv2q-root">
@@ -170,6 +210,7 @@ export default function HomeV2Cta({ source = "Home v2 — Request a quote banner
             <div ref={gridRef} className="hv2q-grid">
               {/* Left column */}
               <div className="hv2q-col">
+                {eyebrow && <div className="hv2q-eyebrow">{eyebrow}</div>}
                 <h2 ref={headingRef} id="hv2q-title" className="hv2q-heading" aria-label={HEADING}>
                   {HEADING.split(" ").map((w, wi) => (
                     <span key={wi}>
@@ -182,6 +223,7 @@ export default function HomeV2Cta({ source = "Home v2 — Request a quote banner
                     </span>
                   ))}
                 </h2>
+                {intro && <p className="hv2q-intro">{intro}</p>}
 
                 <div className="hv2q-contacts">
                   <div className={`hv2q-contact ${slide("left")}`}>
@@ -203,26 +245,63 @@ export default function HomeV2Cta({ source = "Home v2 — Request a quote banner
 
               {/* Right column: form card */}
               <div className={`hv2q-form-card ${slide("right")}`}>
-                <h3 className="hv2q-form-title">Ready to start your project?</h3>
-                <p className="hv2q-text-s is-light">
-                  Let&apos;s turn your ideas into products, systems and growth. Tell us what you&apos;re
-                  building and we&apos;ll get back to you within one business day.
-                </p>
+                <h3 className="hv2q-form-title">{formTitle}</h3>
+                <p className="hv2q-text-s is-light">{formText}</p>
 
                 <div className="hv2q-form-wrap">
                   {status !== "success" ? (
                     <form className="hv2q-form" onSubmit={onSubmit} noValidate>
                       <label className="hv2q-label" htmlFor="hv2q-name">Name*</label>
-                      <input className={`hv2q-input${invalid.name ? " is-invalid" : ""}`} id="hv2q-name" type="text" name="name" maxLength={256} placeholder="Name*" required value={form.name} onChange={update("name")} />
+                      <input className={`hv2q-input${invalid.name ? " is-invalid" : ""}`} id="hv2q-name" type="text" name="name" maxLength={256} placeholder={extended ? "Full name*" : "Name*"} required value={form.name} onChange={update("name")} />
 
                       <label className="hv2q-label" htmlFor="hv2q-email">Email Address*</label>
-                      <input className={`hv2q-input${invalid.email ? " is-invalid" : ""}`} id="hv2q-email" type="email" name="email" maxLength={256} placeholder="Email Address*" required value={form.email} onChange={update("email")} />
+                      <input className={`hv2q-input${invalid.email ? " is-invalid" : ""}`} id="hv2q-email" type="email" name="email" maxLength={256} placeholder={extended ? "Business email*" : "Email Address*"} required value={form.email} onChange={update("email")} />
 
-                      <label className="hv2q-label" htmlFor="hv2q-subject">Subject</label>
-                      <input className="hv2q-input" id="hv2q-subject" type="text" name="subject" maxLength={256} placeholder="Subject" value={form.subject} onChange={update("subject")} />
+                      {extended ? (
+                        <>
+                          <div className="hv2q-row2">
+                            <div>
+                              <label className="hv2q-label" htmlFor="hv2q-phone">Phone (optional)</label>
+                              <input className="hv2q-input" id="hv2q-phone" type="tel" name="phone" maxLength={64} placeholder="Phone (optional)" value={form.phone} onChange={update("phone")} />
+                            </div>
+                            <div>
+                              <label className="hv2q-label" htmlFor="hv2q-company">Company</label>
+                              <input className="hv2q-input" id="hv2q-company" type="text" name="company" maxLength={256} placeholder="Company" value={form.company} onChange={update("company")} />
+                            </div>
+                          </div>
+                          <div className="hv2q-row2">
+                            <div>
+                              <label className="hv2q-label" htmlFor="hv2q-industry">Industry</label>
+                              <select className={`hv2q-input is-select${form.industry ? "" : " is-empty"}`} id="hv2q-industry" name="industry" value={form.industry} onChange={update("industry")}>
+                                <option value="">Industry</option>
+                                {extended.industries.map((x) => <option key={x} value={x}>{x}</option>)}
+                                <option value="Other">Other</option>
+                              </select>
+                            </div>
+                            <div>
+                              <label className="hv2q-label" htmlFor="hv2q-service">Service of interest</label>
+                              <select className={`hv2q-input is-select${form.service ? "" : " is-empty"}`} id="hv2q-service" name="service" value={form.service} onChange={update("service")}>
+                                <option value="">Service of interest</option>
+                                {extended.services.map((x) => <option key={x} value={x}>{x}</option>)}
+                              </select>
+                            </div>
+                          </div>
+                          <label className="hv2q-label" htmlFor="hv2q-message">Project requirements</label>
+                          <textarea className="hv2q-input is-textarea" id="hv2q-message" name="message" maxLength={5000} placeholder="Project requirements" value={form.message} onChange={update("message")} />
+                          <label className={`hv2q-consent${invalid.consent ? " is-invalid" : ""}`}>
+                            <input type="checkbox" name="consent" checked={form.consent === "yes"} onChange={update("consent")} required />
+                            <span>I agree to Penaxis storing my details to respond to this enquiry, as described in the <a href="/policies/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.*</span>
+                          </label>
+                        </>
+                      ) : (
+                        <>
+                          <label className="hv2q-label" htmlFor="hv2q-subject">Subject</label>
+                          <input className="hv2q-input" id="hv2q-subject" type="text" name="subject" maxLength={256} placeholder="Subject" value={form.subject} onChange={update("subject")} />
 
-                      <label className="hv2q-label" htmlFor="hv2q-message">Message</label>
-                      <textarea className="hv2q-input is-textarea" id="hv2q-message" name="message" maxLength={5000} placeholder="Message" value={form.message} onChange={update("message")} />
+                          <label className="hv2q-label" htmlFor="hv2q-message">Message</label>
+                          <textarea className="hv2q-input is-textarea" id="hv2q-message" name="message" maxLength={5000} placeholder="Message" value={form.message} onChange={update("message")} />
+                        </>
+                      )}
 
                       {/* Honeypot — hidden from people, filled by bots */}
                       <input className="hv2q-hp" type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.company_website} onChange={update("company_website")} />

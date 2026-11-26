@@ -136,7 +136,7 @@ export default function IndustryShowcase() {
 
   let li = 0;
   return (
-    <section ref={sectionRef} className="isc-section" aria-labelledby="isc-title">
+    <section ref={sectionRef} id="all-industries" className="isc-section" aria-labelledby="isc-title">
       <div ref={boxRef} className={`isc${expanded ? " is-expanded" : ""}`} data-nav-theme="dark" style={expanded && fullH ? { height: fullH } : undefined}>
         <div className="isc-head">
           <span className="isc-sub">industries we empower</span>
