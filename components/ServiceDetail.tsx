@@ -7,6 +7,8 @@ import ServiceBenefits from "./ServiceBenefits";
 import ServiceProof from "./ServiceProof";
 import ServiceTicker from "./ServiceTicker";
 import { services } from "@/lib/data";
+import HomeV2Cta from "./HomeV2Cta";
+import { INDUSTRY_MENU } from "@/lib/industryMenu";
 
 // Single service page: About-page banner, ticker, Why us, Our process,
 // Key benefits and Proof (relevant case studies).
@@ -40,6 +42,24 @@ export default function ServiceDetail({ slug }: { slug: string }) {
 
       {/* Proof: relevant case studies */}
       <ServiceProof slug={service.slug} />
+
+      {/* CTA & enquiry form (same as the Industries page), service pre-selected */}
+      <div id="enquiry" className="hv2-page svc-cta-wrap">
+        <HomeV2Cta
+          source={`Service page — ${service.title}`}
+          eyebrow="Let’s build what’s next"
+          heading="Your Industry. Your Challenges. Our Expertise."
+          intro="Whether you’re modernizing an established business, building a new digital product or exploring the possibilities of AI, we’re here to help you take the next step."
+          formTitle="Let’s Discuss Your Project"
+          formText="Tell us about your business and what you want to achieve. We’ll get back to you within one business day."
+          submitLabel="Let’s Discuss Your Project"
+          extended={{
+            industries: INDUSTRY_MENU.flatMap((g) => g.items.map((i) => i.label)),
+            services: ["AI-Powered MVP Development", "Digital Transformation", "Fractional Sales & Growth", "Web, CRM & Software Solutions", "Not Sure Yet"],
+            defaultService: service.title,
+          }}
+        />
+      </div>
     </>
   );
 }
