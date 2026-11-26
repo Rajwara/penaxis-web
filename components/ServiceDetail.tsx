@@ -1,7 +1,7 @@
 "use client";
 
 import Reveal from "./Reveal";
-import ServiceBanner from "./ServiceBanner";
+import AboutHeroBanner from "./AboutHeroBanner";
 import ServiceTicker from "./ServiceTicker";
 import ServiceProcess from "./ServiceProcess";
 import ServiceHighlights from "./ServiceHighlights";
@@ -42,10 +42,16 @@ export default function ServiceDetail({ slug }: { slug: string }) {
   const next = services[(index + 1) % services.length];
   const [statAIdx] = STAT_PAIRS[index % STAT_PAIRS.length];
   const statA = stats[statAIdx];
+  // Split the title over the banner's two lines ("Fractional Sales &" / "Growth").
+  const amp = service.title.lastIndexOf(" & ");
+  const sp = service.title.lastIndexOf(" ");
+  const titleLines: [string, string] =
+    amp > 0 ? [service.title.slice(0, amp + 2), service.title.slice(amp + 3)] : [service.title.slice(0, sp), service.title.slice(sp + 1)];
 
   return (
     <>
-      <ServiceBanner service={service} stat={statA} />
+      {/* Same banner as the About page (AboutHeroBanner), as-is */}
+      <AboutHeroBanner label="Our services" line1={titleLines[0]} line2={titleLines[1]} text={service.short} />
 
       <ServiceTicker />
 
