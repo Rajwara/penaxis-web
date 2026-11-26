@@ -34,6 +34,17 @@ function Arrow() {
 
 export default function PageHeroBanner({ lines, text, cta, bg = BG, person }: Props) {
   const modalRef = useRef<HTMLDialogElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Hover: the cut-out person drifts left/right with the mouse (max ±28px).
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el || !person) return;
+    const r = el.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width - 0.5) * 2; // -1 .. 1
+    el.style.setProperty("--phb-px", `${(x * 28).toFixed(1)}px`);
+  };
+  const onLeave = () => cardRef.current?.style.setProperty("--phb-px", "0px");
   const videoRef = useRef<HTMLVideoElement>(null);
   const title = lines.map((l) => l.text).join(" ");
 
@@ -48,7 +59,7 @@ export default function PageHeroBanner({ lines, text, cta, bg = BG, person }: Pr
 
   return (
     <section className="phb">
-      <div className="phb-card" data-nav-theme="dark">
+      <div ref={cardRef} className="phb-card" data-nav-theme="dark" onMouseMove={onMove} onMouseLeave={onLeave}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="phb-bg" src={bg} alt="" fetchPriority="high" />
         {person && (

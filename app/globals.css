@@ -12869,3 +12869,6 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
 @media (prefers-reduced-motion: reduce) { .phb-person { animation: none; } }
 .phb-card:has(.phb-person) .phb-overlay { opacity: .75; background-image: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,0) 45%), linear-gradient(270deg, rgba(0,0,0,.7), rgba(0,0,0,0) 45%); }
 @media (max-width: 991px) { .phb-card:has(.phb-person) .phb-overlay { background-image: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.15) 40%, rgba(0,0,0,.75)); } }
+/* Person follows the mouse left/right on hover (--phb-px set in PageHeroBanner) */
+.phb-person { translate: var(--phb-px, 0px) 0; transition: translate .9s cubic-bezier(.22,1,.36,1); }
+@media (hover: none), (prefers-reduced-motion: reduce) { .phb-person { translate: none; } }
