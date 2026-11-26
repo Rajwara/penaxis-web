@@ -88,7 +88,7 @@ export default function CaseStudyV2Grid() {
           <div className="csv2-cardgrid">
             {filtered.map((study) => {
               const num = String(caseStudies.indexOf(study) + 1).padStart(2, "0");
-              const img = ("bannerImages" in study && study.bannerImages?.[0]) || study.gridImage || study.image;
+              const img = ("cardImage" in study && study.cardImage) || ("bannerImages" in study && study.bannerImages?.[0]) || study.gridImage || study.image;
               return (
                 <a key={study.slug} href={`/case-studies/${study.slug}`} className="csv2-cardlink" aria-label={study.title}>
                   <div className="hv2c-card">

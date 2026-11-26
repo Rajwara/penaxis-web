@@ -503,6 +503,7 @@ export const contact = {
 export const caseStudies = [
   {
     slug: "drivelo-logistics-platform",
+    cardImage: "/images/case-studies/drivelo-logistics-platform-card.webp", // portrait card (homepage + /case-studies)
     image: "/images/case-studies/drivelo-logistics-platform-thumb.webp",
     gridImage: "/images/case-studies/grid/drivelo-logistics-platform-grid.webp",
     bannerImages: [
@@ -551,6 +552,7 @@ export const caseStudies = [
   },
   {
     slug: "ai-receptionist-visitor-kiosk",
+    cardImage: "/images/case-studies/ai-receptionist-visitor-kiosk-card.webp", // portrait card (homepage + /case-studies)
     image: "/images/case-studies/ai-receptionist-visitor-kiosk-thumb.webp",
     gridImage: "/images/case-studies/grid/ai-receptionist-visitor-kiosk-grid.webp",
     bannerImages: [
@@ -605,6 +607,7 @@ export const caseStudies = [
   },
   {
     slug: "bidlogics-tender-intelligence",
+    cardImage: "/images/case-studies/bidlogics-tender-intelligence-card.webp", // portrait card (homepage + /case-studies)
     image: "/images/case-studies/bidlogics-tender-intelligence-thumb.webp",
     gridImage: "/images/case-studies/grid/bidlogics-tender-intelligence-grid.webp",
     bannerImages: [
@@ -664,6 +667,7 @@ export const caseStudies = [
   },
   {
     slug: "seka-gravel-cycling-platform",
+    cardImage: "/images/case-studies/seka-gravel-cycling-platform-card.webp", // portrait card (homepage + /case-studies)
     image: "/images/case-studies/seka-gravel-cycling-platform-thumb.webp",
     gridImage: "/images/case-studies/grid/seka-gravel-cycling-platform-grid.webp",
     title: "Membership-Driven Cycling Community & Race Management Platform",
@@ -718,6 +722,7 @@ export const caseStudies = [
   },
   {
     slug: "hotel-booking-revenue-platform",
+    cardImage: "/images/case-studies/hotel-booking-revenue-platform-card.webp", // portrait card (homepage + /case-studies)
     image: "/images/case-studies/hotel-booking-revenue-platform-thumb.webp",
     gridImage: "/images/case-studies/grid/hotel-booking-revenue-platform-grid.webp",
     bannerImages: [
@@ -777,6 +782,7 @@ export const caseStudies = [
   },
   {
     slug: "the-plate-agent-marketplace",
+    cardImage: "/images/case-studies/the-plate-agent-marketplace-card.webp", // portrait card (homepage + /case-studies)
     gridImage: "/images/case-studies/grid/the-plate-agent-marketplace-grid.webp",
     bannerImages: [
       "/images/case-studies/banner/plate-agent-banner-1.webp",

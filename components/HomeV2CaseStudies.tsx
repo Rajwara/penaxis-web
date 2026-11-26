@@ -26,7 +26,7 @@ const ITEMS = caseStudies.slice(0, 6).map((c, i) => ({
   num: String(i + 1).padStart(2, "0"),
   title: SHORT_TITLES[c.slug] ?? c.title,
   desc: c.blurb,
-  image: ("bannerImages" in c && c.bannerImages?.[0]) || c.gridImage || c.image,
+  image: ("cardImage" in c && c.cardImage) || ("bannerImages" in c && c.bannerImages?.[0]) || c.gridImage || c.image,
 }));
 
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
