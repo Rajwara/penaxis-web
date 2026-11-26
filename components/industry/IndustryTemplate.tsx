@@ -1,11 +1,13 @@
 import Link from "next/link";
 import DetailReveal from "@/components/detail/DetailReveal";
 import HomeV2Cta from "@/components/HomeV2Cta";
-import IndustryFaq from "./IndustryFaq";
+import FaqSections from "@/components/FaqSections";
+import { INDUSTRY_MENU } from "@/lib/industryMenu";
 import { NX_IMG } from "./NxHero";
 import AboutHeroBanner from "@/components/AboutHeroBanner";
 import { Feature } from "./NxFeatures";
 import NxMarquee from "./NxMarquee";
+import ServiceTabs from "./ServiceTabs";
 import { caseStudies, industries, services, slugify } from "@/lib/data";
 import { CASE_STUDY_SHORT_TITLES } from "@/lib/caseStudyCards";
 import { INDUSTRY_CHALLENGES } from "@/lib/industryChallenges";
@@ -57,12 +59,9 @@ function Btn({ href, children, light }: { href: string; children: React.ReactNod
   );
 }
 
-const MASONRY_H = [530, 360, 400, 480, 420, 600, 530, 400, 620, 400, 500, 360];
 
 export default function IndustryTemplate({ industry }: { industry: Industry }) {
   const extra = INDUSTRY_EXTRAS[industry.title];
-  const idx = industries.findIndex((i) => i.title === industry.title);
-  const related = industries.slice(idx + 1).concat(industries.slice(0, idx));
   // Real projects for this industry: case studies tagged with it, plus a
   // hand-picked closest match for industries without a tagged project.
   // Delivered projects first, max 2. No match -> the section is hidden.
@@ -260,72 +259,61 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
         </section>
 
 
-        {/* 07 Relevant services (features grid) */}
-        <section className="nx-features nx-services nx-lines">
+        {/* 07 Relevant services (tabs) */}
+        <section className="nx-svc-tabs" aria-labelledby="nx-svc-title">
           <div className="nx-container">
-            <div className="pd-reveal">
-              <Label>relevant services</Label>
-              <h2 className="nx-h2 nx-features-h2">Services that power {industry.title}</h2>
+            <div className="nx-cf-head pd-reveal">
+              <div>
+                <Label>relevant services</Label>
+                <h2 id="nx-svc-title" className="nx-h2">Services that power {industry.title}</h2>
+              </div>
+              <p className="nx-cf-intro">
+                The services most relevant to {industry.title.toLowerCase()}, ordered by fit. Pick one to see what we deliver and how we can work together.
+              </p>
             </div>
-            <div className="nx-fgrid">
-              {svc.map((s, i) => (
-                <Feature key={s.slug} title={s.title} text={s.short} i={i} href={`/services/${s.slug}`} />
-              ))}
-              <Feature title="Not sure where to start?" text="Book a short discovery call and we'll recommend the right service and engagement model." i={5} href="/contact-us" />
-            </div>
+            <ServiceTabs
+              industry={industry.title}
+              items={svc.map((x) => ({
+                slug: x.slug,
+                title: x.title,
+                long: x.long,
+                image: ("listImage" in x && x.listImage) || x.heroImage,
+                pillars: x.pillars.map((p) => ({ title: p.title, copy: p.copy })),
+                engagements: x.engagements ?? [],
+              }))}
+            />
           </div>
         </section>
 
-        {/* 08 FAQs */}
-        <section className="nx-faq nx-boxed">
-          <div className="nx-faq-head pd-reveal">
-            <Label>faq</Label>
-            <h2 className="nx-h2">Everything you need<br />to know about</h2>
-          </div>
-          <IndustryFaq items={faqs} />
-          <div className="nx-faq-btn">
-            <Btn href="/faqs">Explore more</Btn>
-          </div>
-        </section>
-
-        {/* 09 Related industries (gallery) */}
-        <section className="nx-gallery nx-boxed" data-nav-theme="dark">
-          <div className="nx-gallery-head pd-reveal">
-            <Label>related industries</Label>
-            <h2 className="nx-h2">More industries<br />we build for</h2>
-          </div>
-          <div className="nx-masonry">
-            {related.map((ind, i) => (
-              <Link key={ind.title} href={`/industries/${slugify(ind.title)}`} className="nx-mtile">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ind.image} alt="" loading="lazy" style={{ height: MASONRY_H[i % MASONRY_H.length] * 0.6 }} />
-                <span className="nx-mtile-cap">{ind.title}</span>
-              </Link>
-            ))}
-          </div>
-          <div className="nx-center">
-            <Btn href="/industries" light>See all industries</Btn>
-          </div>
-        </section>
-
-        {/* 10 CTA */}
-        <section className="nx-cta nx-boxed" data-nav-theme="dark">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={NX_IMG.cta} alt="" />
-          <h2 className="nx-h2">
-            Drive efficiency
-            <br />
-            &amp; growth in
-            <br />
-            {industry.title}
-          </h2>
-          <Btn href="#enquiry" light>Start a project</Btn>
-        </section>
       </div>
 
-      {/* 10 Enquiry form (same as the homepage) */}
+      {/* 08 FAQs (FAQs page design, numbered) */}
+      <div className="fq-solo">
+        <FaqSections
+          nav={false}
+          numbered
+          heading="Everything you need to know."
+          image={industry.image}
+          topics={[{ id: "industry-faq", title: `${industry.title} FAQs`, items: faqs.map((f) => ({ ...f, image: "" })) }]}
+        />
+      </div>
+
+      {/* 09 CTA & enquiry form (same as the Industries page) */}
       <div id="enquiry" className="hv2-page nx-cta-wrap">
-        <HomeV2Cta source={`Industry page — ${industry.title}`} />
+        <HomeV2Cta
+          source={`Industry page — ${industry.title}`}
+          eyebrow="Let’s build what’s next"
+          heading="Your Industry. Your Challenges. Our Expertise."
+          intro="Whether you’re modernizing an established business, building a new digital product or exploring the possibilities of AI, we’re here to help you take the next step."
+          formTitle="Let’s Discuss Your Project"
+          formText="Tell us about your business and what you want to achieve. We’ll get back to you within one business day."
+          submitLabel="Let’s Discuss Your Project"
+          extended={{
+            industries: INDUSTRY_MENU.flatMap((g) => g.items.map((i) => i.label)),
+            services: ["AI-Powered MVP Development", "Digital Transformation", "Fractional Sales & Growth", "Web, CRM & Software Solutions", "Not Sure Yet"],
+            defaultIndustry: INDUSTRY_MENU.flatMap((g) => g.items).find((i) => i.href === `/industries/${slugify(industry.title)}`)?.label,
+          }}
+        />
       </div>
     </DetailReveal>
   );

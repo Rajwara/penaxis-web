@@ -24,7 +24,7 @@ const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
 type Status = "idle" | "sending" | "success" | "error";
 
-type Extended = { industries: string[]; services: string[] };
+type Extended = { industries: string[]; services: string[]; defaultIndustry?: string };
 type CtaProps = {
   source?: string;
   heading?: string;
@@ -54,7 +54,7 @@ export default function HomeV2Cta({
   const [slidIn, setSlidIn] = useState(false);
   const [jsReady, setJsReady] = useState(false);
 
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "", company_website: "", phone: "", company: "", industry: "", service: "", consent: "" });
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "", company_website: "", phone: "", company: "", industry: extended?.defaultIndustry ?? "", service: "", consent: "" });
   const [invalid, setInvalid] = useState<Record<string, boolean>>({});
   const [status, setStatus] = useState<Status>("idle");
   const [errorText, setErrorText] = useState("");
