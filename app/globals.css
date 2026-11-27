@@ -10772,7 +10772,7 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
   font-size: clamp(3rem, 1.6rem + 5vw, 6.25rem);       /* up to 100px */
   font-weight: 500 !important; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #000;
 }
-.car-page .crh-muted { color: #b3b3b3; }
+.car-page .crh-muted { color: #6A449A; }
 .car-page .crh-tile { border-radius: 0.16em; }
 .car-page .crh-intro { font-size: 18px; line-height: 27px; color: #444; max-width: 40rem; }
 .car-page .crh-dark { background: #000; }
@@ -10913,6 +10913,10 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 .car-page .crh-tile svg { width: 48%; height: 48%; }
 .car-page .crh-tile { height: 0.8em; transform: translateY(-0.02em); }
 .car-page .crh-tile svg { width: 52%; height: 52%; }
+/* Hover: arrow turns like the pill buttons' arrows */
+.car-page .crh-tile { cursor: default; }
+.car-page .crh-tile svg { transition: transform 0.3s ease; }
+.car-page .crh-tile:hover svg { transform: rotate(45deg); }
 /* Careers hero photo (portrait): keep the face in view above the stat cards */
 .crh-photo-img { object-position: 50% 18%; }
 @media (max-width: 560px) {
