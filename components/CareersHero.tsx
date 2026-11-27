@@ -1,4 +1,4 @@
-import { careers, pressLogos, team } from "@/lib/data";
+import { careers, pressLogos } from "@/lib/data";
 import Reveal from "./Reveal";
 import PillButton from "./PillButton";
 
@@ -85,9 +85,9 @@ export default function CareersHero() {
             <div className="crh-stats">
               <div className="crh-stat">
                 <div className="crh-stat-value">
-                  {team.length}<span>+</span>
+                  20<span>+</span>
                 </div>
-                <div className="crh-stat-label">People on the team</div>
+                <div className="crh-stat-label">Passionate professionals</div>
                 <div className="crh-stat-chip">
                   <UpArrow /> Lahore &amp; Dubai offices
                 </div>
