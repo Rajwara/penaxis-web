@@ -10513,6 +10513,8 @@ body:has(.hv3-page) .mega-panel { filter: grayscale(1); }
 .tst-box { background: #fff; border-radius: 15px; }
 .tst-box.is-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 17.6px 28px; min-height: 64px; }
 .tst-logo { height: 28px; width: auto; max-width: 140px; object-fit: contain; display: block; }
+.tst-stars { display: inline-flex; gap: 3px; color: var(--tst-accent); flex-shrink: 0; }
+.tst-stars svg { width: 16px; height: 16px; fill: currentColor; display: block; }
 .tst-logo[src*="nas-enterprises"] { height: 40px; margin: -6px 0; } /* tall mark: give it more height without growing the box */
 .tst-box.is-testi { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; padding: 36px 28px; min-height: 416px; }
 .tst-quote {

@@ -10,7 +10,7 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 // author). Fonts, sizes and spacing match the supplied file; accent is
 // Penaxis purple. Uses the real client testimonials from lib/data.ts. The
 // company is named once, by its logo; the author line shows only the
-// job title. The original's 5-star rows are left out (there are no real ratings to show).
+// job title. A 5-star row sits opposite the logo.
 
 export default function AboutTestimonials() {
   return (
@@ -34,6 +34,13 @@ export default function AboutTestimonials() {
               <div className="tst-box is-head">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img className="tst-logo" src={t.logo} alt={t.company} />
+                <span className="tst-stars" role="img" aria-label="Rated 5 out of 5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg key={i} viewBox="0 0 20 20" aria-hidden="true">
+                      <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1 1 5.8L10 14.9l-5.21 2.62 1-5.8-4.21-4.1 5.82-.85z" />
+                    </svg>
+                  ))}
+                </span>
               </div>
               <div className="tst-box is-testi">
                 <blockquote className="tst-quote">&ldquo;{t.quote}&rdquo;</blockquote>
