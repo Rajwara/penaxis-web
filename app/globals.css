@@ -13006,8 +13006,8 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
 .nx-label::before, .nx-label::after, .isc-sub::before, .isc-sub::after, .ics-eyebrow::before, .ics-eyebrow::after {
   content: ""; width: .375rem; height: .375rem; flex-shrink: 0; border-radius: 999px; background: currentColor;
 }
-/* Industries showcase: heading block centred across the full section */
-.isc-head { max-width: 900px; margin: 0 auto 50px !important; text-align: center; }
-.isc-head .isc-sub { margin-left: auto; margin-right: auto; }
-.isc-head .isc-intro { margin-left: auto; margin-right: auto; }
-.isc-head .isc-title { max-width: 640px; margin-left: auto; margin-right: auto; }
+/* Industries showcase: heading block left-aligned to the main nav's column
+   (the nav is a centred 1232px column; this heading starts 70px in) */
+.isc-head { max-width: 760px; margin: 0 0 50px max(0px, calc((100vw - 1232px) / 2 - 70px)) !important; text-align: left; }
+.isc-head .isc-title { max-width: 640px; }
+@media (max-width: 991px) { .isc-head { margin-left: 0 !important; } }
