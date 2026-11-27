@@ -11911,7 +11911,7 @@ section.cs-section:has(> .cs-container) { display: block; min-height: 0; padding
   .phb-content { padding-left: clamp(2.5rem, 6.25vw, 7.5rem); padding-right: clamp(2.5rem, 6.25vw, 7.5rem); }
   .phb-overlay { background-image: linear-gradient(270deg, #000, rgba(0,0,0,0) 45%); }
 }
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .phb-card { min-height: 50rem; }
   .phb-content { flex-direction: column; padding-top: 6rem; }
   .phb-title-wrap { font-size: 6.5rem; }
@@ -12867,17 +12867,35 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
 .svc-cta-wrap { margin-top: 20px; }
 /* Case Studies banner: cut-out person layered on the background, behind the text */
 .phb-person { position: absolute; z-index: 0; bottom: 0; left: 50%; height: 92%; width: auto; max-width: none; transform: translateX(-38%); pointer-events: none; animation: phbPersonIn 1.6s cubic-bezier(.22,1,.36,1) both; }
-@keyframes phbPersonIn { from { opacity: 0; transform: translateX(-38%) translateY(30px); } to { opacity: 1; transform: translateX(-38%); } }
+@keyframes phbPersonIn { from { opacity: 0; bottom: -30px; } to { opacity: 1; bottom: 0; } }
 .phb-card:has(.phb-person) .phb-overlay { z-index: 0; }
-@media (max-width: 991px) { .phb-person { height: 62%; left: 50%; transform: translateX(-30%); animation: none; } }
+@media (max-width: 1199px) { .phb-person { height: 62%; left: 50%; transform: translateX(-30%); animation: none; } }
 @media (max-width: 767px) { .phb-person { height: 52%; transform: translateX(-20%); } }
 @media (prefers-reduced-motion: reduce) { .phb-person { animation: none; } }
 .phb-card:has(.phb-person) .phb-overlay { opacity: .75; background-image: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,0) 45%), linear-gradient(270deg, rgba(0,0,0,.7), rgba(0,0,0,0) 45%); }
-@media (max-width: 991px) { .phb-card:has(.phb-person) .phb-overlay { background-image: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.15) 40%, rgba(0,0,0,.75)); } }
+@media (max-width: 1199px) { .phb-card:has(.phb-person) .phb-overlay { background-image: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.15) 40%, rgba(0,0,0,.75)); } }
 /* Person follows the mouse left/right on hover (--phb-px set in PageHeroBanner) */
 .phb-person { translate: var(--phb-px, 0px) 0; transition: translate .9s cubic-bezier(.22,1,.36,1); }
 @media (hover: none), (prefers-reduced-motion: reduce) { .phb-person { translate: none; } }
 .wc-media.is-graded > img { mix-blend-mode: normal; }
+/* Case Studies banner fixes:
+   - a little space above the card (it sat flush with the top of the page)
+   - shorter logo capsules
+   - laptops/desktops: card height follows the screen, and the cut-out person
+     is placed so her head (92% across the image) ends just left of the
+     right-hand text, so the text never sits on her face. */
+.phb { padding-top: 1rem; }
+.phb-brand { height: 4.25rem; width: 11rem; }
+.phb-brand img { max-height: 2rem; }
+.phb-brands { padding-top: 2rem; }
+@media (min-width: 1200px) {
+  .phb-card:has(.phb-person) { --phb-aside: clamp(19rem, 22vw, 26.5rem); --phb-pad: 2.5rem; min-height: clamp(40rem, calc(100vh - 2rem), 60rem); }
+  .phb-card:has(.phb-person) .phb-aside { width: var(--phb-aside); max-width: var(--phb-aside); }
+  .phb-card:has(.phb-person) .phb-text { font-size: clamp(1.125rem, 1.25vw, 1.5rem); }
+  .phb-person { height: 86%; left: calc(100% - var(--phb-pad) - var(--phb-aside) - 1rem); transform: translateX(-92.4%); }
+}
+@media (min-width: 1920px) { .phb-card:has(.phb-person) { --phb-pad: clamp(2.5rem, 6.25vw, 7.5rem); } }
+@media (max-width: 1199px) { .phb-brand { height: 3.75rem; width: 9rem; } .phb-brand img { max-height: 1.6rem; } .phb-brands { padding-top: 2.5rem; } }
 /* Momentum showcase: quarter images are already graded, so no purple multiply */
 .cz-show-bg { mix-blend-mode: normal; }
 /* Who we are journey: milestone headline above the big number */
