@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import PageHeroBanner from "@/components/PageHeroBanner";
 import CaseStudyV2Grid from "@/components/CaseStudyV2Grid";
+import HomeV2Cta from "@/components/HomeV2Cta";
 import Footer from "@/components/Footer";
 import { caseStudies } from "@/lib/data";
 
@@ -45,6 +46,11 @@ export default function CaseStudiesPage() {
           person="/images/hero/case-studies-person.webp"
         />
         <CaseStudyV2Grid />
+        {/* "Let's work together" banner, same as the homepage (mega-menu
+            "Talk to us" links here: /case-studies#lets-work-together) */}
+        <div className="hv2-page">
+          <HomeV2Cta source="Case studies page — Let's work together" />
+        </div>
       </main>
       <Footer />
     </>

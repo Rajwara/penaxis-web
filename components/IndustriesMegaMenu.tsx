@@ -1,11 +1,10 @@
 "use client";
 
-import { caseStudies } from "@/lib/data";
 import { INDUSTRY_MENU, type MenuIndustryGroup } from "@/lib/industryMenu";
 
 // Industries mega menu, laid out like the supplied reference: dark panel,
 // intro column on the left (label pill, heading, "Explore all" link and a
-// featured case study card) and a 3-column grid of 6 industry groups on
+// "Start a project" button to the /industries enquiry form) and a 3-column grid of 6 industry groups on
 // the right (icon, title, links) from lib/industryMenu.ts. Styles: .im-* in app/globals.css.
 
 const ICONS: Record<MenuIndustryGroup["icon"], React.ReactNode> = {
@@ -17,8 +16,6 @@ const ICONS: Record<MenuIndustryGroup["icon"], React.ReactNode> = {
   briefcase: <path d="M3 8h18v11H3zM9 8V5h6v3M3 13h18" />,
 };
 
-const FEATURED = caseStudies.find((c) => c.slug === "drivelo-logistics-platform") ?? caseStudies[0];
-
 export default function IndustriesMegaMenu() {
   return (
     <div className="mega-panel im">
@@ -29,14 +26,11 @@ export default function IndustriesMegaMenu() {
           Explore all industries
         </a>
 
-        <a href={`/case-studies/${FEATURED.slug}`} className="im-feature">
-          <span className="im-feature-img">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={FEATURED.gridImage || FEATURED.image} alt="" loading="lazy" />
+        <a href="/industries#lets-work-together" className="mm-cta im-cta">
+          <span>Start a project</span>
+          <span className="mm-cta-icon">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
           </span>
-          <span className="im-feature-label">Featured work</span>
-          <span className="im-feature-title">{FEATURED.title}</span>
-          <span className="im-feature-text">{FEATURED.blurb}</span>
         </a>
       </div>
 

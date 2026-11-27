@@ -13172,3 +13172,7 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
 .cz-show { min-height: clamp(736px, 44vw, 840px); }
 .cz-show-bg { transform-origin: 50% 0; }
 .cz-show-bg img { object-position: 50% 0; }
+/* Industries mega menu: "Start a project" button (replaces the featured card) */
+.im-cta { margin-top: auto; }
+#lets-work-together { scroll-margin-top: 20px; }
+.mega-panel.im { --mm-accent: #6A449A; }

@@ -4,6 +4,7 @@ import AboutHeroBanner from "@/components/AboutHeroBanner";
 import HomeV2Services from "@/components/HomeV2Services";
 import EngagementModels from "@/components/EngagementModels";
 import IndustrySlider from "@/components/industry/IndustrySlider";
+import HomeV2Cta from "@/components/HomeV2Cta";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -34,6 +35,11 @@ export default function ServicesPage() {
         {/* Industries slider (same design as the case-study slider on /industries) */}
         <IndustrySlider />
         <EngagementModels />
+        {/* "Let's work together" banner, same as the homepage (mega-menu
+            "Start a project" links here: /services#lets-work-together) */}
+        <div className="hv2-page">
+          <HomeV2Cta source="Services page — Let's work together" />
+        </div>
       </main>
       <Footer />
     </>

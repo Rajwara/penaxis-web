@@ -39,7 +39,7 @@ export default function ServicesMegaMenu() {
       eyebrow="Services"
       title="Build, transform & grow"
       text="From first build to ongoing growth: AI products, digital transformation, software and sales support."
-      cta={{ label: "Start a project", href: "/contact-us" }}
+      cta={{ label: "Start a project", href: "/services#lets-work-together" }}
       sectionLabel="What we do"
       viewAll={{ label: "All services", href: "/services" }}
     >

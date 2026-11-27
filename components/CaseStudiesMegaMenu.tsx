@@ -14,7 +14,7 @@ export default function CaseStudiesMegaMenu() {
       eyebrow="Case studies"
       title="Work that speaks for itself"
       text={`${caseStudies.length} projects across logistics, healthcare, SaaS, e-commerce and more.`}
-      cta={{ label: "Talk to us", href: "/contact-us" }}
+      cta={{ label: "Talk to us", href: "/case-studies#lets-work-together" }}
       sectionLabel="Latest work"
       viewAll={{ label: "All case studies", href: "/case-studies" }}
     >

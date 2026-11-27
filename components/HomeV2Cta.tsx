@@ -56,6 +56,22 @@ export default function HomeV2Cta({
 
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "", company_website: "", phone: "", company: "", industry: extended?.defaultIndustry ?? "", service: extended?.defaultService ?? "", consent: "" });
   const [invalid, setInvalid] = useState<Record<string, boolean>>({});
+
+  // Mega-menu "Start a project" / "Talk to us" links land on
+  // <page>#lets-work-together. Pinned sliders above this section only get
+  // their full height after JS runs, so re-scroll here once layout settles.
+  useEffect(() => {
+    if (window.location.hash !== "#lets-work-together") return;
+    const go = () => document.getElementById("lets-work-together")?.scrollIntoView({ block: "start" });
+    const t1 = setTimeout(go, 250);
+    const t2 = setTimeout(go, 900);
+    window.addEventListener("load", go, { once: true });
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("load", go);
+    };
+  }, []);
   const [status, setStatus] = useState<Status>("idle");
   const [errorText, setErrorText] = useState("");
 
@@ -201,7 +217,7 @@ export default function HomeV2Cta({
       </div>
 
       {/* CTA section */}
-      <section className="hv2q-wrap" data-nav-theme="dark" aria-labelledby="hv2q-title">
+      <section id="lets-work-together" className="hv2q-wrap" data-nav-theme="dark" aria-labelledby="hv2q-title">
         <div className="hv2q-inner">
           <img className="hv2q-bg" src="/images/hero/lets-work-together.webp" alt="" />
           <div className="hv2q-overlay" />
