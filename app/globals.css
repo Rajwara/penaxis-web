@@ -13163,3 +13163,7 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
   .ef-page { padding: 100px 10px 50px; }
 }
 @media (prefers-reduced-motion: reduce) { .ef-dialog[open] { animation: none; } }
+/* Journey showcase: soft dark fade behind the right-hand text so it stays
+   readable over busy photos (e.g. the team photo) */
+.cz-show-bg::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(270deg, rgba(12,6,24,.72) 0%, rgba(12,6,24,.4) 26%, rgba(12,6,24,0) 48%); }
+@media (max-width: 767px) { .cz-show-bg::after { background: linear-gradient(180deg, rgba(12,6,24,.2), rgba(12,6,24,.65)); } }

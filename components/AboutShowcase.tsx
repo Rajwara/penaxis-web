@@ -23,13 +23,13 @@ const MARQUEE_PHOTOS = [
   "/images/who-we-are/marquee-seka.webp",
 ];
 // Penaxis journey: one tab per milestone (same design as the old quarterly
-// momentum tabs). Images reuse the five uploaded showcase backgrounds in order.
+// momentum tabs). One uploaded background per milestone (journey-*.webp).
 const MILESTONES = [
-  { tab: "2024", label: "2024 · The Beginning", title: "From Ambition to Action", text: "What began as an independent venture in a coworking space laid the foundation for Penaxis and its larger vision.", value: "01", caption: "Founder", image: "/images/who-we-are/momentum-show-q2-2025.webp" },
-  { tab: "2025", label: "2025 · The Foundation", title: "Turning Vision into an Organisation", text: "We established our first physical office and a dedicated onsite team, specialising in business development and digital marketing.", value: "02", caption: "Founding service verticals", image: "/images/who-we-are/momentum-show-q3-2025.webp" },
-  { tab: "Q2 2026", label: "Q2 2026 · The Transformation", title: "Beyond Growth. Into Technology.", text: "With the introduction of in-house software engineering, we began our evolution into an integrated growth and technology partner, expanding towards four core service verticals.", value: "04", caption: "Core service verticals", image: "/images/who-we-are/momentum-show-q4-2025.webp" },
-  { tab: "Q4 2026", label: "Q4 2026 · The Expansion", title: "Growing Beyond Borders", text: "With a multidisciplinary team of 20 and an established office presence in Pakistan and the UAE, our capabilities and geographical footprint continue to grow.", value: "20", caption: "Team members", image: "/images/who-we-are/momentum-show-q1-2026.webp" },
-  { tab: "2027", label: "2027 · The Vision", title: "Engineering the Next Frontier", text: "With Berlin envisioned as our European regional headquarters, we aim to expand our international footprint and explore new frontiers in technology.", value: "03", caption: "Target countries", image: "/images/who-we-are/momentum-show-q2-2026.webp" },
+  { tab: "2024", label: "2024 · The Beginning", title: "From Ambition to Action", text: "What began as an independent venture in a coworking space laid the foundation for Penaxis and its larger vision.", value: "01", caption: "Founder", image: "/images/who-we-are/journey-2024.webp" },
+  { tab: "2025", label: "2025 · The Foundation", title: "Turning Vision into an Organisation", text: "We established our first physical office and a dedicated onsite team, specialising in business development and digital marketing.", value: "02", caption: "Founding service verticals", image: "/images/who-we-are/journey-2025.webp" },
+  { tab: "Q2 2026", label: "Q2 2026 · The Transformation", title: "Beyond Growth. Into Technology.", text: "With the introduction of in-house software engineering, we began our evolution into an integrated growth and technology partner, expanding towards four core service verticals.", value: "04", caption: "Core service verticals", image: "/images/who-we-are/journey-q2-2026.webp" },
+  { tab: "Q4 2026", label: "Q4 2026 · The Expansion", title: "Growing Beyond Borders", text: "With a multidisciplinary team of 20 and an established office presence in Pakistan and the UAE, our capabilities and geographical footprint continue to grow.", value: "20", caption: "Team members", image: "/images/who-we-are/journey-q4-2026.webp" },
+  { tab: "2027", label: "2027 · The Vision", title: "Engineering the Next Frontier", text: "With Berlin envisioned as our European regional headquarters, we aim to expand our international footprint and explore new frontiers in technology.", value: "03", caption: "Target countries", image: "/images/who-we-are/journey-2027.webp" },
 ];
 const photoFor = (index: number) => MILESTONES[index].image;
 const PHOTOS = Array.from(new Set(MILESTONES.map((_, i) => photoFor(i))));
