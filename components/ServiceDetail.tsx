@@ -4,18 +4,29 @@ import AboutHeroBanner from "./AboutHeroBanner";
 import ServiceWhyUs from "./ServiceWhyUs";
 import ServiceOurProcess from "./ServiceOurProcess";
 import ServiceBenefits from "./ServiceBenefits";
-import ServiceProof from "./ServiceProof";
+import ServiceCaseSlider from "./ServiceCaseSlider";
+import FaqSections from "./FaqSections";
+import { FAQ } from "@/lib/faq";
 import { services } from "@/lib/data";
 import HomeV2Cta from "./HomeV2Cta";
 import { INDUSTRY_MENU } from "@/lib/industryMenu";
 
-// Single service page: About-page banner, ticker, Why us, Our process,
-// Key benefits and Proof (relevant case studies).
+// Single service page: About-page banner, Why us, Our process, Key benefits,
+// case studies slider, FAQs (from the FAQs page: this service's questions
+// first, then general ones) and the enquiry form.
+
+// General questions shown on every service page after the service's own.
+const GENERAL_FAQ = ["Who owns the code and IP once the project is done?", "Do you offer support after launch?", "How do you communicate during a project?", "How are payments structured?"];
 
 export default function ServiceDetail({ slug }: { slug: string }) {
   const index = services.findIndex((s) => s.slug === slug);
   const service = services[index];
   if (!service) return null;
+
+  const all = FAQ.flatMap((t) => t.items);
+  const own = all.filter((f) => f.link?.href === `/services/${service.slug}`);
+  const general = GENERAL_FAQ.map((q) => all.find((f) => f.q === q)).filter((f): f is (typeof all)[number] => !!f);
+  const faqs = [...own, ...general.filter((g) => !own.includes(g))].map((f) => ({ ...f, image: "" }));
 
   // Split the title over the banner's two lines ("Fractional Sales &" / "Growth").
   const amp = service.title.lastIndexOf(" & ");
@@ -38,8 +49,19 @@ export default function ServiceDetail({ slug }: { slug: string }) {
       {/* Our initiative: key benefits and outcomes */}
       <ServiceBenefits slug={service.slug} serviceTitle={service.title} />
 
-      {/* Proof: relevant case studies */}
-      <ServiceProof slug={service.slug} />
+      {/* Case studies slider (last section before the FAQs) */}
+      <ServiceCaseSlider slug={service.slug} serviceTitle={service.title} />
+
+      {/* FAQs (FAQs page design, numbered) */}
+      <div className="fq-solo">
+        <FaqSections
+          nav={false}
+          numbered
+          heading="Everything you need to know."
+          image={("listImage" in service && service.listImage) || service.heroImage}
+          topics={[{ id: "service-faq", title: `${service.title} FAQs`, items: faqs }]}
+        />
+      </div>
 
       {/* CTA & enquiry form (same as the Industries page), service pre-selected */}
       <div id="enquiry" className="hv2-page svc-cta-wrap">
