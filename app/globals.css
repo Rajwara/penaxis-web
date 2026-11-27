@@ -13013,3 +13013,29 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
 @media (max-width: 991px) { .isc-head { margin-left: 0 !important; } }
 /* Single service "Why choose Penaxis for …": service name highlighted */
 .swu-mark { padding: 0 .08em; background: #8B5FC7; color: inherit; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+
+/* Services mega menu: service cards with sub-service tags */
+.mm { min-height: 30rem; }
+.mm-item-text { -webkit-line-clamp: 3; }
+.mm-svc-grid { gap: 0.9rem; }
+.mm-svc { display: flex; flex-direction: column; gap: 0.6rem; padding: 1.1rem 1.15rem 1.2rem; border: 1px solid rgba(0, 0, 0, 0.07); border-radius: 16px; background: #FAF9FC; transition: border-color .2s, background-color .2s; }
+.mm-svc:hover { border-color: rgba(106, 68, 154, 0.3); background: #F6F2FA; }
+.mm-svc-head { display: flex; align-items: center; gap: 0.6rem; color: #000; }
+.mm-svc-icon { display: grid; place-items: center; flex-shrink: 0; width: 22px; height: 22px; color: var(--mm-accent); }
+.mm-svc-icon svg { width: 20px; height: 20px; }
+.mm-svc-title { font: 500 21px/1.05 var(--mm-heading); letter-spacing: -0.02em; text-transform: uppercase; transition: color .2s; }
+.mm-svc-head:hover .mm-svc-title { color: var(--mm-accent); }
+.mm-svc-text { font-size: 13.5px; line-height: 1.5; color: #555; }
+.mm-svc-tags, .nx-st-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0.15rem 0 0; padding: 0; list-style: none; }
+
+/* Sub-service tag pill (mega menu + industry service tabs) */
+.svc-tag { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.4rem 0.7rem; border-radius: 999px; background: #EFE7F8; color: #6A449A; font-family: "Wix Madefor Display Variable", "Wix Madefor Display", Arial, sans-serif; font-size: 13px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; transition: background-color .2s, color .2s; }
+.svc-tag svg { width: 11px; height: 11px; flex-shrink: 0; transition: transform .2s; }
+.svc-tag:hover { background: #6A449A; color: #fff; }
+.svc-tag:hover svg { transform: translate(1px, -1px); }
+.nx-st-tags { margin: 4px 0 22px; }
+/* Industries mega menu: a little taller so the featured-work text isn't cut */
+.mega-panel.im { min-height: 30rem; }
+.im-feature-text { -webkit-line-clamp: 5; }
+.im-grid { padding: 22px 18px; }
+.mm-work-title { -webkit-line-clamp: 3; }

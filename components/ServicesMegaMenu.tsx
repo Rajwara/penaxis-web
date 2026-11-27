@@ -1,10 +1,12 @@
 "use client";
 
 import { services } from "@/lib/data";
-import MegaShell, { MmArrow } from "./MegaShell";
+import MegaShell from "./MegaShell";
+import { SERVICE_MENU_TEXT, SERVICE_TAGS } from "@/lib/serviceTags";
 
 // Services mega menu: shared MegaShell layout (black intro panel + white
-// area) with Penaxis's 4 services as matching item cards.
+// area) with Penaxis's 4 services as cards: icon + title (links to the
+// service), one line of text and sub-service tags (pill links).
 
 const ICONS: Record<string, JSX.Element> = {
   "ai-mvp": (
@@ -41,18 +43,25 @@ export default function ServicesMegaMenu() {
       sectionLabel="What we do"
       viewAll={{ label: "All services", href: "/services" }}
     >
-      <div className="mm-grid mm-grid--2">
+      <div className="mm-grid mm-grid--2 mm-svc-grid">
         {services.map((s) => (
-          <a key={s.slug} href={`/services/${s.slug}`} className="mm-item">
-            <span className="mm-icon">{ICONS[s.slug]}</span>
-            <span className="mm-item-body">
-              <span className="mm-item-title">{s.title}</span>
-              <span className="mm-item-text">{s.short}</span>
-            </span>
-            <span className="mm-item-arrow">
-              <MmArrow />
-            </span>
-          </a>
+          <div key={s.slug} className="mm-svc">
+            <a href={`/services/${s.slug}`} className="mm-svc-head">
+              <span className="mm-svc-icon">{ICONS[s.slug]}</span>
+              <span className="mm-svc-title">{s.title}</span>
+            </a>
+            <p className="mm-svc-text">{SERVICE_MENU_TEXT[s.slug] ?? s.short}</p>
+            <ul className="mm-svc-tags">
+              {(SERVICE_TAGS[s.slug] ?? []).map((t) => (
+                <li key={t}>
+                  <a href={`/services/${s.slug}`} className="svc-tag">
+                    {t}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         ))}
       </div>
     </MegaShell>

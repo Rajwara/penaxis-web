@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { SERVICE_TAGS } from "@/lib/serviceTags";
 
 // "Relevant services" tabs on single industry pages: one tab per service
 // that fits the industry (most relevant first). Accessible tablist:
@@ -65,6 +66,18 @@ export default function ServiceTabs({ industry, items }: { industry: string; ite
           <span className="nx-st-for">For {industry}</span>
           <h3 className="nx-st-title">{s.title}</h3>
           <p className="nx-st-long">{s.long}</p>
+          {SERVICE_TAGS[s.slug]?.length ? (
+            <ul className="nx-st-tags">
+              {SERVICE_TAGS[s.slug].map((t) => (
+                <li key={t}>
+                  <Link href={`/services/${s.slug}`} className="svc-tag">
+                    {t}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <ul className="nx-st-pillars">
             {s.pillars.slice(0, 4).map((p) => (
               <li key={p.title}>
