@@ -7,7 +7,7 @@ import {
   FILTER_OPTIONS,
   type FilterMode,
 } from "@/lib/caseStudyFilters";
-import { CASE_STUDY_SHORT_TITLES } from "@/lib/caseStudyCards";
+import { CASE_STUDY_CAPABILITIES, CASE_STUDY_SHORT_TITLES } from "@/lib/caseStudyCards";
 
 // /case-studies grid: industry filter pills + the homepage case-study card
 // design (dark card, big title + number, description, icon; hovering fades
@@ -294,6 +294,11 @@ export default function CaseStudyV2Grid() {
                             title={findIndustry(tag)?.copy}
                           >
                             {tag}
+                          </span>
+                        ))}
+                        {(CASE_STUDY_CAPABILITIES[study.slug] ?? []).map((cap) => (
+                          <span key={cap} className="csv2-tag is-cap">
+                            {cap}
                           </span>
                         ))}
                       </div>
