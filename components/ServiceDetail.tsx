@@ -5,7 +5,6 @@ import ServiceWhyUs from "./ServiceWhyUs";
 import ServiceOurProcess from "./ServiceOurProcess";
 import ServiceBenefits from "./ServiceBenefits";
 import ServiceProof from "./ServiceProof";
-import ServiceTicker from "./ServiceTicker";
 import { services } from "@/lib/data";
 import HomeV2Cta from "./HomeV2Cta";
 import { INDUSTRY_MENU } from "@/lib/industryMenu";
@@ -29,7 +28,6 @@ export default function ServiceDetail({ slug }: { slug: string }) {
       {/* Same banner as the About page (AboutHeroBanner), as-is */}
       <AboutHeroBanner label="Our services" line1={titleLines[0]} line2={titleLines[1]} text={service.short} />
 
-      <ServiceTicker />
 
       {/* Why us */}
       <ServiceWhyUs serviceTitle={service.title} />

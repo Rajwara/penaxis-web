@@ -22,7 +22,7 @@ export default function ServiceWhyUs({ serviceTitle }: { serviceTitle: string })
       <div className="swu-container">
         <div className="swu-left">
           <span className="swu-eyebrow">Why us</span>
-          <h2 id="swu-title" className="swu-title">Why choose Penaxis for {serviceTitle}</h2>
+          <h2 id="swu-title" className="swu-title">Why choose Penaxis for <mark className="swu-mark">{serviceTitle}</mark></h2>
           <p className="swu-intro">
             One team for strategy, design, technology and growth, focused on outcomes you can measure and a partnership you can rely on.
           </p>
