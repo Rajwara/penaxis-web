@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { momentum, pressLogos } from "@/lib/data";
+import { pressLogos } from "@/lib/data";
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
 
@@ -22,16 +22,17 @@ const MARQUEE_PHOTOS = [
   CDN + "6aeae122c48e48733c76b36f_about-img8.webp",
   CDN + "6aeae12b61093d5fbe155d1a_about-img7.webp",
 ];
-// Showcase background per quarter (Penaxis artwork, already purple-graded).
-const SHOW_BG: Record<string, string> = {
-  "Q2 2025": "/images/who-we-are/momentum-show-q2-2025.webp",
-  "Q3 2025": "/images/who-we-are/momentum-show-q3-2025.webp",
-  "Q4 2025": "/images/who-we-are/momentum-show-q4-2025.webp",
-  "Q1 2026": "/images/who-we-are/momentum-show-q1-2026.webp",
-  "Q2 2026": "/images/who-we-are/momentum-show-q2-2026.webp",
-};
-const photoFor = (index: number) => SHOW_BG[momentum[index].period] ?? momentum[index].image ?? momentum[0].image!;
-const PHOTOS = Array.from(new Set(momentum.map((_, i) => photoFor(i))));
+// Penaxis journey: one tab per milestone (same design as the old quarterly
+// momentum tabs). Images reuse the five uploaded showcase backgrounds in order.
+const MILESTONES = [
+  { tab: "2024", label: "2024 · The Beginning", title: "From Ambition to Action", text: "What began as an independent venture in a coworking space laid the foundation for Penaxis and its larger vision.", value: "01", caption: "Founder", image: "/images/who-we-are/momentum-show-q2-2025.webp" },
+  { tab: "2025", label: "2025 · The Foundation", title: "Turning Vision into an Organisation", text: "We established our first physical office and a dedicated onsite team, specialising in business development and digital marketing.", value: "02", caption: "Founding service verticals", image: "/images/who-we-are/momentum-show-q3-2025.webp" },
+  { tab: "Q2 2026", label: "Q2 2026 · The Transformation", title: "Beyond Growth. Into Technology.", text: "With the introduction of in-house software engineering, we began our evolution into an integrated growth and technology partner, expanding towards four core service verticals.", value: "04", caption: "Core service verticals", image: "/images/who-we-are/momentum-show-q4-2025.webp" },
+  { tab: "Q4 2026", label: "Q4 2026 · The Expansion", title: "Growing Beyond Borders", text: "With a multidisciplinary team of 20 and an established office presence in Pakistan and the UAE, our capabilities and geographical footprint continue to grow.", value: "20", caption: "Team members", image: "/images/who-we-are/momentum-show-q1-2026.webp" },
+  { tab: "2027", label: "2027 · The Vision", title: "Engineering the Next Frontier", text: "With Berlin envisioned as our European regional headquarters, we aim to expand our international footprint and explore new frontiers in technology.", value: "03", caption: "Target countries", image: "/images/who-we-are/momentum-show-q2-2026.webp" },
+];
+const photoFor = (index: number) => MILESTONES[index].image;
+const PHOTOS = Array.from(new Set(MILESTONES.map((_, i) => photoFor(i))));
 const VIDEO_SRC = "/videos/founders-video.mp4";
 const VIDEO_POSTER = "/images/hero/founders-video-poster.webp";
 
@@ -62,8 +63,8 @@ export default function AboutShowcase() {
   const bigRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDialogElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [active, setActive] = useState(momentum.length - 1);
-  const current = momentum[active];
+  const [active, setActive] = useState(0);
+  const current = MILESTONES[active];
 
   useEffect(() => {
     const root = rootRef.current;
@@ -200,10 +201,10 @@ export default function AboutShowcase() {
               ))}
             </div>
 
-            <div className="cz-services" data-cz-anim role="tablist" aria-label="Momentum by quarter">
-              {momentum.map((m, i) => (
+            <div className="cz-services" data-cz-anim role="tablist" aria-label="Our journey">
+              {MILESTONES.map((m, i) => (
                 <button
-                  key={m.period}
+                  key={m.tab}
                   type="button"
                   role="tab"
                   aria-selected={i === active}
@@ -213,18 +214,17 @@ export default function AboutShowcase() {
                   <span className="cz-arrow">
                     <Arrow />
                   </span>
-                  {m.period}
+                  {m.tab}
                 </button>
               ))}
             </div>
 
             <div className="cz-contact" data-cz-anim aria-live="polite">
-              <div className="cz-label">Momentum · {current.period}</div>
+              <div className="cz-label">{current.label}</div>
+              <div className="cz-mo-title">{current.title}</div>
               <div className="cz-mo-num">{current.value}</div>
-              <div className="cz-link">Projects delivered</div>
-              <p className="cz-mo-copy">
-                Part of a steady, quarter-over-quarter climb as our team and client base keep growing.
-              </p>
+              <div className="cz-link">{current.caption}</div>
+              <p className="cz-mo-copy">{current.text}</p>
             </div>
 
             <div ref={bigRef} className="cz-big" aria-hidden="true">
