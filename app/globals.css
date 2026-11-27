@@ -13176,3 +13176,9 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
 .im-cta { margin-top: auto; }
 #lets-work-together { scroll-margin-top: 20px; }
 .mega-panel.im { --mm-accent: #6A449A; }
+/* Case Studies mega menu: filter shortcuts (industry / service) */
+.mm-filters { display: grid; gap: 8px; margin: -4px 0 16px; }
+.mm-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.mm-filter-label { min-width: 62px; font: 500 15px/1 var(--mm-heading); text-transform: uppercase; color: #000; }
+.mm-filter-row .svc-tag { padding: 0.32rem 0.65rem; font-size: 12.5px; }
+#browse { scroll-margin-top: 0; }

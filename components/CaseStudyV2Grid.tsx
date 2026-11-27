@@ -58,6 +58,25 @@ export default function CaseStudyV2Grid() {
     };
   }, [menuOpen]);
 
+  // Links from the Case Studies mega menu: /case-studies?by=industry&filter=<option id>#browse
+  // preselect that parent filter + option, then bring the grid into view
+  // (re-scroll once the pinned sections above have their final height).
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const by = q.get("by") as FilterMode | null;
+    const f = q.get("filter");
+    if (!by || !(by in FILTER_OPTIONS)) return;
+    setMode(by);
+    if (f && FILTER_OPTIONS[by].some((o) => o.id === f)) setActive(f);
+    const go = () => document.getElementById("browse")?.scrollIntoView({ block: "start" });
+    const t1 = setTimeout(go, 200);
+    const t2 = setTimeout(go, 900);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
+
   const chooseMode = (m: FilterMode) => {
     setMode(m);
     setActive("all");
@@ -75,7 +94,7 @@ export default function CaseStudyV2Grid() {
   }, [active, options]);
 
   return (
-    <section className="csv2-grid-section hv2c-wrap" data-nav-theme="dark">
+    <section id="browse" className="csv2-grid-section hv2c-wrap" data-nav-theme="dark">
       <div className="hv2c-inner">
         <div className="hv2c-container">
           <div className="csv2-head">
