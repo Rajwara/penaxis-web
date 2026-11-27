@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import DetailLayout, { DetailArticle, DetailGallery, DetailH2, DetailList, DetailMeta, DetailNav, DetailP } from "@/components/detail/DetailLayout";
+import DetailLayout, { DetailArticle, DetailGallery, DetailH2, DetailList, DetailNav, DetailP } from "@/components/detail/DetailLayout";
 import Link from "next/link";
 import { caseStudies, services, slugify } from "@/lib/data";
 import { CASE_STUDY_SERVICES } from "@/lib/caseStudyFilters";
 import { CASE_STUDY_AI } from "@/lib/caseStudyAI";
 import CaseStudyStats from "@/components/case-study/CaseStudyStats";
+import TechStackTable from "@/components/case-study/TechStackTable";
 
 // Single case study in the supplied portfolio-single design (shared
 // DetailLayout, also used by blog posts and industries). Order: title ->
@@ -126,7 +127,7 @@ export default function CaseStudySlugPage({ params }: { params: { slug: string }
             {study.techStack?.length ? (
               <>
                 <DetailH2>Tech stack</DetailH2>
-                <DetailMeta items={study.techStack.map((t) => ({ label: t.label, value: t.items }))} />
+                <TechStackTable groups={study.techStack} />
               </>
             ) : null}
 

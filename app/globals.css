@@ -12970,3 +12970,24 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
   .csx-mockup-bar { height: 32px; }
   .csx-mockup-url { display: none; }
 }
+
+/* Case-study tech stack table (logos on dark tiles; text chips for the rest) */
+.csx-tech { margin: 8px 0 8px; border: 1px solid var(--pd-line); border-radius: 20px; overflow: hidden; background: #fff; }
+.csx-tech-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); border-top: 1px solid var(--pd-line); }
+.csx-tech-row:first-child { border-top: 0; }
+.csx-tech-label { padding: 24px; background: #f3f1f6; font-family: "Big Shoulders Variable", "Big Shoulders", Impact, sans-serif; font-size: 22px; font-weight: 500; line-height: 1.1; text-transform: uppercase; color: #111; }
+.csx-tech-cell { display: flex; flex-direction: column; gap: 14px; padding: 20px 24px; }
+.csx-tech-logos, .csx-tech-chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.csx-tech-tile { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-width: 104px; max-width: 160px; min-height: 104px; padding: 14px 8px 10px; border-radius: 14px; background: #121016; transition: transform .25s, box-shadow .25s; }
+.csx-tech-tile:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(106,68,154,.3); }
+.csx-tech-imgs { display: flex; gap: 6px; height: 40px; align-items: center; }
+.csx-tech-imgs img { height: 40px; width: auto; max-width: 64px; object-fit: contain; display: block; }
+.csx-tech-imgs img + img { height: 30px; }
+.csx-tech-name { overflow-wrap: anywhere; font-size: 12px; line-height: 1.25; text-align: center; color: rgba(255,255,255,.8); }
+.csx-tech-chips li { padding: 7px 14px; border: 1px solid #e3e3e3; border-radius: 999px; background: #fafafa; font-size: 14px; line-height: 1.2; color: #333; }
+@media (max-width: 767px) {
+  .csx-tech-row { grid-template-columns: 1fr; }
+  .csx-tech-label { padding: 16px 20px; font-size: 20px; }
+  .csx-tech-cell { padding: 16px 20px 20px; }
+  .csx-tech-tile { width: calc(33.333% - 7px); min-height: 96px; }
+}
