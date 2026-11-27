@@ -10,9 +10,9 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 // and a round image with a spinning text badge sliding in from the right.
 // Penaxis facts instead of the template's (stats from lib/data.ts `stats`),
 // Penaxis mark in the badge, purple accent.
-// TEMP IMAGE: template photo from its own CDN (MEDIA_IMG) — replace later.
 
-const MEDIA_IMG = "https://cdn.prod.website-files.com/6ae1b423d7bb90956e94a0c5/6aeae122c3847ced88bb43a7_about-img5.webp";
+
+const MEDIA_IMG = "/images/who-we-are/why-choose-us.webp"; // already purple-graded, so no extra blend
 const TITLE = "Growth powered by AI & technology";
 const BADGE = "STRATEGY • DESIGN • TECHNOLOGY • GROWTH •";
 
@@ -143,7 +143,7 @@ export default function AboutWhyChoose() {
             </div>
           </div>
 
-          <div className="wc-media">
+          <div className="wc-media is-graded">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={MEDIA_IMG} alt="" loading="lazy" />
             <div className="wc-badge">
