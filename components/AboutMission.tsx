@@ -10,13 +10,12 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 // letter title scrubbed with scroll, and three sticky stacking rows (heading · text · image sliding in from the
 // right). Mission and vision text come from lib/data.ts; values is written
 // from the site's "why choose us" points.
-// TEMP IMAGES: the template's placeholder photos, loaded from the template's
-// own CDN. Replace ROW_IMAGES with Penaxis photos (e.g. /images/who-we-are/…).
+// Row images: Penaxis photos in /images/who-we-are (ROW_IMAGES).
 
 const ROW_IMAGES = [
-  "https://cdn.prod.website-files.com/6ae1b423d7bb90956e94a0c5/6aeadcbaf0b6dfc8f2d4f7e3_about-img4.webp",
-  "https://cdn.prod.website-files.com/6ae1b423d7bb90956e94a0c5/6aeadcba4c41f5c21033b605_about-img3.webp",
-  "https://cdn.prod.website-files.com/6ae1b423d7bb90956e94a0c5/6aeadcbb28cd5488d6441173_about-img2.webp",
+  "/images/who-we-are/our-mission.webp",
+  "/images/who-we-are/our-vision.webp",
+  "/images/who-we-are/our-values.webp",
 ];
 
 const ROWS = [
