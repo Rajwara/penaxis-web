@@ -17,7 +17,7 @@ export default function AboutHeroBanner({
   label = "About us",
   line1 = "Growth & tech",
   line2 = "Partner",
-  text = "We combine AI, software development, digital strategy and sales expertise to help businesses operate smarter and grow faster.",
+  text = "We combine AI, software development, digital strategy and sales expertise to help businesses operate smarter and grow faster. One team, from strategy to scale.",
   bg = BG_IMAGE,
   pill = PILL_IMAGE,
 }: Props) {
