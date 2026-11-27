@@ -132,17 +132,17 @@ export default function OfficeMap({ offices, selected, onSelect }: Props) {
       const h = cardRef.current?.offsetHeight || 330;
       const W = wrap?.clientWidth ?? 0, H = wrap?.clientHeight ?? 0;
       const p = m.latLngToContainerPoint([office.lat, office.lng]);
-      const wantY = Math.min(Math.max(p.y, topLimit + 40 + h), H - 40);
-      const wantX = Math.min(Math.max(p.x, 160), W - 160);
-      if (wantY !== p.y || wantX !== p.x) m.panBy([p.x - wantX, p.y - wantY], { animate: true });
+      // Centre the pin horizontally; vertically, centre pin + card together
+      // (card sits above the pin), keeping the card below the filter bar.
+      const wantX = W / 2;
+      const wantY = Math.min(Math.max(H / 2 + (h + 40) / 2, topLimit + 40 + h), H - 40);
+      if (Math.abs(wantY - p.y) > 1 || Math.abs(wantX - p.x) > 1) m.panBy([p.x - wantX, p.y - wantY], { animate: true, duration: 0.5 });
       place();
     };
-    if (m.getZoom() < DETAIL_ZOOM - 2) {
-      m.once("moveend", fit);
-      m.flyTo([office.lat, office.lng], DETAIL_ZOOM, { duration: 1.1 });
-    } else {
-      fit();
-    }
+    // Always fly to the chosen office (Lahore and Dubai are ~1,700 km apart),
+    // then centre it.
+    m.once("moveend", fit);
+    m.flyTo([office.lat, office.lng], DETAIL_ZOOM, { duration: 1.1 });
     m.on("move zoom viewreset", place);
     return () => {
       m.off("move zoom viewreset", place);
