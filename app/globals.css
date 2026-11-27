@@ -13169,6 +13169,6 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
 @media (max-width: 767px) { .cz-show-bg::after { background: linear-gradient(180deg, rgba(12,6,24,.2), rgba(12,6,24,.65)); } }
 /* Journey showcase: taller (close to the photos' 16:9 shape), gentler zoom,
    photos anchored to the top so heads aren't cropped */
-.cz-show { min-height: clamp(736px, 52vw, 980px); }
+.cz-show { min-height: clamp(736px, 44vw, 840px); }
 .cz-show-bg { transform-origin: 50% 0; }
 .cz-show-bg img { object-position: 50% 0; }
