@@ -110,7 +110,7 @@ export default function AboutShowcase() {
         const b = show.getBoundingClientRect();
         const target = reduce ? 1 : clamp((vh - b.top) / (vh + b.height));
         parCur += (target - parCur) * 0.12;
-        if (bgRef.current) bgRef.current.style.transform = `scale(${(1.25 - 0.25 * parCur).toFixed(4)})`;
+        if (bgRef.current) bgRef.current.style.transform = `scale(${(1.08 - 0.08 * parCur).toFixed(4)})`;
         if (bigRef.current) bigRef.current.style.transform = `translateX(${(20 - 30 * parCur).toFixed(3)}%)`;
       }
       raf = requestAnimationFrame(tick);
