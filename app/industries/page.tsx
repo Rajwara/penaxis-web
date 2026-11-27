@@ -25,7 +25,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Industries - Penaxis",
-  description: "13 industries, one team - see how Penaxis builds for each one.",
+  description: "24 industries, one team - see how Penaxis builds for each one.",
   alternates: {
     canonical: "/industries",
   },

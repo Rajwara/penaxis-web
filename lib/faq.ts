@@ -68,7 +68,7 @@ export const FAQ: FaqTopic[] = [
       // Industries
       {
         q: "Which industries do you work with?",
-        a: "13 and counting - from software and healthcare to logistics, retail, and real estate. If yours isn't listed yet, tell us about it.",
+        a: "24 and counting - from software and healthcare to logistics, retail, and real estate. If yours isn't listed yet, tell us about it.",
         image: "/images/hero/faq-industries.webp",
         link: { label: "Industries we work with", href: "/industries" },
       },
@@ -149,7 +149,7 @@ export const FAQ: FaqTopic[] = [
       // Team
       {
         q: "Who actually works on my project?",
-        a: "A dedicated team matched to your project - typically a project lead, engineers, and a designer, backed by our wider team of 27+ specialists across product, engineering, and growth.",
+        a: "A dedicated team matched to your project - typically a project lead, engineers, and a designer, backed by our wider team of 20+ specialists across product, engineering, and growth.",
         image: "/images/hero/team-group.webp",
         link: { label: "Meet the team", href: "/game-changers" },
       },
