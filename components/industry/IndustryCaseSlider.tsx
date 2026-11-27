@@ -94,7 +94,7 @@ export default function IndustryCaseSlider() {
       <div className="ics-container">
         <div className="ics-head">
           <div>
-            <span className="ics-eyebrow">/ Our work across industries /</span>
+            <span className="ics-eyebrow">Our work across industries</span>
             <h2 id="ics-title" className="ics-title">From Insights to Outcome.</h2>
             <p className="ics-intro">Explore how we translate industry knowledge and technological expertise into practical solutions for real businesses.</p>
           </div>

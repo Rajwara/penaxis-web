@@ -12461,7 +12461,7 @@ a.nx-feat:hover h5 { color: var(--nx-accent); }
 .isc *, .isc *::before, .isc *::after { box-sizing: border-box; }
 .isc-head { position: relative; z-index: 1; max-width: 670px; margin: 0 0 45px calc((100% + 30px) / 4 + 3px); }
 .isc-sub { display: block; margin-bottom: 6px; font: 500 18px/28px var(--font-display); color: #c2a8e6; }
-.isc-sub::before { content: "/ "; } .isc-sub::after { content: " /"; }
+
 .isc .isc-title { margin: 0; font: 500 72px/1 var(--font-display); letter-spacing: -.02em; color: #fff; }
 .isc-word { display: inline-block; white-space: nowrap; }
 .isc-letter { display: inline-block; opacity: 0; transform: translateY(40%); transition: opacity .5s ease, transform .5s ease; }
@@ -12995,3 +12995,14 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
    so the centred title doesn't sit on her */
 .cb-bg[src*="/contact-us/contact-us-banner"] { object-position: 35% 50%; mix-blend-mode: normal; }
 @media (max-width: 767px) { .cb-bg[src*="/contact-us/contact-us-banner"] { object-position: 82% 50%; } }
+
+/* Industries pages: sub-headings in the homepage style ("• LABEL •":
+   heading font, uppercase, small round dots either side) */
+.nx-label, .isc-sub, .ics-eyebrow {
+  display: flex; align-items: center; column-gap: .75rem; width: fit-content;
+  font-family: "Big Shoulders Variable", "Big Shoulders", Impact, sans-serif; font-size: 18px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em; text-transform: uppercase;
+}
+.nx-label::before, .nx-label::after, .isc-sub::before, .isc-sub::after, .ics-eyebrow::before, .ics-eyebrow::after {
+  content: ""; width: .375rem; height: .375rem; flex-shrink: 0; border-radius: 999px; background: currentColor;
+}

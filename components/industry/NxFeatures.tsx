@@ -70,7 +70,7 @@ export function NxFeaturesSection({
       )}
       <div className="nx-container">
         <div className="pd-reveal">
-          <span className="nx-label">/ {label} /</span>
+          <span className="nx-label">{label}</span>
           <h2 className="nx-h2 nx-features-h2">{heading}</h2>
           {intro && <p className="nx-features-intro">{intro}</p>}
         </div>

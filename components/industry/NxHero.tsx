@@ -49,7 +49,7 @@ export default function NxHero({ eyebrow, title, text, search, chipsLabel = "Pop
         {/* eslint-enable @next/next/no-img-element */}
       </div>
       <div className="nx-hero-content">
-        {eyebrow && <span className="nx-label nx-hero-eyebrow">/ {eyebrow} /</span>}
+        {eyebrow && <span className="nx-label nx-hero-eyebrow">{eyebrow}</span>}
         <h1 className="nx-h1">{title}</h1>
         <p>{text}</p>
         {search ?? (

@@ -40,7 +40,7 @@ const RELATED_CASES: Record<string, string[]> = {
   "Cybersecurity & Information Security": ["cybersecurity-hr-platform"],
 };
 
-const Label = ({ children }: { children: React.ReactNode }) => <span className="nx-label">/ {children} /</span>;
+const Label = ({ children }: { children: React.ReactNode }) => <span className="nx-label">{children}</span>;
 
 function Btn({ href, children, light }: { href: string; children: React.ReactNode; light?: boolean }) {
   return (
@@ -85,7 +85,7 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
           <div className="nx-container">
             <div className="nx-chal-head">
               <div className="pd-reveal">
-                <span className="nx-label">/ industry challenges /</span>
+                <span className="nx-label">industry challenges</span>
                 <h2 id="nx-chal-title" className="nx-h2">What makes {industry.title.split(" & ")[0].toLowerCase()} hard to get right</h2>
               </div>
               <p className="nx-chal-intro pd-reveal">{industry.challenge}</p>
