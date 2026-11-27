@@ -14,7 +14,8 @@ import { INDUSTRY_MENU } from "@/lib/industryMenu";
 // cut off with a bottom fade and a pill button. Cards = Penaxis industries,
 // each linking to its page. Styles: .isc-* in app/globals.css.
 
-const RATIOS = [322 / 428, 322 / 318, 322 / 428, 322 / 490, 322 / 428, 322 / 428, 322 / 490, 322 / 318, 322 / 428, 322 / 490, 322 / 318, 322 / 428];
+// Card heights from the supplied file, reduced to 80% (shorter cards).
+const RATIOS = [428, 318, 428, 490, 428, 428, 490, 318, 428, 490, 318, 428].map((h) => 322 / (h * 0.8));
 const TITLE = "Industry Expertise. Real-World Solutions.";
 const INTRO =
   "Explore how Penaxis addresses the unique challenges of businesses across diverse industries through tailored technology, intelligent automation and growth-focused solutions.";
