@@ -10,13 +10,25 @@ import { FAQ } from "@/lib/faq";
 // The site's main FAQ page; /faq redirects here.
 export const metadata: Metadata = {
   title: "FAQs - Penaxis",
-  description: "Answers to common questions about working with Penaxis: getting started, our services, how we work, pricing and ownership.",
+  description: "What Penaxis does, where we are based, our services, AI and automation, how we work, pricing and ownership: answers to common questions about working with Penaxis.",
   alternates: { canonical: "/faqs" },
+};
+
+// FAQPage structured data (every question on the page) for search results.
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ.flatMap((t) => t.items).map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export default function FaqPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }} />
       <Navbar />
       <main>
         <ContactBanner
@@ -24,7 +36,7 @@ export default function FaqPage() {
           shade={0.1}
           label="FAQs"
           title="Questions & answers"
-          intro="Everything about getting started, our services, how we work and pricing, answered by the Penaxis team."
+          intro="Everything about Penaxis, our services, AI, how we work and pricing, answered by the Penaxis team."
         />
         <FaqSections topics={FAQ} />
       </main>

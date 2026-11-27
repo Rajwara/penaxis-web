@@ -17,6 +17,8 @@ const TEMP_IMG = "https://cdn.prod.website-files.com/6ae1b423d7bb90956e94a0c5/6a
 
 // Image beside each FAQs-page topic (falls back to TEMP_IMG).
 const TOPIC_IMAGES: Record<string, string> = {
+  about: "/images/who-we-are/team-photo.webp",
+  ai: "/images/who-we-are/why-choose-us.webp",
   "getting-started": "/images/faq/faq-getting-started.webp",
   services: "/images/faq/faq-services.webp",
   process: "/images/faq/faq-process.webp",
@@ -24,6 +26,8 @@ const TOPIC_IMAGES: Record<string, string> = {
 };
 
 const HEADINGS: Record<string, string> = {
+  about: "Penaxis at a glance",
+  ai: "AI for your business",
   "getting-started": "Starting a project with Penaxis",
   services: "What we build and how",
   process: "How we work together",
