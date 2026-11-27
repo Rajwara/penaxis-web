@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { industries, slugify } from "@/lib/data";
 import { moreIndustries } from "@/lib/industriesMore";
 import { INDUSTRY_MENU } from "@/lib/industryMenu";
+import { industryImageForLabel } from "@/lib/industryImages";
+
 
 // /industries "showcase" gallery, ported from the supplied
 // community-showcase file: dark rounded box, "/ label /" + heading that
@@ -57,7 +59,10 @@ const PAGES = [...industries, ...moreIndustries];
 const ITEMS = CARDS.map(([title, copy], i) => {
   const href = MENU.find((m) => m.label === title)?.href ?? "/industries";
   const page = PAGES.find((p) => `/industries/${slugify(p.title)}` === href);
-  return { title, copy, href, image: page?.image ?? industries[0].image, ratio: RATIOS[i % RATIOS.length], num: String(i + 1).padStart(2, "0") };
+  const up = industryImageForLabel(title);
+  // Uploaded image: the card takes that image's own shape (height scaled to 80%, like the pattern).
+  const ratio = up ? up.width / (up.height * 0.8) : RATIOS[i % RATIOS.length];
+  return { title, copy, href, image: up?.src ?? page?.image ?? industries[0].image, ratio, num: String(i + 1).padStart(2, "0") };
 });
 const FIRST = 12;
 

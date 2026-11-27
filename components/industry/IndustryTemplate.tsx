@@ -9,6 +9,7 @@ import { caseStudies, industries, services, slugify } from "@/lib/data";
 import { CASE_STUDY_SHORT_TITLES } from "@/lib/caseStudyCards";
 import { INDUSTRY_CHALLENGES } from "@/lib/industryChallenges";
 import { frameworksFor } from "@/lib/complianceFrameworks";
+import { industryImageForPage } from "@/lib/industryImages";
 import { GENERAL_FAQS, INDUSTRY_EXTRAS } from "@/lib/industryExtras";
 import "@fontsource-variable/big-shoulders/opsz.css";
 import "@fontsource-variable/wix-madefor-display/index.css";
@@ -227,7 +228,7 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
           nav={false}
           numbered
           heading="Everything you need to know."
-          image={industry.image}
+          image={industryImageForPage(industry.title)?.src ?? industry.image}
           topics={[{ id: "industry-faq", title: `${industry.title} FAQs`, items: faqs.map((f) => ({ ...f, image: "" })) }]}
         />
       </div>

@@ -5,6 +5,7 @@ import IndustrySearch from "@/components/industry/IndustrySearch";
 import DetailReveal from "@/components/detail/DetailReveal";
 import { NxFeaturesSection } from "@/components/industry/NxFeatures";
 import NxMarquee from "@/components/industry/NxMarquee";
+import { INDUSTRIES_FAQ_IMAGE } from "@/lib/industryImages";
 import IndustryShowcase from "@/components/industry/IndustryShowcase";
 import IndustryCaseSlider from "@/components/industry/IndustryCaseSlider";
 import FaqSections from "@/components/FaqSections";
@@ -88,7 +89,7 @@ export default function IndustriesPage() {
             nav={false}
             numbered
             heading="Everything you need to know."
-            image="/images/hero/lets-work-together.webp"
+            image={INDUSTRIES_FAQ_IMAGE}
             topics={[{ id: "industries-faq", title: "Frequently asked questions", items: INDUSTRY_FAQS }]}
           />
         </div>
