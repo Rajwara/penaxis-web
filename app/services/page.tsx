@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import AboutHeroBanner from "@/components/AboutHeroBanner";
 import HomeV2Services from "@/components/HomeV2Services";
 import EngagementModels from "@/components/EngagementModels";
+import IndustrySlider from "@/components/industry/IndustrySlider";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -30,6 +31,8 @@ export default function ServicesPage() {
         <div className="hv2-page svc-page-list">
           <HomeV2Services />
         </div>
+        {/* Industries slider (same design as the case-study slider on /industries) */}
+        <IndustrySlider />
         <EngagementModels />
       </main>
       <Footer />

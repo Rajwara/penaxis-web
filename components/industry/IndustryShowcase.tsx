@@ -26,7 +26,7 @@ const INTRO =
 // "Load more industries" adds the remaining 12. This order balances existing
 // experience and target opportunities - it is not a claim that every sector
 // has completed projects.
-const CARDS: [string, string][] = [
+export const CARDS: [string, string][] = [
   ["Hospitality & Tourism", "Connected guest experiences, booking platforms and smarter operations."],
   ["Food & Beverage", "Intelligent ordering, restaurant management and customer engagement."],
   ["Healthcare & Medical Clinics", "Patient platforms, connected healthcare and clinical automation."],
