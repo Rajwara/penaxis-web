@@ -12873,3 +12873,5 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
 .phb-person { translate: var(--phb-px, 0px) 0; transition: translate .9s cubic-bezier(.22,1,.36,1); }
 @media (hover: none), (prefers-reduced-motion: reduce) { .phb-person { translate: none; } }
 .wc-media.is-graded > img { mix-blend-mode: normal; }
+/* Momentum showcase: quarter images are already graded, so no purple multiply */
+.cz-show-bg { mix-blend-mode: normal; }

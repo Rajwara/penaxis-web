@@ -22,14 +22,15 @@ const MARQUEE_PHOTOS = [
   CDN + "6aeae122c48e48733c76b36f_about-img8.webp",
   CDN + "6aeae12b61093d5fbe155d1a_about-img7.webp",
 ];
-// Q2 2026 keeps the template's showcase photo (TEMP, template CDN);
-// other quarters show their team photo, or the nearest earlier one.
-const SHOW_BG = CDN + "6aeae12279e756616076221b_about_bg1.webp";
-const photoFor = (index: number) => {
-  if (momentum[index].period === "Q2 2026") return SHOW_BG;
-  for (let i = index; i >= 0; i--) if (momentum[i].image) return momentum[i].image!;
-  return momentum.find((m) => m.image)!.image!;
+// Showcase background per quarter (Penaxis artwork, already purple-graded).
+const SHOW_BG: Record<string, string> = {
+  "Q2 2025": "/images/who-we-are/momentum-show-q2-2025.webp",
+  "Q3 2025": "/images/who-we-are/momentum-show-q3-2025.webp",
+  "Q4 2025": "/images/who-we-are/momentum-show-q4-2025.webp",
+  "Q1 2026": "/images/who-we-are/momentum-show-q1-2026.webp",
+  "Q2 2026": "/images/who-we-are/momentum-show-q2-2026.webp",
 };
+const photoFor = (index: number) => SHOW_BG[momentum[index].period] ?? momentum[index].image ?? momentum[0].image!;
 const PHOTOS = Array.from(new Set(momentum.map((_, i) => photoFor(i))));
 const VIDEO_SRC = "/videos/founders-video.mp4";
 const VIDEO_POSTER = "/images/hero/founders-video-poster.webp";
