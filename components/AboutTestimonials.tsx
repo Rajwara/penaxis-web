@@ -9,7 +9,8 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 // grey frame holding three cards (client logo on top, big uppercase quote,
 // author). Fonts, sizes and spacing match the supplied file; accent is
 // Penaxis purple. Uses the real client testimonials from lib/data.ts. The
-// original's 5-star rows are left out (there are no real ratings to show).
+// company is named once, by its logo; the author line shows only the
+// job title. The original's 5-star rows are left out (there are no real ratings to show).
 
 export default function AboutTestimonials() {
   return (
@@ -33,7 +34,6 @@ export default function AboutTestimonials() {
               <div className="tst-box is-head">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img className="tst-logo" src={t.logo} alt={t.company} />
-                <span className="tst-company">{t.company}</span>
               </div>
               <div className="tst-box is-testi">
                 <blockquote className="tst-quote">&ldquo;{t.quote}&rdquo;</blockquote>
@@ -42,7 +42,7 @@ export default function AboutTestimonials() {
                   <img className="tst-avatar" src={t.image} alt="" />
                   <span>
                     <span className="tst-name">{t.name}</span>
-                    <span className="tst-meta">{t.role}</span>
+                    <span className="tst-meta">{t.title}</span>
                   </span>
                 </figcaption>
               </div>
