@@ -843,6 +843,7 @@ export const caseStudies = [
   },
   {
     slug: "dry-cleaning-delivery-platform",
+    cardImage: "/images/case-studies/dry-cleaning-delivery-platform-card.webp", // portrait card (homepage + /case-studies)
     gridImage: "/images/case-studies/grid/dry-cleaning-delivery-platform-grid.webp",
     bannerImages: [
       "/images/case-studies/banner/dry-cleaning-banner-1.webp",
@@ -904,6 +905,7 @@ export const caseStudies = [
   },
   {
     slug: "cybersecurity-hr-platform",
+    cardImage: "/images/case-studies/cybersecurity-hr-platform-card.webp", // portrait card (homepage + /case-studies)
     gridImage: "/images/case-studies/grid/cybersecurity-hr-platform-grid.webp",
     bannerImages: [
       "/images/case-studies/banner/qsecure-banner-1.webp",
@@ -953,6 +955,7 @@ export const caseStudies = [
   },
   {
     slug: "ai-automotive-search-oktabytes",
+    cardImage: "/images/case-studies/ai-automotive-search-oktabytes-card.webp", // portrait card (homepage + /case-studies)
     gridImage: "/images/case-studies/grid/ai-automotive-search-oktabytes-grid.webp",
     bannerImages: [
       "/images/case-studies/banner/oktabytes-banner-1.webp",
@@ -1014,6 +1017,7 @@ export const caseStudies = [
   },
   {
     slug: "patient-care-management-platform",
+    cardImage: "/images/case-studies/patient-care-management-platform-card.webp", // portrait card (homepage + /case-studies)
     gridImage: "/images/case-studies/grid/patient-care-management-platform-grid.webp",
     bannerImages: [
       "/images/case-studies/banner/patientcare-banner-1.webp",
@@ -1049,6 +1053,7 @@ export const caseStudies = [
   },
   {
     slug: "recruitment-talent-platform",
+    cardImage: "/images/case-studies/recruitment-talent-platform-card.webp", // portrait card (homepage + /case-studies)
     gridImage: "/images/case-studies/grid/recruitment-talent-platform-grid.webp",
     bannerImages: [
       "/images/case-studies/banner/recruitment-banner-1.webp",
@@ -1085,6 +1090,7 @@ export const caseStudies = [
   },
   {
     slug: "luxury-furniture-ecommerce",
+    cardImage: "/images/case-studies/luxury-furniture-ecommerce-card.webp", // portrait card (homepage + /case-studies)
     gridImage: "/images/case-studies/grid/luxury-furniture-ecommerce-grid.webp",
     bannerImages: [
       "/images/case-studies/banner/furniture-banner-1.webp",
