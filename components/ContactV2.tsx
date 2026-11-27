@@ -85,7 +85,7 @@ export default function ContactV2() {
       </div>
 
       {/* Banner (ported from the supplied contact banner) */}
-      <ContactBanner image="/images/hero/contact-us-banner-v2.webp" shade={0.4} />
+      <ContactBanner image="/images/contact-us/contact-us-banner.webp" shade={0.25} />
 
       {/* Contact section */}
       <section className="cv2-contact">

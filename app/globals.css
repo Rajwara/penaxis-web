@@ -12991,3 +12991,7 @@ button.isc-btn { cursor: pointer; font-family: var(--font-body); }
   .csx-tech-cell { padding: 16px 20px 20px; }
   .csx-tech-tile { width: calc(33.333% - 7px); min-height: 96px; }
 }
+/* Contact Us banner (uploaded photo): true colours, person kept to the right
+   so the centred title doesn't sit on her */
+.cb-bg[src*="/contact-us/contact-us-banner"] { object-position: 35% 50%; mix-blend-mode: normal; }
+@media (max-width: 767px) { .cb-bg[src*="/contact-us/contact-us-banner"] { object-position: 82% 50%; } }
