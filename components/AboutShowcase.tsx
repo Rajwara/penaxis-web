@@ -12,15 +12,15 @@ import "@fontsource-variable/wix-madefor-display/index.css";
 // photo pills, the founders video, purple accent. The coloured showcase now
 // holds the Momentum timeline (quarter tabs left, projects delivered right,
 // background cross-fades to that quarter's team photo).
-// TEMP IMAGES: marquee photos from the template's CDN — replace later.
 
-const CDN = "https://cdn.prod.website-files.com/6ae1b423d7bb90956e94a0c5/";
+// One themed photo per client, shown just before that client's logo
+// (same order as the first five pressLogos).
 const MARQUEE_PHOTOS = [
-  CDN + "6aeae1228074077a434839a6_about-img11.webp",
-  CDN + "6aeae121199c20f44f764427_about-img10.webp",
-  CDN + "6aeae1224c41f5c210357cc5_about-img9.webp",
-  CDN + "6aeae122c48e48733c76b36f_about-img8.webp",
-  CDN + "6aeae12b61093d5fbe155d1a_about-img7.webp",
+  "/images/who-we-are/marquee-meerab-properties.webp",
+  "/images/who-we-are/marquee-meerab-dubai.webp",
+  "/images/who-we-are/marquee-devmindz.webp",
+  "/images/who-we-are/marquee-bidmore.webp",
+  "/images/who-we-are/marquee-seka.webp",
 ];
 // Penaxis journey: one tab per milestone (same design as the old quarterly
 // momentum tabs). Images reuse the five uploaded showcase backgrounds in order.
